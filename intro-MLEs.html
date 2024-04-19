@@ -361,7 +361,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-18: 17:37:42 (PM)</p>
+      <p class="date">Last modified: 2024-04-19: 11:39:28 (AM)</p>
     </div>
   </div>
   
@@ -370,7 +370,7 @@ window.Quarto = {
   
 
 
-</header><p>These notes are derived primarily from <span class="citation" data-cites="dobson2018introduction">Dobson and Barnett (<a href="references.html#ref-dobson2018introduction" role="doc-biblioref">2018</a>)</span> (mostly chapters 1-5).</p>
+</header><p>These notes are derived primarily from <span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> (mostly chapters 1-5).</p>
 <p>Some material was also taken from <span class="citation" data-cites="mclachlan2007algorithm">McLachlan and Krishnan (<a href="references.html#ref-mclachlan2007algorithm" role="doc-biblioref">2007</a>)</span> and <span class="citation" data-cites="CaseBerg01">Casella and Berger (<a href="references.html#ref-CaseBerg01" role="doc-biblioref">2002</a>)</span>.</p>
 <section id="introduction" class="level2" data-number="C.1"><h2 data-number="C.1" class="anchored" data-anchor-id="introduction">
 <span class="header-section-number">C.1</span> Introduction</h2>
@@ -393,7 +393,7 @@ window.Quarto = {
 </div>
 </section><section id="example-maximum-likelihood-for-tropical-cyclones-in-australia" class="level2" data-number="C.2"><h2 data-number="C.2" class="anchored" data-anchor-id="example-maximum-likelihood-for-tropical-cyclones-in-australia">
 <span class="header-section-number">C.2</span> Example: Maximum likelihood for Tropical Cyclones in Australia</h2>
-<p>The <code>cyclones</code> dataset in the <code>dobson</code> package (<a href="#tbl-cyclones-data" class="quarto-xref">Table&nbsp;<span>C.1</span></a>) records the number of tropical cyclones in Northeastern Australia during 13 November-to-April cyclone seasons (more details in <span class="citation" data-cites="dobson2018introduction">Dobson and Barnett (<a href="references.html#ref-dobson2018introduction" role="doc-biblioref">2018</a>)</span> §1.6.5 and <code><a href="https://rdrr.io/pkg/dobson/man/cyclones.html">help(cyclones, package = "dobson")</a></code>). <a href="#fig-dobson-cyclone-time-series" class="quarto-xref">Figure&nbsp;<span>C.1</span></a> graphs the number of cyclones (y-axis) by season (x-axis). Let’s use <span class="math inline">\(Y_i\)</span> to represent these counts, where <span class="math inline">\(i\)</span> is an indexing variable for the seasons and <span class="math inline">\(Y_i\)</span> is the number of cyclones in season <span class="math inline">\(i\)</span>.</p>
+<p>The <code>cyclones</code> dataset in the <code>dobson</code> package (<a href="#tbl-cyclones-data" class="quarto-xref">Table&nbsp;<span>C.1</span></a>) records the number of tropical cyclones in Northeastern Australia during 13 November-to-April cyclone seasons (more details in <span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span> §1.6.5 and <code><a href="https://rdrr.io/pkg/dobson/man/cyclones.html">help(cyclones, package = "dobson")</a></code>). <a href="#fig-dobson-cyclone-time-series" class="quarto-xref">Figure&nbsp;<span>C.1</span></a> graphs the number of cyclones (y-axis) by season (x-axis). Let’s use <span class="math inline">\(Y_i\)</span> to represent these counts, where <span class="math inline">\(i\)</span> is an indexing variable for the seasons and <span class="math inline">\(Y_i\)</span> is the number of cyclones in season <span class="math inline">\(i\)</span>.</p>
 <p>Suppose we want to learn about how many cyclones to expect per season.</p>
 <div class="cell">
 <details class="code-fold"><summary>Show R code</summary><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">dobson</span><span class="op">)</span></span>
@@ -578,7 +578,7 @@ Table&nbsp;C.2: Summary statistics for <code>cyclones</code> data
 </figure>
 </div>
 </div>
-<p>We want to estimate <span class="math inline">\(P(Y=y)\)</span>; that is, <span class="math inline">\(P(Y=y)\)</span> is our <a href="#estimation.qmd#def-estimand">estimand</a>.</p>
+<p>We want to estimate <span class="math inline">\(P(Y=y)\)</span>; that is, <span class="math inline">\(P(Y=y)\)</span> is our <a href="./estimation.html#def-estimand">estimand</a>.</p>
 <p>We could estimate <span class="math inline">\(P(Y=y)\)</span> for each value of <span class="math inline">\(y\)</span> in <span class="math inline">\(0:\infty\)</span> separately (“nonparametrically”) using the fraction of our data with <span class="math inline">\(Y_i=y\)</span>, but then we would be estimating an infinitely large set of parameters, and we would have low precision. We will probably do better with a parametric model.</p>
 <div id="exr-cyclone-choose-dist" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.1</strong></span> What parametric probability distribution family might we use to model this empirical distribution?</p>
@@ -1088,7 +1088,7 @@ d &amp; 0 \\
 </section><section id="likelihood-ratio-tests-for-mles" class="level3" data-number="C.3.6"><h3 data-number="C.3.6" class="anchored" data-anchor-id="likelihood-ratio-tests-for-mles">
 <span class="header-section-number">C.3.6</span> Likelihood ratio tests for MLEs</h3>
 <p>[We haven’t gone over this yet]</p>
-<p>log(likelihood ratio) tests <span class="citation" data-cites="dobson2018introduction">(c.f. <a href="references.html#ref-dobson2018introduction" role="doc-biblioref">Dobson and Barnett 2018, sec. 5.7</a>)</span>:</p>
+<p>log(likelihood ratio) tests <span class="citation" data-cites="dobson4e">(c.f. <a href="references.html#ref-dobson4e" role="doc-biblioref">Dobson and Barnett 2018, sec. 5.7</a>)</span>:</p>
 <p><span class="math display">\[2\left( \mathfrak{l -}\ell_{0} \right) \sim \chi^{2}(p - q)\]</span></p>
 <p>See also https://online.stat.psu.edu/stat504/book/export/html/657</p>
 </section><section id="prediction-intervals-for-mles" class="level3" data-number="C.3.7"><h3 data-number="C.3.7" class="anchored" data-anchor-id="prediction-intervals-for-mles">
@@ -1103,7 +1103,7 @@ d &amp; 0 \\
 <div id="ref-CaseBerg01" class="csl-entry" role="listitem">
 Casella, George, and Roger Berger. 2002. <em>Statistical Inference</em>. 2nd ed. Cengage Learning. <a href="https://www.cengage.com/c/statistical-inference-2e-casella-berger/9780534243128/">https://www.cengage.com/c/statistical-inference-2e-casella-berger/9780534243128/</a>.
 </div>
-<div id="ref-dobson2018introduction" class="csl-entry" role="listitem">
+<div id="ref-dobson4e" class="csl-entry" role="listitem">
 Dobson, Annette J, and Adrian G Barnett. 2018. <em>An Introduction to Generalized Linear Models</em>. 4th ed. CRC press. <a href="https://doi.org/10.1201/9781315182780">https://doi.org/10.1201/9781315182780</a>.
 </div>
 <div id="ref-mclachlan2007algorithm" class="csl-entry" role="listitem">
@@ -1731,7 +1731,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>{{&lt; include shared-config.qmd &gt;}}</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>These notes are derived primarily from @dobson2018introduction (mostly chapters 1-5).</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>These notes are derived primarily from @dobson4e (mostly chapters 1-5).</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>Some material was also taken from @mclachlan2007algorithm and @CaseBerg01.</span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
@@ -2100,7 +2100,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-371"><a href="#cb12-371" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-372"><a href="#cb12-372" aria-hidden="true" tabindex="-1"></a><span class="sc">\[</span>We haven’t gone over this yet<span class="sc">\]</span></span>
 <span id="cb12-373"><a href="#cb12-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-374"><a href="#cb12-374" aria-hidden="true" tabindex="-1"></a>log(likelihood ratio) tests <span class="co">[</span><span class="ot">c.f. @dobson2018introduction §5.7</span><span class="co">]</span>:</span>
+<span id="cb12-374"><a href="#cb12-374" aria-hidden="true" tabindex="-1"></a>log(likelihood ratio) tests <span class="co">[</span><span class="ot">c.f. @dobson4e §5.7</span><span class="co">]</span>:</span>
 <span id="cb12-375"><a href="#cb12-375" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-376"><a href="#cb12-376" aria-hidden="true" tabindex="-1"></a>$$2\left( \mathfrak{l -}\ell_{0} \right) \sim \chi^{2}(p - q)$$</span>
 <span id="cb12-377"><a href="#cb12-377" aria-hidden="true" tabindex="-1"></a></span>
@@ -2122,7 +2122,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
- Copyright 2023, Douglas Ezra Morrison
+ Copyright 2024, Douglas Ezra Morrison
   </li>  
 </ul>
 </div>   

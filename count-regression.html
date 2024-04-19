@@ -389,7 +389,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-18: 17:37:42 (PM)</p>
+      <p class="date">Last modified: 2024-04-19: 11:39:28 (AM)</p>
     </div>
   </div>
   
@@ -403,7 +403,7 @@ window.Quarto = {
 <p>This content is adapted from:</p>
 <ul>
 <li>
-<span class="citation" data-cites="dobson2018introduction">Dobson and Barnett (<a href="references.html#ref-dobson2018introduction" role="doc-biblioref">2018</a>)</span>, Chapter 9</li>
+<span class="citation" data-cites="dobson4e">Dobson and Barnett (<a href="references.html#ref-dobson4e" role="doc-biblioref">2018</a>)</span>, Chapter 9</li>
 <li>
 <span class="citation" data-cites="vittinghoff2012regression">Vittinghoff et al. (<a href="references.html#ref-vittinghoff2012regression" role="doc-biblioref">2012</a>)</span>, Chapter 8</li>
 </ul></section><section id="configuring-r" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="configuring-r">Configuring R</h3>
@@ -534,7 +534,7 @@ Tip
 <p><span class="math display">\[\text{exp}\left\{a-b\right\} = \frac{\text{exp}\left\{a\right\}}{\text{exp}\left\{b\right\}}\]</span></p>
 </div>
 </div>
-<p>Therefore, according to this model, <strong>differences of <span class="math inline">\(\delta\)</span> in covariate <span class="math inline">\(x_j\)</span> correspond to rate ratios of <span class="math inline">\(\text{exp}\left\{\beta_j \cdot\delta\right\}\)</span></strong>.</p>
+<p>Therefore, according to this model, <strong>differences of <span class="math inline">\(\delta\)</span> in covariate <span class="math inline">\(x_j\)</span> correspond to rate ratios of <span class="math inline">\(\text{exp}\left\{\beta_j \cdot \delta\right\}\)</span></strong>.</p>
 <p>That is, letting <span class="math inline">\(\tilde X_{-j}\)</span> denote vector <span class="math inline">\(\tilde X\)</span> with element <span class="math inline">\(j\)</span> removed:</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -573,11 +573,11 @@ Tip
 <span class="header-section-number">4.2.1</span> Confidence intervals for regression coefficients and rate ratios</h3>
 <p>As usual:</p>
 <p><span class="math display">\[
-\beta \in \left[\hat\beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot\hat{\text{se}}\left(\hat\beta\right)\right]
+\beta \in \left[\hat\beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot \hat{\text{se}}\left(\hat\beta\right)\right]
 \]</span></p>
 <p>Rate ratios: exponentiate CI endpoints</p>
 <p><span class="math display">\[
-\text{exp}\left\{\beta\right\} \in \left[\text{exp}\left\{\hat\beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot\hat{\text{se}}\left(\hat\beta\right)\right\} \right]
+\text{exp}\left\{\beta\right\} \in \left[\text{exp}\left\{\hat\beta{\color{red}\pm} z_{1 - \frac{\alpha}{2}}\cdot \hat{\text{se}}\left(\hat\beta\right)\right\} \right]
 \]</span></p>
 </section><section id="hypothesis-tests-for-regression-coefficients" class="level3" data-number="4.2.2"><h3 data-number="4.2.2" class="anchored" data-anchor-id="hypothesis-tests-for-regression-coefficients">
 <span class="header-section-number">4.2.2</span> Hypothesis tests for regression coefficients</h3>
@@ -684,7 +684,7 @@ P(Y=y,Z=z|...)
 <!-- -->
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
-<div id="ref-dobson2018introduction" class="csl-entry" role="listitem">
+<div id="ref-dobson4e" class="csl-entry" role="listitem">
 Dobson, Annette J, and Adrian G Barnett. 2018. <em>An Introduction to Generalized Linear Models</em>. 4th ed. CRC press. <a href="https://doi.org/10.1201/9781315182780">https://doi.org/10.1201/9781315182780</a>.
 </div>
 <div id="ref-vittinghoff2012regression" class="csl-entry" role="listitem">
@@ -1318,7 +1318,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>This content is adapted from:</span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>@dobson2018introduction, Chapter 9</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>@dobson4e, Chapter 9</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>@vittinghoff2012regression, Chapter 8</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>::: {.content-hidden when-format="revealjs"}</span>
@@ -1397,7 +1397,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a>\mathbb E<span class="co">[</span><span class="ot">Y | \tilde X = \tilde x,T=t</span><span class="co">]</span> </span>
 <span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a>&amp;= \mu(\tilde x,t)<span class="sc">\\</span></span>
 <span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a>\mu(\tilde x,t) </span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>&amp;= \lambda(\tilde x)\cd t<span class="sc">\\</span></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>&amp;= \lambda(\tilde x)\cdot t<span class="sc">\\</span></span>
 <span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a>\lambda(\tilde x) </span>
 <span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a>&amp;= \exp{\eta(\tilde x)}<span class="sc">\\</span></span>
 <span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>\eta(\tilde x) </span>
@@ -1410,7 +1410,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
 <span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>\log{<span class="sc">\{</span>\mathbb E<span class="co">[</span><span class="ot">Y | \tilde X = \tilde x,T=t</span><span class="co">]</span> <span class="sc">\}</span>}</span>
 <span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a>&amp;= \log{<span class="sc">\{</span>\mu(\tilde x)<span class="sc">\}</span>}<span class="sc">\\</span></span>
-<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>&amp;=\log{<span class="sc">\{</span>\lambda(\tilde x) \cd t <span class="sc">\}</span>}<span class="sc">\\</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a>&amp;=\log{<span class="sc">\{</span>\lambda(\tilde x) \cdot t <span class="sc">\}</span>}<span class="sc">\\</span></span>
 <span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\lambda(\tilde x)} + \log{t}<span class="sc">\\</span></span>
 <span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a>&amp;=\log{\exp{\eta(\tilde x)}} + \log{t}<span class="sc">\\</span></span>
 <span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>&amp;=\eta(\tilde x) + \log{t}<span class="sc">\\</span></span>
@@ -1434,7 +1434,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a>$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$</span>
 <span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>Therefore, according to this model, **differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cd \delta}$**.</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a>Therefore, according to this model, **differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.</span>
 <span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a>That is, letting $\tilde X_{-j}$ denote vector $\tilde X$ with element $j$ removed: </span>
 <span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a></span>
@@ -1507,9 +1507,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a>\hat y </span>
 <span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \hat{\mathbb E}<span class="co">[</span><span class="ot">Y|\tilde X= \tilde x,T=t</span><span class="co">]</span><span class="sc">\\</span></span>
 <span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>&amp;=\hat\mu(\tilde x, t)<span class="sc">\\</span></span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>&amp;=\hat\lambda(\tilde x) \cd t<span class="sc">\\</span></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\hat\eta(\tilde x)} \cd t<span class="sc">\\</span></span>
-<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\tilde x'\hat{\boldsymbol{\beta}}} \cd t</span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>&amp;=\hat\lambda(\tilde x) \cdot t<span class="sc">\\</span></span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\hat\eta(\tilde x)} \cdot t<span class="sc">\\</span></span>
+<span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a>&amp;=\exp{\tilde x'\hat{\boldsymbol{\beta}}} \cdot t</span>
 <span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
 <span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a></span>
@@ -1627,7 +1627,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-left">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
- Copyright 2023, Douglas Ezra Morrison
+ Copyright 2024, Douglas Ezra Morrison
   </li>  
 </ul>
 </div>   
