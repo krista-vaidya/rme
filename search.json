@@ -766,15 +766,15 @@
     "href": "estimation.html",
     "title": "Appendix B — Estimation",
     "section": "",
-    "text": "B.1 Probabilitistic models",
+    "text": "B.1 Probabilistic models",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Estimation</span>"
     ]
   },
   {
-    "objectID": "estimation.html#probabilitistic-models",
-    "href": "estimation.html#probabilitistic-models",
+    "objectID": "estimation.html#probabilistic-models",
+    "href": "estimation.html#probabilistic-models",
     "title": "Appendix B — Estimation",
     "section": "",
     "text": "Definition B.1 (Scientific models) Scientific models are attempts to describe physical conditions or changes that occur in the world and universe around us.\n\n\nExample B.1 (Scientific models in epidemiology) Epidemiologists typically study biological conditions and changes, such as the spread of infectious diseases through populations, or the effects of environmental factors on individuals.\n\n\nB.1.1 Statistical analysis of scientific models\nWhen we perform statistical analyses, we use data to help us choose between models - specifically, to determine which models best explain that data.\nHowever, physical processes do not produce data on their own. Data is only produced when scientists implement an observation process (i.e., a scientific study), which is distinct from the underlying physical process. In some cases, the observation process and the physical process interact with each other. This phenomenon is called the “observer effect”.\nIn order to learn about the physical processes we are ultimately interested in, we often need to make special considerations for the observation process that produced the data which we are analyzing. In particular, if some of the planned observations in the study design were not completed, we will likely need to account for the incompleteness of the resulting data set in our analysis. If we are not sure why some observations are incomplete, we may need to model the observation process in addition to the physical process we were originally interested in. For example, if some participants in a study dropped out part-way through the study, we may need investigate why those participants dropped out, as opposed to other participants who completed the study.\nThese kinds of missing data issues are outside of the scope of this course; see Van Buuren (2018) for more details.",
