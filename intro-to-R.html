@@ -338,13 +338,13 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
   <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping"><span class="header-section-number">F.3</span> Piping</a>
   <ul class="collapse">
   <li><a href="#which-pipe-should-i-use" id="toc-which-pipe-should-i-use" class="nav-link" data-scroll-target="#which-pipe-should-i-use"><span class="header-section-number">F.3.1</span> Which pipe should I use?</a></li>
+  <li><a href="#why-doesnt-ggplot2-use-piping" id="toc-why-doesnt-ggplot2-use-piping" class="nav-link" data-scroll-target="#why-doesnt-ggplot2-use-piping"><span class="header-section-number">F.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</a></li>
   </ul></li>
-  <li><a href="#why-doesnt-ggplot2-use-piping" id="toc-why-doesnt-ggplot2-use-piping" class="nav-link" data-scroll-target="#why-doesnt-ggplot2-use-piping"><span class="header-section-number">F.4</span> Why doesn’t <code>ggplot2</code> use piping?</a></li>
-  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">F.5</span> Quarto</a></li>
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">F.6</span> Packages</a></li>
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">F.7</span> Git</a></li>
-  <li><a href="#spatial-data-science" id="toc-spatial-data-science" class="nav-link" data-scroll-target="#spatial-data-science"><span class="header-section-number">F.8</span> Spatial data science</a></li>
-  <li><a href="#shiny-apps" id="toc-shiny-apps" class="nav-link" data-scroll-target="#shiny-apps"><span class="header-section-number">F.9</span> Shiny apps</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link" data-scroll-target="#quarto"><span class="header-section-number">F.4</span> Quarto</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages"><span class="header-section-number">F.5</span> Packages</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">F.6</span> Git</a></li>
+  <li><a href="#spatial-data-science" id="toc-spatial-data-science" class="nav-link" data-scroll-target="#spatial-data-science"><span class="header-section-number">F.7</span> Spatial data science</a></li>
+  <li><a href="#shiny-apps" id="toc-shiny-apps" class="nav-link" data-scroll-target="#shiny-apps"><span class="header-section-number">F.8</span> Shiny apps</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/d-morrison/rme/edit/main/intro-to-R.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/d-morrison/rme/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -364,7 +364,7 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-22: 11:57:31 (AM)</p>
+      <p class="date">Last modified: 2024-04-22: 12:18:45 (PM)</p>
     </div>
   </div>
   
@@ -420,9 +420,8 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <p>For simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.</p>
 </blockquote>
 </section>
-</section>
-<section id="why-doesnt-ggplot2-use-piping" class="level2" data-number="F.4">
-<h2 data-number="F.4" class="anchored" data-anchor-id="why-doesnt-ggplot2-use-piping"><span class="header-section-number">F.4</span> Why doesn’t <code>ggplot2</code> use piping?</h2>
+<section id="why-doesnt-ggplot2-use-piping" class="level3" data-number="F.3.2">
+<h3 data-number="F.3.2" class="anchored" data-anchor-id="why-doesnt-ggplot2-use-piping"><span class="header-section-number">F.3.2</span> Why doesn’t <code>ggplot2</code> use piping?</h3>
 <p>Here’s <code>tidyverse</code> creator Hadley Wickham’s answer (from 2018):</p>
 <blockquote class="blockquote">
 <p>I think it’s worth unpacking this question into a few smaller pieces:</p>
@@ -434,16 +433,17 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 </blockquote>
 <p>https://forum.posit.co/t/why-cant-ggplot2-use/4372/7</p>
 </section>
-<section id="quarto" class="level2" data-number="F.5">
-<h2 data-number="F.5" class="anchored" data-anchor-id="quarto"><span class="header-section-number">F.5</span> Quarto</h2>
+</section>
+<section id="quarto" class="level2" data-number="F.4">
+<h2 data-number="F.4" class="anchored" data-anchor-id="quarto"><span class="header-section-number">F.4</span> Quarto</h2>
 <p>Quarto is a system for writing documents with embedded R code and/or results:</p>
 <ul>
 <li>Read this ASAP: https://r4ds.hadley.nz/communicate</li>
 <li>Then use this for reference: https://quarto.org/docs/reference/</li>
 </ul>
 </section>
-<section id="packages" class="level2" data-number="F.6">
-<h2 data-number="F.6" class="anchored" data-anchor-id="packages"><span class="header-section-number">F.6</span> Packages</h2>
+<section id="packages" class="level2" data-number="F.5">
+<h2 data-number="F.5" class="anchored" data-anchor-id="packages"><span class="header-section-number">F.5</span> Packages</h2>
 <blockquote class="blockquote">
 <p>This book espouses our philosophy of package development: anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions. The goal is to spend your time thinking about what you want your package to do rather than thinking about the minutiae of package structure.</p>
 </blockquote>
@@ -453,22 +453,22 @@ gtag('config', 'G-W625DGE908', { 'anonymize_ip': true});
 <li><p>Use the rest of <span class="citation" data-cites="rpkgs">Wickham and Bryan (<a href="references.html#ref-rpkgs" role="doc-biblioref">2023</a>)</span> as a reference</p></li>
 </ul>
 </section>
-<section id="git" class="level2" data-number="F.7">
-<h2 data-number="F.7" class="anchored" data-anchor-id="git"><span class="header-section-number">F.7</span> Git</h2>
+<section id="git" class="level2" data-number="F.6">
+<h2 data-number="F.6" class="anchored" data-anchor-id="git"><span class="header-section-number">F.6</span> Git</h2>
 <p>94% of respondents to a 2022 Stack Overflow survey reported using git for version control <a href="https://survey.stackoverflow.co/2022/#section-version-control-version-control-systems">link</a></p>
 <p><a href="https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-git-github">More details</a></p>
 <ul>
 <li>https://happygitwithr.com/</li>
 </ul>
 </section>
-<section id="spatial-data-science" class="level2" data-number="F.8">
-<h2 data-number="F.8" class="anchored" data-anchor-id="spatial-data-science"><span class="header-section-number">F.8</span> Spatial data science</h2>
+<section id="spatial-data-science" class="level2" data-number="F.7">
+<h2 data-number="F.7" class="anchored" data-anchor-id="spatial-data-science"><span class="header-section-number">F.7</span> Spatial data science</h2>
 <ul>
 <li><span class="citation" data-cites="spatialds">Pebesma and Bivand (<a href="references.html#ref-spatialds" role="doc-biblioref">2023</a>)</span></li>
 </ul>
 </section>
-<section id="shiny-apps" class="level2" data-number="F.9">
-<h2 data-number="F.9" class="anchored" data-anchor-id="shiny-apps"><span class="header-section-number">F.9</span> Shiny apps</h2>
+<section id="shiny-apps" class="level2" data-number="F.8">
+<h2 data-number="F.8" class="anchored" data-anchor-id="shiny-apps"><span class="header-section-number">F.8</span> Shiny apps</h2>
 <ul>
 <li>Read this first: <span class="citation" data-cites="masteringshiny">Wickham (<a href="references.html#ref-masteringshiny" role="doc-biblioref">2021</a>)</span></li>
 <li>Use this as a reference: <span class="citation" data-cites="golembook">Fay et al. (<a href="references.html#ref-golembook" role="doc-biblioref">2021</a>)</span></li>
@@ -1168,7 +1168,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; For simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.</span></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## Why doesn't `ggplot2` use piping?</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### Why doesn't `ggplot2` use piping?</span></span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>Here's <span class="in">`tidyverse`</span> creator Hadley Wickham's answer (from 2018):</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>

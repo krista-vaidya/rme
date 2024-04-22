@@ -953,18 +953,7 @@
     "href": "intro-to-R.html#piping",
     "title": "Appendix F — Statistical computing in R",
     "section": "F.3 Piping",
-    "text": "F.3 Piping\nSee Wickham, Çetinkaya-Rundel, and Grolemund (2023) for details.\nThere are currently (2024) two commonly-used pipe operators in R:\n\n%&gt;%: the “magrittr pipe”, from the magrittr package (re-exported by dplyr and others)\n|&gt;: the “native pipe”, from base R (≥4.1.0)\n\n\nF.3.1 Which pipe should I use?\nWickham, Çetinkaya-Rundel, and Grolemund (2023) recommends the native pipe:\n\nFor simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.",
-    "crumbs": [
-      "Appendices",
-      "<span class='chapter-number'>F</span>  <span class='chapter-title'>Statistical computing in R</span>"
-    ]
-  },
-  {
-    "objectID": "intro-to-R.html#why-doesnt-ggplot2-use-piping",
-    "href": "intro-to-R.html#why-doesnt-ggplot2-use-piping",
-    "title": "Appendix F — Statistical computing in R",
-    "section": "F.4 Why doesn’t ggplot2 use piping?",
-    "text": "F.4 Why doesn’t ggplot2 use piping?\nHere’s tidyverse creator Hadley Wickham’s answer (from 2018):\n\nI think it’s worth unpacking this question into a few smaller pieces:\n\nShould ggplot2 use the pipe? IMO, yes.\nCould ggplot2 support both the pipe and plus? No\nWould it be worth it to create a ggplot3 that uses the pipe? No.\n\n\nhttps://forum.posit.co/t/why-cant-ggplot2-use/4372/7",
+    "text": "F.3 Piping\nSee Wickham, Çetinkaya-Rundel, and Grolemund (2023) for details.\nThere are currently (2024) two commonly-used pipe operators in R:\n\n%&gt;%: the “magrittr pipe”, from the magrittr package (re-exported by dplyr and others)\n|&gt;: the “native pipe”, from base R (≥4.1.0)\n\n\nF.3.1 Which pipe should I use?\nWickham, Çetinkaya-Rundel, and Grolemund (2023) recommends the native pipe:\n\nFor simple cases, |&gt; and %&gt;% behave identically. So why do we recommend the base pipe? Firstly, because it’s part of base R, it’s always available for you to use, even when you’re not using the tidyverse. Secondly, |&gt; is quite a bit simpler than %&gt;%: in the time between the invention of %&gt;% in 2014 and the inclusion of |&gt; in R 4.1.0 in 2021, we gained a better understanding of the pipe. This allowed the base implementation to jettison infrequently used and less important features.\n\n\n\nF.3.2 Why doesn’t ggplot2 use piping?\nHere’s tidyverse creator Hadley Wickham’s answer (from 2018):\n\nI think it’s worth unpacking this question into a few smaller pieces:\n\nShould ggplot2 use the pipe? IMO, yes.\nCould ggplot2 support both the pipe and plus? No\nWould it be worth it to create a ggplot3 that uses the pipe? No.\n\n\nhttps://forum.posit.co/t/why-cant-ggplot2-use/4372/7",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>F</span>  <span class='chapter-title'>Statistical computing in R</span>"
@@ -974,8 +963,8 @@
     "objectID": "intro-to-R.html#quarto",
     "href": "intro-to-R.html#quarto",
     "title": "Appendix F — Statistical computing in R",
-    "section": "F.5 Quarto",
-    "text": "F.5 Quarto\nQuarto is a system for writing documents with embedded R code and/or results:\n\nRead this ASAP: https://r4ds.hadley.nz/communicate\nThen use this for reference: https://quarto.org/docs/reference/",
+    "section": "F.4 Quarto",
+    "text": "F.4 Quarto\nQuarto is a system for writing documents with embedded R code and/or results:\n\nRead this ASAP: https://r4ds.hadley.nz/communicate\nThen use this for reference: https://quarto.org/docs/reference/",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>F</span>  <span class='chapter-title'>Statistical computing in R</span>"
@@ -985,8 +974,8 @@
     "objectID": "intro-to-R.html#packages",
     "href": "intro-to-R.html#packages",
     "title": "Appendix F — Statistical computing in R",
-    "section": "F.6 Packages",
-    "text": "F.6 Packages\n\nThis book espouses our philosophy of package development: anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions. The goal is to spend your time thinking about what you want your package to do rather than thinking about the minutiae of package structure.\n\n\nhttps://r-pkgs.org/introduction.html#:~:text=This%20book%20espouses,of%20package%20structure.\nRead this ASAP: https://r-pkgs.org/whole-game.html\nUse the rest of Wickham and Bryan (2023) as a reference",
+    "section": "F.5 Packages",
+    "text": "F.5 Packages\n\nThis book espouses our philosophy of package development: anything that can be automated, should be automated. Do as little as possible by hand. Do as much as possible with functions. The goal is to spend your time thinking about what you want your package to do rather than thinking about the minutiae of package structure.\n\n\nhttps://r-pkgs.org/introduction.html#:~:text=This%20book%20espouses,of%20package%20structure.\nRead this ASAP: https://r-pkgs.org/whole-game.html\nUse the rest of Wickham and Bryan (2023) as a reference",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>F</span>  <span class='chapter-title'>Statistical computing in R</span>"
@@ -996,8 +985,8 @@
     "objectID": "intro-to-R.html#git",
     "href": "intro-to-R.html#git",
     "title": "Appendix F — Statistical computing in R",
-    "section": "F.7 Git",
-    "text": "F.7 Git\n94% of respondents to a 2022 Stack Overflow survey reported using git for version control link\nMore details\n\nhttps://happygitwithr.com/",
+    "section": "F.6 Git",
+    "text": "F.6 Git\n94% of respondents to a 2022 Stack Overflow survey reported using git for version control link\nMore details\n\nhttps://happygitwithr.com/",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>F</span>  <span class='chapter-title'>Statistical computing in R</span>"
@@ -1007,8 +996,8 @@
     "objectID": "intro-to-R.html#spatial-data-science",
     "href": "intro-to-R.html#spatial-data-science",
     "title": "Appendix F — Statistical computing in R",
-    "section": "F.8 Spatial data science",
-    "text": "F.8 Spatial data science\n\nPebesma and Bivand (2023)",
+    "section": "F.7 Spatial data science",
+    "text": "F.7 Spatial data science\n\nPebesma and Bivand (2023)",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>F</span>  <span class='chapter-title'>Statistical computing in R</span>"
@@ -1018,8 +1007,8 @@
     "objectID": "intro-to-R.html#shiny-apps",
     "href": "intro-to-R.html#shiny-apps",
     "title": "Appendix F — Statistical computing in R",
-    "section": "F.9 Shiny apps",
-    "text": "F.9 Shiny apps\n\nRead this first: Wickham (2021)\nUse this as a reference: Fay et al. (2021)\n\n\n\n\n\n\n\nChang, Winston. 2024. R Graphics Cookbook: Practical Recipes for Visualizing Data. O’Reilly Media. https://r-graphics.org/.\n\n\nFay, Colin, Sébastien Rochette, Vincent Guyader, and Cervan Girard. 2021. Engineering Production-Grade Shiny Apps. Chapman; Hall/CRC. https://engineering-shiny.org/.\n\n\nPebesma, Edzer, and Roger Bivand. 2023. Spatial Data Science: With Applications in R. Boca Raton: Chapman; Hall/CRC. https://doi.org/10.1201/9780429459016.\n\n\nWickham, Hadley. 2019. Advanced r. Chapman; Hall/CRC. https://adv-r.hadley.nz/index.html.\n\n\n———. 2021. Mastering Shiny. \" O’Reilly Media, Inc.\". https://mastering-shiny.org/.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, and Jennifer Bryan. 2023. R Packages. \" O’Reilly Media, Inc.\". https://r-pkgs.org/.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science. \" O’Reilly Media, Inc.\". https://r4ds.hadley.nz/.",
+    "section": "F.8 Shiny apps",
+    "text": "F.8 Shiny apps\n\nRead this first: Wickham (2021)\nUse this as a reference: Fay et al. (2021)\n\n\n\n\n\n\n\nChang, Winston. 2024. R Graphics Cookbook: Practical Recipes for Visualizing Data. O’Reilly Media. https://r-graphics.org/.\n\n\nFay, Colin, Sébastien Rochette, Vincent Guyader, and Cervan Girard. 2021. Engineering Production-Grade Shiny Apps. Chapman; Hall/CRC. https://engineering-shiny.org/.\n\n\nPebesma, Edzer, and Roger Bivand. 2023. Spatial Data Science: With Applications in R. Boca Raton: Chapman; Hall/CRC. https://doi.org/10.1201/9780429459016.\n\n\nWickham, Hadley. 2019. Advanced r. Chapman; Hall/CRC. https://adv-r.hadley.nz/index.html.\n\n\n———. 2021. Mastering Shiny. \" O’Reilly Media, Inc.\". https://mastering-shiny.org/.\n\n\nWickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” Journal of Open Source Software 4 (43): 1686. https://doi.org/10.21105/joss.01686.\n\n\nWickham, Hadley, and Jennifer Bryan. 2023. R Packages. \" O’Reilly Media, Inc.\". https://r-pkgs.org/.\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. R for Data Science. \" O’Reilly Media, Inc.\". https://r4ds.hadley.nz/.",
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>F</span>  <span class='chapter-title'>Statistical computing in R</span>"
