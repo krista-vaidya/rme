@@ -385,7 +385,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-22: 18:55:41 (PM)</p>
+      <p class="date">Last modified: 2024-04-22: 22:18:36 (PM)</p>
     </div>
   </div>
   
@@ -479,7 +479,7 @@ Notation for the likelihood function
 <p>It is typically easier to work with the log of the likelihood function:</p>
 <div id="def-loglik" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition C.3 (Log-likelihood)</strong></span> The <strong>log-likelihood</strong> of parameter value <span class="math inline">\(\theta\)</span>, for model <span class="math inline">\(\text{p}_{\Theta}(\tilde{X})\)</span> and data <span class="math inline">\(\tilde{X}= \tilde{x}\)</span>, is the natural logarithm of the likelihood<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
-<p><span class="math display">\[\ell \stackrel{\text{def}}{=}\ell(\tilde{x};\theta) \stackrel{\text{def}}{=}\text{p}(\tilde{X} = \tilde{x} \mid \Theta = \theta)\]</span></p>
+<p><span class="math display">\[\ell(\theta) \stackrel{\text{def}}{=}\text{log}\left\{\mathcal{L}(\theta)\right\}\]</span></p>
 </div>
 <div id="thm-mle-use-log" class="theorem">
 <p><span class="theorem-title"><strong>Theorem C.2</strong></span> The likelihood and log-likelihood have the same maximizer:</p>
@@ -2030,7 +2030,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-116"><a href="#cb12-116" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-117"><a href="#cb12-117" aria-hidden="true" tabindex="-1"></a>The **log-likelihood** of parameter value $\theta$, for model $\p_{\Theta}(\vX)$ and data $\vX = \vx$, is the natural logarithm of the likelihood^<span class="co">[</span><span class="ot"> &lt;https://en.wikipedia.org/wiki/Does_exactly_what_it_says_on_the_tin&gt;</span><span class="co">]</span>:</span>
 <span id="cb12-118"><a href="#cb12-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a>$$\ell \eqdef \ell(\vec x;\theta) \eqdef \p(\vec X = \vec x \mid \Theta = \theta)$$</span>
+<span id="cb12-119"><a href="#cb12-119" aria-hidden="true" tabindex="-1"></a>$$\lik(\th) \eqdef \logf{\Lik(\th)}$$</span>
 <span id="cb12-120"><a href="#cb12-120" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb12-121"><a href="#cb12-121" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-122"><a href="#cb12-122" aria-hidden="true" tabindex="-1"></a>:::{#thm-mle-use-log}</span>
