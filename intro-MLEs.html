@@ -385,7 +385,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-22: 18:50:46 (PM)</p>
+      <p class="date">Last modified: 2024-04-22: 18:55:41 (PM)</p>
     </div>
   </div>
   
@@ -515,10 +515,10 @@ Notation for the likelihood function
 <p>The first derivative of the log-likelihood, <span class="math inline">\(\ell'(\theta)\)</span>, is important enough to have its own name and symbol: the <em>score function</em>, <span class="math inline">\(U(\theta)\)</span>.</p>
 <div id="def-score" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition C.4 (Score function)</strong></span> The <strong>score function</strong> of a statistical model <span class="math inline">\(\text{p}(\tilde{X}=\tilde{x})\)</span> is the gradient (i.e., first derivative) of the log-likelihood of that model:</p>
-<p><span class="math display">\[\ell'(\theta) \stackrel{\text{def}}{=}\frac{d}{dth} \ell(\theta)\]</span></p>
+<p><span class="math display">\[\ell'(\theta) \stackrel{\text{def}}{=}\frac{d}{d\theta} \ell(\theta)\]</span></p>
 </div>
 <div class="notes">
-<p>We often skip writing the arguments <span class="math inline">\((x,\theta)\)</span>, so <span class="math inline">\(\ell^{'} \stackrel{\text{def}}{=}\ell^{'}(\tilde{x};\theta)\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Some statisticians use <span class="math inline">\(U\)</span> or <span class="math inline">\(S\)</span> instead of <span class="math inline">\(\ell^{'}\)</span>. I prefer <span class="math inline">\(\ell^{'}\)</span>. Why use up extra letters?</p>
+<p>We often skip writing the arguments <span class="math inline">\(x\)</span> and/or <span class="math inline">\(\theta)\)</span>, so <span class="math inline">\(\ell^{'} \stackrel{\text{def}}{=}\ell^{'}(\tilde{x};\theta) \ell^{'}(\theta)\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Some statisticians use <span class="math inline">\(U\)</span> or <span class="math inline">\(S\)</span> instead of <span class="math inline">\(\ell^{'}\)</span>. I prefer <span class="math inline">\(\ell^{'}\)</span>. Why use up extra letters?</p>
 </div>
 </section><section id="asymptotic-distribution-of-the-maximum-likelihood-estimate" class="level3" data-number="C.1.7"><h3 data-number="C.1.7" class="anchored" data-anchor-id="asymptotic-distribution-of-the-maximum-likelihood-estimate">
 <span class="header-section-number">C.1.7</span> Asymptotic distribution of the maximum likelihood estimate</h3>
@@ -2085,13 +2085,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-171"><a href="#cb12-171" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-172"><a href="#cb12-172" aria-hidden="true" tabindex="-1"></a>The **score function** of a statistical model $\pr(\vec X=\vec x)$ is the gradient (i.e., first derivative) of the log-likelihood of that model:</span>
 <span id="cb12-173"><a href="#cb12-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a>$$\lik'(\th) \eqdef \deriv{th} \lik(\th)$$</span>
+<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a>$$\lik'(\th) \eqdef \deriv{\th} \lik(\th)$$</span>
 <span id="cb12-175"><a href="#cb12-175" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-177"><a href="#cb12-177" aria-hidden="true" tabindex="-1"></a>::: notes</span>
 <span id="cb12-178"><a href="#cb12-178" aria-hidden="true" tabindex="-1"></a>We often</span>
-<span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a>skip writing the arguments $(x,\theta)$, so</span>
-<span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a>$\ell^{'} \eqdef \ell^{'}(\vec x;\theta)$.<span class="ot">[^1]</span> Some statisticians</span>
+<span id="cb12-179"><a href="#cb12-179" aria-hidden="true" tabindex="-1"></a>skip writing the arguments $x$ and/or $\theta)$, so</span>
+<span id="cb12-180"><a href="#cb12-180" aria-hidden="true" tabindex="-1"></a>$\ell^{'} \eqdef \ell^{'}(\vec x;\theta) \ell^{'}(\theta)$.<span class="ot">[^1]</span> Some statisticians</span>
 <span id="cb12-181"><a href="#cb12-181" aria-hidden="true" tabindex="-1"></a>use $U$ or $S$ instead of $\ell^{'}$. I prefer $\ell^{'}$.</span>
 <span id="cb12-182"><a href="#cb12-182" aria-hidden="true" tabindex="-1"></a>Why use up extra letters?</span>
 <span id="cb12-183"><a href="#cb12-183" aria-hidden="true" tabindex="-1"></a>:::</span>
