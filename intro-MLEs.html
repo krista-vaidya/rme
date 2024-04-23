@@ -382,7 +382,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-22: 17:56:03 (PM)</p>
+      <p class="date">Last modified: 2024-04-22: 18:14:49 (PM)</p>
     </div>
   </div>
   
@@ -909,7 +909,7 @@ Figure&nbsp;C.4: log-likelihood of Dobson cyclone data
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">geom_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">score</span>, n <span class="op">=</span> <span class="fl">1001</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">cyclones</span><span class="op">$</span><span class="va">number</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cyclones</span><span class="op">$</span><span class="va">number</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"log-likelihood"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"l'(lambda)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">'lambda'</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, col <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
@@ -954,7 +954,7 @@ Figure&nbsp;C.5: score function of Dobson cyclone data
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">geom_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">hessian</span>, n <span class="op">=</span> <span class="fl">1001</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">cyclones</span><span class="op">$</span><span class="va">number</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">cyclones</span><span class="op">$</span><span class="va">number</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"log-likelihood"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span><span class="op">(</span><span class="st">"l''(lambda)"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span><span class="op">(</span><span class="st">'lambda'</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">0</span>, col <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details><div class="cell-output-display">
@@ -1151,28 +1151,7 @@ Reparametrizing the Gaussian distribution
 <p>The function <span class="math inline">\(\ell^{'}(x,\theta)\)</span> is so central that it has its own name, the “score” or “gradient” function. Statisticians also often skip writing the arguments <span class="math inline">\((x,\theta)\)</span>, so <span class="math inline">\(\ell^{'} \stackrel{\text{def}}{=}\ell^{'}(x,\theta)\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Some statisticians use <span class="math inline">\(U\)</span> or <span class="math inline">\(S\)</span> instead of <span class="math inline">\(\ell^{'}\)</span>. I prefer <span class="math inline">\(\ell^{'}\)</span>. Why use up extra letters?</p>
 </section><section id="the-fisher-expected-information-matrix" class="level4"><h4 class="anchored" data-anchor-id="the-fisher-expected-information-matrix">The (Fisher) (expected) information matrix</h4>
 <p>The variance of <span class="math inline">\(\ell^{'}(x,\theta)\)</span>, <span class="math inline">\({Cov}\left\{ \ell^{'}(x,\theta) \right\}\)</span>, is also very important; we call it the “expected information matrix”, “Fisher information matrix”, or just “information matrix”, and we represent it using the symbol <span class="math inline">\(\mathfrak{I}\)</span> (<code>\frakturI</code> in Unicode, <code>\mathfrak{I}</code> in LaTeX).</p>
-<section id="review-of-variances-and-covariances" class="level5"><h5 class="anchored" data-anchor-id="review-of-variances-and-covariances">Review of variances and covariances</h5>
-<section id="variances-and-covariances-of-one-dimensional-random-variables" class="level6"><h6 class="anchored" data-anchor-id="variances-and-covariances-of-one-dimensional-random-variables">Variances and covariances of one-dimensional random variables</h6>
-<p>For a one-dimensional random variables <span class="math inline">\(X\)</span>,</p>
-<p><span class="math display">\[{Var}(X) \stackrel{\text{def}}{=}E\left\lbrack \left( X - E\lbrack X\rbrack \right)^{2} \right\rbrack = E\left\lbrack X^{2} \right\rbrack - \left( E\lbrack X\rbrack \right)^{2}\]</span></p>
-<p>For any two-dimensional random variables, <span class="math inline">\(X,Y\)</span>:</p>
-<p><span class="math display">\[{Cov}(X,Y) = E\left\lbrack (X - EX)(Y - EY) \right\rbrack = E\lbrack XY\rbrack - E\lbrack X\rbrack E\lbrack Y\rbrack\]</span></p>
-<p>Therefore, <span class="math inline">\({Var}{(X)} = {Cov}(X,X) = E\lbrack XX\rbrack - E\lbrack X\rbrack E\lbrack X\rbrack = E\left\lbrack X^{2} \right\rbrack - \left( E\lbrack X\rbrack \right)^{2}\)</span></p>
-<p><span class="math display">\[\mathfrak{I \stackrel{\text{def}}{=}I(}\theta) \stackrel{\text{def}}{=}{Cov}\left( \ell^{'}|\theta \right) = E\left\lbrack \ell^{'}{\ell^{'}}^{\top} \right\rbrack - E\left\lbrack \ell^{'} \right\rbrack\ E\left\lbrack \ell^{'} \right\rbrack^{\top}\]</span></p>
-<p>Sometimes we write <span class="math inline">\({Cov}{(X)} \stackrel{\text{def}}{=}{Cov}(X,X) = {Var}(X)\)</span>.</p>
-</section><section id="variances-and-covariances-of-p-times-1-random-vectors" class="level6"><h6 class="anchored" data-anchor-id="variances-and-covariances-of-p-times-1-random-vectors">Variances and covariances of <span class="math inline">\(p \times 1\)</span> random vectors</h6>
-<p>Now, for a <span class="math inline">\(p \times 1\)</span> dimensional random vector <span class="math inline">\(X\)</span>,</p>
-<p><span class="math display">\[
-\begin{aligned}
-\text{Var}(X)
-&amp;\stackrel{\text{def}}{=}\text{Cov}(X)\\
-&amp;\stackrel{\text{def}}{=}E\left\lbrack \left( X - E\lbrack X\rbrack \right)^{\top}\left( X - E\lbrack X\rbrack \right) \right\rbrack\\
-&amp;= E\left\lbrack \left( X^{\top} - E\lbrack X\rbrack^{\top} \right)\left( X - E\lbrack X\rbrack \right) \right\rbrack\\
-&amp;= E\left\lbrack X^{\top}X - E\lbrack X\rbrack^{\top}X - X^{\top}E\lbrack X\rbrack + E\lbrack X\rbrack^{\top}E\lbrack X\rbrack \right\rbrack\\
-&amp;= E\left\lbrack X^{\top}X \right\rbrack - E\lbrack X\rbrack^{\top}E\lbrack X\rbrack - {E\lbrack X\rbrack}^{\top}E\lbrack X\rbrack + E\lbrack X\rbrack^{\top}E\lbrack X\rbrack\\
-&amp;= E\left\lbrack X^{\top}X \right\rbrack - 2{E\lbrack X\rbrack}^{\top}E\lbrack X\rbrack + E\lbrack X\rbrack^{\top}E\lbrack X\rbrack\\
-&amp;= E\left\lbrack X^{\top}X \right\rbrack - {E\lbrack X\rbrack}^{\top}E\lbrack X\rbrack
-\end{aligned}
+<p><span class="math display">\[\mathfrak{I \stackrel{\text{def}}{=}I(}\theta) \stackrel{\text{def}}{=}{Cov}\left( \ell^{'}|\theta \right) = E\left\lbrack \ell^{'}{\ell^{'}}^{\top} \right\rbrack - E\left\lbrack \ell^{'} \right\rbrack\ E\left\lbrack \ell^{'} \right\rbrack^{\top}
 \]</span></p>
 <p>The elements of <span class="math inline">\(\mathfrak{I}\)</span> are:</p>
 <p><span class="math display">\[\left\{ \mathfrak{I}_{ij} \stackrel{\text{def}}{=}{Cov}\left( {\ell^{'}}_{i},{\ell^{'}}_{j} \right) = E\left\lbrack \ell_{i}^{'}\ell_{j}^{'} \right\rbrack - E\left\lbrack {\ell^{'}}_{i} \right\rbrack E\left\lbrack {\ell^{'}}_{j} \right\rbrack \right\}\]</span></p>
@@ -1307,7 +1286,7 @@ Efron, Bradley, and David V Hinkley. 1978. <span>“Assessing the Accuracy of th
 McLachlan, Geoffrey J, and Thriyambakam Krishnan. 2007. <em>The EM Algorithm and Extensions</em>. 2nd ed. John Wiley &amp; Sons. <a href="https://doi.org/10.1002/9780470191613">https://doi.org/10.1002/9780470191613</a>.
 </div>
 </div>
-</section></section></section></section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
+</section></section></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><hr>
 <ol>
 <li id="fn1"><p> <a href="https://en.wikipedia.org/wiki/Does_exactly_what_it_says_on_the_tin" class="uri">https://en.wikipedia.org/wiki/Does_exactly_what_it_says_on_the_tin</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>I might sometimes switch the order of <span class="math inline">\(x,\)</span> <span class="math inline">\(\theta\)</span>; this is unintentional and not meaningful.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -2310,217 +2289,184 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-383"><a href="#cb12-383" aria-hidden="true" tabindex="-1"></a>information matrix", or just "information matrix", and we represent it</span>
 <span id="cb12-384"><a href="#cb12-384" aria-hidden="true" tabindex="-1"></a>using the symbol $\mathfrak{I}$ (<span class="in">`\frakturI`</span> in Unicode, <span class="in">`\mathfrak{I}`</span> in LaTeX).</span>
 <span id="cb12-385"><a href="#cb12-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-386"><a href="#cb12-386" aria-hidden="true" tabindex="-1"></a><span class="fu">##### Review of variances and covariances</span></span>
-<span id="cb12-387"><a href="#cb12-387" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-388"><a href="#cb12-388" aria-hidden="true" tabindex="-1"></a><span class="fu">###### Variances and covariances of one-dimensional random variables</span></span>
-<span id="cb12-389"><a href="#cb12-389" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-390"><a href="#cb12-390" aria-hidden="true" tabindex="-1"></a>For a one-dimensional random variables $X$,</span>
-<span id="cb12-391"><a href="#cb12-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-392"><a href="#cb12-392" aria-hidden="true" tabindex="-1"></a>$${Var}(X) \eqdef E\left\lbrack \left( X - E\lbrack X\rbrack \right)^{2} \right\rbrack = E\left\lbrack X^{2} \right\rbrack - \left( E\lbrack X\rbrack \right)^{2}$$</span>
-<span id="cb12-393"><a href="#cb12-393" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-394"><a href="#cb12-394" aria-hidden="true" tabindex="-1"></a>For any two-dimensional random variables, $X,Y$:</span>
-<span id="cb12-395"><a href="#cb12-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-396"><a href="#cb12-396" aria-hidden="true" tabindex="-1"></a>$${Cov}(X,Y) = E\left\lbrack (X - EX)(Y - EY) \right\rbrack = E\lbrack XY\rbrack - E\lbrack X\rbrack E\lbrack Y\rbrack$$</span>
-<span id="cb12-397"><a href="#cb12-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-398"><a href="#cb12-398" aria-hidden="true" tabindex="-1"></a>Therefore,</span>
-<span id="cb12-399"><a href="#cb12-399" aria-hidden="true" tabindex="-1"></a>${Var}{(X)} = {Cov}(X,X) = E\lbrack XX\rbrack - E\lbrack X\rbrack E\lbrack X\rbrack = E\left\lbrack X^{2} \right\rbrack - \left( E\lbrack X\rbrack \right)^{2}$</span>
-<span id="cb12-400"><a href="#cb12-400" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-401"><a href="#cb12-401" aria-hidden="true" tabindex="-1"></a>$$\mathfrak{I \eqdef I(}\theta) \eqdef {Cov}\left( \ell^{'}|\theta \right) = E\left\lbrack \ell^{'}{\ell^{'}}^{\top} \right\rbrack - E\left\lbrack \ell^{'} \right\rbrack\ E\left\lbrack \ell^{'} \right\rbrack^{\top}$$</span>
-<span id="cb12-402"><a href="#cb12-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-403"><a href="#cb12-403" aria-hidden="true" tabindex="-1"></a>Sometimes we write ${Cov}{(X)} \eqdef {Cov}(X,X) = {Var}(X)$.</span>
-<span id="cb12-404"><a href="#cb12-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-405"><a href="#cb12-405" aria-hidden="true" tabindex="-1"></a><span class="fu">###### Variances and covariances of $p \times 1$ random vectors</span></span>
-<span id="cb12-406"><a href="#cb12-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-407"><a href="#cb12-407" aria-hidden="true" tabindex="-1"></a>Now, for a $p \times 1$ dimensional random vector $X$,</span>
-<span id="cb12-408"><a href="#cb12-408" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-409"><a href="#cb12-409" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-410"><a href="#cb12-410" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb12-411"><a href="#cb12-411" aria-hidden="true" tabindex="-1"></a>\text{Var}(X) </span>
-<span id="cb12-412"><a href="#cb12-412" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \text{Cov}(X)<span class="sc">\\</span></span>
-<span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef E\left\lbrack \left( X - E\lbrack X\rbrack \right)^{\top}\left( X - E\lbrack X\rbrack \right) \right\rbrack<span class="sc">\\</span></span>
-<span id="cb12-414"><a href="#cb12-414" aria-hidden="true" tabindex="-1"></a>&amp;= E\left\lbrack \left( X^{\top} - E\lbrack X\rbrack^{\top} \right)\left( X - E\lbrack X\rbrack \right) \right\rbrack<span class="sc">\\</span></span>
-<span id="cb12-415"><a href="#cb12-415" aria-hidden="true" tabindex="-1"></a>&amp;= E\left\lbrack X^{\top}X - E\lbrack X\rbrack^{\top}X - X^{\top}E\lbrack X\rbrack + E\lbrack X\rbrack^{\top}E\lbrack X\rbrack \right\rbrack<span class="sc">\\</span></span>
-<span id="cb12-416"><a href="#cb12-416" aria-hidden="true" tabindex="-1"></a>&amp;= E\left\lbrack X^{\top}X \right\rbrack - E\lbrack X\rbrack^{\top}E\lbrack X\rbrack - {E\lbrack X\rbrack}^{\top}E\lbrack X\rbrack + E\lbrack X\rbrack^{\top}E\lbrack X\rbrack<span class="sc">\\</span></span>
-<span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a>&amp;= E\left\lbrack X^{\top}X \right\rbrack - 2{E\lbrack X\rbrack}^{\top}E\lbrack X\rbrack + E\lbrack X\rbrack^{\top}E\lbrack X\rbrack<span class="sc">\\</span></span>
-<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>&amp;= E\left\lbrack X^{\top}X \right\rbrack - {E\lbrack X\rbrack}^{\top}E\lbrack X\rbrack</span>
-<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a>The elements of $\mathfrak{I}$ are:</span>
-<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>$$\left<span class="sc">\{</span> \mathfrak{I}_{ij} \eqdef {Cov}\left( {\ell^{'}}_{i},{\ell^{'}}_{j} \right) = E\left\lbrack \ell_{i}^{'}\ell_{j}^{'} \right\rbrack - E\left\lbrack {\ell^{'}}_{i} \right\rbrack E\left\lbrack {\ell^{'}}_{j} \right\rbrack \right<span class="sc">\}</span>$$</span>
-<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>In the Gaussian case, $i,j \in \left<span class="sc">\{</span> \mu,\sigma^{2} \right<span class="sc">\}</span>$. </span>
-<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a>Here, </span>
+<span id="cb12-386"><a href="#cb12-386" aria-hidden="true" tabindex="-1"></a>$$\mathfrak{I \eqdef I(}\theta) \eqdef {Cov}\left( \ell^{'}|\theta \right) = E\left\lbrack \ell^{'}{\ell^{'}}^{\top} \right\rbrack - E\left\lbrack \ell^{'} \right\rbrack\ E\left\lbrack \ell^{'} \right\rbrack^{\top}</span>
+<span id="cb12-387"><a href="#cb12-387" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-388"><a href="#cb12-388" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-389"><a href="#cb12-389" aria-hidden="true" tabindex="-1"></a>The elements of $\mathfrak{I}$ are:</span>
+<span id="cb12-390"><a href="#cb12-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-391"><a href="#cb12-391" aria-hidden="true" tabindex="-1"></a>$$\left<span class="sc">\{</span> \mathfrak{I}_{ij} \eqdef {Cov}\left( {\ell^{'}}_{i},{\ell^{'}}_{j} \right) = E\left\lbrack \ell_{i}^{'}\ell_{j}^{'} \right\rbrack - E\left\lbrack {\ell^{'}}_{i} \right\rbrack E\left\lbrack {\ell^{'}}_{j} \right\rbrack \right<span class="sc">\}</span>$$</span>
+<span id="cb12-392"><a href="#cb12-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-393"><a href="#cb12-393" aria-hidden="true" tabindex="-1"></a>In the Gaussian case, $i,j \in \left<span class="sc">\{</span> \mu,\sigma^{2} \right<span class="sc">\}</span>$. </span>
+<span id="cb12-394"><a href="#cb12-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-395"><a href="#cb12-395" aria-hidden="true" tabindex="-1"></a>Here, </span>
+<span id="cb12-396"><a href="#cb12-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-397"><a href="#cb12-397" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-398"><a href="#cb12-398" aria-hidden="true" tabindex="-1"></a>\ba</span>
+<span id="cb12-399"><a href="#cb12-399" aria-hidden="true" tabindex="-1"></a>\E{\ell'}</span>
+<span id="cb12-400"><a href="#cb12-400" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \int_{x \in \range{x}}</span>
+<span id="cb12-401"><a href="#cb12-401" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-402"><a href="#cb12-402" aria-hidden="true" tabindex="-1"></a>\ell'(x,\th) \p(X = x | \th) dx</span>
+<span id="cb12-403"><a href="#cb12-403" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-404"><a href="#cb12-404" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= \int_{x \in \range{X}}</span>
+<span id="cb12-405"><a href="#cb12-405" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-406"><a href="#cb12-406" aria-hidden="true" tabindex="-1"></a>\paren</span>
+<span id="cb12-407"><a href="#cb12-407" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-408"><a href="#cb12-408" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\th}</span>
+<span id="cb12-409"><a href="#cb12-409" aria-hidden="true" tabindex="-1"></a>\log{\p(X = x | \th)}</span>
+<span id="cb12-410"><a href="#cb12-410" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-411"><a href="#cb12-411" aria-hidden="true" tabindex="-1"></a>\p(X = x | \theta) dx</span>
+<span id="cb12-412"><a href="#cb12-412" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= </span>
+<span id="cb12-414"><a href="#cb12-414" aria-hidden="true" tabindex="-1"></a>\int_{x \in \range{X}}</span>
+<span id="cb12-415"><a href="#cb12-415" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-416"><a href="#cb12-416" aria-hidden="true" tabindex="-1"></a>\frac</span>
+<span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a>{\frac{d}{d\theta} \p(X = x | \th)}</span>
+<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>{\p(X = x | \theta)}</span>
+<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a>\p(X = x | \theta) dx</span>
+<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= </span>
+<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a>\int_{x \in \range{X}}</span>
+<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\theta} \p(X = x | \th) dx</span>
+<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>\ea</span>
+<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-429"><a href="#cb12-429" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a>\ba</span>
-<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a>\E{\ell'}</span>
-<span id="cb12-433"><a href="#cb12-433" aria-hidden="true" tabindex="-1"></a>&amp;\eqdef \int_{x \in \range{x}}</span>
-<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a>\ell'(x,\th) \p(X = x | \th) dx</span>
-<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= \int_{x \in \range{X}}</span>
-<span id="cb12-438"><a href="#cb12-438" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a>\paren</span>
-<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\th}</span>
-<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a>\log{\p(X = x | \th)}</span>
-<span id="cb12-443"><a href="#cb12-443" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-444"><a href="#cb12-444" aria-hidden="true" tabindex="-1"></a>\p(X = x | \theta) dx</span>
-<span id="cb12-445"><a href="#cb12-445" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-446"><a href="#cb12-446" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= </span>
-<span id="cb12-447"><a href="#cb12-447" aria-hidden="true" tabindex="-1"></a>\int_{x \in \range{X}}</span>
-<span id="cb12-448"><a href="#cb12-448" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb12-449"><a href="#cb12-449" aria-hidden="true" tabindex="-1"></a>\frac</span>
-<span id="cb12-450"><a href="#cb12-450" aria-hidden="true" tabindex="-1"></a>{\frac{d}{d\theta} \p(X = x | \th)}</span>
-<span id="cb12-451"><a href="#cb12-451" aria-hidden="true" tabindex="-1"></a>{\p(X = x | \theta)}</span>
-<span id="cb12-452"><a href="#cb12-452" aria-hidden="true" tabindex="-1"></a>\p(X = x | \theta) dx</span>
-<span id="cb12-453"><a href="#cb12-453" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-454"><a href="#cb12-454" aria-hidden="true" tabindex="-1"></a><span class="sc">\\</span> &amp;= </span>
-<span id="cb12-455"><a href="#cb12-455" aria-hidden="true" tabindex="-1"></a>\int_{x \in \range{X}}</span>
-<span id="cb12-456"><a href="#cb12-456" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb12-457"><a href="#cb12-457" aria-hidden="true" tabindex="-1"></a>\frac{d}{d\theta} \p(X = x | \th) dx</span>
-<span id="cb12-458"><a href="#cb12-458" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-459"><a href="#cb12-459" aria-hidden="true" tabindex="-1"></a>\ea</span>
-<span id="cb12-460"><a href="#cb12-460" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-461"><a href="#cb12-461" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a>And similarly</span>
+<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-433"><a href="#cb12-433" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a>\Exp{\ell' \ell'^{\top}} </span>
+<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a>\eqdef </span>
+<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a>\int_{x \in R(x)}</span>
+<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a>{\ell'(x,\theta)\ell'(x,\theta)^{\top}\ </span>
+<span id="cb12-438"><a href="#cb12-438" aria-hidden="true" tabindex="-1"></a>\pf{X = x | \th}\ dx}</span>
+<span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a>Note that $\Exp{\ell'}$ and</span>
+<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a>$\Exp{\ell'{\ell'}^{\top}}$</span>
+<span id="cb12-443"><a href="#cb12-443" aria-hidden="true" tabindex="-1"></a>are functions of $\theta$ but not of $x$; </span>
+<span id="cb12-444"><a href="#cb12-444" aria-hidden="true" tabindex="-1"></a>the expectation operator removed $x$.</span>
+<span id="cb12-445"><a href="#cb12-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-446"><a href="#cb12-446" aria-hidden="true" tabindex="-1"></a>Also note that for most of the distributions you are familiar with</span>
+<span id="cb12-447"><a href="#cb12-447" aria-hidden="true" tabindex="-1"></a>(including Gaussian, binomial, Poisson, exponential):</span>
+<span id="cb12-448"><a href="#cb12-448" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-449"><a href="#cb12-449" aria-hidden="true" tabindex="-1"></a>$$\Exp{\ell^{'}} = 0$$</span>
+<span id="cb12-450"><a href="#cb12-450" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-451"><a href="#cb12-451" aria-hidden="true" tabindex="-1"></a>So</span>
+<span id="cb12-452"><a href="#cb12-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-453"><a href="#cb12-453" aria-hidden="true" tabindex="-1"></a>$$\einff{\theta} = \Exp{\ell^{'}{\ell^{'}}^{\top} }$$</span>
+<span id="cb12-454"><a href="#cb12-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-455"><a href="#cb12-455" aria-hidden="true" tabindex="-1"></a>Moreover, for those distributions (called the "exponential family"), we</span>
+<span id="cb12-456"><a href="#cb12-456" aria-hidden="true" tabindex="-1"></a>have:</span>
+<span id="cb12-457"><a href="#cb12-457" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-458"><a href="#cb12-458" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-459"><a href="#cb12-459" aria-hidden="true" tabindex="-1"></a>\mathfrak{I} = -\Exp{\ell''}</span>
+<span id="cb12-460"><a href="#cb12-460" aria-hidden="true" tabindex="-1"></a>= \Exp{- \ell''}</span>
+<span id="cb12-461"><a href="#cb12-461" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb12-462"><a href="#cb12-462" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-463"><a href="#cb12-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-464"><a href="#cb12-464" aria-hidden="true" tabindex="-1"></a>And similarly</span>
-<span id="cb12-465"><a href="#cb12-465" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-466"><a href="#cb12-466" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-467"><a href="#cb12-467" aria-hidden="true" tabindex="-1"></a>\Exp{\ell' \ell'^{\top}} </span>
-<span id="cb12-468"><a href="#cb12-468" aria-hidden="true" tabindex="-1"></a>\eqdef </span>
-<span id="cb12-469"><a href="#cb12-469" aria-hidden="true" tabindex="-1"></a>\int_{x \in R(x)}</span>
-<span id="cb12-470"><a href="#cb12-470" aria-hidden="true" tabindex="-1"></a>{\ell'(x,\theta)\ell'(x,\theta)^{\top}\ </span>
-<span id="cb12-471"><a href="#cb12-471" aria-hidden="true" tabindex="-1"></a>\pf{X = x | \th}\ dx}</span>
-<span id="cb12-472"><a href="#cb12-472" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-463"><a href="#cb12-463" aria-hidden="true" tabindex="-1"></a>(see @dobson4e, §3.17), where</span>
+<span id="cb12-464"><a href="#cb12-464" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-465"><a href="#cb12-465" aria-hidden="true" tabindex="-1"></a>$$\ell^{''} \eqdef \frac{d}{d\theta}\ell^{'(x,\theta)^{\top}} = \frac{d}{d\theta}\frac{d}{d\theta^{\top}}\ell(x,\theta)$$</span>
+<span id="cb12-466"><a href="#cb12-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-467"><a href="#cb12-467" aria-hidden="true" tabindex="-1"></a>is the $p \times p$ matrix whose elements are:</span>
+<span id="cb12-468"><a href="#cb12-468" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-469"><a href="#cb12-469" aria-hidden="true" tabindex="-1"></a>$$\ell_{ij}'' \eqdef \frac{d}{d\theta_{i}}\frac{d}{d\theta_{j}}\log{ p\left( X = x \mid \theta \right)}$$</span>
+<span id="cb12-470"><a href="#cb12-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-471"><a href="#cb12-471" aria-hidden="true" tabindex="-1"></a>$\ell''$ could be called the "Hessian" of the log-likelihood</span>
+<span id="cb12-472"><a href="#cb12-472" aria-hidden="true" tabindex="-1"></a>function.</span>
 <span id="cb12-473"><a href="#cb12-473" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-474"><a href="#cb12-474" aria-hidden="true" tabindex="-1"></a>Note that $\Exp{\ell'}$ and</span>
-<span id="cb12-475"><a href="#cb12-475" aria-hidden="true" tabindex="-1"></a>$\Exp{\ell'{\ell'}^{\top}}$</span>
-<span id="cb12-476"><a href="#cb12-476" aria-hidden="true" tabindex="-1"></a>are functions of $\theta$ but not of $x$; </span>
-<span id="cb12-477"><a href="#cb12-477" aria-hidden="true" tabindex="-1"></a>the expectation operator removed $x$.</span>
-<span id="cb12-478"><a href="#cb12-478" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-479"><a href="#cb12-479" aria-hidden="true" tabindex="-1"></a>Also note that for most of the distributions you are familiar with</span>
-<span id="cb12-480"><a href="#cb12-480" aria-hidden="true" tabindex="-1"></a>(including Gaussian, binomial, Poisson, exponential):</span>
-<span id="cb12-481"><a href="#cb12-481" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-482"><a href="#cb12-482" aria-hidden="true" tabindex="-1"></a>$$\Exp{\ell^{'}} = 0$$</span>
-<span id="cb12-483"><a href="#cb12-483" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-484"><a href="#cb12-484" aria-hidden="true" tabindex="-1"></a>So</span>
-<span id="cb12-485"><a href="#cb12-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-486"><a href="#cb12-486" aria-hidden="true" tabindex="-1"></a>$$\einff{\theta} = \Exp{\ell^{'}{\ell^{'}}^{\top} }$$</span>
-<span id="cb12-487"><a href="#cb12-487" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-488"><a href="#cb12-488" aria-hidden="true" tabindex="-1"></a>Moreover, for those distributions (called the "exponential family"), we</span>
-<span id="cb12-489"><a href="#cb12-489" aria-hidden="true" tabindex="-1"></a>have:</span>
-<span id="cb12-490"><a href="#cb12-490" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-491"><a href="#cb12-491" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-492"><a href="#cb12-492" aria-hidden="true" tabindex="-1"></a>\mathfrak{I} = -\Exp{\ell''}</span>
-<span id="cb12-493"><a href="#cb12-493" aria-hidden="true" tabindex="-1"></a>= \Exp{- \ell''}</span>
-<span id="cb12-494"><a href="#cb12-494" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-474"><a href="#cb12-474" aria-hidden="true" tabindex="-1"></a>Sometimes, we use $I(\theta;x) \eqdef - \ell^{''}$ (note the</span>
+<span id="cb12-475"><a href="#cb12-475" aria-hidden="true" tabindex="-1"></a>standard-font "I" here). $I(\theta;x)$ is the observed information, precision, or concentration</span>
+<span id="cb12-476"><a href="#cb12-476" aria-hidden="true" tabindex="-1"></a>matrix (Negative Hessian).</span>
+<span id="cb12-477"><a href="#cb12-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-478"><a href="#cb12-478" aria-hidden="true" tabindex="-1"></a>:::{.callout-important}</span>
+<span id="cb12-479"><a href="#cb12-479" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key point</span></span>
+<span id="cb12-480"><a href="#cb12-480" aria-hidden="true" tabindex="-1"></a> The asymptotics of MLEs gives us</span>
+<span id="cb12-481"><a href="#cb12-481" aria-hidden="true" tabindex="-1"></a>${\widehat{\theta}}_{ML} \sim N\left( \theta,\mathfrak{I}^{- 1}(\theta) \right)$,</span>
+<span id="cb12-482"><a href="#cb12-482" aria-hidden="true" tabindex="-1"></a>approximately, for large sample sizes.</span>
+<span id="cb12-483"><a href="#cb12-483" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb12-484"><a href="#cb12-484" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-485"><a href="#cb12-485" aria-hidden="true" tabindex="-1"></a>We can estimate $\einf^{- 1}(\theta)$ by working out</span>
+<span id="cb12-486"><a href="#cb12-486" aria-hidden="true" tabindex="-1"></a>$\Ef{-\ell''}$ or</span>
+<span id="cb12-487"><a href="#cb12-487" aria-hidden="true" tabindex="-1"></a>$\Ef{\ell^{'}{\ell^{'}}^{\top}}$</span>
+<span id="cb12-488"><a href="#cb12-488" aria-hidden="true" tabindex="-1"></a>and plugging in $\hthml$, but sometimes we instead use</span>
+<span id="cb12-489"><a href="#cb12-489" aria-hidden="true" tabindex="-1"></a>$\oinf(\hthml,\vx)$ for convenience; there are</span>
+<span id="cb12-490"><a href="#cb12-490" aria-hidden="true" tabindex="-1"></a>some cases where it’s provably better according to some criteria (@efron1978assessing).</span>
+<span id="cb12-491"><a href="#cb12-491" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-492"><a href="#cb12-492" aria-hidden="true" tabindex="-1"></a>Note that later, when we are trying to find MLEs for likelihoods that we</span>
+<span id="cb12-493"><a href="#cb12-493" aria-hidden="true" tabindex="-1"></a>can’t easily differentiate, we will "hill-climb" using the</span>
+<span id="cb12-494"><a href="#cb12-494" aria-hidden="true" tabindex="-1"></a>Newton-Raphson algorithm:</span>
 <span id="cb12-495"><a href="#cb12-495" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-496"><a href="#cb12-496" aria-hidden="true" tabindex="-1"></a>(see @dobson4e, §3.17), where</span>
-<span id="cb12-497"><a href="#cb12-497" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-498"><a href="#cb12-498" aria-hidden="true" tabindex="-1"></a>$$\ell^{''} \eqdef \frac{d}{d\theta}\ell^{'(x,\theta)^{\top}} = \frac{d}{d\theta}\frac{d}{d\theta^{\top}}\ell(x,\theta)$$</span>
-<span id="cb12-499"><a href="#cb12-499" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-500"><a href="#cb12-500" aria-hidden="true" tabindex="-1"></a>is the $p \times p$ matrix whose elements are:</span>
-<span id="cb12-501"><a href="#cb12-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-502"><a href="#cb12-502" aria-hidden="true" tabindex="-1"></a>$$\ell_{ij}'' \eqdef \frac{d}{d\theta_{i}}\frac{d}{d\theta_{j}}\log{ p\left( X = x \mid \theta \right)}$$</span>
+<span id="cb12-496"><a href="#cb12-496" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb12-497"><a href="#cb12-497" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
+<span id="cb12-498"><a href="#cb12-498" aria-hidden="true" tabindex="-1"></a>\widehat{\theta} </span>
+<span id="cb12-499"><a href="#cb12-499" aria-hidden="true" tabindex="-1"></a>&amp;\leftarrow \widehat{\theta} + \left\lbrack I\left( \widehat{\theta},y \right) \right\rbrack^{- 1}\ell^{'}\left( y,\widehat{\theta} \right)<span class="sc">\\</span></span>
+<span id="cb12-500"><a href="#cb12-500" aria-hidden="true" tabindex="-1"></a>&amp;= \widehat{\theta} - \left\lbrack \ell^{''}\left( y,\widehat{\theta} \right) \right\rbrack^{- 1}\ell^{'}\left( y,\widehat{\theta} \right)</span>
+<span id="cb12-501"><a href="#cb12-501" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
+<span id="cb12-502"><a href="#cb12-502" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb12-503"><a href="#cb12-503" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-504"><a href="#cb12-504" aria-hidden="true" tabindex="-1"></a>$\ell''$ could be called the "Hessian" of the log-likelihood</span>
-<span id="cb12-505"><a href="#cb12-505" aria-hidden="true" tabindex="-1"></a>function.</span>
-<span id="cb12-506"><a href="#cb12-506" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-507"><a href="#cb12-507" aria-hidden="true" tabindex="-1"></a>Sometimes, we use $I(\theta;x) \eqdef - \ell^{''}$ (note the</span>
-<span id="cb12-508"><a href="#cb12-508" aria-hidden="true" tabindex="-1"></a>standard-font "I" here). $I(\theta;x)$ is the observed information, precision, or concentration</span>
-<span id="cb12-509"><a href="#cb12-509" aria-hidden="true" tabindex="-1"></a>matrix (Negative Hessian).</span>
-<span id="cb12-510"><a href="#cb12-510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-511"><a href="#cb12-511" aria-hidden="true" tabindex="-1"></a>:::{.callout-important}</span>
-<span id="cb12-512"><a href="#cb12-512" aria-hidden="true" tabindex="-1"></a><span class="fu">### Key point</span></span>
-<span id="cb12-513"><a href="#cb12-513" aria-hidden="true" tabindex="-1"></a> The asymptotics of MLEs gives us</span>
-<span id="cb12-514"><a href="#cb12-514" aria-hidden="true" tabindex="-1"></a>${\widehat{\theta}}_{ML} \sim N\left( \theta,\mathfrak{I}^{- 1}(\theta) \right)$,</span>
-<span id="cb12-515"><a href="#cb12-515" aria-hidden="true" tabindex="-1"></a>approximately, for large sample sizes.</span>
-<span id="cb12-516"><a href="#cb12-516" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb12-517"><a href="#cb12-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-518"><a href="#cb12-518" aria-hidden="true" tabindex="-1"></a>We can estimate $\einf^{- 1}(\theta)$ by working out</span>
-<span id="cb12-519"><a href="#cb12-519" aria-hidden="true" tabindex="-1"></a>$\Ef{-\ell''}$ or</span>
-<span id="cb12-520"><a href="#cb12-520" aria-hidden="true" tabindex="-1"></a>$\Ef{\ell^{'}{\ell^{'}}^{\top}}$</span>
-<span id="cb12-521"><a href="#cb12-521" aria-hidden="true" tabindex="-1"></a>and plugging in $\hthml$, but sometimes we instead use</span>
-<span id="cb12-522"><a href="#cb12-522" aria-hidden="true" tabindex="-1"></a>$\oinf(\hthml,\vx)$ for convenience; there are</span>
-<span id="cb12-523"><a href="#cb12-523" aria-hidden="true" tabindex="-1"></a>some cases where it’s provably better according to some criteria (@efron1978assessing).</span>
-<span id="cb12-524"><a href="#cb12-524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-525"><a href="#cb12-525" aria-hidden="true" tabindex="-1"></a>Note that later, when we are trying to find MLEs for likelihoods that we</span>
-<span id="cb12-526"><a href="#cb12-526" aria-hidden="true" tabindex="-1"></a>can’t easily differentiate, we will "hill-climb" using the</span>
-<span id="cb12-527"><a href="#cb12-527" aria-hidden="true" tabindex="-1"></a>Newton-Raphson algorithm:</span>
+<span id="cb12-504"><a href="#cb12-504" aria-hidden="true" tabindex="-1"></a>Here, for computational simplicity, we will sometimes use</span>
+<span id="cb12-505"><a href="#cb12-505" aria-hidden="true" tabindex="-1"></a>$\mathfrak{I}^{- 1}(\theta)$ in place of</span>
+<span id="cb12-506"><a href="#cb12-506" aria-hidden="true" tabindex="-1"></a>$I\left( \widehat{\theta},y \right)$; doing so is called "Fisher</span>
+<span id="cb12-507"><a href="#cb12-507" aria-hidden="true" tabindex="-1"></a>scoring" or the "method of scoring". Note that this is the opposite of</span>
+<span id="cb12-508"><a href="#cb12-508" aria-hidden="true" tabindex="-1"></a>the substitution that we are making for estimating the variance of the</span>
+<span id="cb12-509"><a href="#cb12-509" aria-hidden="true" tabindex="-1"></a>MLE; this time we should technically use the observed information but we</span>
+<span id="cb12-510"><a href="#cb12-510" aria-hidden="true" tabindex="-1"></a>use the expected information instead.</span>
+<span id="cb12-511"><a href="#cb12-511" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-512"><a href="#cb12-512" aria-hidden="true" tabindex="-1"></a>There’s also an "empirical information matrix" (see McLachlan and</span>
+<span id="cb12-513"><a href="#cb12-513" aria-hidden="true" tabindex="-1"></a>Krishnan 2007).</span>
+<span id="cb12-514"><a href="#cb12-514" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-515"><a href="#cb12-515" aria-hidden="true" tabindex="-1"></a>$$I_{e}(\theta,y) = \sum_{i = 1}^{n}{\ell_{i}^{'}\ {\ell_{i}^{'}}^{\top}} - \frac{1}{n}\ell^{'}{\ell^{'}}^{\top}$$</span>
+<span id="cb12-516"><a href="#cb12-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-517"><a href="#cb12-517" aria-hidden="true" tabindex="-1"></a>where $\ell_{i}$ is the log-likelihood of the ith observation.</span>
+<span id="cb12-518"><a href="#cb12-518" aria-hidden="true" tabindex="-1"></a>Note that $\ell^{'} = \sum_{i = 1}^{n}\ell_{i}^{'}$.</span>
+<span id="cb12-519"><a href="#cb12-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-520"><a href="#cb12-520" aria-hidden="true" tabindex="-1"></a>$\frac{1}{n}I_{e}(\theta,y)$ is the sample equivalent of</span>
+<span id="cb12-521"><a href="#cb12-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-522"><a href="#cb12-522" aria-hidden="true" tabindex="-1"></a>$$\mathfrak{I \eqdef I(}\theta) \eqdef {Cov}\left( \ell^{'}|\theta \right) = E\left\lbrack \ell^{'}{\ell^{'}}^{\top} \right\rbrack - E\left\lbrack \ell^{'} \right\rbrack\ E\left\lbrack \ell^{'} \right\rbrack^{\top}$$</span>
+<span id="cb12-523"><a href="#cb12-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-524"><a href="#cb12-524" aria-hidden="true" tabindex="-1"></a>$$\left<span class="sc">\{</span> \mathfrak{I}_{jk} \eqdef {Cov}\left( {\ell^{'}}_{j},{\ell^{'}}_{k} \right) = E\left\lbrack \ell_{j}^{'}\ell_{k}^{'} \right\rbrack - E\left\lbrack {\ell^{'}}_{j} \right\rbrack E\left\lbrack {\ell^{'}}_{k} \right\rbrack \right<span class="sc">\}</span>$$</span>
+<span id="cb12-525"><a href="#cb12-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-526"><a href="#cb12-526" aria-hidden="true" tabindex="-1"></a>$I_{e}(\theta,y)$ is sometimes computationally easier to compute for</span>
+<span id="cb12-527"><a href="#cb12-527" aria-hidden="true" tabindex="-1"></a>Newton-Raphson-type maximization algorithms.</span>
 <span id="cb12-528"><a href="#cb12-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-529"><a href="#cb12-529" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-530"><a href="#cb12-530" aria-hidden="true" tabindex="-1"></a>\begin{aligned}</span>
-<span id="cb12-531"><a href="#cb12-531" aria-hidden="true" tabindex="-1"></a>\widehat{\theta} </span>
-<span id="cb12-532"><a href="#cb12-532" aria-hidden="true" tabindex="-1"></a>&amp;\leftarrow \widehat{\theta} + \left\lbrack I\left( \widehat{\theta},y \right) \right\rbrack^{- 1}\ell^{'}\left( y,\widehat{\theta} \right)<span class="sc">\\</span></span>
-<span id="cb12-533"><a href="#cb12-533" aria-hidden="true" tabindex="-1"></a>&amp;= \widehat{\theta} - \left\lbrack \ell^{''}\left( y,\widehat{\theta} \right) \right\rbrack^{- 1}\ell^{'}\left( y,\widehat{\theta} \right)</span>
-<span id="cb12-534"><a href="#cb12-534" aria-hidden="true" tabindex="-1"></a>\end{aligned}</span>
-<span id="cb12-535"><a href="#cb12-535" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb12-536"><a href="#cb12-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-537"><a href="#cb12-537" aria-hidden="true" tabindex="-1"></a>Here, for computational simplicity, we will sometimes use</span>
-<span id="cb12-538"><a href="#cb12-538" aria-hidden="true" tabindex="-1"></a>$\mathfrak{I}^{- 1}(\theta)$ in place of</span>
-<span id="cb12-539"><a href="#cb12-539" aria-hidden="true" tabindex="-1"></a>$I\left( \widehat{\theta},y \right)$; doing so is called "Fisher</span>
-<span id="cb12-540"><a href="#cb12-540" aria-hidden="true" tabindex="-1"></a>scoring" or the "method of scoring". Note that this is the opposite of</span>
-<span id="cb12-541"><a href="#cb12-541" aria-hidden="true" tabindex="-1"></a>the substitution that we are making for estimating the variance of the</span>
-<span id="cb12-542"><a href="#cb12-542" aria-hidden="true" tabindex="-1"></a>MLE; this time we should technically use the observed information but we</span>
-<span id="cb12-543"><a href="#cb12-543" aria-hidden="true" tabindex="-1"></a>use the expected information instead.</span>
-<span id="cb12-544"><a href="#cb12-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-545"><a href="#cb12-545" aria-hidden="true" tabindex="-1"></a>There’s also an "empirical information matrix" (see McLachlan and</span>
-<span id="cb12-546"><a href="#cb12-546" aria-hidden="true" tabindex="-1"></a>Krishnan 2007).</span>
-<span id="cb12-547"><a href="#cb12-547" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-548"><a href="#cb12-548" aria-hidden="true" tabindex="-1"></a>$$I_{e}(\theta,y) = \sum_{i = 1}^{n}{\ell_{i}^{'}\ {\ell_{i}^{'}}^{\top}} - \frac{1}{n}\ell^{'}{\ell^{'}}^{\top}$$</span>
-<span id="cb12-549"><a href="#cb12-549" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-550"><a href="#cb12-550" aria-hidden="true" tabindex="-1"></a>where $\ell_{i}$ is the log-likelihood of the ith observation.</span>
-<span id="cb12-551"><a href="#cb12-551" aria-hidden="true" tabindex="-1"></a>Note that $\ell^{'} = \sum_{i = 1}^{n}\ell_{i}^{'}$.</span>
-<span id="cb12-552"><a href="#cb12-552" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-553"><a href="#cb12-553" aria-hidden="true" tabindex="-1"></a>$\frac{1}{n}I_{e}(\theta,y)$ is the sample equivalent of</span>
-<span id="cb12-554"><a href="#cb12-554" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-555"><a href="#cb12-555" aria-hidden="true" tabindex="-1"></a>$$\mathfrak{I \eqdef I(}\theta) \eqdef {Cov}\left( \ell^{'}|\theta \right) = E\left\lbrack \ell^{'}{\ell^{'}}^{\top} \right\rbrack - E\left\lbrack \ell^{'} \right\rbrack\ E\left\lbrack \ell^{'} \right\rbrack^{\top}$$</span>
-<span id="cb12-556"><a href="#cb12-556" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-557"><a href="#cb12-557" aria-hidden="true" tabindex="-1"></a>$$\left<span class="sc">\{</span> \mathfrak{I}_{jk} \eqdef {Cov}\left( {\ell^{'}}_{j},{\ell^{'}}_{k} \right) = E\left\lbrack \ell_{j}^{'}\ell_{k}^{'} \right\rbrack - E\left\lbrack {\ell^{'}}_{j} \right\rbrack E\left\lbrack {\ell^{'}}_{k} \right\rbrack \right<span class="sc">\}</span>$$</span>
-<span id="cb12-558"><a href="#cb12-558" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-559"><a href="#cb12-559" aria-hidden="true" tabindex="-1"></a>$I_{e}(\theta,y)$ is sometimes computationally easier to compute for</span>
-<span id="cb12-560"><a href="#cb12-560" aria-hidden="true" tabindex="-1"></a>Newton-Raphson-type maximization algorithms.</span>
+<span id="cb12-529"><a href="#cb12-529" aria-hidden="true" tabindex="-1"></a>Back to our Gaussian example:</span>
+<span id="cb12-530"><a href="#cb12-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-531"><a href="#cb12-531" aria-hidden="true" tabindex="-1"></a>$$I = \begin{bmatrix}</span>
+<span id="cb12-532"><a href="#cb12-532" aria-hidden="true" tabindex="-1"></a>\frac{n}{\sigma^{2}} &amp; 0 <span class="sc">\\</span></span>
+<span id="cb12-533"><a href="#cb12-533" aria-hidden="true" tabindex="-1"></a>0 &amp; \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left( - \frac{1}{2} \right)</span>
+<span id="cb12-534"><a href="#cb12-534" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
+<span id="cb12-535"><a href="#cb12-535" aria-hidden="true" tabindex="-1"></a>a &amp; 0 <span class="sc">\\</span></span>
+<span id="cb12-536"><a href="#cb12-536" aria-hidden="true" tabindex="-1"></a>0 &amp; d</span>
+<span id="cb12-537"><a href="#cb12-537" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
+<span id="cb12-538"><a href="#cb12-538" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-539"><a href="#cb12-539" aria-hidden="true" tabindex="-1"></a>So:</span>
+<span id="cb12-540"><a href="#cb12-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-541"><a href="#cb12-541" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \frac{1}{ad}\begin{bmatrix}</span>
+<span id="cb12-542"><a href="#cb12-542" aria-hidden="true" tabindex="-1"></a>d &amp; 0 <span class="sc">\\</span></span>
+<span id="cb12-543"><a href="#cb12-543" aria-hidden="true" tabindex="-1"></a>0 &amp; a</span>
+<span id="cb12-544"><a href="#cb12-544" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
+<span id="cb12-545"><a href="#cb12-545" aria-hidden="true" tabindex="-1"></a>\frac{1}{a} &amp; 0 <span class="sc">\\</span></span>
+<span id="cb12-546"><a href="#cb12-546" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{1}{d}</span>
+<span id="cb12-547"><a href="#cb12-547" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
+<span id="cb12-548"><a href="#cb12-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-549"><a href="#cb12-549" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \begin{bmatrix}</span>
+<span id="cb12-550"><a href="#cb12-550" aria-hidden="true" tabindex="-1"></a>\frac{{\widehat{\sigma}}^{2}}{n} &amp; 0 <span class="sc">\\</span></span>
+<span id="cb12-551"><a href="#cb12-551" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{{2\left( {\widehat{\sigma}}^{2} \right)}^{2}}{n}</span>
+<span id="cb12-552"><a href="#cb12-552" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
+<span id="cb12-553"><a href="#cb12-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-554"><a href="#cb12-554" aria-hidden="true" tabindex="-1"></a>See @CaseBerg01 p322, example 7.2.12.</span>
+<span id="cb12-555"><a href="#cb12-555" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-556"><a href="#cb12-556" aria-hidden="true" tabindex="-1"></a>To prove it’s a maximum, need:</span>
+<span id="cb12-557"><a href="#cb12-557" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-558"><a href="#cb12-558" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\ell^{'} = 0$</span>
+<span id="cb12-559"><a href="#cb12-559" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-560"><a href="#cb12-560" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>At least one diagonal element of $\ell''$ is negative.</span>
 <span id="cb12-561"><a href="#cb12-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-562"><a href="#cb12-562" aria-hidden="true" tabindex="-1"></a>Back to our Gaussian example:</span>
-<span id="cb12-563"><a href="#cb12-563" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-564"><a href="#cb12-564" aria-hidden="true" tabindex="-1"></a>$$I = \begin{bmatrix}</span>
-<span id="cb12-565"><a href="#cb12-565" aria-hidden="true" tabindex="-1"></a>\frac{n}{\sigma^{2}} &amp; 0 <span class="sc">\\</span></span>
-<span id="cb12-566"><a href="#cb12-566" aria-hidden="true" tabindex="-1"></a>0 &amp; \left( {\widehat{\sigma}}^{2} \right)^{- 2}n\left( - \frac{1}{2} \right)</span>
-<span id="cb12-567"><a href="#cb12-567" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
-<span id="cb12-568"><a href="#cb12-568" aria-hidden="true" tabindex="-1"></a>a &amp; 0 <span class="sc">\\</span></span>
-<span id="cb12-569"><a href="#cb12-569" aria-hidden="true" tabindex="-1"></a>0 &amp; d</span>
-<span id="cb12-570"><a href="#cb12-570" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
-<span id="cb12-571"><a href="#cb12-571" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-572"><a href="#cb12-572" aria-hidden="true" tabindex="-1"></a>So:</span>
-<span id="cb12-573"><a href="#cb12-573" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-574"><a href="#cb12-574" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \frac{1}{ad}\begin{bmatrix}</span>
-<span id="cb12-575"><a href="#cb12-575" aria-hidden="true" tabindex="-1"></a>d &amp; 0 <span class="sc">\\</span></span>
-<span id="cb12-576"><a href="#cb12-576" aria-hidden="true" tabindex="-1"></a>0 &amp; a</span>
-<span id="cb12-577"><a href="#cb12-577" aria-hidden="true" tabindex="-1"></a>\end{bmatrix} = \begin{bmatrix}</span>
-<span id="cb12-578"><a href="#cb12-578" aria-hidden="true" tabindex="-1"></a>\frac{1}{a} &amp; 0 <span class="sc">\\</span></span>
-<span id="cb12-579"><a href="#cb12-579" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{1}{d}</span>
-<span id="cb12-580"><a href="#cb12-580" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
-<span id="cb12-581"><a href="#cb12-581" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-582"><a href="#cb12-582" aria-hidden="true" tabindex="-1"></a>$$I^{- 1} = \begin{bmatrix}</span>
-<span id="cb12-583"><a href="#cb12-583" aria-hidden="true" tabindex="-1"></a>\frac{{\widehat{\sigma}}^{2}}{n} &amp; 0 <span class="sc">\\</span></span>
-<span id="cb12-584"><a href="#cb12-584" aria-hidden="true" tabindex="-1"></a>0 &amp; \frac{{2\left( {\widehat{\sigma}}^{2} \right)}^{2}}{n}</span>
-<span id="cb12-585"><a href="#cb12-585" aria-hidden="true" tabindex="-1"></a>\end{bmatrix}$$</span>
-<span id="cb12-586"><a href="#cb12-586" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-587"><a href="#cb12-587" aria-hidden="true" tabindex="-1"></a>See @CaseBerg01 p322, example 7.2.12.</span>
-<span id="cb12-588"><a href="#cb12-588" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-589"><a href="#cb12-589" aria-hidden="true" tabindex="-1"></a>To prove it’s a maximum, need:</span>
-<span id="cb12-590"><a href="#cb12-590" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-591"><a href="#cb12-591" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>$\ell^{'} = 0$</span>
-<span id="cb12-592"><a href="#cb12-592" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-593"><a href="#cb12-593" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>At least one diagonal element of $\ell''$ is negative.</span>
-<span id="cb12-594"><a href="#cb12-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-595"><a href="#cb12-595" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Determinant of $\ell''$ is positive.</span>
-<span id="cb12-596"><a href="#cb12-596" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-562"><a href="#cb12-562" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Determinant of $\ell''$ is positive.</span>
+<span id="cb12-563"><a href="#cb12-563" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer"><div class="nav-footer">
