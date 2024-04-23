@@ -385,7 +385,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-22: 18:44:21 (PM)</p>
+      <p class="date">Last modified: 2024-04-22: 18:50:46 (PM)</p>
     </div>
   </div>
   
@@ -515,7 +515,7 @@ Notation for the likelihood function
 <p>The first derivative of the log-likelihood, <span class="math inline">\(\ell'(\theta)\)</span>, is important enough to have its own name and symbol: the <em>score function</em>, <span class="math inline">\(U(\theta)\)</span>.</p>
 <div id="def-score" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition C.4 (Score function)</strong></span> The <strong>score function</strong> of a statistical model <span class="math inline">\(\text{p}(\tilde{X}=\tilde{x})\)</span> is the gradient (i.e., first derivative) of the log-likelihood of that model:</p>
-<p><span class="math display">\[U(\theta) \stackrel{\text{def}}{=}\ell'(\theta)\]</span></p>
+<p><span class="math display">\[\ell'(\theta) \stackrel{\text{def}}{=}\frac{d}{dth} \ell(\theta)\]</span></p>
 </div>
 <div class="notes">
 <p>We often skip writing the arguments <span class="math inline">\((x,\theta)\)</span>, so <span class="math inline">\(\ell^{'} \stackrel{\text{def}}{=}\ell^{'}(\tilde{x};\theta)\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Some statisticians use <span class="math inline">\(U\)</span> or <span class="math inline">\(S\)</span> instead of <span class="math inline">\(\ell^{'}\)</span>. I prefer <span class="math inline">\(\ell^{'}\)</span>. Why use up extra letters?</p>
@@ -2085,7 +2085,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb12-171"><a href="#cb12-171" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-172"><a href="#cb12-172" aria-hidden="true" tabindex="-1"></a>The **score function** of a statistical model $\pr(\vec X=\vec x)$ is the gradient (i.e., first derivative) of the log-likelihood of that model:</span>
 <span id="cb12-173"><a href="#cb12-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a>$$U(\theta) \eqdef \lik'(\th)$$</span>
+<span id="cb12-174"><a href="#cb12-174" aria-hidden="true" tabindex="-1"></a>$$\lik'(\th) \eqdef \deriv{th} \lik(\th)$$</span>
 <span id="cb12-175"><a href="#cb12-175" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb12-176"><a href="#cb12-176" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-177"><a href="#cb12-177" aria-hidden="true" tabindex="-1"></a>::: notes</span>
