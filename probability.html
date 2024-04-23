@@ -368,7 +368,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Last modified: 2024-04-19: 11:39:28 (AM)</p>
+      <p class="date">Last modified: 2024-04-22: 17:42:53 (PM)</p>
     </div>
   </div>
   
@@ -411,7 +411,7 @@ window.Quarto = {
 </div>
 <div id="def-expectation" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition A.4 (Expectation, expected value )</strong></span> The <em>expectation</em> or <em>expected value</em> of a random variable <span class="math inline">\(X\)</span>, denoted <span class="math inline">\(\mathbb{E}\left[X\right]\)</span>, <span class="math inline">\(\mu(X)\)</span>, or <span class="math inline">\(\mu_X\)</span>, is its mean:</p>
-<p><span class="math display">\[\mathbb{E}\left[X\right] = \int_{x\in \mathcal{R}(X)} x \cdot p(X=x)dx\]</span></p>
+<p><span class="math display">\[\mathbb{E}\left[X\right] = \int_{x\in \mathcal{R}\left(X\right)} x \cdot p(X=x)dx\]</span></p>
 <p>(c.f. https://en.wikipedia.org/wiki/Expected_value)</p>
 </div>
 <div id="def-variance" class="theorem definition">
@@ -456,10 +456,16 @@ window.Quarto = {
 \end{aligned}
 \]</span></p>
 </div>
+<p>:::{#def-indpt}</p>
+<section id="independence" class="level4">
+<h4 class="anchored" data-anchor-id="independence">Independence</h4>
+<p>A set of random variables <span class="math inline">\(X_1, \ldots, X_n\)</span> are <strong>mutually independent</strong> if their joint probability is equal to the product of their marginal probabilities:</p>
+<p><span class="math display">\[\Pr(X_1=x_1, \ldots, X_n = x_n) = \prod_{i=1}^n{\Pr(X_i=x_i)}\]</span></p>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1118,7 +1124,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>The *expectation* or *expected value* of a random variable $X$, denoted $\E{X}$, $\mu(X)$, or $\mu_X$, is its mean:</span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>$$\E{X} = \int_{x\in \range(X)} x \cdot p(X=x)dx$$</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>$$\E{X} = \int_{x\in \range{X}} x \cdot p(X=x)dx$$</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>(c.f. https://en.wikipedia.org/wiki/Expected_value)</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
@@ -1190,7 +1196,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>\ea</span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>:::::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>:::::</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>:::{#def-indpt}</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Independence</span></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>A set of random variables $\X1n$ are **mutually independent** if their joint probability is equal to the product of their marginal probabilities:</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>$$\Pr(\Xx1n) = \prodi1n{\Pr(X_i=x_i)}$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
