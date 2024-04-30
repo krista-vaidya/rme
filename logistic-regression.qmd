@@ -137,7 +137,9 @@ totals =
   summarize(across(c(MI, `No MI`, Total), sum)) |> 
   mutate(OC = "Total")
 
-bind_rows(oc_mi, totals)
+tbl_oc_mi = bind_rows(oc_mi, totals)
+
+tbl_oc_mi
 
 ```
 
@@ -258,11 +260,11 @@ $$\ph(MI|\neg OC) = `r 7/10000`$$
 :::: notes
 So we might estimate that the *relative risk* of MI for OC versus non-OC is:
 ::::
+
 ```{r}
 #| label: compute-rr
 rr = (13/5000)/(7/10000)
 ```
-
 
 $$
 \begin{aligned}
@@ -272,24 +274,54 @@ $$
 &= `r rr`
 \end{aligned}
 $$
+
 :::: notes
 We might summarize this result by saying that "the estimated probability of MI among OC users was `r rr` as high as the estimated probability among OC non-users. 
 ::::
+
 :::
 
 ---
 
-Sometimes, we divide the risk difference by the comparison probability, or equivalently, subtract 1 from the risk ratio; the result is called the **relative risk difference**:
+### Relative risk difference
 
+:::{#def-RRD}
+
+#### Relative risk difference
+
+:::: notes
+Sometimes, we divide the risk difference by the comparison probability, or equivalently, subtract 1 from the risk ratio; the result is called the **relative risk difference**:
+::::
 $$
 \begin{aligned}
 \xi(\pi_1,\pi_2) 
-&\eqdef \frac{\pi_1-\pi_2}{\pi_2}\\
-&= \frac{\pi_1}{\pi_2} - 1
+&\eqdef \frac{\delta(\pi_1,\pi_2)}{\pi_2}
+\\&= \frac{\pi_1-\pi_2}{\pi_2}
+\\&= \frac{\pi_1}{\pi_2} - 1
+\\&= \rho(\pi_1,\pi_2) - 1
 \end{aligned}
 $$
 
-Risk differences, risk ratios, and relative risk differences are defined by two probabilities, plus a choice of which probability is the **baseline** or **reference** probability (i.e., which probability is the subtrahend of the risk difference or the denominator of the risk ratio). To switch which one is the reference probability, invert the ratio and multiply the difference by -1.
+:::
+
+---
+
+#### Changing reference groups in risk comparisons
+
+:::: notes
+Risk differences, risk ratios, and relative risk differences are defined by two probabilities, plus a choice of which probability is the **baseline** or **reference** probability (i.e., which probability is the subtrahend of the risk difference or the denominator of the risk ratio).
+:::
+
+$$\delta(\pi_2,\pi_1) = -\delta(\pi_1, \pi_2)$$
+
+$$\rho(\pi_2,\pi_1) = \inv{\rho(\pi_1,\pi_2)}$$
+$$\xi(\pi_2,\pi_1) = \inv{\xi(\pi_2,\pi_1) + 1} - 1$$
+
+:::{#exr-change-ref-group}
+
+Prove the relationships above.
+
+:::
 
 ---
 
@@ -415,6 +447,8 @@ $$
 
 :::
 
+---
+
 :::{#exr-odds}
 ### Calculating odds
 Estimate the odds of MI, for non-OC users.
@@ -490,8 +524,13 @@ $$
 \end{aligned}
 $$
 
-Let's recalculate this result using our shortcut:
+Let's recalculate this result using our shortcut.
 
+::::
+
+---
+
+::::{#sol-odds-shortcut}
 $$
 \begin{aligned}
 \omega(OC) 
@@ -512,9 +551,15 @@ For rare events (small $\pi$), odds and probabilities are nearly equal, because 
 
 For example, in @exm-odds, the probability and odds differ by $`r abs(pi_OC - odds_OC)`$.
 
+---
+
 :::{#exr-odds-probs}
 
 What odds value corresponds to the probability $\pi = 0.2$, and what is the numerical difference between these two values?
+
+:::
+
+---
 
 ::::{.solution}
 $$
@@ -523,8 +568,6 @@ $$
 = .25
 $$
 ::::
-
-:::
 
 ---
 
@@ -538,7 +581,11 @@ $$\pi(\omega)\eqdef \frac{\omega}{1+\omega}$$
 converts odds into their corresponding probabilities (@fig-inv-odds).
 :::
 
+::: notes
 The inverse-odds function takes an odds as input and produces a probability as output. Its domain of inputs is $[0,\infty)$ and its range of outputs is $[0,1]$.
+:::
+
+---
 
 ```{r}
 #| label: fig-inv-odds
@@ -553,17 +600,27 @@ ggplot() +
   geom_abline(aes(intercept = 0, slope = 1, col = "x=y"))
 ```
 
+---
+
 :::{.callout-important}
 An equivalent expression for the inverse odds function is $$\pi(\omega) = (1-\omega^{-1})^{-1}$${#eq-inv-odds-reduced}
 :::
+
+---
 
 :::{#exr-inv-odds2}
 Prove that @eq-inv-odds-reduced is equivalent to @def-inv-odds.
 :::
 
+---
+
 :::{#exr-odds-probs}
 
 What probability corresponds to an odds of $\omega = 1$, and what is the numerical difference between these two values?
+
+:::
+
+---
 
 ::::{.solution}
 $$
@@ -577,11 +634,15 @@ $$
 
 ::::
 
-:::
+---
 
 ### Odds ratios
 
+::: notes
+
 Now that we have defined odds, we can introduce another way of comparing event probabilities: odds ratios.
+
+:::
 
 :::{#def-OR}
 ##### Odds ratio
@@ -590,6 +651,8 @@ The **odds ratio** for two odds $\omega_1$, $\omega_2$ is their ratio:
 $$\theta(\omega_1, \omega_2) = \frac{\omega_1}{\omega_2}$$
 
 :::
+
+---
 
 :::{#exm-OR}
 #### Calculating odds ratios
@@ -605,13 +668,19 @@ $$
 $$
 :::
 
+::: notes
 When the outcome is rare (i.e., its probability is small) for both groups being compared in an odds ratio, the odds of the outcome will be similar to the probability of the outcome, and thus the risk ratio will be similar to the odds ratio.
 
 For example, in @exm-oc-mi, the outcome is rare for both OC and non-OC participants, so the odds for both groups are similar to the corresponding probabilities, and the odds ratio is similar the risk ratio.
+:::
 
-#### A shortcut for calculating odds ratio estimates
+---
 
+#### A shortcut for calculating odds ratio estimates {.smaller}
+
+::: notes
 The general form of a two-by-two table is shown in @tbl-2x2-generic. 
+
 
 |               | Event | Non-Event | Total
 |-------------- | ------ | ---------- | ----- 
@@ -621,7 +690,11 @@ The general form of a two-by-two table is shown in @tbl-2x2-generic.
 
 : A generic 2x2 table {#tbl-2x2-generic}
 
+:::
+
+::: notes
 From this table, we have:
+:::
 
 * $\hat\pi(Event|Exposed) = a/(a+b)$
 
@@ -634,13 +707,21 @@ From this table, we have:
 
 * $\theta(Exposed,\neg Exposed) = \frac{\frac{a}{b}}{\frac{c}{d}} = \frac{ad}{bc}$
 
+---
+
 :::{#exr-odds-generic}
 Given @tbl-2x2-generic, show that $\hat\omega(Event|\neg Exposed) = \frac{c}{d}$.
 :::
 
-#### Properties of odds ratios {#sec-OR-props}
+---
 
+## Properties of odds ratios {#sec-OR-props}
+
+::: notes
 Odds ratios have a special property: we can swap a covariate with the outcome, and the odds ratio remains the same.
+:::
+
+---
 
 :::{#exm-or-inv-MI}
 
@@ -674,12 +755,17 @@ $$
 $$
 :::
 
+---
+
 :::{#exr-2x2-generic}
 For @tbl-2x2-generic, show that $\hat\theta(Exposed, Unexposed) = \hat\theta(Event, \neg Event)$.
 :::
 
-### Effect of study design
+---
 
+### Case-Control Studies
+
+::: notes
 @tbl-oc-mi simulates a follow-up study in which two populations were followed and the number of MI’s was observed. The risks are $P(MI|OC)$ and $P(MI|\neg OC)$ and we can estimate these risks from the data.
 
 But suppose we had a case-control study in which we had 100 women with MI and selected a comparison group of 100 women without MI (matched as groups on age, etc.). Then MI is not random, and we cannot compute P(MI|OC) and we cannot compute the risk ratio. However, the odds ratio however can be computed.
@@ -688,17 +774,36 @@ The disease odds ratio is the odds for the disease in the exposed group divided 
 
 But we can validly compute and use the exposure odds ratio, which is the odds for exposure in the disease group divided by the odds for exposure in the non-diseased group (because exposure can be treated as random):
 
+:::
+
 $$
 \hth(OC|MI) = 
 \frac{\hat{\omega}(OC|MI)}{\hat{\omega}(OC|\neg MI)}
 $$
 
-And these two odds ratios, $\hth(MI|OC)$ and $\hth(OC|MI)$ are mathematically equivalent, as we saw in @sec-OR-props.
+::: notes
+And these two odds ratios, $\hth(MI|OC)$ and $\hth(OC|MI)$ are mathematically equivalent, as we saw in @sec-OR-props:
+:::
+
+$$\hth(MI|OC) = \hth(OC|MI)$$
+
+---
 
 :::{#exr-or-rev}
 Calculate the odds ratio of MI with respect to OC use, assuming that @tbl-oc-mi comes from a case-control study. Confirm that the result is the same as in @exm-OR.
 
+---
+
 ::::{.solution}
+
+::: {.content-visible when-format="revealjs"}
+
+```{r}
+#| label: tbl-oc-mi2
+#| tbl-cap: "Simulated data from study of oral contraceptive use and heart attack risk"
+tbl_oc_mi
+```
+:::
 
 * $\omega(OC|MI) = P(OC|MI)/(1 – P(OC|MI) = \frac{13}{7} = `r 13/7`$
 
@@ -706,13 +811,15 @@ Calculate the odds ratio of MI with respect to OC use, assuming that @tbl-oc-mi 
 
 * $\theta(OC,MI) = \frac{\omega(OC|MI)}{\omega(OC|\neg MI)} = \frac{13/7}{4987/9993} = `r (13/7)/(4987/9993)`$
 
+::: notes
 This is the same estimate we calculated in @exm-OR.
+:::
 
 ::::
 
 :::
 
-#### Cross-Sectional Studies
+### Cross-Sectional Studies
 
 * If a cross-sectional study is a probability sample of a population (which it rarely is) then we can estimate risks.
 
@@ -731,7 +838,7 @@ This is the same estimate we calculated in @exm-OR.
 
 * In this case, we will use logistic regression, which is a generalization of the linear regression models you have been using that can account for a binary response instead of a continuous one.
 
-### Binary outcomes models - one group, no covariates
+### Binary outcomes models - one group, no covariates {.smaller}
 
 $$
 \begin{aligned}
@@ -746,7 +853,7 @@ p(Y=y) &= \pi^y (1-\pi)^{1-y}\\
 \end{aligned}
 $$
 
-### Binary outcomes - general
+### Binary outcomes - general  {.smaller}
 
 $$
 \begin{aligned}
@@ -893,6 +1000,8 @@ $$
 ### Meet the beetles
 
 ```{r}
+#| label: fig-beetles_1a
+#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
 library(glmx)
 
 data(BeetleMortality, package = "glmx")
@@ -915,45 +1024,23 @@ plot1 =
 print(plot1)
 ```
 
-Mortality rates of adult flour beetles after five hours' exposure to
-gaseous carbon disulphide (Bliss 1935)
-
 ### Why don't we use linear regression?
 
 ```{r}
+#| label: fig-beetles_2
+#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
 
-
-beetles_glm_grouped = beetles |> 
-  glm(formula = cbind(died, survived) ~ dose, family = "binomial")
-
-lm1 = 
-  beetles  |> 
-  reframe(
+beetles_long = beetles  |> 
+   reframe(
     .by = everything(),
     outcome = c(
       rep(1, times = died), 
-      rep(0, times = survived))
-  ) |> 
-  lm(
-    formula = outcome ~ dose, 
-    data = _)
+      rep(0, times = survived)))
 
-lm2 = 
-  beetles  |> 
-  reframe(
-    .by = everything(),
-    outcome = c(
-      rep(1, times = died), 
-      rep(0, times = survived))
-  ) |> 
-  lm(
-    formula = outcome ~ log(dose), 
-    data = _)
+lm1 = beetles_long |> lm(formula = outcome ~ dose)
+f.linear = function(x) predict(lm1, newdata = data.frame(dose = x))
 
 range1 = range(beetles$dose) + c(-.2, .2)
-f = function(x) predict(beetles_glm_grouped, newdata = data.frame(dose = x), type = "response")
-f.linear = function(x) predict(lm1, newdata = data.frame(dose = x))
-f.linearlog = function(x) predict(lm2, newdata = data.frame(dose = x))
 
 plot2 = 
   plot1 + 
@@ -969,12 +1056,19 @@ plot2 |> print()
 ### Zoom out
 
 ```{r}
+#| label: fig-beetles_3
+#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
 (plot2 + expand_limits(x = c(1.6, 2))) |> print()
 ```
 
 ### log transformation of dose?
 
 ```{r}
+#| label: fig-beetles_4
+#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
+
+lm2 = beetles_long |> lm(formula = outcome ~ log(dose))
+f.linearlog = function(x) predict(lm2, newdata = data.frame(dose = x))
 
 plot3 = plot2 + 
   expand_limits(x = c(1.6, 2)) +
@@ -987,9 +1081,20 @@ plot3 = plot2 +
 
 ```{r}
 
+#| label: fig-beetles_5
+#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
+
+beetles_glm_grouped = beetles |> 
+  glm(formula = cbind(died, survived) ~ dose, family = "binomial")
+f = function(x) 
+  beetles_glm_grouped |> 
+  predict(newdata = data.frame(dose = x), type = "response")
+
 plot4 = plot3 + geom_function(fun = f, aes(col = "Logistic regression"))
 plot4 |> print()
 ```
+
+---
 
 ### Three parts to regression models
 
@@ -1000,6 +1105,8 @@ defined by covariates? (outcome model)
 function)
 
 -   How do the covariates combine? (linear predictor, interactions)
+
+---
 
 ### Logistic regression in R
 
@@ -1030,22 +1137,16 @@ fit_y = beetles$n * fitted.values(beetles_glm_grouped)
 ### Individual observations
 
 ```{r}
-
-beetles_long = 
-  beetles  |> 
-  reframe(
-    .by = everything(),
-    outcome = c(
-      rep(1, times = died), 
-      rep(0, times = survived))
-  )
-beetles_long |> tibble() |> print()
+#| label: tbl-beetles-long
+#| tbl-cap: "`beetles` data in long format"
+beetles_long
 ```
 
-Here's the model with individual data
+---
 
 ```{r}
-
+#| label: tbl-beetles-model-ungrouped
+#| tbl-cap: "logistic regression model for beetles data with individual Bernoulli data"
 beetles_glm_ungrouped = 
   beetles_long |> 
   glm(
@@ -1055,14 +1156,21 @@ beetles_glm_ungrouped =
 beetles_glm_ungrouped |> parameters() |> print_md()
 ```
 
+::: notes
 Here's the previous version again:
+:::
 
 ```{r}
-
+#| label: tbl-beetles-model-grouped
+#| tbl-cap: "logistic regression model for beetles data with grouped (binomial) data"
 beetles_glm_grouped |> parameters() |> print_md()
 ```
 
+---
+
+::: notes
 They seem the same! But not quite:
+:::
 
 ```{r}
 
@@ -1071,18 +1179,20 @@ logLik(beetles_glm_ungrouped)
 
 ```
 
+::: notes
 The difference is due to the binomial coefficient
 $\left(n\atop x \right)$ which isn't included in the
 individual-observations (Bernoulli) version of the model.
+:::
 
 ## Multiple logistic regression
 
 ### Coronary heart disease (WCGS) study data
 
+::: notes
 Let's use the data from the following study to explore multiple logistic
 regression:
-
-#### Summary of study
+:::
 
 *From @vittinghoff2012regression:*
 
@@ -1103,6 +1213,8 @@ stress levels. They typically work steadily and may enjoy achievement,
 although they have a greater tendency to disregard physical or mental
 stress when they do not achieve."
 
+---
+
 #### Study design
 
 *from `?faraway::wcgs`:*
@@ -1121,9 +1233,11 @@ screening, the study population dropped to 3,154 and the number of
 companies to 10 because of various exclusions. The cohort comprised both
 blue- and white-collar employees.
 
-At baseline the following information was collected:
+---
 
--   socio-demographic including:
+### Baseline data collection
+
+socio-demographic characteristics:
 -   age
 -   education
 -   marital status
@@ -1135,14 +1249,22 @@ At baseline the following information was collected:
 -   blood pressure
 -   electrocardiogram
 -   corneal arcus;
--   biochemical including:
+
+---
+
+biochemical measurements:
 -   cholesterol and lipoprotein fractions;
 -   medical and family history and use of medications;
--   behavioral data including
+
+---
+
+behavioral data:
 -   Type A interview,
 -   smoking,
 -   exercise
 -   alcohol use.
+
+---
 
 Later surveys added data on: 
 
