@@ -373,7 +373,7 @@ We can also view the hazard function as the derivative of the negative of the lo
 
 :::{#thm-h-logS}
 
-$$h(t) = \frac{d}{dt}\cb{-\log{S(t)}}$$
+$$h(t) = \deriv{t}\cb{-\log{S(t)}}$$
 
 ::::{.proof}
 $$
@@ -382,8 +382,8 @@ h(t)
 &= \frac{f(t)}{S(t)}\\
 &= \frac{-S'(t)}{S(t)}\\
 &= -\frac{S'(t)}{S(t)}\\
-&=-\frac{d}{dt}\log{S(t)}\\
-&=\frac{d}{dt}\cb{-\log{S(t)}}
+&=-\deriv{t}\log{S(t)}\\
+&=\deriv{t}\cb{-\log{S(t)}}
 \end{aligned}
 $$
 ::::
@@ -391,7 +391,7 @@ $$
 
 ### The Cumulative Hazard Function
 
-Since $h(t) = \frac{d}{dt}\cb{-\log{S(t)}}$ (see @thm-h-logS), we also have:
+Since $h(t) = \deriv{t}\cb{-\log{S(t)}}$ (see @thm-h-logS), we also have:
 
 :::{#cor-surv-int-haz}
 $$S(t) = \exp{-\int_{u=0}^t h(u)du}$${#eq-surv-int-haz}
@@ -467,7 +467,7 @@ h(t) \xrightarrow[]{\int_{u=0}^t h(u)du} H(t)
 $$
 
 $$
-h(t) \xleftarrow[\frac{d}{dt}H(t)]{} H(t) 
+h(t) \xleftarrow[\deriv{t}H(t)]{} H(t) 
 \xleftarrow[-\log{S(t)}]{} S(t)
 \xleftarrow[1-F(t)]{} F(t)
 $$
@@ -483,7 +483,7 @@ S'(t) &= -f(t)\\
 H(t) &= -\text{log}\left\{S(t)\right\}\\
 H'(t) &= h(t)\\
 h(t) &= \frac{f(t)}{S(t)}\\
- &= -\frac{d}{dt}\log{S(t)} \\
+ &= -\deriv{t}\log{S(t)} \\
 f(t) &= h(t)\cdot S(t)\\
 \end{aligned}
 $$
@@ -493,7 +493,7 @@ Some proofs (others left as exercises):
 
 $$
 \begin{aligned}
-S'(t) &= \frac{d}{dt}(1-F(t))\\
+S'(t) &= \deriv{t}(1-F(t))\\
 &= -F'(t)\\
 &= -f(t)\\
 \end{aligned}
@@ -501,7 +501,7 @@ $$
 
 $$
 \begin{aligned}
-\frac{d}{dt}\log{S(t)} 
+\deriv{t}\log{S(t)} 
 &= \frac{S'(t)}{S(t)}\\
 &= -\frac{f(t)}{S(t)}\\
 &= -h(t)\\
@@ -512,7 +512,7 @@ $$
 \begin{aligned}
 H(t)
 &\eqdef \int_{u=0}^t h(u) du\\
-&= \int_0^t -\frac{d}{du}\text{log}\left\{S(u)\right\} du\\
+&= \int_0^t -\deriv{u}\text{log}\left\{S(u)\right\} du\\
 &= \left[-\text{log}\left\{S(u)\right\}\right]_{u=0}^{u=t}\\
 &= \left[\text{log}\left\{S(u)\right\}\right]_{u=t}^{u=0}\\
 &= \text{log}\left\{S(0)\right\} - \text{log}\left\{S(t)\right\}\\
@@ -727,7 +727,7 @@ Then corresponding score function is:
 $$
 \begin{aligned}
 \ell'(y,d) 
-&= \frac{d}{d\theta} 
+&= \deriv{\theta} 
 \left[
 \text{log}\left\{
 f_T(y)^d \cdot S_T(y)^{1-d}
@@ -739,14 +739,14 @@ f_C(y)^{1-d} \cdot S_C(y)^{d}
 \right]\\
 &= 
 \left(
-\frac{d}{d\theta} 
+\deriv{\theta} 
 \text{log}\left\{
 f_T(y)^d \cdot S_T(y)^{1-d}
 \right\}
 \right)
 +
 \left(
-\frac{d}{d\theta} 
+\deriv{\theta} 
 \text{log}\left\{
 f_C(y)^{1-d} \cdot S_C(y)^{d}
 \right\}
@@ -761,30 +761,30 @@ $\theta_T$ is:
 $$
 \begin{aligned}
 \ell'_{\theta_T}(y,d)
-&\eqdef  \frac{d}{d\theta_T}\ell(y,d)\\
+&\eqdef  \deriv{\theta_T}\ell(y,d)\\
 &= 
 \left(
-\frac{d}{d\theta_T} 
+\deriv{\theta_T} 
 \text{log}\left\{
 f_T(y)^d \cdot S_T(y)^{1-d}
 \right\}
 \right)
 +
 \left(
-\frac{d}{d\theta_T} 
+\deriv{\theta_T} 
 \text{log}\left\{
 f_C(y)^{1-d} \cdot S_C(y)^{d}
 \right\}
 \right)\\
 &= 
 \left(
-\frac{d}{d\theta_T} 
+\deriv{\theta_T} 
 \text{log}\left\{
 f_T(y)^d \cdot S_T(y)^{1-d}
 \right\}
 \right) + 0\\
 &= 
-\frac{d}{d\theta_T} 
+\deriv{\theta_T} 
 \text{log}\left\{
 f_T(y)^d \cdot S_T(y)^{1-d}
 \right\}\\
@@ -1550,14 +1550,14 @@ $$
 h(t) 
 &\eqdef   P(T=t|T\ge t)\\
 &= \frac{p(T=t)}{P(T\ge t)}\\
-&= -\frac{d}{dt}\text{log}\left\{S(t)\right\}
+&= -\deriv{t}\text{log}\left\{S(t)\right\}
 \end{aligned}
 $$
 
 The **cumulative hazard** (or **integrated hazard**) function is
 
 $$H(t)\eqdef  \int_0^t h(t) dt$$ Since
-$h(t) = -\frac{d}{dt}\text{log}\left\{S(t)\right\}$ as shown above, we
+$h(t) = -\deriv{t}\text{log}\left\{S(t)\right\}$ as shown above, we
 have:
 
 $$

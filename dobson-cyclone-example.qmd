@@ -1,6 +1,6 @@
 (Adapted from @dobson4e §1.6.5)
 
-### Data
+### Data {#sec-dobson-cyclones-data}
 
 {{< include macros.qmd >}}
 
@@ -60,6 +60,10 @@ cyclones |>
 ```{r}
 #| label: tbl-dobson-cyclones-sumstat
 #| tbl-cap: "Summary statistics for `cyclones` data"
+
+n = nrow(cyclones)
+sumx = cyclones |> pull(number) |> sum()
+xbar =  cyclones |> pull(number) |> mean()
 
 cyclones |> table1::table1(x = ~ number)
 
@@ -238,6 +242,8 @@ ll_plot
 
 :::
 
+#### The score function
+
 ::: {#exr-cyclone-score-fn}
 
 Derive the score function for the dataset.
@@ -249,11 +255,13 @@ The score function is the first derivative(s) of the log-likelihood:
 $$
 \begin{aligned}
 \ell'( \lambda; \vec x ) &= 
-\frac{\partial}{\partial\lambda}{\sum_{i = 1}^nx_i\log{\lambda} - n\lambda - \sum_{i = 1}^n\log{x_i!}}\\
-&= \frac{\partial}{\partial\lambda}\sum_{i = 1}^nx_i\log{\lambda} - \frac{\partial}{\partial\lambda}n\lambda - \frac{\partial}{\partial\lambda}\sum_{i = 1}^n\log{x_i!}\\
-&= \sum_{i = 1}^nx_i\frac{\partial}{\partial\lambda}\log{\lambda} - n\frac{\partial}{\partial\lambda}\lambda - \sum_{i = 1}^n\frac{\partial}{\partial\lambda}\log{x_i!}\\
+\deriv{\lambda}{\sum_{i = 1}^nx_i\log{\lambda} - n\lambda - \sum_{i = 1}^n\log{x_i!}}\\
+&= \deriv{\lambda}\sum_{i = 1}^nx_i\log{\lambda} - \deriv{\lambda}n\lambda - \deriv{\lambda}\sum_{i = 1}^n\log{x_i!}\\
+&= \sum_{i = 1}^nx_i\deriv{\lambda}\log{\lambda} - n\deriv{\lambda}\lambda - \sum_{i = 1}^n\deriv{\lambda}\log{x_i!}\\
 &= \sum_{i = 1}^nx_i\frac{1}{\lambda} - n - 0\\
 &= \frac{1}{\lambda} \sum_{i = 1}^nx_i- n
+\\&= \paren{\frac{1}{\lambda} n \xbar} - n
+\\&= \paren{\frac{1}{\lambda} `r sumx`} - `r n`
 \end{aligned}
 $$
 
@@ -262,7 +270,6 @@ $$
 :::
 
 :::{#exr-graph-score-function}
-
 Graph the score function.
 
 
@@ -292,6 +299,8 @@ ggplot() +
 
 :::
 
+#### The Hessian matrix {#sec-hessian}
+
 :::{#exr-hessian}
 
 Derive the Hessian matrix.
@@ -302,10 +311,11 @@ The Hessian function for an iid sample is the 2nd derivative(s) of the log-likel
 
 $$
 \begin{aligned}
-\ell''( \lambda; \vec x ) &= \frac{\partial}{\partial\lambda}\left(\frac{1}{\lambda} \sum_{i = 1}^nx_i- n\right)\\
-&= \frac{\partial}{\partial\lambda}\frac{1}{\lambda} \sum_{i = 1}^nx_i- \frac{\partial}{\partial\lambda}n\\
+\ell''( \lambda; \vec x ) &= \deriv{\lambda}\left(\frac{1}{\lambda} \sum_{i = 1}^nx_i- n\right)\\
+&= \deriv{\lambda}\frac{1}{\lambda} \sum_{i = 1}^nx_i- \deriv{\lambda}n\\
 &= -\frac{1}{\lambda^2} \sum_{i = 1}^nx_i\\
 &= -\frac{1}{\lambda^2} n \bar x
+\\&= -\frac{1}{\lambda^2} \cd `r sumx`
 \end{aligned}
 $$
 ::::
@@ -375,6 +385,8 @@ Let's call this solution of the estimating equation $\tilde \lambda$ for now:
 
 $$\tilde \lambda \eqdef \bar x$$
 
+
+
 :::{#exr-check-hessian}
 
 Confirm that the Hessian $\ell''(\lambda; \vec x)$ is negative when evaluated at $\tilde \lambda$.
@@ -436,3 +448,34 @@ obs_inf = function(lambda, y = cyclones$number, n = length(y))
 }
 ```
 
+--
+
+:::{#exm-dobson-cyclones-Newton}
+
+We found that the MLE was $\hat{\lambda} = \bar{x}$, 
+by solving the score equation $\ell'(\lambda)=0$ for $\lambda$.
+
+What if we hadn't been able to solve the score equation?
+
+Then we could start with some initial guess for $\hat \lambda$, 
+such as $\hat\lambda = 1$.
+
+Then we could use the Newton-Raphson algorithm.
+
+In @exr-hessian, We found that the score function was:
+
+$$
+\ell'( \lambda; \vec x ) = \paren{\frac{1}{\lambda} n \xbar} - n
+$$
+
+and the Hessian was:
+
+$$
+\ell''( \lambda; \vec x ) = -\frac{1}{\lambda^2} n \bar x
+$$
+
+In the dataset, $\xbar = `r xbar`$.
+
+So: 
+
+:::

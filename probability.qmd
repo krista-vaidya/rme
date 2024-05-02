@@ -37,9 +37,19 @@ What are some examples of binary variables in the health sciences?
 
 ## Key probability distributions
 
+### The Bernoulli distribution
+
 :::::{#def-bernoulli}
 #### Bernoulli distribution
 {{< include def-bernoulli.qmd >}}
+:::::
+
+### The Poisson distribution
+
+:::::{#def-poisson}
+#### Poisson distribution
+
+$$P(Y=y) = \frac{\lambda^{y} e^{-\lambda}}{y!}$$
 :::::
 
 
@@ -50,7 +60,7 @@ What are some examples of binary variables in the health sciences?
 
 The density function $f(t)$ or $\p(T=t)$ for a random variable $T$ at value $t$ can be defined as the derivative of the cumulative probability function $P(T\le t)$; that is:
 
-$$f(t) \eqdef \frac{d}{dt} \Pr(T\le t)$$
+$$f(t) \eqdef \deriv{t} \Pr(T\le t)$$
 
 :::
 

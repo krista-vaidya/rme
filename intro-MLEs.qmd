@@ -184,6 +184,7 @@ $$
 \ea
 $$
 :::
+
 ---
 
 ### The score function
@@ -256,7 +257,7 @@ $$
 {
 \paren
 {
-\frac{d}{d\th}
+\deriv{\th}
 \log{\p(X = x | \th)}
 }
 \p(X = x | \theta) dx
@@ -265,14 +266,14 @@ $$
 \int_{x \in \range{X}}
 {
 \frac
-{\frac{d}{d\theta} \p(X = x | \th)}
+{\deriv{\theta} \p(X = x | \th)}
 {\p(X = x | \theta)}
 \p(X = x | \theta) dx
 }
 \\ &= 
 \int_{x \in \range{X}}
 {
-\frac{d}{d\theta} \p(X = x | \th) dx
+\deriv{\theta} \p(X = x | \th) dx
 }
 \ea
 $$
@@ -313,13 +314,13 @@ $$
 
 (see @dobson4e, §3.17), where
 
-$$\ell'' \eqdef \frac{d}{d\theta}\ell^{'(x,\theta)^{\top}} = \frac{d}{d\theta}\frac{d}{d\theta^{\top}}\ell(x,\theta)$$
+$$\ell'' \eqdef \deriv{\theta}\ell^{'(x,\theta)^{\top}} = \deriv{\theta}\deriv{\theta^{\top}}\ell(x,\theta)$$
 
 is the $p \times p$ matrix whose elements are:
 
-$$\ell_{ij}'' \eqdef \frac{d}{d\theta_{i}}\frac{d}{d\theta_{j}}\log{ p\left( X = x \mid \theta \right)}$$
+$$\ell_{ij}'' \eqdef \deriv{\theta_{i}}\deriv{\theta_{j}}\log{ p\left( X = x \mid \theta \right)}$$
 
-$\ell''$ could be called the "Hessian" of the log-likelihood
+$\ell''$ is called the "Hessian"^[named after mathematician [Otto Hesse](https://en.wikipedia.org/wiki/Otto_Hesse)] of the log-likelihood
 function.
 
 Sometimes, we use $I(\theta;x) \eqdef - \ell''$ (note the
@@ -342,25 +343,31 @@ some cases where it’s provably better according to some criteria (@efron1978as
 
 ### Gradient ascent {#sec-newton-raphson}
 
-Note that later, when we are trying to find MLEs for likelihoods that we
-can’t easily differentiate, we will "hill-climb" using the
-Newton-Raphson algorithm:
+Note that later, 
+when we are trying to find MLEs for likelihoods which we can’t easily differentiate, 
+we will "hill-climb" using the Newton-Raphson algorithm:
 
 $$
 \begin{aligned}
-\widehat{\theta} 
-&\leftarrow \widehat{\theta} + [ I\left( \widehat{\theta},y \right) ]^{- 1}\ell'\left( y,\widehat{\theta} \right)\\
-&= \widehat{\theta} - [ \ell''\left( y,\widehat{\theta} \right) ]^{- 1}\ell'\left( y,\widehat{\theta} \right)
+\esttmp{\theta} 
+&\leftarrow \esttmp{\theta} + \inv{\oinff{\vec y;\esttmp{\theta}}}
+\scoref{\vec y;\esttmp{\theta}}
+\\ &= \esttmp{\theta} - \inv{\hessf{\vec y;\esttmp{\theta}}} 
+\scoref{\vec y;\esttmp{\theta}}
 \end{aligned}
 $$
 
-Here, for computational simplicity, we will sometimes use
+---
+
+For computational simplicity, we will sometimes use
 $\mathfrak{I}^{- 1}(\theta)$ in place of
-$I\left( \widehat{\theta},y \right)$; doing so is called "Fisher
-scoring" or the "method of scoring". Note that this is the opposite of
-the substitution that we are making for estimating the variance of the
-MLE; this time we should technically use the observed information but we
-use the expected information instead.
+$I\left( \widehat{\theta},y \right)$; 
+doing so is called "Fisher scoring" or the "method of scoring". 
+Note that this is the opposite of the substitution that we are making for estimating the variance of the MLE; 
+this time we should technically use the observed information but we use the expected information instead.
+
+
+---
 
 There’s also an "empirical information matrix" (see McLachlan and
 Krishnan 2007).
@@ -440,9 +447,9 @@ $$
 
 ### The score function
 
-$$\ell'(x,\theta) \eqdef \frac{d}{d\theta}\ell(x,\theta) = \left( \begin{array}{r}
-\frac{d}{d\mu}\ell(\theta;x) \\
-\frac{d}{d\sigma^{2}}\ell(\theta;x)
+$$\ell'(x,\theta) \eqdef \deriv{\theta}\ell(x,\theta) = \left( \begin{array}{r}
+\deriv{\mu}\ell(\theta;x) \\
+\deriv{\sigma^{2}}\ell(\theta;x)
 \end{array} \right) = \left( \begin{array}{r}
 \ell_{\mu}'(\theta;x) \\
 \ell_{\sigma^{2}}'(\theta;x)
@@ -489,7 +496,7 @@ with $1/\tau$ and differentiate with respect to $\tau$ instead, and the
 process might be even easier.
 :::
 
-$$\frac{d\ell}{d\sigma^{2}} = \frac{d}{d\sigma^{2}}\left( - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2}\sum_{i = 1}^{n}\frac{\left( x_{i} - \mu \right)^{2}}{\sigma^{2}} \right)\ $$
+$$\frac{d\ell}{d\sigma^{2}} = \deriv{\sigma^{2}}\left( - \frac{n}{2}\log{\sigma^{2}} - \frac{1}{2}\sum_{i = 1}^{n}\frac{\left( x_{i} - \mu \right)^{2}}{\sigma^{2}} \right)\ $$
 
 $$= - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}$$
 
@@ -509,8 +516,8 @@ Now:
 $$
 \begin{aligned}
 \frac{d^{2}\ell}{\left( d\sigma^{2} \right)^{2}} 
-&= \frac{d}{d\sigma^{2}}\left\{ - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}\\
-&= \left\{ - \frac{n}{2}\frac{d}{d\sigma^{2}}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\frac{d}{d\sigma^{2}}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}\\
+&= \deriv{\sigma^{2}}\left\{ - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}\\
+&= \left\{ - \frac{n}{2}\deriv{\sigma^{2}}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\deriv{\sigma^{2}}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}\\
 &= \left\{ \frac{n}{2}\left( \sigma^{2} \right)^{- 2} - \left( \sigma^{2} \right)^{- 3}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}\\
 &= \left( \sigma^{2} \right)^{- 2}\left\{ \frac{n}{2} - \left( \sigma^{2} \right)^{- 1}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}
 \end{aligned}
@@ -536,8 +543,8 @@ Finally, we have:
 $$
 \begin{aligned}
 \frac{d^{2}\ell}{d\mu\ d\sigma^{2}} 
-&= \frac{d}{d\mu}\left\{ - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}\\
-&= \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\frac{d}{d\mu}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}\\
+&= \deriv{\mu}\left\{ - \frac{n}{2}\left( \sigma^{2} \right)^{- 1} + \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2} \right\}\\
+&= \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\deriv{\mu}\sum_{i = 1}^{n}\left( x_{i} - \mu \right)^{2}\\
 &= \frac{1}{2}\left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}{- 2(x_{i} - \mu)}\\
 &= - \left( \sigma^{2} \right)^{- 2}\sum_{i = 1}^{n}{(x_{i} - \mu)}
 \end{aligned}
