@@ -6,11 +6,12 @@ There are an overwhelming number of great resources for learning R; here are som
 - Advanced R programming: @wickham2019advanced
 - Examples of graphics: @changRgraphicscookbook
 - Building R packages: @rpkgs
+- Translations from SAS: @kleinman2009sas
 
 ## Functions
 
-- Read this ASAP: https://r4ds.hadley.nz/functions.html
-- Use this as a reference: https://adv-r.hadley.nz/functions.html
+- Read this ASAP: <https://r4ds.hadley.nz/functions.html>
+- Use this as a reference: <https://adv-r.hadley.nz/functions.html>
 
 ## The `tidyverse`
 
@@ -67,7 +68,7 @@ Quarto is a system for writing documents with embedded R code and/or results:
 
 - https://r-pkgs.org/introduction.html#:~:text=This%20book%20espouses,of%20package%20structure.
 
-- Read this ASAP: https://r-pkgs.org/whole-game.html
+- Read this ASAP: <https://r-pkgs.org/whole-game.html>
 - Use the rest of @rpkgs as a reference
 
 ## Git
@@ -76,7 +77,7 @@ Quarto is a system for writing documents with embedded R code and/or results:
 
 [More details](https://r-pkgs.org/software-development-practices.html#sec-sw-dev-practices-git-github)
 
-- https://happygitwithr.com/
+- <https://happygitwithr.com/>
 
 ## Spatial data science
 
