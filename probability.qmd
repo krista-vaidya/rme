@@ -249,7 +249,7 @@ $$\Pr(\Xx1n) = \prodi1n{\Pr(X_i=x_i)}$$
 
 
 :::{#def-homosked}
-#### homoskedastic
+#### homoskedastic, heteroskedastic
 A random variable $Y$ is **homoskedastic** (with respect to covariates $X$) if the variance of $Y$ does not vary with $X$: 
 
 $$\Varr(Y|X=x) = \ss, \forall x$$
