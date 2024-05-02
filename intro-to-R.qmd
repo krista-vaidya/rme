@@ -24,6 +24,7 @@ Details:
 
 - @welcometidyverse
 - @r4ds
+- @kuhn2022tidy
 
 ## Piping
 
