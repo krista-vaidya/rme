@@ -6,6 +6,7 @@
 \def\am{\arg \max}
 \def\argmax{\arg \max}
 \def\p{\text{p}}
+\def\P{\text{P}}
 \def\ph{\hat{\text{p}}}
 \def\hp{\hat{\text{p}}}
 \def\ga{\alpha}
@@ -67,6 +68,7 @@
 \providecommand{\hExp}[1]{\hat{\text{E}}\sb{#1}}
 \providecommand{\hmu}[1]{\hat{\mu}\sb{#1}}
 \def\Expp{\mathbb{E}}
+\def\Ep{\mathbb{E}}
 \providecommand{\E}[1]{\mathbb{E}\sb{#1}}
 \providecommand{\Ef}[1]{\mathbb{E}\sb{#1}}
 \providecommand{\Exp}[1]{\mathbb{E}\sb{#1}}

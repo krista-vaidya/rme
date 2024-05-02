@@ -1,6 +1,6 @@
 # Probability
 
-{{< include macros.qmd >}}
+{{< include shared-config.qmd >}}
 
 ## Random variables
 
@@ -61,15 +61,49 @@ $$f(t) \eqdef \frac{d}{dt} \Pr(T\le t)$$
 :::
 
 :::{#def-expectation}
-### Expectation, expected value \index{expectation} \index{expected value}
+### Expectation, expected value, population mean \index{expectation} \index{expected value}
 
-The *expectation* or *expected value* of a random variable $X$, denoted $\E{X}$, $\mu(X)$, or $\mu_X$, is its mean:
+The **expectation**, **expected value**, or **population mean** of a *continuous* random variable $X$, denoted $\E{X}$, $\mu(X)$, or $\mu_X$, is the weighted mean of $X$'s possible values, weighted by the probability density function of those values:
 
-$$\E{X} = \int_{x\in \range{X}} x \cdot p(X=x)dx$$
+$$\E{X} = \int_{x\in \range{X}} x \cdot \p(X=x)dx$$
 
-(c.f. https://en.wikipedia.org/wiki/Expected_value)
+The **expectation**, **expected value**, or **population mean** of a *discrete* random variable $X$, denoted $\E{X}$, $\mu(X)$, or $\mu_X$, is the mean of $X$'s possible values, weighted by the probability mass function of those values:
+
+$$\E{X} = \sum_{x \in \range{X}} x \cdot \P(X=x)$$
+
+(c.f. <https://en.wikipedia.org/wiki/Expected_value>)
 
 :::
+
+---
+
+:::{#thm-bernoulli-mean}
+#### Expectation of the Bernoulli distribution
+
+The expectation of a Bernoulli random variable with parameter $\pi$ is:
+
+$$\E{X} = \pi$$
+:::
+
+---
+
+:::{.proof}
+
+$$
+\ba
+\E{X}
+&= \sum_{x\in \range{X}} x \cd \P(X=x)
+\\&= \sum_{x\in \set{0,1}} x \cd \P(X=x)
+\\&= \paren{0 \cd \P(X=0)} + \paren{1 \cd \P(X=1)}
+\\&= \paren{0 \cd (1-\pi)} + \paren{1 \cd \pi}
+\\&= 0 + \pi
+\\&= \pi
+\ea
+$$
+
+:::
+
+---
 
 :::{#def-variance}
 ### Variance
@@ -82,10 +116,14 @@ $$
 
 :::
 
+---
+
 :::{#thm-variance}
 ### Alternative expression for variance
 
 $$\Var{X}=\E{X^2} - \sqf{\E{X}}$$
+
+---
 
 ::::{.proof}
 By linearity of expectation, we have:
@@ -104,6 +142,7 @@ $$
 
 :::
 
+---
 
 ::: {#def-precision}
 ### Precision
@@ -124,17 +163,19 @@ $$\SD{X} \eqdef \sqrt{\Var{X}}$$
 
 :::
 
+---
+
 :::{#def-cov}
 ### Covariance
 
 For any two one-dimensional random variables, $X,Y$:
 
-$$\Cov{X,Y} \eqdef \Expf{(X - EX)(Y - EY)}$$
+$$\Cov{X,Y} \eqdef \Expf{(X - \E X)(Y - \E Y)}$$
 
 :::
 
 :::{#thm-alt-cov}
-$${Cov}(X,Y)= E[XY] - E[X] E[Y]$$
+$$\Cov{(X,Y}= \E{XY} - \E{X} \E{Y}$$
 :::
 
 
