@@ -2,13 +2,21 @@
 
 - @moore2016applied is a recent textbook on survival analysis. It also doesn't use the `tidyverse`, but otherwise seems great.
 
-- @rms2e is a popular textbook. It uses [`ggplot2`](https://ggplot2.tidyverse.org/) but not [`dplyr`](https://dplyr.tidyverse.org/), 
+- @rms2e is another popular textbook. It uses [`ggplot2`](https://ggplot2.tidyverse.org/) but not [`dplyr`](https://dplyr.tidyverse.org/), 
 and covers GLMs and survival analysis. 
 An abbreviated but continuously updated version with audio clips is available at <https://hbiostat.org/rmsc/>.
 
 - @fox2015applied is another standard text.
 
+- @mccullaghnelder is a classic, theoretical textbook on GLMs
+
+- @dalgaardintroductory covers GLMs and survival analysis at an applied level, using base R
+
+- @vittinghoff2012regression covers GLMs, survival analysis, and causal inference, using Stata
+
 - <https://online.stat.psu.edu/stat504/book/> provides course notes for 
 "STAT 504 - Analysis of Discrete Data" at Penn State University. 
 It includes logistic regression and Poisson regression, as well as 2-way tables and other related topics, and includes SAS code.
+
+
 

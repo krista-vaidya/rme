@@ -436,6 +436,8 @@ print(plot4)
 
 ## Other resources
 
-These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and you are encouraged to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes. Here are some additional resources:
+These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and you are encouraged to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes. 
+
+Here are some additional resources:
 
 {{< include other-resources.qmd >}}
