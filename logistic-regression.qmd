@@ -1242,7 +1242,7 @@ regression:
 
 "The **Western Collaborative Group Study (WCGS)** was a large
 epidemiological study designed to investigate the association between
-the"type A" behavior pattern and coronary heart disease (CHD) (Rosenman
+the "type A" behavior pattern and coronary heart disease (CHD) (Rosenman
 et al. 1964)."
 
 *From Wikipedia, "Type A and Type B personality theory":*
