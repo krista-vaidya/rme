@@ -12,7 +12,7 @@ This content is adapted from:
 
 -   @dobson4e, Chapter 7
 -   @vittinghoff2012regression, Chapter 5
-- <https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html>    
+- [David Rocke](https://dmrocke.ucdavis.edu/)'s materials from the [2021 edition of Epi 204](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)
 
 ### Configuring R {.unnumbered}
 
@@ -717,8 +717,48 @@ Given @tbl-2x2-generic, show that $\hat\omega(Event|\neg Exposed) = \frac{c}{d}$
 
 ## Properties of odds ratios {#sec-OR-props}
 
-::: notes
+:::: notes
 Odds ratios have a special property: we can swap a covariate with the outcome, and the odds ratio remains the same.
+::::
+
+:::{#thm-or-swap}
+#### Odds ratios are reversible
+
+
+For any two events $A$, $B$:
+
+$$\theta(A|B) = \theta(B|A)$$
+
+:::
+
+---
+
+::: {.proof}
+
+{{< include prf-OR-reversible.qmd >}}
+
+:::
+
+---
+
+:::: notes
+Conditional odds ratios have the same reversibility property:
+::::
+
+:::{#thm-conditional-OR-swap}
+#### Conditional odds ratios are reversible
+
+
+For any three events $A$, $B$, $C$:
+
+$$\theta(A|B,C) = \theta(B|A,C)$$
+:::
+
+---
+
+:::{.proof}
+Apply the same steps as for @thm-or-swap, 
+inserting $C$ into the conditions (RHS of $|$) of every expression.
 :::
 
 ---
@@ -1124,6 +1164,8 @@ beetles_glm_grouped |>
 
 ```
 
+---
+
 Fitted values:
 
 ```{r}
@@ -1134,11 +1176,13 @@ predict(beetles_glm_grouped, type = "link")
 fit_y = beetles$n * fitted.values(beetles_glm_grouped)
 ```
 
+---
+
 ### Individual observations
 
 ```{r}
-#| label: tbl-beetles-long
 #| tbl-cap: "`beetles` data in long format"
+#| label: tbl-beetles-long
 beetles_long
 ```
 
@@ -1703,20 +1747,22 @@ If I give you model 1, how would you get the coefficients of model 2?
 
 ## Fitting logistic regression models
 
-### 
+---
+
+::: notes
 
 In general, the estimating equation $\ell'(\beta; \mathbf x) = 0$ cannot
 be solved analytically.
 
-Instead, we have to use a variant of the Newton-Raphson method, which
-was discussed briefly in Epi 203. We won't go over it in this class; if
-you need to learn it, see @dobson4e, Chapter 4.
+Instead, we have to use a variant of the [Newton-Raphson method](intro-MLEs.qmd#sec-newton-raphson) (c.f., @dobson4e, Chapter 4).
 
 For now, all you need to know is that we make an iterative series of
 guesses, and each guess helps us make the next guess better (higher
 log-likelihood).
 
 You can see some information about this process like so:
+
+:::
 
 ```{r}
 options(digits = 8)
@@ -1731,10 +1777,14 @@ temp =
 
 ```
 
+::: notes
+
 After each iteration of the fitting procedure, the deviance
 ($2(\ell_{\text{full}} - \ell(\hat\beta))$ ) is printed. You can see
 that the algorithm took six iterations to converge to a solution where
 the likelihood wasn't changing much anymore.
+
+:::
 
 ## Model comparisons for logistic models {#sec-gof}
 

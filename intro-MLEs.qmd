@@ -340,7 +340,7 @@ and plugging in $\hthml$, but sometimes we instead use
 $\oinf(\hthml,\vx)$ for convenience; there are
 some cases where it’s provably better according to some criteria (@efron1978assessing).
 
-### Gradient ascent
+### Gradient ascent {#sec-newton-raphson}
 
 Note that later, when we are trying to find MLEs for likelihoods that we
 can’t easily differentiate, we will "hill-climb" using the

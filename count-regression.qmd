@@ -280,23 +280,32 @@ P(Y=y,Z=z|...)
 \end{aligned}
 $$
 
-#### Exercise
+---
 
+::: {#exr-zinf-pmf}
 Expand $P(Y=0|X=x,T=t)$, $P(Y=1|X=x,T=t)$ and $P(Y=y|X=x,T=t)$ into expressions involving $P(Z=1|X=x,T=t)$ and $P(Y=y|Z=0,X=x,T=t)$.
+:::
 
-#### Exercise
+---
+
+::: {#exr-zinf-moments}
 
 Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as functions of $P(Z=1|X=x,T=t)$ and $\mathbb E[Y|Z=0,X=x,T=t]$.
+:::
 
 ## Over-dispersion
 
 ### Negative binomial models
+
+::: notes
 
 The Poisson distribution model **forces** the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).
 
 When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.
 
 Most notably, the negative binomial model:
+
+:::
 
 $$P(Y=y) = \frac{\mu^y}{y!} \cdot \frac{\Gamma(\rho + y)}{\Gamma(\rho) \cdot (\rho + \mu)^y} \cdot \left(1+\frac{\mu}{\rho}\right)^{-\rho}$$
 
