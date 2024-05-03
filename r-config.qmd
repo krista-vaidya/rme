@@ -1,23 +1,61 @@
-<!-- Here are some R settings I use in this document: -->
+<!-- ::: {.content-hidden when-format="revealjs"} -->
+
+---
+
+### Configuring R {.unnumbered}
+
+Functions from these packages will be used throughout this document:
 
 ```{r}
-#| label: r-config
-#| include: false
-rm(list = ls()) # delete any data that's already loaded into R
-library(pander)
-# library(printr)
-panderOptions("big.mark", ",")
-library(conflicted)
+#| label: "packages"
+#| messages: false
+library(pander) # format tables for markdown
+library(ggplot2) # graphics
+library(ggeasy) # help with graphics
+library(ggfortify) # help with graphics
+library(dplyr) # manipulate data
+library(magrittr) # `%>%` and other additional piping tools
+library(haven) # import Stata files
+library(knitr) # format R output for markdown
+library(tidyr) # Tools to help to create tidy data
+library(plotly) # interactive graphics
+library(dobson) # datasets from Dobson and Barnett 2018
+library(parameters) # format model output tables for markdown
+library(conflicted) # check for conflicting function definitions
+library(haven) # import Stata files
 library(latex2exp)
+library(printr)
+library(fs) # filesystem path manipulations
+library(survival) # survival analysis
+library(survminer) # survival analysis graphics
+library(KMsurv) # datasets from Klein and Moeschberger
+library(parameters) # format model output tables for
+```
+
+Here are some R settings I use in this document:
+
+```{r}
+#| label: "r-config"
+
+rm(list = ls()) # delete any data that's already loaded into R
+
 conflicts_prefer(dplyr::filter)
-library(ggplot2)
 ggplot2::theme_set(
   ggplot2::theme_bw() + 
         # ggplot2::labs(col = "") +
     ggplot2::theme(
       legend.position = "bottom",
-      text = element_text(size = 12, family = "serif")))
+      text = ggplot2::element_text(size = 12, family = "serif")))
 
 knitr::opts_chunk$set(message = FALSE)
 options('digits' = 4)
+
+panderOptions("big.mark", ",")
+pander::panderOptions("table.emphasize.rownames", FALSE)
+pander::panderOptions("table.split.table", Inf)
+conflicts_prefer(dplyr::filter) # use the `filter()` function from dplyr() by default
+legend_text_size = 9
 ```
+
+<!-- ::: -->
+

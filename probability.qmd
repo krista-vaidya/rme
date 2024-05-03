@@ -1,5 +1,7 @@
 # Probability
 
+---
+
 {{< include shared-config.qmd >}}
 
 ## Random variables

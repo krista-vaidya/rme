@@ -49,6 +49,7 @@
 \def\ba{\begin{aligned}}
 \def\ea{\end{aligned}}
 \def\ind{⫫}
+\def\all{\forall}
 \def\iid{\text{iid}}
 \def\simind{\ \sim_{\ind}\ }
 \def\siid{\ \sim_{\iid}\ }
@@ -105,6 +106,7 @@
 \providecommand{\logf}[1]{\text{log}\cb{#1}}
 \renewcommand{\exp}[1]{\text{exp}\cb{#1}}
 \providecommand{\e}[1]{\text{e}^{#1}}
+\providecommand{\ef}[1]{\text{e}^{#1}}
 \providecommand{\inv}[1]{\paren{#1}^{-1}}
 \def\oinf{I}
 \providecommand{\oinff}[1]{\oinf\paren{#1}}

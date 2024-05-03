@@ -1,6 +1,8 @@
 # Generalized Linear Models
 
-{{< include shared-config.qmd >}}
+---
+
+{{< include macros.qmd >}}
 
 This section is primarily adapted starting from the textbook "An Introduction to Generalized Linear Models" (4th edition, 2018)
 by Annette J. Dobson and Adrian G. Barnett:

@@ -1,5 +1,7 @@
 # Common Mistakes
 
+---
+
 {{< include shared-config.qmd >}}
 
 ## Parameters versus random variables

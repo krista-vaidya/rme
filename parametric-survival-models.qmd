@@ -1,36 +1,8 @@
 # Parametric survival models
 
+---
+
 {{< include shared-config.qmd >}}
-
-::: {.content-hidden when-format="revealjs"}
-### Configuring R {.unnumbered}
-
-Functions from these packages will be used throughout this document:
-
-```{r packages, message = FALSE}
-library(pander) # format tables for markdown
-library(ggplot2) # graphics
-library(ggeasy) # help with graphics
-library(dplyr) # manipulate data
-library(haven) # import Stata files
-library(knitr) # format R output for markdown
-library(tidyr) # Tools to help to create tidy data
-library(plotly) # interactive graphics
-library(dobson) # datasets from Dobson and Barnett 2018
-library(parameters) # format model output tables for markdown
-library(conflicted) # check for conflicting function definitions
-conflicts_prefer(dplyr::filter)
-```
-
-Here are some R settings I use in this document:
-
-```{r options, message=FALSE}
-rm(list = ls()) # delete any data that's already loaded into R
-knitr::opts_chunk$set(message = FALSE)
-pander::panderOptions("table.emphasize.rownames", FALSE)
-options('digits' = 4)
-```
-:::
 
 ## Parametric Survival Models
 

@@ -1,10 +1,14 @@
 # Introduction to Maximum Likelihood Inference {#sec-intro-MLEs}
 
-{{< include shared-config.qmd >}}
+---
 
 These notes are derived primarily from @dobson4e (mostly chapters 1-5).
 
 Some material was also taken from @mclachlan2007em and @CaseBerg01.
+
+---
+
+{{< include shared-config.qmd >}}
 
 ## Overview of maximum likelihood estimation
 

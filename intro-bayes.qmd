@@ -1,6 +1,10 @@
 # Introduction to Bayesian statistical analysis
 
+---
+
 {{< include shared-config.qmd >}}
+
+---
 
 \usepackage{MnSymbol}
 

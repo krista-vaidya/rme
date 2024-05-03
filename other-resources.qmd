@@ -14,9 +14,12 @@ An abbreviated but continuously updated version with audio clips is available at
 
 - @vittinghoff2012regression covers GLMs, survival analysis, and causal inference, using Stata
 
+- @faraway2016extending has GLMs but not survival analysis
+
 - <https://online.stat.psu.edu/stat504/book/> provides course notes for 
 "STAT 504 - Analysis of Discrete Data" at Penn State University. 
 It includes logistic regression and Poisson regression, as well as 2-way tables and other related topics, and includes SAS code.
 
+- @NahhasIRMPHR is currently in-development
 
 

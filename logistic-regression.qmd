@@ -4,6 +4,8 @@ subtitle: "Logistic regression and variations"
 
 # Models for Binary Outcomes
 
+---
+
 {{< include shared-config.qmd >}}
 
 ### Acknowledgements {.unnumbered}
@@ -13,24 +15,6 @@ This content is adapted from:
 -   @dobson4e, Chapter 7
 -   @vittinghoff2012regression, Chapter 5
 - [David Rocke](https://dmrocke.ucdavis.edu/)'s materials from the [2021 edition of Epi 204](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)
-
-### Configuring R {.unnumbered}
-
-Functions from these packages will be used throughout this document:
-
-```{r packages, message = FALSE}
-library(pander) # format tables for markdown
-library(ggplot2) # graphics
-library(ggeasy) # help with graphics
-library(dplyr) # manipulate data
-library(haven) # import Stata files
-library(knitr) # format R output for markdown
-library(tidyr) # Tools to help to create tidy data
-library(plotly) # interactive graphics
-library(dobson) # datasets from Dobson and Barnett 2018
-library(parameters) # format model output tables for markdown
-library(conflicted) # check for conflicting function definitions
-```
 
 ## Introduction
 

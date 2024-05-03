@@ -1,41 +1,8 @@
 # Introduction
 
-::: {.content-hidden when-format="revealjs"}
+---
 
-### Configuring R {.unnumbered}
-
-Functions from these packages will be used throughout this document:
-
-```{r packages, message = FALSE}
-
-library(ggplot2) # graphics
-library(ggeasy) # help with graphics
-library(plotly) # interactive graphics
-library(dplyr) # manipulate data
-library(tidyr) # Tools to help to create tidy data
-library(haven) # import Stata files
-library(pander) # format tables for markdown
-library(knitr) # format R output for markdown
-library(kableExtra) # more markdown formatting
-library(parameters) # format model output tables for markdown
-library(reactable) # interactive tables
-library(dobson) # datasets from Dobson and Barnett 2018
-library(conflicted) # check for conflicting function definitions
-```
-
-Here are some R settings I use in this document:
-
-```{r options, message=FALSE}
-rm(list = ls()) # delete any data that's already loaded into R
-knitr::opts_chunk$set(message = FALSE)
-knitr::opts_chunk$set(warning = FALSE)
-pander::panderOptions("table.emphasize.rownames", FALSE)
-options('digits' = 4)
-conflicts_prefer(plotly::filter)
-conflicts_prefer(ggplot2::autoplot)
-```
-
-:::
+{{< include shared-config.qmd >}}
 
 ## Introduction to Epi 204 {.scrollable}
 
