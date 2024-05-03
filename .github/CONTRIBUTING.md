@@ -6,7 +6,8 @@ For a detailed discussion on contributing to this and other projects, please see
 ## Fixing typos
 
 You can fix typos, spelling mistakes, or grammatical errors directly using the GitHub web interface by making changes in the corresponding *source* file. 
-This generally means you'll need to edit a `.qmd` file.
+This generally means you'll need to edit a `.qmd` file. 
+This book is written using [Quarto](https://quarto.org/docs/books/).
 
 ## Bigger changes
 
