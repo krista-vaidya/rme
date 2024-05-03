@@ -247,7 +247,7 @@ Derive the score function for the dataset.
 
 ::::{.solution}
 
-The score function is the first derivative(s) of the log-likelihood:
+The score function is the first derivative of the log-likelihood:
 
 $$
 \begin{aligned}

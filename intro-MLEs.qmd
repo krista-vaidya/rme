@@ -189,7 +189,7 @@ $$
 
 ### The score function
 
-The first derivative of the log-likelihood, $\lik'(\th)$, is important enough to have its own name: the *score function*.
+The first derivative^[a.k.a. the [gradient](https://en.wikipedia.org/wiki/Gradient)] of the log-likelihood, $\lik'(\th)$, is important enough to have its own name: the *score function*.
 
 :::{#def-score}
 #### Score function
