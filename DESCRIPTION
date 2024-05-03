@@ -12,6 +12,7 @@ Encoding: UTF-8
 Imports: 
     dobson,
     fs,
+    latex2exp,
     pander
 Suggests: 
     tidyverse,

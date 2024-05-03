@@ -8,9 +8,16 @@ library(pander)
 # library(printr)
 panderOptions("big.mark", ",")
 library(conflicted)
+library(latex2exp)
 conflicts_prefer(dplyr::filter)
 library(ggplot2)
-ggplot2::theme_set(ggplot2::theme_bw())
+ggplot2::theme_set(
+  ggplot2::theme_bw() + 
+        # ggplot2::labs(col = "") +
+    ggplot2::theme(
+      legend.position = "bottom",
+      text = element_text(size = 12, family = "serif")))
+
 knitr::opts_chunk$set(message = FALSE)
 options('digits' = 4)
 ```

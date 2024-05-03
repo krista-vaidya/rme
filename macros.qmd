@@ -61,11 +61,14 @@
 \def\score{\ell'}
 \providecommand{\scoref}[1]{\score \paren{#1}}
 \def\hess{\ell''}
+\def\hessian{\ell''}
 \providecommand{\hessf}[1]{\hess \paren{#1}}
+\providecommand{\hessianf}[1]{\hess \paren{#1}}
 \providecommand{\starf}[1]{#1^*}
 \def\lik{\ell}
 \providecommand{\est}[1]{\widehat{#1}}
-\providecommand{\esttmp}[1]{\widehat{#1}^*}
+\providecommand{\esttmp}[1]{{\widehat{#1}}^*}
+\def\esttmpl{\esttmp{\lambda}}
 \def\cR{\mathcal{R}}
 \providecommand{\range}[1]{\cR\paren{#1}}
 \def\~{\approx}

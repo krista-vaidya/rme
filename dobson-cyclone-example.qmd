@@ -35,7 +35,6 @@ cyclones |>
   geom_line() +
   xlab("Season") +
   ylab("Number of cyclones") +
-  theme_bw() +
   expand_limits(y = 0) +
   theme(axis.text.x = element_text(vjust = .5, angle = 45))
 ```
@@ -51,7 +50,6 @@ cyclones |>
   ggplot() +
   geom_histogram(aes(x = number)) +
   expand_limits(x = 0) +
-  theme_bw() +
   xlab("Number of cyclones") +
   ylab("Count (number of seasons)")
 ```
@@ -78,22 +76,23 @@ We could estimate $P(Y=y)$ for each value of $y$ in $0:\infty$ separately ("nonp
 :::{#exr-cyclone-choose-dist}
 What parametric probability distribution family might we use to model this empirical distribution?
 
+:::
+
 ::::{.solution}
 Let's use the Poisson. The Poisson distribution is appropriate for this data , because the data are counts that could theoretically take any integer value (discrete) in the range $0:\infty$. Visually, the plot of our data closely resembles a Poisson or binomial distribution. Since cyclones do not have an "upper limit" on the number of events we could potentially observe in one season, the Poisson distribution is more appropriate than the binomial.
 ::::
 
-:::
-
 :::{#exr-def-poisson}
 
 Write down the Poisson distribution's probability mass function.
+
+:::
 
 ::::{.solution}
 
 $$P(Y=y) = \frac{\lambda^{y} e^{-\lambda}}{y!}$$
 ::::
 
-:::
 
 ### Estimating the model parameters using maximum likelihood
 
@@ -103,6 +102,7 @@ What is the likelihood?
 
 :::{#exr-poisson-likelihood}
 Write down the likelihood (probability mass function or probability density function) of a single observation $x$, according to your model.
+:::
 
 ::::{.solution}
 
@@ -116,34 +116,35 @@ $$
 
 ::::
 
-:::
 
 ::: {#exr-poisson-parameters}
 
 Write down the vector of parameters in your model.
-
+:::
 ::::{.solution}
 
 There is only one parameter, $\lambda$:
 
 $$\theta = (\lambda)$$
 ::::
-:::
+
 
 ::: {#exr-poisson-mean-and-variance}
 Write down the population mean and variance of a single observation from your chosen probability model, as a function of the parameters (extra credit - derive them).
 
+:::
 ::::{.solution}
 * Population mean: $\text{E}[X]=\lambda$ 
 * Population variance: $\text{Var}(X)=\lambda$
 
 ::::
 
-:::
 
 ::: {#exr-sample-likelihood}
 
 Write down the likelihood of the full dataset.
+
+:::
 
 ::::{.solution}
 
@@ -159,8 +160,6 @@ $$
 
 ::::
 
-:::
-
 ::: {#exr-graph-likelihood}
 
 Graph the likelihood as a function of $\lambda$.
@@ -173,16 +172,15 @@ Graph the likelihood as a function of $\lambda$.
 
 lik = function(lambda, y = cyclones$number, n = length(y)) 
 {
-  lambda^sum(y) * exp(-n*lambda) / prod(factorial(y))
+lambda^sum(y) * exp(-n*lambda) / prod(factorial(y))
 }
 
 library(ggplot2)
 ggplot() +
-  geom_function(fun = lik, n = 1001) +
-  xlim(min(cyclones$number), max(cyclones$number)) +
-  theme_bw() +
-  ylab("likelihood") +
-  xlab('lambda')
+geom_function(fun = lik, n = 1001) +
+xlim(min(cyclones$number), max(cyclones$number)) +
+ylab("likelihood") +
+xlab('lambda')
 
 ```
 
@@ -225,15 +223,14 @@ Graph the log-likelihood as a function of $\lambda$.
 
 loglik = function(lambda, y = cyclones$number, n = length(y))
 {
-  sum(y) * log(lambda) - n*lambda - sum(log(factorial(y)))
+sum(y) * log(lambda) - n*lambda - sum(log(factorial(y)))
 }
 
 ll_plot = ggplot() +
-  geom_function(fun = loglik, n = 1001) +
-  xlim(min(cyclones$number), max(cyclones$number)) +
-  theme_bw() +
-  ylab("log-likelihood") +
-  xlab('lambda')
+geom_function(fun = loglik, n = 1001) +
+xlim(min(cyclones$number), max(cyclones$number)) +
+ylab("log-likelihood") +
+xlab('lambda')
 ll_plot
 
 ```
@@ -282,16 +279,16 @@ Graph the score function.
 
 score = function(lambda, y = cyclones$number, n = length(y))
 {
-  sum(y)/lambda - n
+  (sum(y) / lambda) - n
 }
 
 ggplot() +
-  geom_function(fun = score, n = 1001) +
-  xlim(min(cyclones$number), max(cyclones$number)) +
-  theme_bw() +
-  ylab("l'(lambda)") +
-  xlab('lambda') +
-  geom_hline(yintercept = 0, col = 'red')
+geom_function(fun = score, n = 1001) +
+xlim(min(cyclones$number), max(cyclones$number)) +
+
+ylab("l'(lambda)") +
+xlab('lambda') +
+geom_hline(yintercept = 0, col = 'red')
 
 ```
 
@@ -335,16 +332,16 @@ Graph the Hessian.
 
 hessian = function(lambda, y = cyclones$number, n = length(y))
 {
-  -sum(y)/lambda^2
+-sum(y)/(lambda^2)
 }
 
 ggplot() +
-  geom_function(fun = hessian, n = 1001) +
-  xlim(min(cyclones$number), max(cyclones$number)) +
-  theme_bw() +
-  ylab("l''(lambda)") +
-  xlab('lambda') +
-  geom_hline(yintercept = 0, col = 'red')
+geom_function(fun = hessian, n = 1001) +
+xlim(min(cyclones$number), max(cyclones$number)) +
+
+ylab("l''(lambda)") +
+xlab('lambda') +
+geom_hline(yintercept = 0, col = 'red')
 
 
 ```
@@ -440,42 +437,261 @@ ll_plot + geom_point(data = mle_data, aes(x = x, y = y), col = 'red')
 ::::
 :::
 
+#### Information matrices
+
 ```{r}
-#| label: obs-inf-matrix
-obs_inf = function(lambda, y = cyclones$number, n = length(y))
-{
-  sum(y)/lambda^2
-}
+#| label: fig-obs-inf-matrix
+#| fig-cap: "Observed information function of Dobson cyclone data"
+obs_inf = function(...) -hessian(...)
+ggplot() +
+geom_function(fun = obs_inf, n = 1001) +
+xlim(min(cyclones$number), max(cyclones$number)) +
+ylab("I(lambda)") +
+xlab('lambda') +
+geom_hline(yintercept = 0, col = 'red') 
 ```
 
---
+---
 
-:::{#exm-dobson-cyclones-Newton}
+:::::::{#exm-dobson-cyclones-Newton}
+
+##### Finding the MLE using the Newton-Raphson algorithm
+
+::: notes
 
 We found that the MLE was $\hat{\lambda} = \bar{x}$, 
 by solving the score equation $\ell'(\lambda)=0$ for $\lambda$.
 
 What if we hadn't been able to solve the score equation?
 
-Then we could start with some initial guess for $\hat \lambda$, 
-such as $\hat\lambda = 1$.
-
-Then we could use the Newton-Raphson algorithm.
-
-In @exr-hessian, We found that the score function was:
-
-$$
-\ell'( \lambda; \vec x ) = \paren{\frac{1}{\lambda} n \xbar} - n
-$$
-
-and the Hessian was:
-
-$$
-\ell''( \lambda; \vec x ) = -\frac{1}{\lambda^2} n \bar x
-$$
-
-In the dataset, $\xbar = `r xbar`$.
-
-So: 
+Then we could start with some initial guess $\esttmpl$, 
+such as $\esttmpl = 3$, and use the [Newton-Raphson algorithm](#sec-newton-raphson).
 
 :::
+
+```{r}
+# specify initial guess:
+cur_lambda_est = 3
+```
+
+:::::::
+
+---
+
+::: notes
+
+In @exr-cyclone-score-fn, we found that the score function was:
+
+:::
+
+$$
+\score( \lambda; \vec x ) = \paren{\frac{`r sumx`}{\lambda} } - n
+$$
+
+::: notes
+In @exr-hessian, we found that the Hessian was:
+:::
+
+$$
+\hessian( \lambda; \vec x ) = -\frac{`r sumx`}{\lambda^2} 
+$$
+
+---
+
+::: notes
+So we can approximate the the score function using the first-order [Taylor polynomial](https://en.wikipedia.org/wiki/Taylor%27s_theorem):
+:::
+
+$$
+\ba
+\score(\lambda) 
+&\approx \score^*(\lambda)
+\\ &\eqdef \score(\esttmpl) + \hessian(\esttmpl)(\lambda - \esttmpl)
+\\ &= \paren{\frac{`r sumx`}{\esttmpl}  - n} + \paren{-\frac{`r sumx`}{\sqf{\esttmpl}}} (\lambda - \esttmpl)
+\ea
+$$
+
+---
+
+::: notes
+@fig-cyclone-newton-step1 compares the true score function and the approximate score function at $\esttmpl = `r cur_lambda_est`$.
+:::
+
+```{r}
+#| label: fig-cyclone-newton-step1
+#| fig-cap: "score function of Dobson cyclone data and approximate score function"
+
+approx_score = function(lambda, lhat, ...)
+{
+  score(lambda = lhat, ...) +
+  hessian(lambda = lhat, ...) * (lambda - lhat)
+}
+
+point_size = 5
+
+plot1 = ggplot() +
+geom_function(
+  fun = score, 
+  aes(col = "true score function"), 
+  n = 1001) +
+geom_function(
+  fun = approx_score, 
+  aes(col = "approximate score function"),
+  n = 1001, 
+  args = list(lhat = cur_lambda_est)) +
+geom_point(
+  size = point_size,
+  aes(x = cur_lambda_est, y = score(lambda = cur_lambda_est),
+      col = "current estimate")
+) +
+geom_point(
+size = point_size,
+aes(
+x = xbar,
+y = 0,
+col = "true MLE"
+)
+) +
+xlim(min(cyclones$number), max(cyclones$number)) +
+ylab("l'(lambda)") +
+xlab('lambda') +
+geom_hline(yintercept = 0)
+
+print(plot1)
+```
+
+---
+
+::: notes
+
+This is equivalent to estimating the log-likelihood with a second-order Taylor polynomial:
+
+:::
+
+$$
+\llik^*(\lambda) = 
+\llik(\esttmpl) + 
+(\lambda - \esttmpl) \score(\esttmpl) +
+\frac{1}{2}\hessian(\esttmpl)(\lambda-\esttmpl)^2
+$$
+
+```{r}
+#| label: fig-cyclone-newton-step1-loglik
+#| fig-cap: "log-likelihood of Dobson cyclone data and approximate log-likelihood function"
+
+approx_loglik = function(lambda, lhat, ...)
+{
+loglik(lambda = lhat, ...) +
+score(lambda = lhat, ...) * (lambda - lhat) +
+  1/2 * hessian(lambda = lhat, ...) * (lambda - lhat)^2
+}
+
+plot_loglik = ggplot() +
+geom_function(
+  fun = loglik, 
+  aes(col = "true log-likelihood"), 
+  n = 1001) +
+geom_function(
+  fun = approx_loglik, 
+  aes(col = "approximate log-likelihood"),
+  n = 1001, 
+  args = list(lhat = cur_lambda_est)) +
+geom_point(
+  size = point_size,
+  aes(x = cur_lambda_est, y = loglik(lambda = cur_lambda_est),
+      col = "current estimate")
+) +
+geom_point(
+size = point_size,
+aes(
+x = xbar,
+y = loglik(xbar),
+col = "true MLE"
+)
+) +
+xlim(min(cyclones$number) - 1, max(cyclones$number)) +
+ylab("l'(lambda)") +
+xlab('lambda')
+
+print(plot_loglik)
+```
+
+---
+
+::: notes
+The approximate score function, $\score^*(\lambda)$, is a linear function of $\lambda$, so it is easy to solve the corresponding approximate score equation, $\score^*(\lambda) = 0$, for $\lambda$:
+:::
+
+$$
+\ba
+\lambda 
+&= \esttmpl - \score(\esttmpl) \cd \inv{\hessian(\esttmpl)}
+\\ &= `r cur_lambda_est - score(cur_lambda_est) * hessian(cur_lambda_est)^-1`
+\ea
+$$
+
+```{r}
+new_lambda_est <- 
+   cur_lambda_est - 
+   score(cur_lambda_est) * hessian(cur_lambda_est)^-1
+```
+
+---
+
+```{r}
+#| label: fig-cyclone-newton-step1-with-new-est
+#| fig-cap: "score function of Dobson cyclone data and approximate score function"
+
+plot2 = plot1 + 
+geom_point(
+size = point_size,
+aes(
+x = new_lambda_est,
+y = 0,
+col = "new estimate"
+)) +
+geom_segment(
+arrow = grid::arrow(),
+linewidth = 2,
+alpha = .7,
+aes(
+x = cur_lambda_est, 
+y = approx_score(
+lhat = cur_lambda_est, 
+lambda = cur_lambda_est),
+xend = new_lambda_est, 
+yend = 0,
+col = "update"
+)
+)
+print(plot2)
+
+```
+
+---
+
+::: notes
+
+So we update $\esttmpl \leftarrow `r new_lambda_est`$ and repeat our estimation process:
+
+:::
+
+```{r}
+#| label: fig-cyclone-newton-step2
+#| fig-cap: "score function of Dobson cyclone data and approximate score function"
+
+plot2 +
+geom_function(
+  fun = approx_score, 
+  aes(col = "new approximate score function"),
+  n = 1001, 
+  args = list(lhat = new_lambda_est)) +
+geom_point(
+  size = point_size,
+  aes(x = new_lambda_est, y = score(lambda = new_lambda_est),
+      col = "new estimate")
+)
+
+```
+
+
