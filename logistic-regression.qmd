@@ -1315,16 +1315,20 @@ Here, I load the data:
 
 ```{r}
 #| code-fold: show
+#| eval: false
 
 ### load the data directly from a UCSF website:
-# library(haven)
-# url = paste0( 
-#     # I'm breaking up the url into two chunks for readability
-#     "https://regression.ucsf.edu/sites/g/files/",
-#     "tkssra6706/f/wysiwyg/home/data/wcgs.dta")
-# wcgs = haven::read_dta(url)
+library(haven)
+url = paste0(
+    # I'm breaking up the url into two chunks for readability
+    "https://regression.ucsf.edu/sites/g/files/",
+    "tkssra6706/f/wysiwyg/home/data/wcgs.dta")
+wcgs = haven::read_dta(url)
 
+```
 
+```{r}
+#| include: false
 # I presaved the data in my project's `data` folder
 library(here) # provides the `here()` function
 library(fs) # provides the `path()` function

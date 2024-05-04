@@ -626,3 +626,4 @@ To prove it’s a maximum, need:
 - Determinant of $\ell''$ is positive.
 
 
+{{< include HERS-example.qmd >}}

@@ -2313,3 +2313,49 @@ There are more options; see @dobson4e §6.4.1 and the
 [`codingMatrices` package](https://CRAN.R-project.org/package=codingMatrices) 
 [vignette](https://cran.r-project.org/web/packages/codingMatrices/vignettes/codingMatrices.pdf) 
 (@venablescodingMatrices).
+
+## Ordinal covariates
+
+(c.f. @dobson4e §2.4.4)
+
+---
+
+::: notes
+We can create ordinal variables in R using the `ordered()` function^[or equivalently, `factor(ordered = TRUE)`].
+:::
+
+:::{#exm-ordinal-variable}
+
+```{r}
+#| eval: false
+url = paste0(
+  "https://regression.ucsf.edu/sites/g/files/tkssra6706/",
+  "f/wysiwyg/home/data/hersdata.dta")
+library(haven)
+hers = read_dta(url)
+```
+
+```{r}
+#| include: false
+library(haven)
+hers = read_stata("data/hersdata.dta")
+```
+
+```{r}
+#| tbl-cap: "HERS dataset"
+#| label: tbl-HERS
+hers
+```
+
+
+:::
+
+---
+
+```{r}
+
+# C(contr = codingMatrices::contr.diff)
+
+
+```
+
