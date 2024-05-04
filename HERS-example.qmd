@@ -376,7 +376,7 @@ sim_results = do_n_sims(
   n = 100 # this is the number of samples per simulated data set
 )
 
-sim_results
+sim_results |> head(10)
 ```
 
 The simulation results are in! Now we have to analyze them. 

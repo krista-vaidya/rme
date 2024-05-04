@@ -617,7 +617,7 @@ $$I^{- 1} = \begin{bmatrix}
 
 See @CaseBerg01 p322, example 7.2.12.
 
-To prove it’s a maximum, need:
+To prove it’s a maximum, we need:
 
 - $\ell' = 0$
 

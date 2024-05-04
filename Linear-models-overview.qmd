@@ -2173,7 +2173,7 @@ The data include three species: "setosa", "versicolor", and "virginica".
 ```{r}
 #| tbl-cap: "The `iris` data"
 #| label: tbl-iris-data
-iris
+head(iris)
 ```
 
 ```{r}
@@ -2344,7 +2344,7 @@ hers = read_stata("data/hersdata.dta")
 ```{r}
 #| tbl-cap: "HERS dataset"
 #| label: tbl-HERS
-hers
+hers |> head()
 ```
 
 
