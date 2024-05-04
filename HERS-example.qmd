@@ -369,7 +369,13 @@ do_n_sims = function(
 
 ```{r}
 
-sim_results = do_n_sims()
+sim_results = do_n_sims(
+  n_sims = 100,
+  mu = mean(glucose_data),
+  sigma2 = var(glucose_data),  
+  n = 100 # this is the number of samples per simulated data set
+)
+
 sim_results
 ```
 
@@ -409,12 +415,6 @@ summarize_sim = function(
 Let's try it out:
 
 ```{r}
-sim_results = do_n_sims(
-  n_sims = 1000,
-  mu = mean(glucose_data),
-  sigma2 = var(glucose_data),  
-  n = 100 # this is the number of samples per simulated data set
-)
 
 sim_summary = summarize_sim(
   sim_results, 
