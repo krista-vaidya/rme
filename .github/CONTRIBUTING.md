@@ -13,7 +13,7 @@ This book is written using [Quarto](https://quarto.org/docs/books/).
 
 If you want to make a bigger change, it's a good idea to first file an issue and make sure someone from the development team agrees that it’s needed. 
 
-### Pull request process
+### [Pull request](https://usethis.r-lib.org/articles/pr-functions.html#whats-a-pull-request) process
 
 *   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("d-morrison/rme", fork = TRUE)`.
 
