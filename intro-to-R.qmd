@@ -79,6 +79,8 @@ Quarto is a system for writing documents with embedded R code and/or results:
 
 - <https://happygitwithr.com/>
 
+- <https://usethis.r-lib.org/articles/pr-functions.html>
+
 ## Spatial data science
 
 - @spatialds

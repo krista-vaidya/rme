@@ -19,7 +19,9 @@ If you want to make a bigger change, it's a good idea to first file an issue and
 
 *   Install all development dependencies with `devtools::install_dev_deps()`. Make sure you can build the book by running `quarto render` in a Terminal.
 
-*   Create a Git branch for your pull request (PR). We recommend using `usethis::pr_init("brief-description-of-change")`.
+*   Create a Git branch for your pull request (PR). 
+We recommend using `usethis::pr_init("brief-description-of-change")`. 
+Details at <https://usethis.r-lib.org/articles/pr-functions.html>
 
 *   Make your changes, commit to git, and then create a PR by running `usethis::pr_push()`, and following the prompts in your browser.
     The title of your PR should briefly describe the change.
