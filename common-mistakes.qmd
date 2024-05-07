@@ -27,6 +27,8 @@ Really, we should use $\mu$ instead of $\text{E}$.
 
 ## Quarto
 
+###
+
 Make sure not to put a div `:::` on the next line after a slide break `---`:
 
 ```
@@ -43,3 +45,7 @@ There needs to be an empty line between them:
 ::: notes
 :::
 ```
+
+### `library(printr)` currently breaks `df-print: paged`
+
+See <https://github.com/yihui/printr/issues/41>

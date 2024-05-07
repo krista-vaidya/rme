@@ -10,10 +10,15 @@ Authors@R:
 Description: Lecture notes for Epi 204 @ UC Davis
 Encoding: UTF-8
 Imports: 
+    arsenal,
     dobson,
     fs,
+    glmnet,
+    here,
     latex2exp,
-    pander
+    olsrr,
+    pander,
+    table1
 Suggests: 
     tidyverse,
     conflicted,

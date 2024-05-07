@@ -1403,7 +1403,6 @@ Any or all of these events may be censored.
 ### `KMsurv::bmt` data in R
 
 ```{r}
-library(printr) # inserts help-file output into markdown output
 library(KMsurv)
 ?bmt
 ```

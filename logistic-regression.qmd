@@ -1167,7 +1167,9 @@ fit_y = beetles$n * fitted.values(beetles_glm_grouped)
 ```{r}
 #| tbl-cap: "`beetles` data in long format"
 #| label: tbl-beetles-long
+
 beetles_long
+
 ```
 
 ---
@@ -1218,16 +1220,15 @@ individual-observations (Bernoulli) version of the model.
 ### Coronary heart disease (WCGS) study data
 
 ::: notes
-Let's use the data from the following study to explore multiple logistic
-regression:
+Let's use the data from the Western Collaborative Group Study (WCGS) 
+(@rosenman1975coronary) to explore multiple logistic regression:
 :::
 
 *From @vittinghoff2012regression:*
 
 "The **Western Collaborative Group Study (WCGS)** was a large
 epidemiological study designed to investigate the association between
-the "type A" behavior pattern and coronary heart disease (CHD) (Rosenman
-et al. 1964)."
+the "type A" behavior pattern and coronary heart disease (CHD)".
 
 *From Wikipedia, "Type A and Type B personality theory":*
 
@@ -1266,6 +1267,7 @@ blue- and white-collar employees.
 ### Baseline data collection
 
 socio-demographic characteristics:
+
 -   age
 -   education
 -   marital status
@@ -1287,6 +1289,7 @@ biochemical measurements:
 ---
 
 behavioral data:
+
 -   Type A interview,
 -   smoking,
 -   exercise
@@ -1303,11 +1306,6 @@ Later surveys added data on:
 
 Average follow-up continued for 8.5 years with repeat examinations.
 
-Reference: Coronary Heart Disease in the Western Collaborative Group
-Study Final Follow-up Experience of 8 1/2 Years Ray H. Rosenman, MD;
-Richard J. Brand, PhD; C. David Jenkins, PhD; Meyer Friedman, MD; Reuben
-Straus, MD; Moses Wurm, MD JAMA. 1975;233(8):872-877.
-doi:10.1001/jama.1975.03260080034016.
 
 ### Load the data
 
@@ -1338,7 +1336,18 @@ here::here() |>
 
 ```
 
-### Now let's do some data cleaning
+```{r}
+#| label: tbl-wcgs
+#| tbl-cap: "`wcgs` data"
+wcgs
+```
+
+
+### Data cleaning
+
+::: notes
+Now let's do some data cleaning
+:::
 
 ```{r}
 #| code-fold: show
@@ -1422,9 +1431,9 @@ chd_grouped_data
 
 ### Graphical exploration
 
-#### Probability scale
-
-```{r "graphical exploration"}
+```{r}
+#| label: fig-chd-graph-prob-scale
+#| fig-cap: "CHD rates by age group, probability scale"
 
 library(ggplot2)
 library(ggeasy)
@@ -1450,24 +1459,10 @@ chd_plot_probs =
   ggeasy::easy_labs() +
   theme(legend.position = "bottom")
 
-```
-
-::: {.content-visible when-format="html"}
-```{r}
-#| label: fig-chd-graph-prob-scale-interactive
-#| fig-cap: "CHD rates by age group, probability scale"
-ggplotly(chd_plot_probs)
-# print(chd_plot_probs)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
-#| label: fig-chd-graph-prob-scale-static
-#| fig-cap: "CHD rates by age group, probability scale"
 print(chd_plot_probs)
 ```
-:::
+
+---
 
 #### Odds scale
 
@@ -1502,19 +1497,10 @@ chd_plot_odds =
   theme_bw() +
   ylab("odds(CHD Event by 1969)") +
   ggeasy::easy_labs()
-```
-
-::: {.content-visible when-format="html"}
-```{r}
-ggplotly(chd_plot_odds)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
 print(chd_plot_odds)
 ```
-:::
+
+---
 
 #### Log-odds (logit) scale
 

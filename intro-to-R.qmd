@@ -13,6 +13,15 @@ There are an overwhelming number of great resources for learning R; here are som
 - Read this ASAP: <https://r4ds.hadley.nz/functions.html>
 - Use this as a reference: <https://adv-r.hadley.nz/functions.html>
 
+
+### Methods versus functions
+
+See <https://adv-r.hadley.nz/oo.html#oop-systems>
+
+### Debugging R and C code
+
+See <https://www.maths.ed.ac.uk/~swood34/RCdebug/RCdebug.html>
+
 ## The `tidyverse`
 
 > The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.
@@ -89,7 +98,3 @@ Quarto is a system for writing documents with embedded R code and/or results:
 
 - Read this first: @masteringshiny
 - Use this as a reference: @golembook
-
-## Methods versus functions
-
-See <https://adv-r.hadley.nz/oo.html#oop-systems>
