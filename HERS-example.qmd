@@ -34,7 +34,7 @@ hers = read_stata("data/hersdata.dta")
 ```{r}
 #| tbl-cap: "HERS dataset"
 #| label: tbl-HERS
-hers
+hers |> head()
 ```
 
 ---

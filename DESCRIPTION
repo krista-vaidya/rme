@@ -12,13 +12,18 @@ Encoding: UTF-8
 Imports: 
     arsenal,
     dobson,
+    forcats,
     fs,
     glmnet,
     here,
     latex2exp,
     olsrr,
     pander,
-    table1
+    reactable,
+    stringr,
+    table1,
+    tibble,
+    webshot2
 Suggests: 
     tidyverse,
     conflicted,
@@ -41,3 +46,4 @@ Suggests:
     tidyr
 RoxygenNote: 7.2.3
 License: MIT + file LICENSE
+Config/build/copy-method: link

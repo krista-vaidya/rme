@@ -76,6 +76,9 @@ Why do we need them?
 ### Example: Adelie penguins
 
 ```{r}
+#| label: fig-palmer-1
+#| fig-cap: Palmer penguins
+#| echo: false
 
 library(ggplot2)
 library(plotly)
@@ -89,65 +92,29 @@ ggpenguins <-
   xlab("Bill length (mm)") + 
   ylab("Body mass (g)")
 
+print(ggpenguins)
 ```
-
-::: {.content-visible when-format="html"}
-
-```{r}
-#| label: fig-palmer-1
-#| fig-cap: Palmer penguins
-#| echo: false
-ggpenguins |> ggplotly()
-```
-
-:::
-
-::: {.content-visible when-format="pdf"}
-
-```{r}
-#| fig-cap: Palmer penguins
-ggpenguins |> print()
-```
-
-:::
 
 ### Linear regression
 
 ```{r}
+#| label: fig-palmer-2
+#| fig-cap: Palmer penguins with linear regression fit
 ggpenguins2 = 
   ggpenguins +
   stat_smooth(method = "lm",
               formula = y ~ x,
               geom = "smooth")
 
-```
-
-::: {.content-visible when-format="html"}
-
-```{r, echo = FALSE}
-#| label: fig-palmer-2
-#| fig-cap: Palmer penguins with linear regression fit
-ggpenguins2 |> ggplotly()
-
-```
-
-:::
-
-::: {.content-visible when-format="pdf"}
-
-```{r}
-#| echo: false
-#| fig-cap: Palmer penguins with linear regression fit
 ggpenguins2 |> print()
 
 ```
 
-:::
-
 ### Curved regression lines
 
 ```{r}
-
+#| label: fig-palmer-3
+#| fig-cap: Palmer penguins - curved regression lines
 ggpenguins2 = ggpenguins +
   stat_smooth(
     method = "lm",
@@ -155,33 +122,14 @@ ggpenguins2 = ggpenguins +
     geom = "smooth") +
   xlab("Bill length (mm)") + 
   ylab("Body mass (g)")
-
+ggpenguins2
 ```
-
-::: {.content-visible when-format="html"}
-
-```{r}
-#| label: fig-palmer-3
-#| fig-cap: Palmer penguins - curved regression lines
-#| echo: false
-ggpenguins2 |> ggplotly()
-
-```
-
-:::
-
-::: {.content-visible when-format="pdf"}
-
-```{r}
-ggpenguins2 |> print()
-
-```
-
-:::
 
 ### Multiple regression
 
 ```{r}
+#| label: fig-palmer-4
+#| fig-cap: "Palmer penguins - multiple groups"
 
 ggpenguins =
   palmerpenguins::penguins |> 
@@ -198,32 +146,16 @@ ggpenguins =
     geom = "smooth") +
   xlab("Bill length (mm)") + 
   ylab("Body mass (g)")
-```
-
-::: {.content-visible when-format="html"}
-
-```{r}
-#| label: fig-palmer-4
-#| fig-cap: "Palmer penguins - multiple groups"
-#| echo: false
-ggpenguins |> ggplotly()
-
-```
-
-:::
-
-::: {.content-visible when-format="pdf"}
-
-```{r}
 ggpenguins |> print()
 
 ```
 
-:::
-
 ### Modeling non-Gaussian outcomes
 
 ```{r}
+#| label: fig-beetles_1a
+#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
+
 library(glmx)
 data(BeetleMortality)
 beetles = BeetleMortality |>
@@ -241,28 +173,15 @@ plot1 =
   scale_y_continuous(labels = scales::percent) +
   # xlab(bquote(log[10]), bquote(CS[2])) +
   scale_size(range = c(1,2))
-```
 
-::: {.content-visible when-format="html"}
-```{r}
-#| label: fig-beetles_1a
-#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
-#| echo: false
-ggplotly(plot1)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
-#| label: fig-beetles_1b
-#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
 print(plot1)
 ```
-:::
 
 ### Why don't we use linear regression?
 
 ```{r}
+#| label: fig-beetles-plot1
+#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
 beetles_long = 
   beetles  |> 
   reframe(.by = everything(),
@@ -286,49 +205,23 @@ plot2 =
   plot1 + 
   geom_function(fun = f.linear, aes(col = "Straight line")) +
   labs(colour="Model", size = "")
-
-```
-
-
-::: {.content-visible when-format="html"}
-```{r}
-#| label: fig-beetles-plot1
-#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
-#| echo: false
-ggplotly(plot2)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
-#| label: fig-beetles-plot1b
-#| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
 print(plot2)
 ```
-:::
 
 ### Zoom out
 
-
-::: {.content-visible when-format="html"}
 ```{r}
 #| label: fig-beetles2
 #| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
 #| echo: false
-ggplotly(plot2 + expand_limits(x = c(1.6, 2)))
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
-#| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
 print(plot2 + expand_limits(x = c(1.6, 2)))
 ```
-:::
 
 ### log transformation of dose?
 
 ```{r}
+#| label: fig-beetles3
+#| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
 
 
 lm2 = 
@@ -341,29 +234,15 @@ plot3 = plot2 +
   expand_limits(x = c(1.6, 2)) +
   geom_function(fun = f.linearlog, aes(col = "Log-transform dose"))
 
+print(plot3  + expand_limits(x = c(1.6, 2)))
 ```
 
-
-::: {.content-visible when-format="html"}
-```{r}
-#| label: fig-beetles3
-#| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
-#| echo: false
-ggplotly(plot3 + expand_limits(x = c(1.6, 2)))
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
-#| label: fig-beetles3b
-#| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
-print(plot3 + expand_limits(x = c(1.6, 2)))
-```
-:::
 
 ### Logistic regression
 
 ```{r}
+#| label: fig-beetles4b
+#| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
 
 glm1 = beetles |> 
   glm(formula = cbind(died, survived) ~ dose, family = "binomial")
@@ -371,26 +250,8 @@ glm1 = beetles |>
 f = function(x) predict(glm1, newdata = data.frame(dose = x), type = "response")
 
 plot4 = plot3 + geom_function(fun = f, aes(col = "Logistic regression"))
-
-```
-
-
-::: {.content-visible when-format="html"}
-```{r}
-#| label: fig-beetles4a
-#| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
-#| echo: false
-ggplotly(plot4)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
-#| label: fig-beetles4b
-#| fig-cap: Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)
 print(plot4)
 ```
-:::
 
 
 ### Three parts to regression models

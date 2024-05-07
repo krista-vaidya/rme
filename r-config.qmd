@@ -9,11 +9,15 @@ Functions from these packages will be used throughout this document:
 ```{r}
 #| label: "packages"
 #| message: false
+library(conflicted) # check for conflicting function definitions
+# library(printr) # inserts help-file output into markdown output
+library(rmarkdown) # Convert R Markdown documents into a variety of formats.
 library(pander) # format tables for markdown
 library(ggplot2) # graphics
 library(ggeasy) # help with graphics
 library(ggfortify) # help with graphics
 library(dplyr) # manipulate data
+library(tibble) # `tibble`s extend `data.frame`s
 library(magrittr) # `%>%` and other additional piping tools
 library(haven) # import Stata files
 library(knitr) # format R output for markdown
@@ -21,7 +25,6 @@ library(tidyr) # Tools to help to create tidy data
 library(plotly) # interactive graphics
 library(dobson) # datasets from Dobson and Barnett 2018
 library(parameters) # format model output tables for markdown
-library(conflicted) # check for conflicting function definitions
 library(haven) # import Stata files
 library(latex2exp) # use LaTeX in R code (for figures and tables)
 library(fs) # filesystem path manipulations
@@ -29,6 +32,10 @@ library(survival) # survival analysis
 library(survminer) # survival analysis graphics
 library(KMsurv) # datasets from Klein and Moeschberger
 library(parameters) # format model output tables for
+library(webshot2) # convert interactive content to static for pdf
+library(forcats) # functions for categorical variables ("factors")
+library(stringr) # functions for dealing with strings
+library(lubridate) # functions for dealing with dates and times
 ```
 
 Here are some R settings I use in this document:

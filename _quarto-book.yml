@@ -46,6 +46,7 @@ book:
 
 format:
   html:
+    link-external-icon: true
     shift-heading-level-by: 0
     subject: "Epidemiology 204"
     date: last-modified
@@ -105,7 +106,7 @@ editor: source
 knitr:
   opts_chunk:
     collapse: true
-    df_print: paged
+    # df_print: paged
     comment: "#>"
     R.options:
       knitr.graphics.auto_pdf: true

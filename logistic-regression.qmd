@@ -1142,6 +1142,7 @@ beetles_glm_grouped =
     formula = cbind(died, survived) ~ dose, 
     family = "binomial")
 
+library(parameters)
 beetles_glm_grouped |> 
   parameters() |> 
   print_md()
@@ -1339,7 +1340,7 @@ here::here() |>
 ```{r}
 #| label: tbl-wcgs
 #| tbl-cap: "`wcgs` data"
-wcgs
+wcgs |> head()
 ```
 
 
@@ -1352,6 +1353,7 @@ Now let's do some data cleaning
 ```{r}
 #| code-fold: show
 library(arsenal) # provides `set_labels()`
+library(forcats) # provides `as_factor()`
 
 wcgs = wcgs |> 
   mutate(
@@ -1468,35 +1470,21 @@ print(chd_plot_probs)
 
 ```{r}
 #| label: fig-chd-odds-scale
-#| fig-cap: "CHD rates by age group, odds scale"
+#| fig-cap: "CHD rates by age group, odds spacing"
 
 trans_odds = trans_new(
   name = "odds", 
   transform = odds, 
   inverse = odds_inv)
 
-chd_plot_probs + 
+chd_plot_odds = chd_plot_probs + 
   scale_y_continuous(
-    trans = trans_odds, 
-    name = paste(chd_plot_probs$labels$y, "(odds spacing)"),
+    trans = trans_odds, # this line changes the vertical spacing
+    name = chd_plot_probs$labels$y,
     sec.axis = sec_axis(
       ~ odds(.),
       name = "odds(CHD Event by 1969)"))
 
-chd_plot_odds = 
-  chd_grouped_data |> 
-  ggplot(
-    aes(
-      x = age, 
-      y = `odds(chd)`, 
-      col = dibpat)
-  ) +
-  geom_point(aes(size = n), alpha = .7) + 
-  scale_size(range = c(1,4)) +
-  geom_line() +
-  theme_bw() +
-  ylab("odds(CHD Event by 1969)") +
-  ggeasy::easy_labs()
 print(chd_plot_odds)
 ```
 
@@ -1530,7 +1518,8 @@ print(chd_plot_logit)
 Here, we fit stratified models for CHD by personality type.
 
 ```{r}
-
+#| tbl-cap: "CHD model, stratified parametrization"
+#| label: tbl-chd-strat
 chd_glm_strat = glm(
   "formula" = chd69 == "Yes" ~ dibpat + dibpat:age - 1, 
   "data" = wcgs,
@@ -1556,6 +1545,8 @@ chd_glm_strat |>
 
 We can graph our fitted models on each scale (probability, odds,
 log-odds).
+
+---
 
 #### probability scale
 
@@ -1585,20 +1576,10 @@ chd_plot_probs_2 =
     fun = curve_type_B,
     aes(col = "Type B")
   )
-
-```
-
-::: {.content-visible when-format="html"}
-```{r}
-ggplotly(chd_plot_probs_2)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
 print(chd_plot_probs_2)
 ```
-:::
+
+---
 
 #### odds scale
 
@@ -1627,21 +1608,11 @@ chd_plot_odds_2 =
     fun = curve_type_B,
     aes(col = "Type B")
   )
-
-
-```
-
-::: {.content-visible when-format="html"}
-```{r}
-ggplotly(chd_plot_odds_2)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
 print(chd_plot_odds_2)
+
 ```
-:::
+
+---
 
 #### log-odds (logit) scale
 
@@ -1671,20 +1642,8 @@ chd_plot_logit_2 =
     aes(col = "Type B")
   )
 
-
-```
-
-::: {.content-visible when-format="html"}
-```{r}
-ggplotly(chd_plot_logit_2)
-```
-:::
-
-::: {.content-visible when-format="pdf"}
-```{r}
 print(chd_plot_logit_2)
 ```
-:::
 
 ### reference-group and contrast parametrization
 
@@ -1692,7 +1651,8 @@ We can also use the corner-point parametrization (with reference groups
 and contrasts):
 
 ```{r}
-
+#| label: tbl-model-corner-point
+#| tbl-cap: "CHD model (corner-point parametrization)"
 chd_glm_contrasts = 
   wcgs |> 
   glm(
@@ -1706,14 +1666,23 @@ chd_glm_contrasts |>
   print_md()
 ```
 
-Compare with what we had before:
+::: notes
+Compare with @tbl-chd-glm-strat-OR:
+:::
+
+::: {.content-visible when-format="revealjs"}
 
 ```{r}
+#| tbl-cap: "Odds ratio estimates for CHD model"
+#| label: tbl-chd-glm-strat-OR-v2
 chd_glm_strat |> 
   parameters() |> 
   print_md()
 ```
 
+:::
+
+---
 
 :::{#exr-strat-to-contrast}
 If I give you model 1, how would you get the coefficients of model 2?
@@ -1739,6 +1708,7 @@ You can see some information about this process like so:
 :::
 
 ```{r}
+#| label: glm-fitting-process
 options(digits = 8)
 temp = 
   wcgs |> 
