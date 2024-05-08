@@ -294,7 +294,7 @@ Left to the reader...
 
 For any two random variables $X$ and $Y$ and scalars $a$ and $b$:
 
-$$\Var{aX + bY} = a^2 \Var{X} + b^2 \Var{Y} + (a \cd b) \Cov{X,Y}$$
+$$\Var{aX + bY} = a^2 \Var{X} + b^2 \Var{Y} + 2(a \cd b) \Cov{X,Y}$$
 
 :::
 
