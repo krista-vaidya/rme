@@ -12,7 +12,7 @@ An abbreviated but continuously updated version with audio clips is available at
 
 - @dalgaardintroductory covers GLMs and survival analysis at an applied level, using base R
 
-- @vittinghoff2012regression covers GLMs, survival analysis, and causal inference, using Stata
+- @vittinghoff2e covers GLMs, survival analysis, and causal inference, using Stata
 
 - @faraway2016extending has GLMs but not survival analysis
 

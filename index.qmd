@@ -6,7 +6,7 @@ I have drawn these materials from many sources, including but not limited to:
 
 - [David Rocke](https://dmrocke.ucdavis.edu/)'s materials from the [2021 edition of Epi 204](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)
 
-- @vittinghoff2012regression
+- @vittinghoff2e
 
 - @dobson4e
 

@@ -11,7 +11,7 @@ subtitle: "Poisson regression and variations"
 This content is adapted from:
 
 -   @dobson4e, Chapter 9
--   @vittinghoff2012regression, Chapter 8
+-   @vittinghoff2e, Chapter 8
 
 ---
 

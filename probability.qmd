@@ -209,6 +209,7 @@ Left to the reader.
 For any random variable $X$:
 
 $$\Cov{X,X} = \Var{X}$$
+
 :::
 
 :::{.proof}

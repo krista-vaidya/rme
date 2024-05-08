@@ -15,7 +15,7 @@ This content is adapted from:
 
 - @dobson4e, Chapters 2-6
 - @dunn2018generalized, Chapters 2-3
-- @vittinghoff2012regression, Chapter 4
+- @vittinghoff2e, Chapter 4
 
 There are numerous textbooks specifically for linear regression, including:
 

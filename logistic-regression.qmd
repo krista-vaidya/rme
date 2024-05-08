@@ -13,7 +13,7 @@ subtitle: "Logistic regression and variations"
 This content is adapted from:
 
 -   @dobson4e, Chapter 7
--   @vittinghoff2012regression, Chapter 5
+-   @vittinghoff2e, Chapter 5
 - [David Rocke](https://dmrocke.ucdavis.edu/)'s materials from the [2021 edition of Epi 204](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)
 
 ## Introduction
@@ -1225,7 +1225,7 @@ Let's use the data from the Western Collaborative Group Study (WCGS)
 (@rosenman1975coronary) to explore multiple logistic regression:
 :::
 
-*From @vittinghoff2012regression:*
+*From @vittinghoff2e:*
 
 "The **Western Collaborative Group Study (WCGS)** was a large
 epidemiological study designed to investigate the association between

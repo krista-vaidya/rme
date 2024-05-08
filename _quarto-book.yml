@@ -36,6 +36,7 @@ book:
   appendices:
     - probability.qmd
     - estimation.qmd
+    - inference.qmd
     - intro-MLEs.qmd
     - common-mistakes.qmd
     - notation.qmd
