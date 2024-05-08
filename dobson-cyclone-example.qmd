@@ -25,12 +25,9 @@ pander(cyclones |> relocate(season, .before = everything()))
 #| fig-cap: "Number of tropical cyclones per season in northeastern Australia, 1956-1969"
 library(ggplot2)
 library(dplyr)
-cyclones |> 
-  mutate(years = years |> factor(level = years)) |> 
-  ggplot(
-    aes(x = years, 
-        y = number,
-        group = 1)) +
+cyclones |>
+  mutate(years = years |> factor(levels = years)) |>
+  ggplot(aes(x = years, y = number, group = 1)) +
   geom_point() +
   geom_line() +
   xlab("Season") +
@@ -46,7 +43,7 @@ Let's also assume that they are identically distributed; let's denote this distr
 ```{r}
 #| label: fig-cyclones-bar-plot
 #| fig-cap: "Bar plot of cyclones per season"
-cyclones |> 
+cyclones |>
   ggplot() +
   geom_histogram(aes(x = number)) +
   expand_limits(x = 0) +
@@ -378,6 +375,7 @@ n\lambda &= \sum_{i = 1}^nx_i\\
 \end{aligned}
 $$
 ::::
+
 :::
 
 Let's call this solution of the estimating equation $\tilde \lambda$ for now:
@@ -391,6 +389,7 @@ $$\tilde \lambda \eqdef \bar x$$
 Confirm that the Hessian $\ell''(\lambda; \vec x)$ is negative when evaluated at $\tilde \lambda$.
 
 ::::{.solution}
+
 $$
 \begin{aligned}
 \ell''( \tilde\lambda; \vec x ) &= 
@@ -400,6 +399,7 @@ $$
 &<0\\
 \end{aligned}
 $$
+
 ::::
 
 :::
@@ -418,7 +418,9 @@ mle = mean(cyclones$number)
 ```
 
 $$\hat{\lambda}_{\text{ML}} = \bar x = `r mle`$$
+
 ::::
+
 :::
 
 :::{#exr-graph-mle}
@@ -472,6 +474,7 @@ such as $\esttmpl = 3$, and use the [Newton-Raphson algorithm](#sec-newton-raphs
 :::
 
 ```{r}
+#| label: initial guess
 # specify initial guess:
 cur_lambda_est = 3
 ```
@@ -516,7 +519,9 @@ $$
 ---
 
 ::: notes
+
 @fig-cyclone-newton-step1 compares the true score function and the approximate score function at $\esttmpl = `r cur_lambda_est`$.
+
 :::
 
 ```{r}
@@ -633,6 +638,7 @@ $$
 $$
 
 ```{r}
+#| label: NR-one-step
 new_lambda_est <- 
    cur_lambda_est - 
    score(cur_lambda_est) * hessian(cur_lambda_est)^-1
@@ -772,7 +778,7 @@ xend = lead(lambda),
 y = `log(likelihood)`,
 yend = lead(`log(likelihood)`),
 col = factor(iteration)
-),
+)
 )
 
 ```
