@@ -1354,7 +1354,8 @@ Now let's do some data cleaning
 #| code-fold: show
 library(arsenal) # provides `set_labels()`
 library(forcats) # provides `as_factor()`
-
+library(haven)
+library(plotly)
 wcgs = wcgs |> 
   mutate(
     age = age |> 
@@ -1584,7 +1585,7 @@ print(chd_plot_probs_2)
 #### odds scale
 
 ```{r}
-
+#| label: fig-fitted-odds-chd
 curve_type_A = function(x) 
 {
   chd_glm_strat |> predict(
@@ -1617,7 +1618,8 @@ print(chd_plot_odds_2)
 #### log-odds (logit) scale
 
 ```{r}
-
+#| label: fig-fitted-log-odds
+#| 
 curve_type_A = function(x) 
 {
   chd_glm_strat |> predict(
