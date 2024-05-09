@@ -11,6 +11,9 @@
 \def\hp{\hat{\text{p}}}
 \def\ga{\alpha}
 \def\b{\beta}
+\def\Ber{\text{Ber}}
+\def\vbeta{\vec \beta}
+\def\vb{\vec \b}
 \def\gb{\beta}
 \def\gg{\gamma}
 \def\gd{\delta}
@@ -51,6 +54,7 @@
 \def\ind{⫫}
 \def\all{\forall}
 \def\iid{\text{iid}}
+\def\ciid{\text{ciid}}
 \def\simind{\ \sim_{\ind}\ }
 \def\siid{\ \sim_{\iid}\ }
 \def\simiid{\siid}
@@ -71,7 +75,8 @@
 \providecommand{\esttmp}[1]{{\widehat{#1}}^*}
 \def\esttmpl{\esttmp{\lambda}}
 \def\cR{\mathcal{R}}
-\providecommand{\range}[1]{\cR\paren{#1}}
+\def\range{\mathcal{R}}
+\providecommand{\rangef}[1]{\cR(#1)}
 \def\~{\approx}
 \def\dapp{\dot\approx}
 \providecommand{\red}[1]{{\color{red}#1}}
@@ -83,6 +88,10 @@
 \providecommand{\hmu}[1]{\hat{\mu}\sb{#1}}
 \def\Expp{\mathbb{E}}
 \def\Ep{\mathbb{E}}
+\def\expit{\text{expit}}
+\def\logit{\text{logit}}
+\providecommand{\expitf}[1]{\expit\cb{#1}}
+\providecommand{\logitf}[1]{\logit\cb{#1}}
 \providecommand{\E}[1]{\mathbb{E}\sb{#1}}
 \providecommand{\Ef}[1]{\mathbb{E}\sb{#1}}
 \providecommand{\Exp}[1]{\mathbb{E}\sb{#1}}
@@ -136,9 +145,13 @@
 \def\X1n{\dsn{X}}
 \def\Xin{\dsn{X}}
 \def\x1n{\dsn{x}}
+\def\'{^{\top}}
+\def\dp{\cd}
 \def\Xx1n{X_1=x_1, \ldots, X_n = x_n}
+\providecommand{\dsvn}[2]{#1_1=#2_1, \ldots, #1_n = #2_n}
 \providecommand{\sumn}[1]{\sum_{#1=1}^n}
 \def\sumin{\sum_{i=1}^n}
 \def\sumi1n{\sum_{i=1}^n}
 \def\prodin{\prod_{i=1}^n}
 \def\prodi1n{\prod_{i=1}^n}
+\providecommand{\lp}[2]{#1 \' \beta}

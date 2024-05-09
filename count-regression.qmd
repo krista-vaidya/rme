@@ -230,7 +230,7 @@ plot(sign,xlim = c(-1,1), xlab = "x", ylab = "sign(x)")
 
 We assume a latent (unobserved) binary variable, $Z$, which we model using logistic regression:
 
-$$P(Z=1|X=x) = \pi(x) = \text{expit}(\gamma_0 + \gamma_1x_1 +...)$$
+$$P(Z=1|X=x) = \pi(x) = \expit(\gamma_0 + \gamma_1x_1 +...)$$
 
 According to this model, if $Z=1$, then $Y$ will always be zero, regardless of $X$ and $T$:
 

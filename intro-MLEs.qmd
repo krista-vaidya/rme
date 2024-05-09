@@ -90,7 +90,7 @@ $$ {#eq-mle}
 
 ### Finding the maximum of a function
 
-Recall from calculus: the maxima of a continuous function $f(x)$ over a range of input values $\range{x}$ can be found either:
+Recall from calculus: the maxima of a continuous function $f(x)$ over a range of input values $\rangef{x}$ can be found either:
 
 - at the edges of the range of input values, *OR*:
 - where the function is flat (i.e. where the gradient function $f'(x) = 0$) *AND* the second derivative is negative definite ($f''(x) < 0$).
@@ -253,11 +253,11 @@ Here,
 $$
 \ba
 \E{\ell'}
-&\eqdef \int_{x \in \range{x}}
+&\eqdef \int_{x \in \rangef{x}}
 {
 \ell'(x,\th) \p(X = x | \th) dx
 }
-\\ &= \int_{x \in \range{X}}
+\\ &= \int_{x \in \rangef{X}}
 {
 \paren
 {
@@ -267,7 +267,7 @@ $$
 \p(X = x | \theta) dx
 }
 \\ &= 
-\int_{x \in \range{X}}
+\int_{x \in \rangef{X}}
 {
 \frac
 {\deriv{\theta} \p(X = x | \th)}
@@ -275,7 +275,7 @@ $$
 \p(X = x | \theta) dx
 }
 \\ &= 
-\int_{x \in \range{X}}
+\int_{x \in \rangef{X}}
 {
 \deriv{\theta} \p(X = x | \th) dx
 }

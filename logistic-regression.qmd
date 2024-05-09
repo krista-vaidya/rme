@@ -854,6 +854,141 @@ This is the same estimate we calculated in @exm-OR.
 * But we can usually not validly estimate risks and risk ratios.
 
 
+## The $\logit$ and $\expit$ functions
+
+:::{#def-logit}
+
+##### logit function
+
+The $\logit$ function is
+
+$$\logit(\pi) \eqdef \log{\frac{\pi}{1-\pi}}$$
+
+:::
+
+```{r}
+#| code-fold: true
+#| fig-cap: the logit function
+#| label: fig-logit
+logit = function(p) log(odds(p))
+
+logit_plot = 
+  ggplot() + 
+  geom_function(fun = logit) + 
+  xlim(.01, .99) + 
+  ylab("logit(p)") +
+  xlab("p") +
+  theme_bw()
+print(logit_plot)
+```
+
+---
+
+:::{#def-expit}
+
+#### expit, logistic, inverse-logit
+
+The **expit** function (@fig-expit-plot), also known as the **inverse-logit** or **logistic** function, is:
+
+$$
+\begin{aligned}
+\expit(\eta)
+&\eqdef \frac{\exp{\eta}}{1+\exp{\eta}}\\
+&= (1 + \exp{-\eta})^{-1}
+\end{aligned}
+$$
+
+
+```{r}
+#| label: fig-expit-plot
+#| fig-cap: The expit function
+#| code-fold: true
+expit = function(eta) exp(eta)/(1+exp(eta))
+library(ggplot2)
+expit_plot = 
+  ggplot() + 
+  geom_function(fun = expit) + 
+  xlim(-5, 5) + 
+  ylim(0,1) +
+  ylab(expression(expit(eta))) +
+  xlab(expression(eta)) +
+  theme_bw()
+print(expit_plot)
+```
+
+:::
+
+---
+
+:::{#thm-logit-expit}
+#### $\logit$ and $\expit$ are each others' inverses
+
+$$\logit{\expit{\eta}} = \eta$$
+
+$$\expit{\logit{\pi}} = \pi$$
+
+:::
+
+---
+
+:::{.proof}
+Left to the reader.
+:::
+
+---
+
+### Diagram of expit and logit {#sec-expit-logit-diagram}
+
+::: {.content-visible when-format="pdf"}
+$$
+\left[ \pi  \eqdef\Pr(Y=1)\right]
+\underbrace{
+\overbrace{
+\underset{
+\xleftarrow[ \frac{\omega}{1+\omega}]{}
+}
+{
+\xrightarrow{\frac{\pi}{1-\pi}}
+}
+\left[\omega \eqdef \text{odds}(Y=1)\right]
+\underset{
+\xleftarrow[\exp{\eta}]{}
+}
+{
+\xrightarrow{\log{\omega}}
+}
+}^{\logit(\pi)}
+}_{\expit(\eta)}
+\left[\eta \eqdef \text{log-odds}(Y=1)\right]
+$$
+:::
+
+::: {.content-hidden when-format="pdf"}
+
+$$
+\underbrace{\pi}_{\atop{\Pr(Y=1)} }
+\overbrace{
+\underbrace{
+\underset{
+\xleftarrow[\frac{\omega}{1+\omega}]{}
+}
+{
+\xrightarrow{\frac{\pi}{1-\pi}}
+}
+\underbrace{\omega}_{\text{odds}(Y=1)}
+\underset{
+\xleftarrow[\exp{\eta}]{}
+}
+{
+\xrightarrow{\log{\omega}}
+}
+}_{\expit(\eta)}
+}^{\logit(\pi)}
+\underbrace{\eta}_{\atop{\text{log-odds}(Y=1)}}
+$$
+
+:::
+
 ## Introduction to logistic regression
 
 * In @exm-oc-mi, we estimated the risk and the odds of MI for two discrete cases, as to whether of not the individual used oral contraceptives.
@@ -880,18 +1015,34 @@ $$
 ### Binary outcomes - general  {.smaller}
 
 $$
-\begin{aligned}
-p(Y_i=1) &= \pi_i\\
-p(Y_i=0) &= 1-\pi_i\\
-p(Y_i=y) &= (\pi_i)^y (1-\pi_i)^{1-y}\\
-\mathbf y  &= (y_1, ..., y_n)\\
-\mathcal L(\pi;\mathbf y) &= \prod_{i=1}^n 
-(\pi_i)^{y_i} (1-\pi_i)^{1 - y_i}\\
-\ell(\pi, \mathbf y) &= 
-\sum_{i=1}^n 
-y_i \log{\pi_i} + (1 - y_i) \log{1-\pi_i}
-\end{aligned}
+\ba
+\P(Y_i=1) &= \pi_i
+\\ \P(Y_i=0) &= 1-\pi_i
+\\ \P(Y_i=y) &= (\pi_i)^y (1-\pi_i)^{1-y}
+\ea
 $$
+
+---
+
+For $\iid$ data $\vec y  = (y_1, ..., y_n)$:
+
+$$
+\ba
+\Lik(\pi;\vec y) = \P(\dsvn{Y}{y})
+\\ &= \prod_{i=1}^n 
+(\pi_i)^{y_i} (1-\pi_i)^{1 - y_i}
+\ea
+$$
+
+$$
+\ba
+\ell(\pi, \vec y) &= \sumin y_i \log{\pi_i} + (1 - y_i) \log{1-\pi_i}
+\\                &= \sumin y_i \red{\log{\pi_i}} + \log{1-\pi_i} - y_i \cd \blue{\log{1-\pi_i}}
+\\                &= \sumin y_i (\red{\log{\pi_i}} - \blue{\log{1-\pi_i}}) + \log{1-\pi_i}
+\\                &= \sumin y_i (\log{\frac{\red{\pi_i}}{\blue{1-\pi_i}}}) + \log{1-\pi_i}
+\\                &= \sumin y_i (\logit(\pi_i)) + \log{1-\pi_i}
+\ea
+$${#eq-loglik-bernoulli-iid}
 
 ### Modeling $\pi_i$ as a function of $X_i$
 
@@ -907,119 +1058,10 @@ $$
 \end{aligned}
 $$
 
-Typically, we use $f(\eta) = \text{expit}(\eta)$.
+Typically, we use the $\expit$ inverse-link: 
 
+$$\pi(\vec x) = \expit(\vx'\beta)$${#eq-logistic-link}
 
-:::{#def-expit}
-
-#### expit function
-
-The **expit** function (@fig-expit-plot), also known as the **inverse-logit** or **logistic** function, is:
-
-$$
-\begin{aligned}
-\text{expit}(\eta)
-&\eqdef \frac{\exp{\eta}}{1+\exp{\eta}}\\
-&= (1 + \exp{-\eta})^{-1}
-\end{aligned}
-$$
-
-
-```{r}
-#| label: fig-expit-plot
-#| fig-cap: The expit function
-#| code-fold: true
-expit = function(eta) exp(eta)/(1+exp(eta))
-library(ggplot2)
-expit_plot = 
-  ggplot() + 
-  geom_function(fun = expit) + 
-  xlim(-5, 5) + 
-  ylim(0,1) +
-  ylab(expression(expit(eta))) +
-  xlab(expression(eta)) +
-  theme_bw()
-print(expit_plot)
-```
-
-:::
-
-:::{#def-logit}
-
-##### logit function
-
-The inverse of the `expit` function is the `logit` function:
-
-$$g(p) = f^{-1}(p) = \text{logit}(p) = \log{\frac{p}{1-p}}$$
-
-:::
-
-```{r}
-#| code-fold: true
-#| fig-cap: the logit function
-#| label: fig-logit
-logit = function(p) log(odds(p))
-
-logit_plot = 
-  ggplot() + 
-  geom_function(fun = logit) + 
-  xlim(.01, .99) + 
-  ylab("logit(p)") +
-  xlab("p") +
-  theme_bw()
-print(logit_plot)
-```
-
-### Diagram of expit and logit {#sec-expit-logit-diagram}
-
-::: {.content-visible when-format="pdf"}
-$$
-\left[ \pi  \eqdef\Pr(Y=1)\right]
-\underbrace{
-\overbrace{
-\underset{
-\xleftarrow[ \frac{\omega}{1+\omega}]{}
-}
-{
-\xrightarrow{\frac{\pi}{1-\pi}}
-}
-\left[\omega \eqdef \text{odds}(Y=1)\right]
-\underset{
-\xleftarrow[\exp{\eta}]{}
-}
-{
-\xrightarrow{\log{\omega}}
-}
-}^{\text{logit}(\pi)}
-}_{\text{expit}(\eta)}
-\left[\eta \eqdef \text{log-odds}(Y=1)\right]
-$$
-:::
-
-::: {.content-hidden when-format="pdf"}
-
-$$
-\underbrace{\pi}_{\atop{\Pr(Y=1)} }
-\overbrace{
-\underbrace{
-\underset{
-\xleftarrow[\frac{\omega}{1+\omega}]{}
-}
-{
-\xrightarrow{\frac{\pi}{1-\pi}}
-}
-\underbrace{\omega}_{\text{odds}(Y=1)}
-\underset{
-\xleftarrow[\exp{\eta}]{}
-}
-{
-\xrightarrow{\log{\omega}}
-}
-}_{\text{expit}(\eta)}
-}^{\text{logit}(\pi)}
-\underbrace{\eta}_{\atop{\text{log-odds}(Y=1)}}
-$$
-:::
 
 ### Meet the beetles
 
@@ -1692,6 +1734,25 @@ If I give you model 1, how would you get the coefficients of model 2?
 
 ## Fitting logistic regression models
 
+### Maximum likelihood estimation for $\ciid$ data
+
+Assume:
+
+- $Y_i|\vX_i \simiid \Ber(\pi(X_i))$
+- $\logitf{\pi(\vx)} = \vx'\beta$
+
+Then the score function is:
+
+$$
+\ba
+\ell'(\vb) &= \deriv{\beta}\ell(\vb)
+\\         &= \deriv{\beta}\sumin y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
+\\         &= \sumin \deriv{\beta}\cb{y_i \paren{\vx'\beta} + \log{1-\pi_i}}
+\\         &= \sumin \cb{y_i \deriv{\beta}\paren{\vx'\beta} + \deriv{\beta}\log{1-\pi_i}}
+\ea
+$$
+
+
 ---
 
 ::: notes
@@ -2009,8 +2070,8 @@ where $$
 \hat\pi_k 
 &\eqdef \hat\pi(x_k)\\
 &\eqdef \hat P(Y=1|X=x_k)\\ 
-&\eqdef \text{expit}(x_i'\hat \beta)\\
-&\eqdef \text{expit}(\hat \beta_0 + \sum_{j=1}^p \hat \beta_j x_{ij})
+&\eqdef \expit(x_i'\hat \beta)\\
+&\eqdef \expit(\hat \beta_0 + \sum_{j=1}^p \hat \beta_j x_{ij})
 \end{aligned}
 $$
 
