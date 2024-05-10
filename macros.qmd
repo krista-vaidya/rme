@@ -146,7 +146,7 @@
 \def\Xin{\dsn{X}}
 \def\x1n{\dsn{x}}
 \def\'{^{\top}}
-\def\dp{\cd}
+\def\dpr{\cdot}
 \def\Xx1n{X_1=x_1, \ldots, X_n = x_n}
 \providecommand{\dsvn}[2]{#1_1=#2_1, \ldots, #1_n = #2_n}
 \providecommand{\sumn}[1]{\sum_{#1=1}^n}

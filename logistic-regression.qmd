@@ -587,7 +587,13 @@ ggplot() +
 ---
 
 :::{.callout-important}
-An equivalent expression for the inverse odds function is $$\pi(\omega) = (1-\omega^{-1})^{-1}$${#eq-inv-odds-reduced}
+
+An equivalent expression for the inverse odds function is 
+
+$$
+\pi(\omega) = (1+\omega^{-1})^{-1}
+$$ {#eq-inv-odds-reduced}
+
 :::
 
 ---
@@ -923,9 +929,9 @@ print(expit_plot)
 :::{#thm-logit-expit}
 #### $\logit$ and $\expit$ are each others' inverses
 
-$$\logit{\expit{\eta}} = \eta$$
+$$\logitf{\expitf{\eta}} = \eta$$
 
-$$\expit{\logit{\pi}} = \pi$$
+$$\expitf{\logitf{\pi}} = \pi$$
 
 :::
 
@@ -1028,7 +1034,7 @@ For $\iid$ data $\vec y  = (y_1, ..., y_n)$:
 
 $$
 \ba
-\Lik(\pi;\vec y) = \P(\dsvn{Y}{y})
+\Lik(\pi;\vec y) &= \P(\dsvn{Y}{y})
 \\ &= \prod_{i=1}^n 
 (\pi_i)^{y_i} (1-\pi_i)^{1 - y_i}
 \ea
