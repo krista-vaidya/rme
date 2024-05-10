@@ -10,8 +10,91 @@ I have drawn these materials from many sources, including but not limited to:
 
 - @dobson4e
 
-### License {.unnumbered}
+## Using these lecture notes {.unnumbered}
+
+These lecture notes are available online at <https://d-morrison.github.io/rme/>.
+The online notes are searchable and are currently being iteratively updated^[see the source file repository for recent changes: <https://github.com/d-morrison/rme>].
+A pdf version of the notes is also downloadable from <https://d-morrison.github.io/rme/Regression-Models-for-Epidemiology.pdf>,
+and the source files are available at <https://github.com/d-morrison/rme>.
+
+
+### Compiling chapters as lecture slide decks {.unnumbered}
+
+Each chapter's source file can also be compiled as a lecture slide deck, using the 
+[`_quarto-revealjs.yml`](https://github.com/d-morrison/rme/blob/main/_quarto-revealjs.yml) [Quarto profile](https://quarto.org/docs/projects/profiles.html) 
+included in the [git repository on Github](https://github.com/d-morrison/rme).
+
+For example, to compile [Chapter @sec-Bernoulli-models] as a slide deck:
+
+1) [install quarto](https://quarto.org/docs/get-started/)
+
+2) clone the project repository from [Github](https://github.com/d-morrison/rme)
+
+3) Install the project dependencies using `devtools`:
+
+``` r 
+library(devtools) # install from CRAN if needed
+devtools::install_deps()
+```
+
+4) Render the chapter using the `revealjs` profile using the following terminal shell command:
+
+``` bash
+quarto render logistic-regression.qmd --profile=revealjs
+```
+
+You can also render all the chapters listed in the [`_quarto-revealjs.yml`](https://github.com/d-morrison/rme/blob/main/_quarto-revealjs.yml) 
+[Quarto profile](https://quarto.org/docs/projects/profiles.html)
+as slide decks simultaneously:
+
+``` bash
+quarto render --profile=revealjs
+```
+
+---
+
+### Extracting LaTeX commands from the online version of the notes {.unnumbered}
+
+If you want to extract the LaTeX commands for any math expressions in the online lecture notes, you should be able to right-click and get this pop-up menu:
+
+![Pop-up menu](images/latex-popup-1.png)
+
+If you select "TeX commands", you will get a window with MathJax code, which is more or less a dialect of LaTeX:
+
+![MathJax code window](images/latex-popup-2.png)
+
+You can also grab the TeX commands from my quarto source files on github, but those files use my custom macros, so it's a little harder to reuse code from the source files.
+
+---
+
+### Dark Mode {.unnumbered}
+
+The online notes have two color palette themes: light and dark.
+You can toggle between them using the oval button near the top-left corner:
+
+![Palette toggle](images/dark-mode.png)
+
+## Contributing to this project
+
+Contributions to these notes are very much appreciated; anything from
+one-character typo corrections to new chapters or rewrites. 
+The [GitHub repository for this project](https://github.com/d-morrison/rme)
+provides a Pull Request system for submitting contributions. 
+See <https://happygitwithr.com/pr-extend> for an explanation of the pull request system
+and the available R utility functions for working with pull requests.
+
+## Other resources {.unnumbered}
+
+These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and I encourage you to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes. 
+
+Here are some additional resources:
+
+{{< include other-resources.qmd >}}
+
+
+## License {.unnumbered}
 
 This book is licensed to you under [Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License](http://creativecommons.org/licenses/by-nc-nd/4.0/).
 
 The code samples in this book are licensed under [Creative Commons CC0 1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/), i.e. public domain.
+
