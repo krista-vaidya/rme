@@ -2,7 +2,7 @@
 subtitle: "Logistic regression and variations"
 ---
 
-# Models for Binary Outcomes
+# Models for Binary Outcomes {#sec-Bernoulli-models}
 
 ---
 
