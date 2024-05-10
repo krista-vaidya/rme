@@ -63,7 +63,7 @@ If you select "TeX commands", you will get a window with MathJax code, which is 
 
 ![MathJax code window](images/latex-popup-2.png)
 
-You can also grab the TeX commands from my quarto source files on github, but those files use my custom macros, so it's a little harder to reuse code from the source files.
+You can also grab the TeX commands from the quarto source files on github, but those files use custom macros (defined in <https://github.com/d-morrison/rme/blob/main/macros.qmd>), so it's a little harder to reuse code from the source files.
 
 ---
 
