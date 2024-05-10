@@ -282,7 +282,7 @@ coef(bw_lm1)
 
 $$
 \ba
-E[Y|A = 1, A = 36] 
+E[Y|M = 1, A = 36] 
 &= \beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36 \\
 &=  `r pred_male`
 \ea
@@ -318,7 +318,7 @@ Shortcut:
 
 $$
 \begin{aligned}
-& E[Y|A = 1, A = 36] - E[Y|A = 0, A = 36]\\
+& E[Y|M = 1, A = 36] - E[Y|M = 0, A = 36]\\
 &= (\beta_0 + \beta_M \cdot 1+ \beta_A \cdot 36) - 
 (\beta_0 + \beta_M \cdot 0+ \beta_A \cdot 36) \\
 &= \beta_M \\ 
