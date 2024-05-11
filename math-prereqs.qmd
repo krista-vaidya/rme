@@ -1,0 +1,21 @@
+# Mathematical prerequisites
+
+These lecture notes use calculus and linear algebra.
+
+## Some key facts
+
+## Additional resources
+
+Calculus:
+
+- @khuri2003advanced
+
+Linear Algebra:
+
+- @fieller2018basics
+- @banerjee2014linear
+- @searle2017matrix
+
+Both:
+
+- https://ucla-biostat-216.github.io/2023fall/syllabus/syllabus.html

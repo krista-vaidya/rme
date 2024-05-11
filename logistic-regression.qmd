@@ -555,6 +555,27 @@ $$
 
 ---
 
+:::{#thm-deriv-odds}
+
+$$\odds'(\pi) = \frac{1}{1-\pi}$$
+:::
+
+---
+
+::: proof
+$$
+\ba
+\odds'(\pi) 
+   &= \deriv{\pi}{\frac{\pi}{1-\pi}}
+\\ &=  \frac{\deriv{\pi}\pi}{1-\pi} - \frac{\pi}{\sqf{1-\pi}} \deriv{{1-\pi}}
+\\ &=  \frac{1}{1-\pi} - \frac{\pi}{\sqf{1-\pi}} \deriv{{1-\pi}}
+\ea
+$$
+
+:::
+
+---
+
 ### The inverse odds function
 
 :::{#def-inv-odds}
@@ -899,6 +920,29 @@ logit_plot =
 print(logit_plot)
 ```
 
+---
+
+:::{#thm-deriv-logit}
+
+#### Derivative of $\logit$
+
+$$\logit'(\pi) = ?$$
+:::
+
+--- 
+
+::: proof
+
+$$
+\ba
+\logit'(\pi)
+   &= \deriv{\pi}\logit(\pi)
+\\ &= \deriv{\pi}\log{\odds(\pi)}
+\\ &= \frac{\odds'(\pi)}{\odds(\pi)}
+\ea
+$$
+
+:::
 ---
 
 :::{#def-expit}
@@ -1833,7 +1877,7 @@ $$
 \\ &= y_i \log{\red{\pi_i}} - y_i \cd \log{\blue{1-\pi_i}} + \log{1-\pi_i}
 \\ &= (y_i \log{\red{\pi_i}} - y_i \cd \log{\blue{1-\pi_i}}) + \log{1-\pi_i}
 \\ &= y_i (\log{\red{\pi_i}} - \log{\blue{1-\pi_i}}) + \log{1-\pi_i}
-\\ &= y_i (\log{\frac{\red{\pi_i}}{\blue{1-\pi_i}}}) + \log{1-\pi_i}
+\\ &= y_i \paren{\log{\frac{\red{\pi_i}}{\blue{1-\pi_i}}}} + \log{1-\pi_i}
 \\ &= y_i (\logit(\pi_i)) + \log{1-\pi_i}
 \ea
 $$ {#eq-loglik-bernoulli-iid}
@@ -2548,3 +2592,7 @@ When this happens, you can try to fit Poisson regression models instead
 right, and you won't get warnings about fitted probabilities greater
 than 1. In my opinion, the Poisson model for binary outcomes is
 confusing and not very appealing.
+
+## Quasibinomial
+
+See [Hua Zhou]'s [notes](https://ucla-biostat-200c-2020spring.github.io/slides/04-binomial/binomial.html#:~:text=0.05%20%27.%27%200.1%20%27%20%27%201-,Quasi%2Dbinomial,-Another%20way%20to)

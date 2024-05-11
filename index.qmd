@@ -4,11 +4,15 @@ This web-book is derived from my lecture slides for Epidemiology 204: "Quantitat
 
 I have drawn these materials from many sources, including but not limited to:
 
-- [David Rocke](https://dmrocke.ucdavis.edu/)'s materials from the [2021 edition of Epi 204](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)
+- [David Rocke](https://dmrocke.ucdavis.edu/)'s materials from the [2021 edition of this course ](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)
+
+- [Hua Zhou](https://hua-zhou.github.io/)'s materials from the [2020 edition of Biostat 200C at UCLA](https://ucla-biostat-200c-2020spring.github.io/schedule/schedule.html)
 
 - @vittinghoff2e
 
 - @dobson4e
+
+- @rms2e
 
 ## Using these lecture notes {.unnumbered}
 
