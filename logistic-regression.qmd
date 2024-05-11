@@ -1808,32 +1808,16 @@ If I give you model 1, how would you get the coefficients of model 2?
 
 Assume:
 
-- $Y_i|\vX_i \simiid \Ber(\pi(X_i))$
+- $Y_i|\vX_i \simind \Ber(\pi(X_i))$
 - $\pi(\vx) = \expitf{\vx'\vb}$
 
 Then the log-likelihood function is:
 
 $$
 \ba
-\ell(\vec \vb, \vec y) 
-   &= \log{\Lik(\vec \vb, \vec y) }
-\\ &= \sumin \ell_i(\vb_i)
-\\ &= \sumin y_i \log{\pi_i} + (1 - y_i) \log{1-\pi_i}
-\\ &= \sumin y_i \red{\log{\pi_i}} + \log{1-\pi_i} - y_i \cd \blue{\log{1-\pi_i}}
-\\ &= \sumin y_i (\red{\log{\pi_i}} - \blue{\log{1-\pi_i}}) + \log{1-\pi_i}
-\\ &= \sumin y_i (\log{\frac{\red{\pi_i}}{\blue{1-\pi_i}}}) + \log{1-\pi_i}
-\\ &= \sumin y_i (\logit(\pi_i)) + \log{1-\pi_i}
-\ea
-$${#eq-loglik-bernoulli-iid}
-
-And the score function is:
-
-$$
-\ba
-\ell'(\vb) 
-   &\eqdef \deriv{\vb} \ell(\vb)
-\\ &=      \deriv{\vb} \sumin \ell_i(\vb)
-\\ &=      \sumin \deriv{\vb} \ell_i(\vb)
+\ell(\vb, \vy) 
+   &= \log{\Lik(\vb, \vec y) }
+\\ &= \sumin \red{\ell_i(\pi(\vx_i))}
 \ea
 $$
 
@@ -1841,9 +1825,40 @@ $$
 
 $$
 \ba
-\deriv{\vb} \ell_i(\vb) 
-   &= \deriv{\vb} \P_{\vb}(Y_i=y_i|X_i=x_i) 
-\\ &= \deriv{\vb} y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
+\red{\ell_i(\pi(\vx_i))}
+   &= y_i \log{\pi_i} + (1 - y_i) \log{1-\pi_i}
+\\ &= y_i \log{\pi_i} + (1 \cd \log{1-\pi_i} - y_i \cd \log{1-\pi_i})
+\\ &= y_i \log{\pi_i} + (\log{1-\pi_i} - y_i \cd \log{1-\pi_i})
+\\ &= y_i \log{\red{\pi_i}} + \log{1-\pi_i} - y_i \cd \log{\blue{1-\pi_i}}
+\\ &= y_i \log{\red{\pi_i}} - y_i \cd \log{\blue{1-\pi_i}} + \log{1-\pi_i}
+\\ &= (y_i \log{\red{\pi_i}} - y_i \cd \log{\blue{1-\pi_i}}) + \log{1-\pi_i}
+\\ &= y_i (\log{\red{\pi_i}} - \log{\blue{1-\pi_i}}) + \log{1-\pi_i}
+\\ &= y_i (\log{\frac{\red{\pi_i}}{\blue{1-\pi_i}}}) + \log{1-\pi_i}
+\\ &= y_i (\logit(\pi_i)) + \log{1-\pi_i}
+\ea
+$$ {#eq-loglik-bernoulli-iid}
+
+
+---
+
+The score function is:
+
+$$
+\ba
+\ell'(\vb) 
+   &\eqdef \deriv{\vb} \ell(\vb)
+\\ &=      \deriv{\vb} \sumin \ell_i(\vb)
+\\ &=      \sumin \deriv{\vb} \ell_i(\vb)
+\\ &=      \sumin \ell'_i(\vb)
+\ea
+$$
+
+---
+
+$$
+\ba
+\ell_i'(\vb) 
+   &= \deriv{\vb} y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
 \\ &= \deriv{\vb}\cb{y_i \paren{\vx_i'\vb} + \log{1-\pi_i}}
 \\ &= \cb{y_i \deriv{\vb}\paren{\vx_i'\vb} + \deriv{\vb}\log{1-\pi_i}}
 \\ &= \cb{\vx_i y_i + \deriv{\vb}\log{1-\expit(\vx_i'\vb)}}
