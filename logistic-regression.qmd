@@ -1867,6 +1867,8 @@ $$
 In general, the estimating equation $\ell'(\beta; \mathbf x) = 0$ cannot
 be solved analytically.
 
+---
+
 Instead, we have to use a variant of the [Newton-Raphson method](intro-MLEs.qmd#sec-newton-raphson) (c.f., @dobson4e, Chapter 4).
 
 For now, all you need to know is that we make an iterative series of
