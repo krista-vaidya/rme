@@ -167,5 +167,8 @@
 \def\logodds{\eta}
 \def\oddst{\text{odds}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
+\providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}
 \def\oddsinv{\text{odds}^{-1}}
 \providecommand{\oddsinvf}[1]{\oddsinv\cb{#1}}
+\def\invoddsf{\oddsinvf}
+\providecommand{\doddsinvf}[1]{{\oddsinv}'\cb{#1}}

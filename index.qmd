@@ -78,25 +78,6 @@ You can toggle between them using the oval button near the top-left corner:
 
 ![Palette toggle](images/dark-mode.png)
 
-## Contributing to this project
-
-Contributions to these notes are very much appreciated; anything from
-one-character typo corrections to new chapters or rewrites. 
-The [GitHub repository for this project](https://github.com/d-morrison/rme)
-provides a Pull Request system for submitting contributions. 
-See <https://happygitwithr.com/pr-extend> for an explanation of the pull request system
-and the available R utility functions for working with pull requests.
-
-### Style guide
-
-- Every abstract concept (definition or theorem) should have at least one concrete example immediately following it.
-
-- More structure (headers, labels) is better.
-
-- Make each conceptual chunk as compact as possible:
-  - Decompose long derivations into smaller lemmas.
-  - When manipulating part of a larger expression, isolate that part in a lemma.
-  
 ## Other resources {.unnumbered}
 
 These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and I encourage you to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes. 

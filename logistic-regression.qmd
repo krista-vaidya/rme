@@ -347,17 +347,18 @@ In logistic regression, we will make use of a mathematically-convenient transfor
 
 :::{#def-odds}
 #### Odds
-The **odds** of an outcome $A$, denoted $\omega(A)$ ("omega"), is the probability that the outcome occurs, divided by the probability that it doesn't occur:
+The **odds** of an outcome $A$, denoted $\odds(A)$ ("omega"), is the probability that the outcome occurs, divided by the probability that it doesn't occur:
 
-$$\omega(A) \eqdef \frac{\Pr(A)}{\Pr(\neg A)}$$
+$$\odds(A) \eqdef \frac{\Pr(A)}{\Pr(\neg A)}$$
 :::
 
 ---
 
 :::{#thm-prob-to-odds}
-If the probability of an outcome $A$ is $\Pr(A)=\pi$, then the corresponding odds of $A$ is:
+If the probability of an outcome $A$ is $\Pr(A)=\pi$, 
+then the corresponding odds of $A$ is:
 
-$$\oddsf(\pi) = \frac{\pi}{1-\pi}$$ {#eq-odds-probs}
+$$\oddsf{\pi} = \frac{\pi}{1-\pi}$$ {#eq-odds-probs}
 
 :::
 
@@ -373,7 +374,7 @@ $$
 
 $$
 \ba
-\tf \omega(A) &\eqdef \frac{\Pr(A)}{\Pr(\neg A)} 
+\tf \odds(A) &\eqdef \frac{\Pr(A)}{\Pr(\neg A)} 
 \\ &= \frac{\pi}{1-\pi}
 \ea
 $$
@@ -424,7 +425,7 @@ odds_OC = odds(pi_OC)
 
 $$
 \begin{aligned}
-\omega(OC) 
+\odds(OC) 
 &\eqdef \frac{\Pr(MI|OC)}{\Pr(\neg MI|OC)}\\
 &=\frac{\Pr(MI|OC)}{1-\Pr(MI|OC)}\\
 &=\frac{\pi(OC)}{1-\pi(OC)}\\
@@ -450,7 +451,7 @@ odds_nOC = pi_nOC / (1 - pi_nOC)
 ```
 
 $$
-\omega(\neg OC) = `r odds_nOC`
+\odds(\neg OC) = `r odds_nOC`
 $$
 
 ::::
@@ -464,10 +465,10 @@ $$
 
 Let $X_1,...X_n$ be a set of $n$ $\iid$ Bernoulli trials, and let $X = \sumin X_i$ be their sum. 
 
-Then the maximum likelihood estimate of the odds of $X=1$, $\omega$, is:
+Then the maximum likelihood estimate of the odds of $X=1$, $\odds$, is:
 
 $$
-\hat{\omega}= \frac{x}{n-x}
+\hat{\odds}= \frac{x}{n-x}
 $$
 
 :::
@@ -509,7 +510,7 @@ That is, odds can be calculated directly as "# events" divided by "# nonevents" 
 In @exm-odds, we calculated 
 $$
 \begin{aligned}
-\omega(OC) 
+\odds(OC) 
 &=`r (13/5000)/(1- (13/5000))`
 \end{aligned}
 $$
@@ -523,7 +524,7 @@ Let's recalculate this result using our shortcut.
 ::::{#sol-odds-shortcut}
 $$
 \begin{aligned}
-\omega(OC) 
+\odds(OC) 
 &=\frac{13}{5000-13}\\
 &=`r (13)/(5000- 13)`
 \end{aligned}
@@ -553,7 +554,7 @@ What odds value corresponds to the probability $\pi = 0.2$, and what is the nume
 
 ::::{.solution}
 $$
-\omega = \frac{\pi}{1-\pi} 
+\odds = \frac{\pi}{1-\pi} 
 =\frac{.2}{.8}
 = .25
 $$
@@ -571,7 +572,7 @@ An equivalent expression for the odds function is
 :::
 
 $$
-\omega(\pi) = \invf{\invf{\pi}-1)}
+\oddsf{\pi} = \invf{\invf{\pi}-1)}
 $$ {#eq-odds-reduced}
 
 :::
@@ -587,7 +588,7 @@ Prove that @eq-odds-reduced is equivalent to @def-odds.
 :::{#thm-deriv-odds}
 #### Derivative of odds function
 
-$$\odds'(\pi) = \frac{1}{\sqf{1-\pi}}$$
+$$\doddsf(\pi) = \frac{1}{\sqf{1-\pi}}$$
 :::
 
 ---
@@ -617,7 +618,7 @@ $$
 ##### inverse odds function
 The **inverse odds function**, 
 
-$$\pi(\omega) \eqdef \frac{\omega}{1+\omega}$$
+$$\invoddsf{\odds} \eqdef \frac{\odds}{1+\odds}$$
 converts odds into their corresponding probabilities (@fig-inv-odds).
 :::
 
@@ -629,7 +630,7 @@ The inverse-odds function takes an odds as input and produces a probability as o
 
 ```{r}
 #| label: fig-inv-odds
-#| fig-cap: The inverse odds function, $\pi(\omega)$
+#| fig-cap: The inverse odds function, $\invoddsf{\odds}$
 odds_inv = function(omega) (1 + omega^-1)^-1
 ggplot() +
   geom_function(fun = odds_inv, aes(col = "inverse-odds")) +
@@ -644,7 +645,7 @@ ggplot() +
 
 :::{#exr-odds-probs}
 
-What probability corresponds to an odds of $\omega = 1$, and what is the numerical difference between these two values?
+What probability corresponds to an odds of $\odds = 1$, and what is the numerical difference between these two values?
 
 :::
 
@@ -674,7 +675,7 @@ An equivalent expression for the inverse odds function is
 :::
 
 $$
-\pi(\omega) = (1+\omega^{-1})^{-1}
+\pi(\odds) = (1+\odds^{-1})^{-1}
 $$ {#eq-inv-odds-reduced}
 
 :::
@@ -690,7 +691,7 @@ Prove that @eq-inv-odds-reduced is equivalent to @def-inv-odds.
 
 :::{#lem-one-minus-odds-inv}
 #### One minus inverse-odds
-$$1-\oddsinvf{\omega} = \frac{1}{1+\omega}$$
+$$1-\oddsinvf{\odds} = \frac{1}{1+\odds}$$
 :::
 
 ---
@@ -699,11 +700,11 @@ $$1-\oddsinvf{\omega} = \frac{1}{1+\omega}$$
 
 $$
 \ba
-1 - \oddsinvf{\omega} &= 1 - \frac{\omega}{1 + \omega}
-\\ &= \frac{\red{1+\omega}}{1 + \omega} - \frac{\blue{\omega}}{1 + \omega}
-\\ &= \frac{\red{(1+\omega)} - \blue{\omega}}{1 + \omega}
-\\ &= \frac{1 + \omega - \omega}{1 + \omega}
-\\ &= \frac{1}{1 + \omega}
+1 - \oddsinvf{\odds} &= 1 - \frac{\odds}{1 + \odds}
+\\ &= \frac{\red{1+\odds}}{1 + \odds} - \frac{\blue{\odds}}{1 + \odds}
+\\ &= \frac{\red{(1+\odds)} - \blue{\odds}}{1 + \odds}
+\\ &= \frac{1 + \odds - \odds}{1 + \odds}
+\\ &= \frac{1}{1 + \odds}
 \ea
 $$
 :::
@@ -713,7 +714,7 @@ $$
 :::{#thm-deriv-invodds}
 
 ##### Derivative of inverse odds function
-$$\oddsinv'(\odds) = \frac{1}{\sqf{1+\odds}}$$
+$$\doddsinvf{\odds} = \frac{1}{\sqf{1+\odds}}$$
 :::
 
 ---
@@ -722,7 +723,7 @@ $$\oddsinv'(\odds) = \frac{1}{\sqf{1+\odds}}$$
 
 $$
 \ba
-\oddsinv'(\odds) 
+{\oddsinv}'(\odds) 
 &= \deriv{\odds} \oddsinvf{\odds}
 \\ &= \deriv{\odds} \frac{\odds}{1+\odds}
 \\ &= \frac{\deriv{\odds}\odds}{1+\odds} - \frac{\odds}{\sqf{1+\odds}} \cd \deriv{\odds}(1+\odds) 
@@ -740,7 +741,8 @@ $$
 
 
 :::{#cor-deriv-invodds}
-$$\oddsinv'(\odds) = \sqf{1-\oddsinv(\odds)}$$
+
+$$\doddsinvf{\odds} = \sqf{1 - \oddsinvf{\odds}}$$
 :::
 
 ---
@@ -1134,7 +1136,7 @@ $$
 \xleftarrow[\exp{\eta}]{}
 }
 {
-\xrightarrow{\log{\omega}}
+\xrightarrow{\log{\odds}}
 }
 }^{\logit(\pi)}
 }_{\expit(\eta)}
@@ -1149,17 +1151,17 @@ $$
 \overbrace{
 \underbrace{
 \underset{
-\xleftarrow[\frac{\omega}{1+\omega}]{}
+\xleftarrow[\frac{\odds}{1+\odds}]{}
 }
 {
 \xrightarrow{\frac{\pi}{1-\pi}}
 }
-\underbrace{\omega}_{\text{odds}(Y=1)}
+\underbrace{\odds}_{\text{odds}(Y=1)}
 \underset{
 \xleftarrow[\exp{\eta}]{}
 }
 {
-\xrightarrow{\log{\omega}}
+\xrightarrow{\log{\odds}}
 }
 }_{\expit(\eta)}
 }^{\logit(\pi)}

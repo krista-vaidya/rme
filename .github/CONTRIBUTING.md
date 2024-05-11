@@ -1,13 +1,28 @@
 # Contributing to `rme`
 
-This section outlines how to propose a change to `rme`.
-For a detailed discussion on contributing to this and other projects, please see the [Tidyverse development contributing guide](https://rstd.io/tidy-contrib) and the [Tidyverse code review principles](https://code-review.tidyverse.org/). This project is not part of the tidyverse, but we have borrowed their development processes.
+Contributions to these notes are very much appreciated; anything from
+one-character typo corrections to new chapters or rewrites. 
+The [GitHub repository for this project](https://github.com/d-morrison/rme)
+provides a Pull Request system for submitting contributions. 
+See <https://happygitwithr.com/pr-extend> for an explanation of the pull request system
+and the available R utility functions for working with pull requests.
+
+## Style guide
+
+- Every abstract concept (definition or theorem) should have at least one concrete example immediately following it.
+
+- More structure (headers, labels) is better.
+
+- Make each conceptual chunk as compact as possible:
+  - Decompose long derivations into smaller lemmas.
+  - When manipulating part of a larger expression, isolate that part in a lemma.
 
 ## Fixing typos
 
+This book is written using [Quarto](https://quarto.org/docs/books/).
 You can fix typos, spelling mistakes, or grammatical errors directly using the GitHub web interface by making changes in the corresponding *source* file. 
 This generally means you'll need to edit a `.qmd` file. 
-This book is written using [Quarto](https://quarto.org/docs/books/).
+
 
 ## Bigger changes
 
@@ -39,3 +54,10 @@ Details at <https://usethis.r-lib.org/articles/pr-functions.html>
 Please note that the `rme` project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this
 project you agree to abide by its terms.
+
+## Additional references
+
+For a detailed discussion on contributing to this and other projects, 
+please see the [Tidyverse development contributing guide](https://rstd.io/tidy-contrib) 
+and the [Tidyverse code review principles](https://code-review.tidyverse.org/). 
+This project is not part of the tidyverse, but we have borrowed their development processes.

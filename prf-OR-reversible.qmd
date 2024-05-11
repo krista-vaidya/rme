@@ -2,7 +2,7 @@
 
 $$
 \ba
-\theta(A|B) &\eqdef\frac{\omega(A|B)}{\omega(A|\neg B)}
+\theta(A|B) &\eqdef\frac{\odds(A|B)}{\odds(A|\neg B)}
 \\ &= \frac
 {\paren{\frac{\p(A|B)}{\p(\neg A|B)}}}
 {\paren{\frac{\p(A|\neg B)}{\p(\neg A| \neg B)}}}
