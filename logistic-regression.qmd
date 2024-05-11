@@ -995,6 +995,48 @@ $$
 
 :::
 
+---
+
+:::{#lem-one-minus-odds}
+
+$$1-\oddsinvf{\omega}) = \frac{1}{1+\omega}$$
+:::
+
+---
+
+::: {.proof}
+
+$$
+\ba
+1 - \oddsinvf{\omega}) &= 1 - \frac{\omega}{1 + \omega}
+\\ &= \frac{\red{1+\omega}}{1 + \omega} - \frac{\blue{\omega}}{1 + \omega}
+\\ &= \frac{\red{(1+\omega)} - \blue{\omega}}{1 + \omega}
+\\ &= \frac{1 + \omega - \omega}{1 + \omega}
+\\ &= \frac{1}{1 + \omega}
+\ea
+$$
+:::
+
+---
+
+:::{#cor-one-minus-expit}
+$$1-\expitf{\eta} = \inv{1+\exp{\eta}}$$
+:::
+
+---
+
+::: {.proof}
+$$
+\ba
+1 - \expitf{\eta} &= 1 - \oddsinvf{\expf{\eta}}
+\\ &= \frac{1}{1+\expf{\eta}}
+\\ &= \inv{1+\exp{\eta}}
+\ea
+$$
+:::
+
+---
+
 ## Introduction to logistic regression
 
 * In @exm-oc-mi, we estimated the risk and the odds of MI for two discrete cases, as to whether of not the individual used oral contraceptives.
@@ -1751,14 +1793,53 @@ Then the score function is:
 
 $$
 \ba
-\ell'(\vb) &= \deriv{\beta}\ell(\vb)
-\\         &= \deriv{\beta}\sumin y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
-\\         &= \sumin \deriv{\beta}\cb{y_i \paren{\vx'\beta} + \log{1-\pi_i}}
-\\         &= \sumin \cb{y_i \deriv{\beta}\paren{\vx'\beta} + \deriv{\beta}\log{1-\pi_i}}
+\ell'(\vb) 
+   &= \deriv{\beta}\ell(\vb)
+\\ &= \deriv{\beta}\sumin y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
+\\ &= \sumin \deriv{\beta}\cb{y_i \paren{\vx_i'\beta} + \log{1-\pi_i}}
+\\ &= \sumin \cb{y_i \deriv{\beta}\paren{\vx_i'\beta} + \deriv{\beta}\log{1-\pi_i}}
+\\ &= \sumin \cb{\vx_i y_i + \deriv{\beta}\log{1-\expit(\vx_i'\beta)}}
+\\ &= \sumin \cb{\vx_i y_i + \deriv{\beta}\log{\inv{1+\exp{\vx_i'\beta}}}}
+\\ &= \sumin \cb{\vx_i y_i - \deriv{\beta}\log{1+\exp{\vx_i'\beta}}}
 \ea
 $$
 
+Now we need to apply the chain rule:
 
+$$
+\deriv{\beta}\log{1+\exp{\vx_i'\beta}} = 
+\frac{1}{1+\exp{\vx_i'\beta}} \deriv{\beta}\cb{1+\exp{\vx_i'\beta}}
+$$
+
+$$
+\ba
+\deriv{\beta}\cb{1+\exp{\vx_i'\beta}}
+   &= \exp{\vx_i'\beta} \deriv{\beta}\vx_i'\beta
+\\ &= \vx_i \exp{\vx_i'\beta} 
+\ea
+$$
+
+So:
+
+$$
+\ba
+\deriv{\beta}\log{1+\exp{\vx_i'\beta}} 
+   &= \frac{1}{1+\exp{\vx_i'\beta}} \exp{\vx_i'\beta} \vx_i
+\\ &= \frac{\exp{\vx_i'\beta}}{1+\exp{\vx_i'\beta}}  \vx_i
+\\ &= \vx_i \expitf{\vx_i'\beta}
+\ea
+$$
+
+So:
+
+$$
+\ba
+\ell'(\vb) 
+   &= \sumin \cb{\vx_i y_i - \vx_i \expitf{\vx_i'\beta} }
+\\ &= \sumin \vx_i \cb{ y_i - \expitf{\vx_i'\beta}}
+\\ &= \sumin \vx_i \cb{ y_i - \inv{1+\expf{-\vx_i'\beta}}}
+\ea
+$$
 ---
 
 ::: notes

@@ -114,9 +114,11 @@
 \renewcommand{\log}[1]{\text{log}\cb{#1}}
 \providecommand{\logf}[1]{\text{log}\cb{#1}}
 \renewcommand{\exp}[1]{\text{exp}\cb{#1}}
+\providecommand{\expf}[1]{\exp{#1}}
 \providecommand{\e}[1]{\text{e}^{#1}}
 \providecommand{\ef}[1]{\text{e}^{#1}}
 \providecommand{\inv}[1]{\paren{#1}^{-1}}
+\providecommand{\invf}[1]{\paren{#1}^{-1}}
 \def\oinf{I}
 \providecommand{\oinff}[1]{\oinf\paren{#1}}
 \def\einf{\mathcal{I}}
@@ -155,3 +157,7 @@
 \def\prodin{\prod_{i=1}^n}
 \def\prodi1n{\prod_{i=1}^n}
 \providecommand{\lp}[2]{#1 \' \beta}
+\def\odds{\text{odds}}
+\providecommand{\oddsf}[1]{\odds\cb{#1}}
+\def\oddsinv{\invf{\text{odds}}}
+\providecommand{\oddsinvf}[1]{\oddsinv\cb{#1}}
