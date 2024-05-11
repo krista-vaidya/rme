@@ -107,7 +107,7 @@ $$\Lik_i(\theta) = \P(X_i=x_i)$$
 
 :::{#thm-ds-lik-obs-lik}
 
-For $\iid$ data $\vx \eqdef x1n$, 
+For $\iid$ data $\vx \eqdef \x1n$, 
 the likelihood of the dataset is equal to the product of the observation-specific likelihood factors:
 
 $$\Lik(\theta) = \prodin \Lik_i(\theta)$$
