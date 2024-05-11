@@ -52,6 +52,7 @@
 \def\ba{\begin{aligned}}
 \def\ea{\end{aligned}}
 \def\ind{⫫}
+\def\indpt{⫫}
 \def\all{\forall}
 \def\iid{\text{iid}}
 \def\ciid{\text{ciid}}
@@ -142,6 +143,9 @@
 \providecommand{\v}[1]{\vec{#1}}
 \def\vx{\vec{x}}
 \def\vX{\vec{X}}
+\def\vy{\vec{y}}
+\def\vY{\vec{Y}}
+\def\vpi{\vec{\pi}}
 \providecommand{\mat}[1]{\mathbf{#1}}
 \providecommand{\dsn}[1]{#1_1, \ldots, #1_n}
 \def\X1n{\dsn{X}}
