@@ -14,13 +14,30 @@ Some material was also taken from @mclachlan2007em and @CaseBerg01.
 
 ### The likelihood function
 
+:::{#def-lik-obs}
+#### Likelihood of a single observation
+
+Let $X$ be a random variable and let $x$ be $X$'s observed data value.
+Let $\p_{\Th}(X=x)$ be a probability model for the distribution of $X$, with parameter vector $\Th$.
+
+Then the **likelihood** of parameter value $\th$, for model $\p_{\Th}(X=x)$ and data $X = x$, is simply the probability of the event $X=x$ given $\Th = \th$:
+ 
+$$
+\ba
+\Lik(\theta) &\eqdef \P_{\theta}(X = x)
+\ea
+$$
+:::
+
+---
+
 :::{#def-lik}
-#### Likelihood
+#### Likelihood of a dataset
 
 Let $\vec x$ be a dataset with corresponding random variable $\vec X$.
-Let $\p_{\Th}(\vec X)$ be a probability model for the distribution of $\vX$ with parameter vector $\Th$.
+Let $\p_{\Th}(\vec X)$ be a probability model for the distribution of $\vX$ with unknown parameter vector $\Th$.
 
-Then the **likelihood** of parameter value $\th$, for model $\p_{\Th}(X)$ and data $\vX = \vx$, is the *joint probability* of $\vx$ given $\Th = \th$:
+Then the **likelihood** of parameter value $\th$, for model $\p_{\Th}(X)$ and data $\vX = \vx$, is the *joint probability* of $\vX = \vx$ given $\Th = \th$:
  
 $$
 \ba
@@ -75,6 +92,29 @@ The second equality is by the definition of statistical independence.
 
 :::
 
+---
+
+:::{#def-lik-factor}
+#### Likelihood components
+
+Given an $\iid$ dataset $\vec x$, the **likelihood component** or **likelihood factor** of observation $X_i=x_i$ is the marginal likelihood of $X_i=x_i$: 
+
+$$\Lik_i(\theta) = \P(X_i=x_i)$$
+
+:::
+
+---
+
+:::{#thm-ds-lik-obs-lik}
+
+For $\iid$ data $\vx \eqdef x1n$, 
+the likelihood of the dataset is equal to the product of the observation-specific likelihood factors:
+
+$$\Lik(\theta) = \prodin \Lik_i(\theta)$$
+:::
+
+---
+
 ### The maximum likelihood estimate
 
 :::{#def-mle}
@@ -121,6 +161,17 @@ It is typically easier to work with the log of the likelihood function:
 The **log-likelihood** of parameter value $\theta$, for model $\p_{\Theta}(\vX)$ and data $\vX = \vx$, is the natural logarithm of the likelihood^[ <https://en.wikipedia.org/wiki/Does_exactly_what_it_says_on_the_tin>]:
 
 $$\lik(\th) \eqdef \logf{\Lik(\th)}$$
+:::
+
+---
+
+:::{#def-loglik}
+
+#### Log-likelihood components
+
+Given a dataset $\vX = \vx$, the **log-likelihood component of observation $X_i=x_i$** is the natural logarithm of the likelihood component:
+
+$$\lik_i(\th) \eqdef \logf{\Lik_i(\th)}$$
 :::
 
 ---
