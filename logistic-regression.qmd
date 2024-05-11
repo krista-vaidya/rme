@@ -178,7 +178,7 @@ In *prospective studies*, the group of participants who experience the treatment
 
 :::
 
-## Comparing probabilities
+## Comparing Probabilities
 
 ### Risk differences
 
@@ -267,7 +267,7 @@ We might summarize this result by saying that "the estimated probability of MI a
 
 ---
 
-### Relative risk difference
+### Relative risk differences
 
 :::{#def-RRD}
 
@@ -336,10 +336,12 @@ $$
 
 :::
 
+## Odds and Odds Ratios
+
 ### Odds and probabilities
 
 ::: notes
-In logistic regression, we will make use of a transformation (rescaling) of probability, called *odds*.
+In logistic regression, we will make use of a mathematically-convenient transformation of probability, called *odds*.
 :::
 
 :::{#def-odds}
@@ -627,7 +629,7 @@ $$
 
 ---
 
-### The inverse odds function
+#### The inverse odds function
 
 :::{#def-inv-odds}
 
@@ -660,7 +662,7 @@ ggplot() +
 
 :::{#thm-invodds-simplified}
 
-#### Simplified expression for inverse odds function
+##### Simplified expression for inverse odds function
 
 ::: notes
 An equivalent expression for the inverse odds function is 
@@ -781,7 +783,7 @@ Given @tbl-2x2-generic, show that $\hat\omega(Event|\neg Exposed) = \frac{c}{d}$
 
 ---
 
-## Properties of odds ratios {#sec-OR-props}
+### Properties of odds ratios {#sec-OR-props}
 
 :::: notes
 Odds ratios have a special property: we can swap a covariate with the outcome, and the odds ratio remains the same.
@@ -803,28 +805,6 @@ $$\theta(A|B) = \theta(B|A)$$
 
 {{< include prf-OR-reversible.qmd >}}
 
-:::
-
----
-
-:::: notes
-Conditional odds ratios have the same reversibility property:
-::::
-
-:::{#thm-conditional-OR-swap}
-#### Conditional odds ratios are reversible
-
-
-For any three events $A$, $B$, $C$:
-
-$$\theta(A|B,C) = \theta(B|A,C)$$
-:::
-
----
-
-:::{.proof}
-Apply the same steps as for @thm-or-swap, 
-inserting $C$ into the conditions (RHS of $|$) of every expression.
 :::
 
 ---
@@ -865,6 +845,28 @@ $$
 
 :::{#exr-2x2-generic}
 For @tbl-2x2-generic, show that $\hat\theta(Exposed, Unexposed) = \hat\theta(Event, \neg Event)$.
+:::
+
+---
+
+:::: notes
+Conditional odds ratios have the same reversibility property:
+::::
+
+:::{#thm-conditional-OR-swap}
+#### Conditional odds ratios are reversible
+
+
+For any three events $A$, $B$, $C$:
+
+$$\theta(A|B,C) = \theta(B|A,C)$$
+:::
+
+---
+
+:::{.proof}
+Apply the same steps as for @thm-or-swap, 
+inserting $C$ into the conditions (RHS of $|$) of every expression.
 :::
 
 ---
@@ -944,13 +946,13 @@ This is the same estimate we calculated in @exm-OR.
 * But we can usually not validly estimate risks and risk ratios.
 
 
-## The $\logit$ and $\expit$ functions
+## The logit and expit functions
 
 :::{#def-logit}
 
 ##### logit function
 
-The **$\logit$ function**  of a probability $\pi$ is 
+The **logit function**  of a probability $\pi$ is 
 the natural logarithm of the odds function of $\pi$:
 
 $$\logit(\pi) \eqdef \log{\odds(\pi)}$$
@@ -1008,13 +1010,14 @@ $$
 $$
 
 :::
+
 ---
 
 :::{#def-expit}
 
 #### expit, logistic, inverse-logit
 
-The **expit** function (@fig-expit-plot) of a log-odds $\eta$, also known as the **inverse-logit** or **logistic** function, is the inverse-odds of the exponential of $\eta$:
+The **expit function** (@fig-expit-plot) of a log-odds $\eta$, also known as the **inverse-logit function** or **logistic function**, is the inverse-odds of the exponential of $\eta$:
 
 $$\expit(\eta) \eqdef \oddsinvf{\expf{\eta}}$$
 
