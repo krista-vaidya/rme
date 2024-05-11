@@ -334,6 +334,15 @@ $$\Pr(\Xx1n) = \prodi1n{\Pr(X_i=x_i)}$$
 
 :::
 
+::: notes
+
+::::{.callout-tip}
+The symbol for independence, $\ind$, is essentially just $\prod$ upside-down.
+So the symbol can remind you of its definition (@def-indpt).
+::::
+
+:::
+
 ---
 
 :::{#def-cind}
