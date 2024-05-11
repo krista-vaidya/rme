@@ -1845,7 +1845,6 @@ $$
 \llik_i'(\vb) 
    &= \cb{\vx_i y_i - \vx_i \expitf{\vx_i'\beta} }
 \\ &= \vx_i \cb{ y_i - \expitf{\vx_i'\beta}}
-\\ &= \vx_i \cb{ y_i - \inv{1+\expf{-\vx_i'\beta}}}
 \ea
 $${#eq-score-logistic}
 
