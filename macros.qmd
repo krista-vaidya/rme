@@ -90,8 +90,8 @@
 \def\Expp{\mathbb{E}}
 \def\Ep{\mathbb{E}}
 \def\expit{\text{expit}}
-\def\logit{\text{logit}}
 \providecommand{\expitf}[1]{\expit\cb{#1}}
+\def\logit{\text{logit}}
 \providecommand{\logitf}[1]{\logit\cb{#1}}
 \providecommand{\E}[1]{\mathbb{E}\sb{#1}}
 \providecommand{\Ef}[1]{\mathbb{E}\sb{#1}}
@@ -163,7 +163,9 @@
 \def\prodin{\prod_{i=1}^n}
 \def\prodi1n{\prod_{i=1}^n}
 \providecommand{\lp}[2]{#1 \' \beta}
-\def\odds{\text{odds}}
-\providecommand{\oddsf}[1]{\odds\cb{#1}}
+\def\odds{\omega}
+\def\logodds{\eta}
+\def\oddst{\text{odds}}
+\providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \def\oddsinv{\text{odds}^{-1}}
 \providecommand{\oddsinvf}[1]{\oddsinv\cb{#1}}

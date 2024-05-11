@@ -200,6 +200,7 @@ $$\delta(\pi_1,\pi_2) \eqdef \pi_1 - \pi_2$$
 
 In @exm-oc-mi, the maximum likelihood estimate of the difference in MI risk between OC users and OC non-users is:
 ```{r, include = FALSE}
+#| label: compute-risk-diff
 rd_OC = p_MI_OC - p_MI_nOC
 ```
 
@@ -246,7 +247,7 @@ So we might estimate that the *relative risk* of MI for OC versus non-OC is:
 ::::
 
 ```{r}
-#| label: compute-rr
+#| label: compute-risk-ratio
 rr = (13/5000)/(7/10000)
 ```
 
@@ -356,7 +357,7 @@ $$\omega(A) \eqdef \frac{\Pr(A)}{\Pr(\neg A)}$$
 :::{#thm-prob-to-odds}
 If the probability of an outcome $A$ is $\Pr(A)=\pi$, then the corresponding odds of $A$ is:
 
-$$\omega(\pi) = \frac{\pi}{1-\pi}$$ {#eq-odds-probs}
+$$\oddsf(\pi) = \frac{\pi}{1-\pi}$$ {#eq-odds-probs}
 
 :::
 
@@ -409,12 +410,13 @@ ggplot() +
 
 :::{#exm-odds}
 
-#### Estimating odds
+#### Computing odds from probabilities
 
 In @exr-probs, we estimated that the probability of MI, given OC use, is $\pi(OC) \eqdef \Pr(MI|OC) = `r 13/5000`$. If this estimate is correct, then the odds of MI, given OC use, is:
 
 ```{r}
 #| include: false
+#| label: compute-odds-from-prob
 pi_OC = 13/5000
 odds_OC = odds(pi_OC)
 ```
@@ -436,7 +438,9 @@ $$
 ---
 
 :::{#exr-odds}
-#### Estimating odds
+
+#### Computing odds from probabilities
+
 Estimate the odds of MI, for non-OC users.
 
 ::::{.solution}
@@ -580,29 +584,6 @@ Prove that @eq-odds-reduced is equivalent to @def-odds.
 
 ---
 
-:::{#lem-one-minus-odds}
-#### One minus odds
-$$1-\oddsinvf{\omega}) = \frac{1}{1+\omega}$$
-:::
-
----
-
-::: {.proof}
-
-$$
-\ba
-1 - \oddsinvf{\omega}) &= 1 - \frac{\omega}{1 + \omega}
-\\ &= \frac{\red{1+\omega}}{1 + \omega} - \frac{\blue{\omega}}{1 + \omega}
-\\ &= \frac{\red{(1+\omega)} - \blue{\omega}}{1 + \omega}
-\\ &= \frac{1 + \omega - \omega}{1 + \omega}
-\\ &= \frac{1}{1 + \omega}
-\ea
-$$
-:::
-
----
-
-
 :::{#thm-deriv-odds}
 #### Derivative of odds function
 
@@ -635,7 +616,8 @@ $$
 
 ##### inverse odds function
 The **inverse odds function**, 
-$$\pi(\omega)\eqdef \frac{\omega}{1+\omega}$$
+
+$$\pi(\omega) \eqdef \frac{\omega}{1+\omega}$$
 converts odds into their corresponding probabilities (@fig-inv-odds).
 :::
 
@@ -657,28 +639,6 @@ ggplot() +
   ylim(0,1) +
   geom_abline(aes(intercept = 0, slope = 1, col = "x=y"))
 ```
-
----
-
-:::{#thm-invodds-simplified}
-
-##### Simplified expression for inverse odds function
-
-::: notes
-An equivalent expression for the inverse odds function is 
-:::
-
-$$
-\pi(\omega) = (1+\omega^{-1})^{-1}
-$$ {#eq-inv-odds-reduced}
-
-:::
-
----
-
-:::{#exr-inv-odds2}
-Prove that @eq-inv-odds-reduced is equivalent to @def-inv-odds.
-:::
 
 ---
 
@@ -704,6 +664,87 @@ $$
 
 ---
 
+
+:::{#thm-invodds-simplified}
+
+##### Simplified expression for inverse odds function
+
+::: notes
+An equivalent expression for the inverse odds function is 
+:::
+
+$$
+\pi(\omega) = (1+\omega^{-1})^{-1}
+$$ {#eq-inv-odds-reduced}
+
+:::
+
+---
+
+:::{#exr-inv-odds2}
+Prove that @eq-inv-odds-reduced is equivalent to @def-inv-odds.
+:::
+
+---
+
+
+:::{#lem-one-minus-odds-inv}
+#### One minus inverse-odds
+$$1-\oddsinvf{\omega} = \frac{1}{1+\omega}$$
+:::
+
+---
+
+::: {.proof}
+
+$$
+\ba
+1 - \oddsinvf{\omega} &= 1 - \frac{\omega}{1 + \omega}
+\\ &= \frac{\red{1+\omega}}{1 + \omega} - \frac{\blue{\omega}}{1 + \omega}
+\\ &= \frac{\red{(1+\omega)} - \blue{\omega}}{1 + \omega}
+\\ &= \frac{1 + \omega - \omega}{1 + \omega}
+\\ &= \frac{1}{1 + \omega}
+\ea
+$$
+:::
+
+---
+
+:::{#thm-deriv-invodds}
+
+##### Derivative of inverse odds function
+$$\oddsinv'(\odds) = \frac{1}{\sqf{1+\odds}}$$
+:::
+
+---
+
+::: proof
+
+$$
+\ba
+\oddsinv'(\odds) 
+&= \deriv{\odds} \oddsinvf{\odds}
+\\ &= \deriv{\odds} \frac{\odds}{1+\odds}
+\\ &= \frac{\deriv{\odds}\odds}{1+\odds} - \frac{\odds}{\sqf{1+\odds}} \cd \deriv{\odds}(1+\odds) 
+\\ &= \frac{1}{1+\odds} - \frac{\odds}{\sqf{1+\odds}} \cd 1
+\\ &= \frac{1}{1+\odds} - \frac{\odds}{\sqf{1+\odds}}
+\\ &= \frac{1+\odds}{\sqf{1+\odds}} - \frac{\odds}{\sqf{1+\odds}}
+\\ &= \frac{1+\odds - \odds}{\sqf{1+\odds}}
+\\ &= \frac{1}{\sqf{1+\odds}}
+\ea
+$$
+
+:::
+
+---
+
+
+:::{#cor-deriv-invodds}
+$$\oddsinv'(\odds) = \sqf{1-\oddsinv(\odds)}$$
+:::
+
+---
+
 ### Odds ratios
 
 ::: notes
@@ -714,9 +755,9 @@ Now that we have defined odds, we can introduce another way of comparing event p
 
 :::{#def-OR}
 ##### Odds ratio
-The **odds ratio** for two odds $\omega_1$, $\omega_2$ is their ratio:
+The **odds ratio** for two odds $\odds_1$, $\odds_2$ is their ratio:
 
-$$\theta(\omega_1, \omega_2) = \frac{\omega_1}{\omega_2}$$
+$$\theta(\odds_1, \odds_2) = \frac{\odds_1}{\odds_2}$$
 
 :::
 
@@ -728,8 +769,8 @@ In @exm-oc-mi, the odds ratio for OC users versus OC-non-users is:
 
 $$
 \begin{aligned}
-\theta(\omega(OC), \omega(\neg OC))
-&= \frac{\omega(OC)}{\omega(\neg OC)}\\
+\theta(\odds(OC), \odds(\neg OC))
+&= \frac{\odds(OC)}{\odds(\neg OC)}\\
 &= \frac{`r pi_OC`}{`r pi_nOC`}\\
 &= `r pi_OC / pi_nOC`\\
 \end{aligned}
@@ -768,9 +809,9 @@ From this table, we have:
 
 * $\hat\pi(\neg Event|Exposed) = b/(a+b)$
 
-* $\hat\omega(Event|Exposed) = \frac{\left(\frac{a}{a+b}\right)}{\left(\frac{b}{a+b}\right)}=\frac{a}{b}$
+* $\hat\odds(Event|Exposed) = \frac{\left(\frac{a}{a+b}\right)}{\left(\frac{b}{a+b}\right)}=\frac{a}{b}$
 
-* $\hat\omega(Event|\neg Exposed) = \frac{c}{d}$
+* $\hat\odds(Event|\neg Exposed) = \frac{c}{d}$
 (see @exr-odds-generic)
 
 * $\theta(Exposed,\neg Exposed) = \frac{\frac{a}{b}}{\frac{c}{d}} = \frac{ad}{bc}$
@@ -778,7 +819,7 @@ From this table, we have:
 ---
 
 :::{#exr-odds-generic}
-Given @tbl-2x2-generic, show that $\hat\omega(Event|\neg Exposed) = \frac{c}{d}$.
+Given @tbl-2x2-generic, show that $\hat\odds(Event|\neg Exposed) = \frac{c}{d}$.
 :::
 
 ---
@@ -817,7 +858,7 @@ $$
 \begin{aligned}
 \theta(MI; OC) 
 &\eqdef
-\frac{\omega(MI|OC)}{\omega(MI|\neg OC)}\\
+\frac{\odds(MI|OC)}{\odds(MI|\neg OC)}\\
 &\eqdef \frac
 {\left(\frac{\Pr(MI|OC)}{\Pr(\neg MI|OC)}\right)}
 {\left(\frac{\Pr(MI|\neg OC)}{\Pr(\neg MI|\neg OC)}\right)}\\
@@ -834,8 +875,8 @@ $$
 \left(\frac{\Pr(\neg OC|\neg MI)}{\Pr(OC|\neg MI)}\right)\\
 &= \frac{\left(\frac{\Pr(OC|MI)}{\Pr(\neg OC|MI)}\right)}
 {\left(\frac{\Pr(OC|\neg MI)}{\Pr(\neg OC|\neg MI)}\right)}\\
-&\eqdef \frac{\omega(OC|MI)}
-{\omega(OC|\neg MI)}\\
+&\eqdef \frac{\odds(OC|MI)}
+{\odds(OC|\neg MI)}\\
 &\eqdef \theta(OC; MI)
 \end{aligned}
 $$
@@ -891,7 +932,7 @@ which is the odds for exposure in the disease group divided by the odds for expo
 
 $$
 \hth(OC|MI) = 
-\frac{\hat{\omega}(OC|MI)}{\hat{\omega}(OC|\neg MI)}
+\frac{\hat{\odds}(OC|MI)}{\hat{\odds}(OC|\neg MI)}
 $$
 
 ::: notes
@@ -921,11 +962,11 @@ tbl_oc_mi
 ```
 :::
 
-* $\omega(OC|MI) = P(OC|MI)/(1 – P(OC|MI) = \frac{13}{7} = `r 13/7`$
+* $\odds(OC|MI) = P(OC|MI)/(1 – P(OC|MI) = \frac{13}{7} = `r 13/7`$
 
-* $\omega(OC|\neg MI) = P(OC|\neg MI)/(1 – P(OC|\neg MI) = \frac{4987}{9993} = `r 4987/9993`$
+* $\odds(OC|\neg MI) = P(OC|\neg MI)/(1 – P(OC|\neg MI) = \frac{4987}{9993} = `r 4987/9993`$
 
-* $\theta(OC,MI) = \frac{\omega(OC|MI)}{\omega(OC|\neg MI)} = \frac{13/7}{4987/9993} = `r (13/7)/(4987/9993)`$
+* $\theta(OC,MI) = \frac{\odds(OC|MI)}{\odds(OC|\neg MI)} = \frac{13/7}{4987/9993} = `r (13/7)/(4987/9993)`$
 
 ::: notes
 This is the same estimate we calculated in @exm-OR.
@@ -1004,6 +1045,7 @@ $$
    &= \deriv{\pi}\logit(\pi)
 \\ &= \deriv{\pi}\log{\odds(\pi)}
 \\ &= \frac{\odds'(\pi)}{\odds(\pi)}
+\\ &= \odds'(\pi) \frac{1}{\odds(\pi)}
 \\ &= \frac{1}{\sqf{1-\pi}}\frac{1-\pi}{\pi}
 \\ &= \frac{1}{(\pi)(1-\pi)}
 \ea
@@ -1021,16 +1063,6 @@ The **expit function** (@fig-expit-plot) of a log-odds $\eta$, also known as the
 
 $$\expit(\eta) \eqdef \oddsinvf{\expf{\eta}}$$
 
-:::
-
-:::{#thm-expit}
-$$
-\ba
-\expit(\eta) 
-   &= \frac{\exp{\eta}}{1+\exp{\eta}}
-\\ &= (1 + \exp{-\eta})^{-1}
-\ea
-$$
 :::
 
 ```{r}
@@ -1069,6 +1101,21 @@ Left to the reader.
 
 ---
 
+:::{#thm-expit}
+
+#### Expressions for expit function
+
+$$
+\ba
+\expit(\eta) 
+   &= \frac{\exp{\eta}}{1+\exp{\eta}}
+\\ &= (1 + \exp{-\eta})^{-1}
+\ea
+$$
+:::
+
+---
+
 ### Diagram of expit and logit {#sec-expit-logit-diagram}
 
 ::: {.content-visible when-format="pdf"}
@@ -1077,12 +1124,12 @@ $$
 \underbrace{
 \overbrace{
 \underset{
-\xleftarrow[ \frac{\omega}{1+\omega}]{}
+\xleftarrow[ \frac{\odds}{1+\odds}]{}
 }
 {
 \xrightarrow{\frac{\pi}{1-\pi}}
 }
-\left[\omega \eqdef \text{odds}(Y=1)\right]
+\left[\odds \eqdef \text{odds}(Y=1)\right]
 \underset{
 \xleftarrow[\exp{\eta}]{}
 }
@@ -1123,18 +1170,21 @@ $$
 
 ---
 
-:::{#cor-one-minus-expit}
+:::{#thm-one-minus-expit}
 $$1-\expitf{\eta} = \inv{1+\exp{\eta}}$$
 :::
 
 ---
 
 ::: {.proof}
+
+Using @lem-one-minus-odds-inv:
+
 $$
 \ba
 1 - \expitf{\eta} &= 1 - \oddsinvf{\expf{\eta}}
 \\ &= \frac{1}{1+\expf{\eta}}
-\\ &= \inv{1+\exp{\eta}}
+\\ &= \inv{1 + \exp{\eta}}
 \ea
 $$
 :::
