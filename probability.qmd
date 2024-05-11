@@ -133,7 +133,7 @@ $$
 ---
 
 :::{#thm-variance}
-#### Alternative expression for variance
+#### Simplified expression for variance
 
 $$\Var{X}=\E{X^2} - \sqf{\E{X}}$$
 

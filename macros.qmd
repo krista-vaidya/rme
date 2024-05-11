@@ -114,6 +114,8 @@
 \providecommand{\HSE}[1]{\widehat{\text{SE}}\paren{#1}}
 \renewcommand{\log}[1]{\text{log}\cb{#1}}
 \providecommand{\logf}[1]{\text{log}\cb{#1}}
+\def\dlog{\text{log}'}
+\providecommand{\dlogf}[1]{\dlog\cb{#1}}
 \renewcommand{\exp}[1]{\text{exp}\cb{#1}}
 \providecommand{\expf}[1]{\exp{#1}}
 \providecommand{\e}[1]{\text{e}^{#1}}

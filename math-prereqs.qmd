@@ -1,8 +1,64 @@
-# Mathematical prerequisites
+# Mathematics
+
+{{< include macros.qmd >}}
 
 These lecture notes use calculus and linear algebra.
 
 ## Some key facts
+
+### logarithms and exponentials
+
+:::{#thm-deriv-log}
+$$\dlogf{x} = \frac{1}{x} = x^{-1}$$
+:::
+
+::: proof
+Left to the reader.
+:::
+
+---
+
+:::{#cor-deriv-log-chain}
+
+$$
+\deriv{x}\log{f(x)} = \frac{f'(x)}{f(x)}
+$$
+
+:::
+
+::: proof
+Apply the chain rule and @thm-deriv-log.
+:::
+
+
+---
+
+:::{#thm-log-exp}
+
+$$
+\log{a^b} = b \cd \log{a}
+$$
+
+:::
+
+
+:::{#thm-log-prod}
+
+$$
+\log{a\cd b} = \log{a} + \log{b}
+$$
+
+:::
+
+:::{#cor-log-quot}
+$$\log{\frac{a}{b}} = \log{a} - \log{b}$$
+:::
+
+:::{#thm-exp-sum}
+
+$$\exp{a+b} = \exp{a} \cd \exp{b}$$
+
+:::
 
 ## Additional resources
 
@@ -16,6 +72,6 @@ Linear Algebra:
 - @banerjee2014linear
 - @searle2017matrix
 
-Both:
+Both and more:
 
-- https://ucla-biostat-216.github.io/2023fall/syllabus/syllabus.html
+- [Hua Zhou](https://hua-zhou.github.io/)'s [lecture notes for "UCLA Biostat 216 - Mathematical Methods for Biostatistics" (2023 Fall)](https://ucla-biostat-216.github.io/2023fall/schedule/schedule.html)

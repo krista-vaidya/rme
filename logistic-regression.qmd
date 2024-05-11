@@ -407,7 +407,7 @@ ggplot() +
 
 :::{#exm-odds}
 
-### Calculating odds
+#### Estimating odds
 
 In @exr-probs, we estimated that the probability of MI, given OC use, is $\pi(OC) \eqdef \Pr(MI|OC) = `r 13/5000`$. If this estimate is correct, then the odds of MI, given OC use, is:
 
@@ -434,7 +434,7 @@ $$
 ---
 
 :::{#exr-odds}
-### Calculating odds
+#### Estimating odds
 Estimate the odds of MI, for non-OC users.
 
 ::::{.solution}
@@ -555,9 +555,56 @@ $$
 
 ---
 
-:::{#thm-deriv-odds}
 
-$$\odds'(\pi) = \frac{1}{1-\pi}$$
+:::{#thm-odds-simplified}
+
+#### Simplified expression for odds function
+
+::: notes
+An equivalent expression for the odds function is 
+:::
+
+$$
+\omega(\pi) = \invf{\invf{\pi}-1)}
+$$ {#eq-odds-reduced}
+
+:::
+
+---
+
+:::{#exr-odds2}
+Prove that @eq-odds-reduced is equivalent to @def-odds.
+:::
+
+---
+
+:::{#lem-one-minus-odds}
+#### One minus odds
+$$1-\oddsinvf{\omega}) = \frac{1}{1+\omega}$$
+:::
+
+---
+
+::: {.proof}
+
+$$
+\ba
+1 - \oddsinvf{\omega}) &= 1 - \frac{\omega}{1 + \omega}
+\\ &= \frac{\red{1+\omega}}{1 + \omega} - \frac{\blue{\omega}}{1 + \omega}
+\\ &= \frac{\red{(1+\omega)} - \blue{\omega}}{1 + \omega}
+\\ &= \frac{1 + \omega - \omega}{1 + \omega}
+\\ &= \frac{1}{1 + \omega}
+\ea
+$$
+:::
+
+---
+
+
+:::{#thm-deriv-odds}
+#### Derivative of odds function
+
+$$\odds'(\pi) = \frac{1}{\sqf{1-\pi}}$$
 :::
 
 ---
@@ -566,9 +613,13 @@ $$\odds'(\pi) = \frac{1}{1-\pi}$$
 $$
 \ba
 \odds'(\pi) 
-   &= \deriv{\pi}{\frac{\pi}{1-\pi}}
-\\ &=  \frac{\deriv{\pi}\pi}{1-\pi} - \frac{\pi}{\sqf{1-\pi}} \deriv{{1-\pi}}
-\\ &=  \frac{1}{1-\pi} - \frac{\pi}{\sqf{1-\pi}} \deriv{{1-\pi}}
+   &= \deriv{\pi}\paren{\frac{\pi}{1-\pi}}
+\\ &=  \frac {\deriv{\pi}\pi} {1-\pi} - \paren{\frac{\pi}{\sqf{1-\pi}} \cd \deriv{\pi}\paren{1-\pi}}
+\\ &=  \frac{1}{1-\pi} - \frac{\pi}{\sqf{1-\pi}} \cd (-1)
+\\ &=  \frac{1}{1-\pi} + \frac{\pi}{\sqf{1-\pi}}
+\\ &=  \frac{1-\pi}{\sqf{1-\pi}} + \frac{\pi}{\sqf{1-\pi}}
+\\ &=  \frac{1-\pi + \pi}{\sqf{1-\pi}}
+\\ &=  \frac{1}{\sqf{1-\pi}}
 \ea
 $$
 
@@ -607,9 +658,13 @@ ggplot() +
 
 ---
 
-:::{.callout-important}
+:::{#thm-invodds-simplified}
 
+#### Simplified expression for inverse odds function
+
+::: notes
 An equivalent expression for the inverse odds function is 
+:::
 
 $$
 \pi(\omega) = (1+\omega^{-1})^{-1}
@@ -817,13 +872,18 @@ For @tbl-2x2-generic, show that $\hat\theta(Exposed, Unexposed) = \hat\theta(Eve
 ### Case-Control Studies
 
 ::: notes
-@tbl-oc-mi simulates a follow-up study in which two populations were followed and the number of MI’s was observed. The risks are $P(MI|OC)$ and $P(MI|\neg OC)$ and we can estimate these risks from the data.
+@tbl-oc-mi simulates a follow-up study in which two populations were followed and the number of MI’s was observed. 
+The risks are $P(MI|OC)$ and $P(MI|\neg OC)$ and we can estimate these risks from the data.
 
-But suppose we had a case-control study in which we had 100 women with MI and selected a comparison group of 100 women without MI (matched as groups on age, etc.). Then MI is not random, and we cannot compute P(MI|OC) and we cannot compute the risk ratio. However, the odds ratio however can be computed.
+But suppose we had a case-control study in which we had 100 women with MI and selected a comparison group of 100 women without MI (matched as groups on age, etc.). 
+Then MI is not random, and we cannot compute P(MI|OC) and we cannot compute the risk ratio. 
+However, the odds ratio however can be computed.
 
 The disease odds ratio is the odds for the disease in the exposed group divided by the odds for the disease in the unexposed group, and we cannot validly compute and use these separate parts.
 
-But we can validly compute and use the exposure odds ratio, which is the odds for exposure in the disease group divided by the odds for exposure in the non-diseased group (because exposure can be treated as random):
+We can still validly compute and use the exposure odds ratio, 
+which is the odds for exposure in the disease group divided by the odds for exposure in the non-diseased group 
+(because exposure can be treated as random):
 
 :::
 
@@ -833,7 +893,8 @@ $$
 $$
 
 ::: notes
-And these two odds ratios, $\hth(MI|OC)$ and $\hth(OC|MI)$ are mathematically equivalent, as we saw in @sec-OR-props:
+And these two odds ratios, $\hth(MI|OC)$ and $\hth(OC|MI)$,
+are mathematically equivalent, as we saw in @sec-OR-props:
 :::
 
 $$\hth(MI|OC) = \hth(OC|MI)$$
@@ -841,7 +902,9 @@ $$\hth(MI|OC) = \hth(OC|MI)$$
 ---
 
 :::{#exr-or-rev}
-Calculate the odds ratio of MI with respect to OC use, assuming that @tbl-oc-mi comes from a case-control study. Confirm that the result is the same as in @exm-OR.
+Calculate the odds ratio of MI with respect to OC use, 
+assuming that @tbl-oc-mi comes from a case-control study. 
+Confirm that the result is the same as in @exm-OR.
 
 ---
 
@@ -924,9 +987,9 @@ print(logit_plot)
 
 :::{#thm-deriv-logit}
 
-#### Derivative of $\logit$
+#### Derivative of logit function
 
-$$\logit'(\pi) = ?$$
+$$\logit'(\pi) = \frac{1}{(\pi)(1-\pi)}$$
 :::
 
 --- 
@@ -939,6 +1002,8 @@ $$
    &= \deriv{\pi}\logit(\pi)
 \\ &= \deriv{\pi}\log{\odds(\pi)}
 \\ &= \frac{\odds'(\pi)}{\odds(\pi)}
+\\ &= \frac{1}{\sqf{1-\pi}}\frac{1-\pi}{\pi}
+\\ &= \frac{1}{(\pi)(1-\pi)}
 \ea
 $$
 
@@ -1051,28 +1116,6 @@ $$
 \underbrace{\eta}_{\atop{\text{log-odds}(Y=1)}}
 $$
 
-:::
-
----
-
-:::{#lem-one-minus-odds}
-
-$$1-\oddsinvf{\omega}) = \frac{1}{1+\omega}$$
-:::
-
----
-
-::: {.proof}
-
-$$
-\ba
-1 - \oddsinvf{\omega}) &= 1 - \frac{\omega}{1 + \omega}
-\\ &= \frac{\red{1+\omega}}{1 + \omega} - \frac{\blue{\omega}}{1 + \omega}
-\\ &= \frac{\red{(1+\omega)} - \blue{\omega}}{1 + \omega}
-\\ &= \frac{1 + \omega - \omega}{1 + \omega}
-\\ &= \frac{1}{1 + \omega}
-\ea
-$$
 :::
 
 ---
@@ -2474,15 +2517,11 @@ $$r_{D_k} = \frac{d_k}{\sqrt{1-h_k}}$$
 Let's take a look at the full set of `autoplot()` diagnostics now for
 our `CHD` model:
 
-::: {.content-visible when-format="html"}
-```{r}
-chd_glm_strat_grouped |> autoplot(which = 1:6) |> print()
-```
-:::
-
-::: {.content-visible when-format="pdf"}
 ```{r}
 #| fig-height: 6
+#| fig-cap: "Diagnostics for CHD model"
+#| label: fig-chd-model-diagnostics
+
 chd_glm_strat_grouped |> autoplot(which = 1:6) |> print()
 ```
 :::
@@ -2595,4 +2634,4 @@ confusing and not very appealing.
 
 ## Quasibinomial
 
-See [Hua Zhou]'s [notes](https://ucla-biostat-200c-2020spring.github.io/slides/04-binomial/binomial.html#:~:text=0.05%20%27.%27%200.1%20%27%20%27%201-,Quasi%2Dbinomial,-Another%20way%20to)
+See [Hua Zhou](https://hua-zhou.github.io/)'s [lecture notes](https://ucla-biostat-200c-2020spring.github.io/slides/04-binomial/binomial.html#:~:text=0.05%20%27.%27%200.1%20%27%20%27%201-,Quasi%2Dbinomial,-Another%20way%20to)
