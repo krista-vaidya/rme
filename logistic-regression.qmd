@@ -1794,13 +1794,21 @@ Then the score function is:
 $$
 \ba
 \ell'(\vb) 
-   &= \deriv{\beta}\ell(\vb)
-\\ &= \deriv{\beta}\sumin y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
-\\ &= \sumin \deriv{\beta}\cb{y_i \paren{\vx_i'\beta} + \log{1-\pi_i}}
-\\ &= \sumin \cb{y_i \deriv{\beta}\paren{\vx_i'\beta} + \deriv{\beta}\log{1-\pi_i}}
-\\ &= \sumin \cb{\vx_i y_i + \deriv{\beta}\log{1-\expit(\vx_i'\beta)}}
-\\ &= \sumin \cb{\vx_i y_i + \deriv{\beta}\log{\inv{1+\exp{\vx_i'\beta}}}}
-\\ &= \sumin \cb{\vx_i y_i - \deriv{\beta}\log{1+\exp{\vx_i'\beta}}}
+   &\eqdef \deriv{\vb} \ell(\vb)
+\\ &=      \deriv{\vb} \sumin \P_{\vb}(Y_i=y_i|X_i=x_i)
+\\ &=      \sumin \deriv{\vb} \P_{\vb}(Y_i=y_i|X_i=x_i)
+\ea
+$$
+
+$$
+\ba
+\deriv{\vb} \P_{\vb}(Y_i=y_i|X_i=x_i) 
+   &= \deriv{\vb} y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
+\\ &= \deriv{\vb}\cb{y_i \paren{\vx_i'\vb} + \log{1-\pi_i}}
+\\ &= \cb{y_i \deriv{\vb}\paren{\vx_i'\vb} + \deriv{\vb}\log{1-\pi_i}}
+\\ &= \cb{\vx_i y_i + \deriv{\vb}\log{1-\expit(\vx_i'\vb)}}
+\\ &= \cb{\vx_i y_i + \deriv{\vb}\log{\inv{1+\exp{\vx_i'\vb}}}}
+\\ &= \cb{\vx_i y_i - \deriv{\vb}\log{1+\exp{\vx_i'\vb}}}
 \ea
 $$
 
@@ -1834,13 +1842,25 @@ So:
 
 $$
 \ba
-\ell'(\vb) 
-   &= \sumin \cb{\vx_i y_i - \vx_i \expitf{\vx_i'\beta} }
-\\ &= \sumin \vx_i \cb{ y_i - \expitf{\vx_i'\beta}}
-\\ &= \sumin \vx_i \cb{ y_i - \inv{1+\expf{-\vx_i'\beta}}}
+\llik_i'(\vb) 
+   &= \cb{\vx_i y_i - \vx_i \expitf{\vx_i'\beta} }
+\\ &= \vx_i \cb{ y_i - \expitf{\vx_i'\beta}}
+\\ &= \vx_i \cb{ y_i - \inv{1+\expf{-\vx_i'\beta}}}
+\ea
+$${#eq-score-logistic}
+
+---
+
+Setting the dataset score function equal to 0 gives us:
+
+
+$$
+\ba
+\sumin \cb{\vx_i y_i} 
+   &= \sumin \cb{ \vx_i \expitf{\vx_i'\beta}} 
 \ea
 $$
----
+
 
 ::: notes
 
