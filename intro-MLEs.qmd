@@ -398,9 +398,13 @@ some cases where it’s provably better according to some criteria (@efron1978as
 
 ### Iterative maximization {#sec-newton-raphson}
 
-Note that later, 
+(c.f., @dobson4e, Chapter 4)
+
+::: notes
+Later, 
 when we are trying to find MLEs for likelihoods which we can’t easily differentiate, 
 we will "hill-climb" using the Newton-Raphson algorithm:
+:::
 
 $$
 \begin{aligned}

@@ -159,5 +159,5 @@
 \providecommand{\lp}[2]{#1 \' \beta}
 \def\odds{\text{odds}}
 \providecommand{\oddsf}[1]{\odds\cb{#1}}
-\def\oddsinv{\invf{\text{odds}}}
+\def\oddsinv{\text{odds}^{-1}}
 \providecommand{\oddsinvf}[1]{\oddsinv\cb{#1}}

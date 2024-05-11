@@ -866,10 +866,21 @@ This is the same estimate we calculated in @exm-OR.
 
 ##### logit function
 
-The $\logit$ function is
+The **$\logit$ function**  of a probability $\pi$ is 
+the natural logarithm of the odds function of $\pi$:
 
-$$\logit(\pi) \eqdef \log{\frac{\pi}{1-\pi}}$$
+$$\logit(\pi) \eqdef \log{\odds(\pi)}$$
 
+:::
+
+:::{#thm-logit-function}
+
+$$\logit(\pi) = \log{\frac{\pi}{1-\pi}}$$
+
+:::
+
+::: proof
+Left to the reader; apply the definitions of logit and odds.
 :::
 
 ```{r}
@@ -894,16 +905,21 @@ print(logit_plot)
 
 #### expit, logistic, inverse-logit
 
-The **expit** function (@fig-expit-plot), also known as the **inverse-logit** or **logistic** function, is:
+The **expit** function (@fig-expit-plot) of a log-odds $\eta$, also known as the **inverse-logit** or **logistic** function, is the inverse-odds of the exponential of $\eta$:
 
-$$
-\begin{aligned}
-\expit(\eta)
-&\eqdef \frac{\exp{\eta}}{1+\exp{\eta}}\\
-&= (1 + \exp{-\eta})^{-1}
-\end{aligned}
-$$
+$$\expit(\eta) \eqdef \oddsinvf{\expf{\eta}}$$
 
+:::
+
+:::{#thm-expit}
+$$
+\ba
+\expit(\eta) 
+   &= \frac{\exp{\eta}}{1+\exp{\eta}}
+\\ &= (1 + \exp{-\eta})^{-1}
+\ea
+$$
+:::
 
 ```{r}
 #| label: fig-expit-plot
@@ -921,8 +937,6 @@ expit_plot =
   theme_bw()
 print(expit_plot)
 ```
-
-:::
 
 ---
 
@@ -1039,24 +1053,30 @@ $$
 
 ## Introduction to logistic regression
 
-* In @exm-oc-mi, we estimated the risk and the odds of MI for two discrete cases, as to whether of not the individual used oral contraceptives.
+::: notes
+
+* In @exm-oc-mi, we estimated the risk and the odds of MI for two groups, 
+defined by oral contraceptive use.
 
 * If the predictor is quantitative (dose) or there is more than one predictor, the task becomes more difficult.
 
 * In this case, we will use logistic regression, which is a generalization of the linear regression models you have been using that can account for a binary response instead of a continuous one.
 
+:::
+
 ### Binary outcomes models - one group, no covariates {.smaller}
 
 $$
 \begin{aligned}
-p(Y=1) &= \pi\\
-p(Y=0) &= 1-\pi\\
-p(Y=y) &= \pi^y (1-\pi)^{1-y}\\
+\P(Y=1) &= \pi\\
+\P(Y=0) &= 1-\pi\\
+\P(Y=y) &= \pi^y (1-\pi)^{1-y}\\
 \mathbf y  &= (y_1, ..., y_n)\\
 \mathcal L(\pi;\mathbf y) &= \pi^{\sum y_i} (1-\pi)^{n - \sum y_i}\\
 \ell(\pi, \mathbf y) &= \left({\sum y_i}\right) \log{\pi} + \left(n - \sum y_i\right) \log{1-\pi}\\
 &= \left({\sum y_i}\right) \left(\log{\pi} - \log{1-\pi}\right) + n \cdot \log{1-\pi}\\
 &= \left({\sum y_i}\right) \log{\frac{\pi}{ 1-\pi}} + n \cdot \log{1-\pi}
+\\ &= \left({\sum y_i}\right) \logit(\pi) + n \cdot \log{1-\pi}
 \end{aligned}
 $$
 
@@ -1066,7 +1086,18 @@ $$
 \ba
 \P(Y_i=1) &= \pi_i
 \\ \P(Y_i=0) &= 1-\pi_i
-\\ \P(Y_i=y) &= (\pi_i)^y (1-\pi_i)^{1-y}
+\ea
+$$
+
+$$\P(Y_i=y_i) = (\pi_i)^y_i (1-\pi_i)^{1-y_i}$$
+
+$$\Lik_i(\pi_i) = \P(Y_i=y_i)$$
+
+$$
+\ba
+\ell_i(\pi_i) 
+   &= \log{\Lik_i(\pi_i)}
+\\ &= y_i \log{\pi_i} + (1-y_i) \log{1-\pi_i}
 \ea
 $$
 
@@ -1077,25 +1108,15 @@ For $\iid$ data $\vec y  = (y_1, ..., y_n)$:
 $$
 \ba
 \Lik(\pi;\vec y) &= \P(\dsvn{Y}{y})
-\\ &= \prod_{i=1}^n 
-(\pi_i)^{y_i} (1-\pi_i)^{1 - y_i}
+\\ &= \prod_{i=1}^n \P(Y_i=y_i)
+\\ &= \prod_{i=1}^n \Lik_i(\pi_i) 
 \ea
 $$
-
-$$
-\ba
-\ell(\pi, \vec y) &= \sumin y_i \log{\pi_i} + (1 - y_i) \log{1-\pi_i}
-\\                &= \sumin y_i \red{\log{\pi_i}} + \log{1-\pi_i} - y_i \cd \blue{\log{1-\pi_i}}
-\\                &= \sumin y_i (\red{\log{\pi_i}} - \blue{\log{1-\pi_i}}) + \log{1-\pi_i}
-\\                &= \sumin y_i (\log{\frac{\red{\pi_i}}{\blue{1-\pi_i}}}) + \log{1-\pi_i}
-\\                &= \sumin y_i (\logit(\pi_i)) + \log{1-\pi_i}
-\ea
-$${#eq-loglik-bernoulli-iid}
 
 ### Modeling $\pi_i$ as a function of $X_i$
 
-If there are only a few distinct $X_i$ values, we can model each one
-separately.
+If there are only a few distinct $X_i$ values, we can model $\pi_i$
+separately for each value of $X_i$.
 
 Otherwise, we need regression.
 
@@ -1374,6 +1395,7 @@ socio-demographic characteristics:
 ---
 
 biochemical measurements:
+
 -   cholesterol and lipoprotein fractions;
 -   medical and family history and use of medications;
 
@@ -1787,23 +1809,41 @@ If I give you model 1, how would you get the coefficients of model 2?
 Assume:
 
 - $Y_i|\vX_i \simiid \Ber(\pi(X_i))$
-- $\logitf{\pi(\vx)} = \vx'\beta$
+- $\pi(\vx) = \expitf{\vx'\vb}$
 
-Then the score function is:
+Then the log-likelihood function is:
+
+$$
+\ba
+\ell(\vec \vb, \vec y) 
+   &= \log{\Lik(\vec \vb, \vec y) }
+\\ &= \sumin \ell_i(\vb_i)
+\\ &= \sumin y_i \log{\pi_i} + (1 - y_i) \log{1-\pi_i}
+\\ &= \sumin y_i \red{\log{\pi_i}} + \log{1-\pi_i} - y_i \cd \blue{\log{1-\pi_i}}
+\\ &= \sumin y_i (\red{\log{\pi_i}} - \blue{\log{1-\pi_i}}) + \log{1-\pi_i}
+\\ &= \sumin y_i (\log{\frac{\red{\pi_i}}{\blue{1-\pi_i}}}) + \log{1-\pi_i}
+\\ &= \sumin y_i (\logit(\pi_i)) + \log{1-\pi_i}
+\ea
+$${#eq-loglik-bernoulli-iid}
+
+And the score function is:
 
 $$
 \ba
 \ell'(\vb) 
    &\eqdef \deriv{\vb} \ell(\vb)
-\\ &=      \deriv{\vb} \sumin \P_{\vb}(Y_i=y_i|X_i=x_i)
-\\ &=      \sumin \deriv{\vb} \P_{\vb}(Y_i=y_i|X_i=x_i)
+\\ &=      \deriv{\vb} \sumin \ell_i(\vb)
+\\ &=      \sumin \deriv{\vb} \ell_i(\vb)
 \ea
 $$
 
+---
+
 $$
 \ba
-\deriv{\vb} \P_{\vb}(Y_i=y_i|X_i=x_i) 
-   &= \deriv{\vb} y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
+\deriv{\vb} \ell_i(\vb) 
+   &= \deriv{\vb} \P_{\vb}(Y_i=y_i|X_i=x_i) 
+\\ &= \deriv{\vb} y_i \paren{\logitf{\pi_i}} + \log{1-\pi_i}
 \\ &= \deriv{\vb}\cb{y_i \paren{\vx_i'\vb} + \log{1-\pi_i}}
 \\ &= \cb{y_i \deriv{\vb}\paren{\vx_i'\vb} + \deriv{\vb}\log{1-\pi_i}}
 \\ &= \cb{\vx_i y_i + \deriv{\vb}\log{1-\expit(\vx_i'\vb)}}
@@ -1811,6 +1851,8 @@ $$
 \\ &= \cb{\vx_i y_i - \deriv{\vb}\log{1+\exp{\vx_i'\vb}}}
 \ea
 $$
+
+---
 
 Now we need to apply the chain rule:
 
@@ -1838,6 +1880,7 @@ $$
 \ea
 $$
 
+
 So:
 
 $$
@@ -1846,44 +1889,59 @@ $$
 
 ---
 
-Setting the dataset score function equal to 0 gives us:
+Putting the pieces of $\llik'(\vb)$ back together, we have:
+
+$$
+\llik'(\vb) = \sumin \cb{\vx_i y_i - \vx_i \expitf{\vx_i'\beta} }
+$$
+
+Setting $\ell'(\vb) = 0$ gives us:
 
 
 $$
 \ba
-\sumin \cb{\vx_i y_i} 
+\sumin \vx_i y_i
    &= \sumin \cb{ \vx_i \expitf{\vx_i'\beta}} 
 \ea
 $${#eq-score-logistic}
 
+
+---
 
 ::: notes
 
 In general, the estimating equation $\ell'(\beta; \mathbf x) = 0$ cannot
 be solved analytically.
 
----
+Instead, we can use the [Newton-Raphson method](intro-MLEs.qmd#sec-newton-raphson):
 
-Instead, we have to use a variant of the [Newton-Raphson method](intro-MLEs.qmd#sec-newton-raphson) (c.f., @dobson4e, Chapter 4).
+:::
 
-For now, all you need to know is that we make an iterative series of
-guesses, and each guess helps us make the next guess better (higher
-log-likelihood).
+$$
+\esttmp{\theta} 
+\leftarrow \esttmp{\theta} - \inv{\hessf{\vec y;\esttmp{\theta}}} 
+\scoref{\vec y;\esttmp{\theta}}
+$$
 
-You can see some information about this process like so:
+::: notes
+
+We make an iterative series of
+guesses, and each guess helps us make the next guess better (i.e., higher
+log-likelihood). You can see some information about this process like so:
 
 :::
 
 ```{r}
-#| label: glm-fitting-process
+#| label: out-glm-fitting-process
+#| code-fold: false
 options(digits = 8)
 temp = 
   wcgs |> 
   glm(
     control = glm.control(trace = TRUE),
-    "data" = _,
-    "formula" = chd69 == "Yes" ~ dibpat*age, 
-    "family" = binomial(link = "logit")
+    data = _,
+    formula = chd69 == "Yes" ~ dibpat*age, 
+    family = binomial(link = "logit")
   )
 
 ```
