@@ -16,6 +16,7 @@
 | $\Expp$ | [expectation](probability.qmd#def-expectation) | `\mathbb{E}`
 | $'$ | transpose or derivative^[depending on whether it is applied to a matrix or a function] | `'`
 | $\ind$ | [independent](probability.qmd#def-indpt) | `⫫`
+| $\tf$  | therefore, thus | `\therefore`
 
 : Notation used in this book {#tbl-notation-collected}
 

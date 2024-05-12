@@ -362,7 +362,7 @@ In logistic regression, we will make use of a mathematically-convenient transfor
 
 :::{#def-odds}
 #### Odds
-The **odds** of an outcome $A$, denoted $\odds(A)$ ("omega"), is the probability that the outcome occurs, divided by the probability that it doesn't occur:
+The **odds** of an outcome $A$, which we will represent using $\odds$ ("omega"), is the probability that the outcome occurs, divided by the probability that it doesn't occur:
 
 $$\odds(A) \eqdef \frac{\Pr(A)}{\Pr(\neg A)}$$
 :::
@@ -584,7 +584,7 @@ $$\doddsf{\pi} = \frac{1}{\sqf{1-\pi}}$$
 ::: proof
 $$
 \ba
-\odds'(\pi) 
+\doddsf(\pi) 
    &= \deriv{\pi}\paren{\frac{\pi}{1-\pi}}
 \\ &=  \frac {\deriv{\pi}\pi} {1-\pi} - 
        \paren{\frac{\pi}{\sqf{1-\pi}} \cd \deriv{\pi}\paren{1-\pi}}
@@ -626,6 +626,44 @@ $$
 
 ---
 
+:::{#thm-odds-minus-probs}
+
+Let $\odds = \frac{\pi}{1-\pi}$. Then:
+
+$$\odds - \pi =  \odds \cd \pi$$
+
+:::
+
+---
+
+:::{#exr-odds-minus-probs}
+
+Prove @thm-odds-minus-probs.
+
+:::
+
+---
+
+::: solution
+
+$$
+\ba
+\odds - \pi 
+&= \frac{\pi}{1-\pi} - \pi
+\\ &= \frac{\pi}{1-\pi} - \frac{\pi(1-\pi)}{1-\pi}
+\\ &= \frac{\pi}{1-\pi} - \frac{\pi - \pi^2}{1-\pi}
+\\ &= \frac{\pi - (\pi - \pi^2)}{1-\pi}
+\\ &= \frac{\pi - \pi + \pi^2}{1-\pi}
+\\ &= \frac{\pi^2}{1-\pi}
+\\ &= \frac{\pi}{1-\pi} \pi
+\\ &= \odds \pi
+\ea
+$$
+
+:::
+
+---
+
 ### The inverse odds function
 
 :::{#def-inv-odds}
@@ -633,12 +671,14 @@ $$
 ##### inverse odds function
 The **inverse odds function**, 
 
-$$\invoddsf{\odds} \eqdef \frac{\odds}{1+\odds}$$
+$$\invoddsf{\odds} \eqdef \frac{\odds}{1 + \odds}$$
 converts odds into their corresponding probabilities (@fig-inv-odds).
 :::
 
 ::: notes
 The inverse-odds function takes an odds as input and produces a probability as output. Its domain of inputs is $[0,\infty)$ and its range of outputs is $[0,1]$.
+
+I haven't seen anyone give the inverse-odds function a concise name; maybe $\text{prob}()$?
 :::
 
 ---
@@ -966,6 +1006,8 @@ odds(pi2)/odds(pi1)
 
 ```
 
+---
+
 #### Odds Ratios in Case-Control Studies
 
 ::: notes
@@ -1029,6 +1071,8 @@ This is the same estimate we calculated in @exm-OR.
 ::::
 
 :::
+
+---
 
 #### Odds Ratios in Cross-Sectional Studies
 
@@ -2772,3 +2816,4 @@ confusing and not very appealing.
 ## Quasibinomial
 
 See [Hua Zhou](https://hua-zhou.github.io/)'s [lecture notes](https://ucla-biostat-200c-2020spring.github.io/slides/04-binomial/binomial.html#:~:text=0.05%20%27.%27%200.1%20%27%20%27%201-,Quasi%2Dbinomial,-Another%20way%20to)
+

@@ -168,6 +168,9 @@
 \def\odds{\omega}
 \def\logodds{\eta}
 \def\oddst{\text{odds}}
+\def\probst{\text{probs}}
+\def\probt{\text{probt}}
+\def\probit{\text{probit}}
 \providecommand{\oddsf}[1]{\oddst\cb{#1}}
 \providecommand{\doddsf}[1]{{\oddst}'\cb{#1}}
 \def\oddsinv{\text{invodds}}
