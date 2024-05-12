@@ -773,13 +773,15 @@ $$
 
 $$
 \begin{aligned}
-\deriv{\beta}\paren{
-\sum_{i=1}^n (y_i - x_i' \beta)^2} &= 
-\deriv{\beta}(\mathbf y - X\beta)'(\mathbf y - X\beta)\\
-&= \deriv{\beta} (y'y - 2y'X\beta +\beta'X'X\beta)\\
-&= (- 2X'y +2X'X\beta)
+\deriv{\beta}\paren{\sum_{i=1}^n (y_i - x_i' \beta)^2} 
+   &= \deriv{\beta}(\mathbf y - X\beta)'(\mathbf y - X\beta)
+\\ &= \deriv{\beta} (y'y - 2y'X\beta +\beta'X'X\beta)
+\\ &= (- 2X'y +2X'X\beta)
+\\ &= - 2X'(y - X\beta)
+\\ &= - 2X'(y - \Expp[y])
+\\ &= - 2X' \err(y)
 \end{aligned}
-$$
+$${#eq-scorefun-linreg}
 
 ---
 
