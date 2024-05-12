@@ -632,129 +632,17 @@ $$
 \ell'_{\beta}(\vec y|\mat x,\beta, \sigma^2) 
 = - 
 \frac{1}{2\sigma^2}\deriv{\beta}
-\paren{\sum_{i=1}^n (y_i - \vec{x_i}' \beta)^2}
+\paren{\sum_{i=1}^n (y_i - \vec{x_i}\' \beta)^2}
 $$ {#eq-linreg-score}
 
-### Some tools from vector calculus
-
-A few tools from linear algebra will make this analysis go easier (see @fieller2018basics, Section 7.2 for details).
-
-$$
-f_{\beta}(\mathbf x) = (f_{\beta}(x_1), f_{\beta}(x_2), ..., f_{\beta}(x_n))^\top
-$$
-
-Let $\mathbf x$ and $\beta$ be vectors of length $p$, or in other words, matrices of length $p\times 1$:
-
-$$
-x = \begin{bmatrix}
-x_{1} \\
-x_{2} \\
-\vdots \\
-x_{p}
-\end{bmatrix} \\
-\beta = \begin{bmatrix}
-\beta_{1} \\
-\beta_{2} \\
-\vdots \\
-\beta_{p}
-\end{bmatrix}
-$$
-
-Then
-
-$$
-x' \equiv x^\top \equiv [x_1, x_2, ..., x_p]
-$$
-
-and
-
-$$
-x'\beta = [x_1, x_2, ..., x_p] 
-\begin{bmatrix}
-\beta_{1} \\
-\beta_{2} \\
-\vdots \\
-\beta_{p}
-\end{bmatrix} = 
-x_1\beta_1+x_2\beta_2 +...+x_p \beta_p 
-$$
-
 ---
 
-If $f(\beta)$ is a function that takes $\beta$ as input and outputs a scalar, such as $f(\beta) = x'\beta$, then:
+::: notes
+Let's switch to matrix-vector notation:
+:::
 
 $$
-\deriv{ \beta} f(\beta)= 
-\begin{bmatrix}
-\deriv{\beta_1}f(\beta) \\
-\deriv{\beta_2}f(\beta) \\
-\vdots \\
-\deriv{\beta_p}f(\beta)
-\end{bmatrix}
-$$
-
----
-
-In particular, if $f(\beta) = x'\beta$, then:
-
-$$ 
-\deriv{ \beta} x'\beta= 
-\begin{bmatrix}
-\deriv{\beta_1}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
-\deriv{\beta_2}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
-\vdots \\
-\deriv{\beta_p}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p )
-\end{bmatrix} 
-=
-\begin{bmatrix}
-x_{1} \\
-x_{2} \\
-\vdots \\
-x_{p}
-\end{bmatrix}
-= \mathbf x
-$$
-
----
-
-In general:
-
-$$
-\deriv{\beta} x'\beta = x
-$$
-
-This looks a lot like non-vector calculus, except that you have to transpose the coefficient.
-
----
-
-Similarly,
-
-$$
-\deriv{\beta} \beta'\beta = 2\beta
-$$
-
-This is like taking the derivative of $x^2$.
-
----
-
-And finally, if $S$ is a $p\times p$ matrix, then:
-
-$$
-\deriv{\beta} \beta'S\beta = 2S\beta
-$$
-
-Again, this is like taking the derivative of $cx^2$ with respect to $x$ in non-vector calculus.
-
----
-
-Thus:
-
-$$
-\sum_{i=1}^n (y_i - f_\beta(x_i))^2 = (\mathbf y - X\beta)'(\mathbf y - X\beta)
-$$
-
-$$
-(\mathbf y - X\beta)' = (\mathbf y' - (X\beta)') = (\mathbf y' - \beta'X')
+\sum_{i=1}^n (y_i - \vx_i\' \vb)^2 = (\vy - X\beta)'(\vy - X\beta)
 $$
 
 ---
@@ -763,18 +651,22 @@ So
 
 $$
 \begin{aligned}
-(\mathbf y - X\beta)'(\mathbf y - X\beta) &= (\mathbf y' - \beta'X')(\mathbf y - X\beta)\\
+(\vy - X\beta)'(\vy - X\beta) &= (\vy' - \beta'X')(\vy - X\beta)\\
 &= y'y - \beta'X'y - y'X\beta +\beta'X'X\beta\\
 &= y'y - 2y'X\beta +\beta'X'X\beta
 \end{aligned}
 $$
 
-### Analyzing the linear regression score function
+### Deriving the linear regression score function
+
+::: notes
+We will use some results from [vector calculus](math-prereqs.qmd#sec-vector-calculus):
+:::
 
 $$
 \begin{aligned}
 \deriv{\beta}\paren{\sum_{i=1}^n (y_i - x_i' \beta)^2} 
-   &= \deriv{\beta}(\mathbf y - X\beta)'(\mathbf y - X\beta)
+   &= \deriv{\beta}(\vy - X\beta)'(\vy - X\beta)
 \\ &= \deriv{\beta} (y'y - 2y'X\beta +\beta'X'X\beta)
 \\ &= (- 2X'y +2X'X\beta)
 \\ &= - 2X'(y - X\beta)
@@ -798,7 +690,7 @@ $$
 
 ---
 
-The second derivative matrix $\ell_{\beta, \beta'} ''(\beta, \sigma^2;\mathbf X,\mathbf y)$ is negative definite at $\beta = (X'X)^{-1}X'y$, so $\hat \beta_{ML} = (X'X)^{-1}X'y$ is the MLE for $\beta$.
+The second derivative matrix $\ell_{\beta, \beta'} ''(\beta, \sigma^2;\mathbf X,\vy)$ is negative definite at $\beta = (X'X)^{-1}X'y$, so $\hat \beta_{ML} = (X'X)^{-1}X'y$ is the MLE for $\beta$.
 
 ---
 

@@ -2,7 +2,14 @@
 
 {{< include macros.qmd >}}
 
-These lecture notes use calculus and some linear algebra.
+These lecture notes use:
+
+- algebra
+- precalculus
+- univariate calculus
+- linear algebra
+- vector calculus
+
 Some key results are listed here.
 
 ## Derivatives
@@ -89,13 +96,157 @@ Apply @thm-chain-rule and @thm-deriv-log.
 
 ---
 
+## Vector Calculus {#sec-vector-calculus}
+
+(adapted from @fieller2018basics, §7.2)
+
+Let $\vx$ and $\vb$ be vectors of length $p$, 
+or in other words, matrices of length $p \times 1$:
+
+$$
+x = \begin{bmatrix}
+x_{1} \\
+x_{2} \\
+\vdots \\
+x_{p}
+\end{bmatrix} \\
+\beta = \begin{bmatrix}
+\beta_{1} \\
+\beta_{2} \\
+\vdots \\
+\beta_{p}
+\end{bmatrix}
+$$
+
+Then
+
+$$
+x' \equiv x^\top \equiv [x_1, x_2, ..., x_p]
+$$
+
+and
+
+$$
+x'\beta = [x_1, x_2, ..., x_p] 
+\begin{bmatrix}
+\beta_{1} \\
+\beta_{2} \\
+\vdots \\
+\beta_{p}
+\end{bmatrix} = 
+x_1\beta_1+x_2\beta_2 +...+x_p \beta_p 
+$$
+
+Let 
+
+$$
+f_{\vb}(\vx) = (f_{\vb}(x_1), f_{\vb}(x_2), ..., f_{\vb}(x_n))^\top
+$$
+
+:::{#thm-transpose-sum}
+#### Transpose of a sum
+$\(\vx+\vy)\' = \vx\' + \vy\' 
+:::
+
+---
+
+::: {#def-vector-derivative}
+#### Vector derivative
+If $f(\vb)$ is a function that takes a vector $\vb$ as input and outputs a scalar, 
+such as $f(\vb) = x'\vb$, 
+then:
+
+$$
+\deriv{ \vb} f(\vb) = 
+\begin{bmatrix}
+\deriv{\beta_1}f(\vb) \\
+\deriv{\beta_2}f(\vb) \\
+\vdots \\
+\deriv{\beta_p}f(\vb)
+\end{bmatrix}
+$$
+:::
+
+---
+
+:::{#thm-deriv-lincom}
+
+#### Derivative of a linear combination
+
+$$
+\deriv{\vb} \vx\' \vb = x
+$$
+
+:::: notes
+This looks a lot like non-vector calculus, except that you have to transpose the coefficient.
+::::
+:::
+
+---
+
+::: proof
+
+If $f(\beta) = x\'\beta$, then:
+
+$$ 
+\deriv{ \beta} x\'\beta= 
+\begin{bmatrix}
+\deriv{\beta_1}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
+\deriv{\beta_2}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
+\vdots \\
+\deriv{\beta_p}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p )
+\end{bmatrix} 
+=
+\begin{bmatrix}
+x_{1} \\
+x_{2} \\
+\vdots \\
+x_{p}
+\end{bmatrix}
+= \vx
+$$
+
+:::
+
+---
+
+:::{#thm-deriv-normsq}
+
+#### Derivative of a vector quadratic
+
+$$
+\deriv{\vb} \vb'\vb = 2\vb
+$$
+
+:::
+
+::: notes
+This is like taking the derivative of $x^2$.
+:::
+
+---
+
+:::{#thm-quadratic-form}
+
+If $S$ is a $p\times p$ matrix, then:
+
+$$
+\deriv{\beta} \beta'S\beta = 2S\beta
+$$
+
+:::
+ 
+::: notes
+Again, this is like taking the derivative of $cx^2$ with respect to $x$ in non-vector calculus.
+:::
+
 ## Additional resources
 
 ### Calculus 
 
 - @khuri2003advanced
 
-### Linear Algebra
+### Linear Algebra and Vector Calculus
 
 - @fieller2018basics
 - @banerjee2014linear
