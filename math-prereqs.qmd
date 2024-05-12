@@ -2,11 +2,27 @@
 
 {{< include macros.qmd >}}
 
-These lecture notes use calculus and linear algebra.
+These lecture notes use calculus and some linear algebra.
+Some key results are listed here.
 
-## Some key facts
+## Derivatives
 
-### logarithms and exponentials
+:::{#thm-product-rule}
+#### Product rule
+$$(ab)' = ab' + ba'$$
+:::
+
+:::{#thm-quotient-rule}
+#### Quotient rule
+$$(a/b)' = 1/b - (a/b^2)b'$$ 
+:::
+
+:::{#thm-chain-rule}
+#### Chain rule
+$$\derivf{a}{c} = \derivf{a}{b} \derivf{b}{c}$$
+:::
+
+## Logarithms and Exponentials
 
 :::{#thm-log-prod}
 #### logarithm of a product is the sum of the logs of the factors
@@ -47,19 +63,20 @@ $$\exp{a+b} = \exp{a} \cd \exp{b}$$
 
 :::{#thm-deriv-log}
 
-#### derivative of logarithms
+#### derivative of logarithm
 $$\dlogf{x} = \frac{1}{x} = x^{-1}$$
 :::
 
-::: proof
-Left to the reader.
+:::{#thm-deriv-exp}
+#### derivative of exponential
+$$\dexpf{x} = \expf{x}$$
 :::
 
 ---
 
 :::{#cor-deriv-log-chain}
 
-#### chain rule for logarithms
+#### Chain rule for logarithms
 $$
 \deriv{x}\log{f(x)} = \frac{f'(x)}{f(x)}
 $$
@@ -67,12 +84,10 @@ $$
 :::
 
 ::: proof
-Apply the chain rule and @thm-deriv-log.
+Apply @thm-chain-rule and @thm-deriv-log.
 :::
 
-
 ---
-
 
 ## Additional resources
 

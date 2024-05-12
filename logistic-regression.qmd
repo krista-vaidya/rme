@@ -584,7 +584,7 @@ $$\doddsf{\pi} = \frac{1}{\sqf{1-\pi}}$$
 ::: proof
 $$
 \ba
-\doddsf(\pi) 
+\doddsf{\pi}
    &= \deriv{\pi}\paren{\frac{\pi}{1-\pi}}
 \\ &=  \frac {\deriv{\pi}\pi} {1-\pi} - 
        \paren{\frac{\pi}{\sqf{1-\pi}} \cd \deriv{\pi}\paren{1-\pi}}
@@ -664,6 +664,25 @@ $$
 
 ---
 
+:::{#lem-odds-neg}
+#### Odds of a non-event
+
+If $\pi$ is the odds of event $A$ 
+and $\odds$ is the corresponding odds of $A$,
+then the odds of $\neg A$ are:
+
+$$
+\odds(\neg A) = \frac{1-\pi}{\pi}
+$$
+
+:::
+
+::: proof
+Left to the reader.
+::: 
+
+---
+
 ### The inverse odds function
 
 :::{#def-inv-odds}
@@ -720,8 +739,7 @@ $$
 
 ---
 
-
-:::{#thm-invodds-simplified}
+:::{#lem-invodds-simplified}
 
 ##### Simplified expression for inverse odds function
 
@@ -746,7 +764,9 @@ Prove that @eq-inv-odds-reduced is equivalent to @def-inv-odds.
 
 :::{#lem-one-minus-odds-inv}
 #### One minus inverse-odds
-$$1-\oddsinvf{\odds} = \frac{1}{1+\odds}$$
+
+
+$$1 - \oddsinvf{\odds} = \frac{1}{1+\odds}$$
 :::
 
 ---
@@ -766,6 +786,34 @@ $$
 
 ---
 
+:::{#thm-inverse-odds-nonevent}
+
+If $\odds$ is the odds of event $A$, 
+then the probability that $A$ does not occur is:
+
+$$\Pr(\neg A) = \frac{1}{1+\odds}$$
+:::
+
+---
+
+::: proof
+
+:::: notes
+Use @lem-one-minus-odds-inv:
+::::
+
+$$
+\ba
+\Pr(\neg A) 
+&= 1 - \Pr(\A)
+\\ &= 1 - \oddsinvf{\odds}
+\\ &= \frac{1}{1 + \odds}
+\ea
+$$
+:::
+
+---
+
 :::{#thm-deriv-invodds}
 
 ##### Derivative of inverse odds function
@@ -775,6 +823,10 @@ $$\doddsinvf{\odds} = \frac{1}{\sqf{1+\odds}}$$
 ---
 
 ::: proof
+
+:::: notes
+Use the quotient rule:
+::::
 
 $$
 \ba
@@ -2156,7 +2208,7 @@ $$
 
 ---
 
-Now we need to apply the chain rule:
+Now we need to apply the [chain rule](math-prereqs.qmd#thm-chain-rule):
 
 $$
 \deriv{\beta}\log{1+\exp{\vx_i'\beta}} = 
