@@ -186,7 +186,7 @@ Some frequently-used measures of accuracy include:
 The **mean squared error** of an estimator $\hth$, denoted
 $\mselr{\hth}$, is the expectation of the square of the error[^1]:
 
-$$\mselr{\hth} \eqdef \E{(\epsilon(\hth))^2}$$
+$$\mselr{\hth} \eqdef \E{(\err(\hth))^2}$$
 :::
 
 ### Mean absolute error
@@ -198,7 +198,7 @@ The **mean absolute error** of an estimator is the expectation of the
 absolute value of the error:
 
 $$
-\maelr{\hth} \eqdef \E{\abs{\epsilon(\hth)}}
+\maelr{\hth} \eqdef \E{\abs{\err(\hth)}}
 $$
 :::
 
@@ -210,7 +210,7 @@ $$
 The **bias** of an estimator $\hth$ for an estimand $\theta$ is the
 expected value of the error:
 
-$$\bias{\hth} \eqdef \E{\epsilon(\hth)}$$ {#eq-bias-def}
+$$\bias{\hth} \eqdef \E{\err(\hth)}$$ {#eq-bias-def}
 :::
 
 ---
@@ -227,7 +227,7 @@ $$\bias{\hth} =\E{\hth} - \theta$$
 $$
 \begin{aligned}
 \bias{\hth} 
-&\eqdef \E{\epsilon(\hth)}\\
+&\eqdef \E{\err(\hth)}\\
 &= \E{\hth - \theta}\\
 &=\E{\hth} - \E{\theta}\\
 &=\E{\hth} - \theta

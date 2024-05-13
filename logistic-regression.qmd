@@ -805,7 +805,7 @@ Use @lem-one-minus-odds-inv:
 $$
 \ba
 \Pr(\neg A) 
-&= 1 - \Pr(\A)
+&= 1 - \Pr(A)
 \\ &= 1 - \oddsinvf{\odds}
 \\ &= \frac{1}{1 + \odds}
 \ea
@@ -2251,9 +2251,7 @@ $$
 
 ::: notes
 
-This last expression is exactly the same as we found in linear regression
-(c.f., [Linear-models-overview.qmd#eq-scorefun-linreg]).
-
+This last expression is essentially the same as we found in [linear regression](Linear-models-overview.qmd#eq-scorefun-linreg).
 :::
 
 ---

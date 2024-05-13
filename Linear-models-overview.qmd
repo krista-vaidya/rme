@@ -39,8 +39,8 @@ There are numerous textbooks specifically for linear regression, including:
 
 :::{.fragment .fade-in}
 * We will review linear regression to:
-- make sure everyone is caught up
-- to provide an epidemiological perspective on model intepretation.
+    - make sure everyone is caught up
+    - to provide an epidemiological perspective on model intepretation.
 :::
 
 ### Chapter overview
@@ -610,7 +610,7 @@ ggpenguins2 |> print()
 
 :::{.notes}
 
-In EPI 203 and [intro-MLEs.qmd#sec-intro-MLEs], we learned how to fit outcome-only models of the form $p(X=x|\theta)$ to iid data $\mathbf x = (x_1,…,x_n)$ using maximum likelihood estimation.
+In EPI 203 and @sec-intro-MLEs, we learned how to fit outcome-only models of the form $p(X=x|\theta)$ to iid data $\vx = (x_1,…,x_n)$ using maximum likelihood estimation.
 
 Now, we apply the same procedure to linear regression models:
 
@@ -642,7 +642,8 @@ Let's switch to matrix-vector notation:
 :::
 
 $$
-\sum_{i=1}^n (y_i - \vx_i\' \vb)^2 = (\vy - X\beta)'(\vy - X\beta)
+\sum_{i=1}^n (y_i - \vx_i\' \vb)^2 
+= (\vy - \mX\vb)'(\vy - \mX\vb)
 $$
 
 ---
@@ -651,9 +652,10 @@ So
 
 $$
 \begin{aligned}
-(\vy - X\beta)'(\vy - X\beta) &= (\vy' - \beta'X')(\vy - X\beta)\\
-&= y'y - \beta'X'y - y'X\beta +\beta'X'X\beta\\
-&= y'y - 2y'X\beta +\beta'X'X\beta
+(\vy - \mX\vb)'(\vy - \mX\vb) 
+&= (\vy' - \vb'X')(\vy - \mX\vb)
+\\ &= y'y - \vb'X'y - y'\mX\vb +\vb'\mX'\mX\beta
+\\ &= y'y - 2y'\mX\beta +\beta'\mX'\mX\beta
 \end{aligned}
 $$
 
@@ -1270,7 +1272,7 @@ These special predictions are called the *fitted values* of the dataset:
 
 :::{#def-fitted-value}
 
-For a given dataset $(\vec Y, \vec X)$ and corresponding fitted model $\p_{\hb}(y|x)$, the **fitted value** of $y_i$ is the predicted value of $y$ when $X=x_i$ using the estimate parameters $\hb$.
+For a given dataset $(\vY, \mX)$ and corresponding fitted model $\p_{\hb}(\vy|\mx)$, the **fitted value** of $y_i$ is the predicted value of $y$ when $\vX=\vx_i$ using the estimate parameters $\hb$.
 
 :::
 
@@ -1421,7 +1423,7 @@ $e(\hat y)$ can be seen as the maximum likelihood estimate of the residual noise
 $$
 \ba
 e(\hy) &= y - \hat y
-\\ &= \hat\epsilon_{ML}
+\\ &= \hat\eps_{ML}
 \ea
 $$
 

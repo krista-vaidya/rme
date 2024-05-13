@@ -104,13 +104,16 @@ Let $\vx$ and $\vb$ be vectors of length $p$,
 or in other words, matrices of length $p \times 1$:
 
 $$
-x = \begin{bmatrix}
+\vx = \begin{bmatrix}
 x_{1} \\
 x_{2} \\
 \vdots \\
 x_{p}
 \end{bmatrix} \\
-\beta = \begin{bmatrix}
+$$
+
+$$
+\vb = \begin{bmatrix}
 \beta_{1} \\
 \beta_{2} \\
 \vdots \\
@@ -118,16 +121,24 @@ x_{p}
 \end{bmatrix}
 $$
 
-Then
+:::{#def-transpose}
+#### Transpose
+
+The transpose of a row vector is the column vector with the same 
+sequence of entries:
 
 $$
-x' \equiv x^\top \equiv [x_1, x_2, ..., x_p]
+\vx' \equiv \vx^\top \equiv [x_1, x_2, ..., x_p]
 $$
 
-and
+:::
+
+:::{#exm-dot-product}
+#### Dot product as matrix multiplication
 
 $$
-x'\beta = [x_1, x_2, ..., x_p] 
+\vx\'\vb
+= [x_1, x_2, ..., x_p] 
 \begin{bmatrix}
 \beta_{1} \\
 \beta_{2} \\
@@ -136,16 +147,11 @@ x'\beta = [x_1, x_2, ..., x_p]
 \end{bmatrix} = 
 x_1\beta_1+x_2\beta_2 +...+x_p \beta_p 
 $$
-
-Let 
-
-$$
-f_{\vb}(\vx) = (f_{\vb}(x_1), f_{\vb}(x_2), ..., f_{\vb}(x_n))^\top
-$$
+:::
 
 :::{#thm-transpose-sum}
 #### Transpose of a sum
-$\(\vx+\vy)\' = \vx\' + \vy\' 
+$$(\vx+\vy)\' = \vx\' + \vy\'$$
 :::
 
 ---

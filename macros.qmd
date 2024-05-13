@@ -17,7 +17,7 @@
 \def\gb{\beta}
 \def\gg{\gamma}
 \def\gd{\delta}
-\def\eps{\epsilon}
+\def\eps{\varepsilon}
 \def\om{\omega}
 \def\m{\mu}
 \def\s{\sigma}
@@ -148,6 +148,9 @@
 \providecommand{\erf}[1]{\err\paren{#1}}
 \renewcommand{\vec}[1]{\tilde{#1}}
 \providecommand{\v}[1]{\vec{#1}}
+\providecommand{\matr}[1]{\mathbf{#1}}
+\def\mX{\matr{X}}
+\def\mx{\matr{x}}
 \def\vx{\vec{x}}
 \def\vX{\vec{X}}
 \def\vy{\vec{y}}
