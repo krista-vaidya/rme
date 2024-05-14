@@ -2166,9 +2166,9 @@ $$
 \omega(\vx,\vx^*) 
 &= \frac{\odds(Y=1|\vX = \vx)}{\odds(Y=1|\vX = \vx^*)}
 \\ &= \frac{\exp{\vx\'\vb}}{\exp{{\vx^*}\'\vb}}
-\\ &= \exp{\vx\'\vb - {\vx^*}\'\vb}
+\\ &= \exp{\vx\'\vb - {\vx^*}\' \vb}
 \\ &= \exp{(\vx\' - {\vx^*}\') \vb}
-\\ &= \exp{(\vx - \vx^*)\' \vb}
+\\ &= \exp{{(\vx - \vx^*)}\' \vb}
 \ea
 $$
 :::
