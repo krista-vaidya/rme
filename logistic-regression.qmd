@@ -2139,6 +2139,40 @@ chd_glm_strat |>
 If I give you model 1, how would you get the coefficients of model 2?
 :::
 
+---
+
+:::{#thm-logistic-OR}
+
+For the logistic regression model:
+
+- $Y_i|\vX_i \simind \Ber(\pi(\vX_i))$
+- $\pi(\vx) = \expitf{\vx'\vb}$
+
+Consider two covariate patterns, $\vx$ and $\vx^*$.
+
+The odds ratio comparing these covariate patterns is:
+
+$$
+\omega(\vx,\vx^*) = \exp{(\vx-\vx^*)\'\vb}
+$$
+
+:::
+
+---
+
+::: proof
+$$
+\ba
+\omega(\vx,\vx^*) 
+&= \frac{\odds(Y=1|\vX = \vx)}{\odds(Y=1|\vX = \vx^*)}
+\\ &= \frac{\exp{\vx\'\vb}}{\exp{{\vx^*}\'\vb}}
+\\ &= \exp{\vx\'\vb - {\vx^*}\'\vb}
+\\ &= \exp{(\vx\' - {\vx^*}\') \vb}
+\\ &= \exp{(\vx - \vx^*)\' \vb}
+\ea
+$$
+:::
+
 ## Fitting logistic regression models
 
 ### Maximum likelihood estimation for $\ciid$ data
