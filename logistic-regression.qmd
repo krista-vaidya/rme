@@ -1945,20 +1945,22 @@ print(chd_plot_odds)
 ```{r}
 #| label: fig-chd_plot_logit
 #| fig-cap: "CHD data (logit-scale)"
+
+trans_logit = trans_new(
+  name = "logit", 
+  transform = logit, 
+  inverse = expit)
+
 chd_plot_logit = 
-  chd_grouped_data |> 
-  ggplot(
-    aes(
-      x = age, 
-      y = `logit(chd)`, 
-      col = dibpat)
-  ) +
-  geom_point(aes(size = n), alpha = .7) + 
-  scale_size(range = c(1,4)) +
-  geom_line() +
-  theme_bw() +
-  ylab("log{odds(CHD Event by 1969)}") +
-  ggeasy::easy_labs()
+  chd_plot_probs + 
+  scale_y_continuous(
+    trans = trans_logit, # this line changes the vertical spacing
+    name = chd_plot_probs$labels$y,
+    breaks = c(seq(.01, .1, by = .01), .15, .2),
+    minor_breaks = NULL,
+    sec.axis = sec_axis(
+      ~ logit(.),
+      name = "log(odds(CHD Event by 1969))"))
 
 print(chd_plot_logit)
 ```
@@ -2035,18 +2037,18 @@ print(chd_plot_probs_2)
 
 ```{r}
 #| label: fig-fitted-odds-chd
-curve_type_A = function(x) 
-{
-  chd_glm_strat |> predict(
-    type = "link",
-    newdata = tibble(age = x, dibpat = "Type A")) |> exp()
-}
-curve_type_B = function(x) 
-{
-  chd_glm_strat |> predict(
-    type = "link",
-    newdata = tibble(age = x, dibpat = "Type B")) |> exp()
-}
+# curve_type_A = function(x) 
+# {
+#   chd_glm_strat |> predict(
+#     type = "link",
+#     newdata = tibble(age = x, dibpat = "Type A")) |> exp()
+# }
+# curve_type_B = function(x) 
+# {
+#   chd_glm_strat |> predict(
+#     type = "link",
+#     newdata = tibble(age = x, dibpat = "Type B")) |> exp()
+# }
 
 chd_plot_odds_2 =
   chd_plot_odds +
@@ -2069,18 +2071,18 @@ print(chd_plot_odds_2)
 ```{r}
 #| label: fig-fitted-log-odds
 #| 
-curve_type_A = function(x) 
-{
-  chd_glm_strat |> predict(
-    type = "link",
-    newdata = tibble(age = x, dibpat = "Type A"))
-}
-curve_type_B = function(x) 
-{
-  chd_glm_strat |> predict(
-    type = "link",
-    newdata = tibble(age = x, dibpat = "Type B"))
-}
+# curve_type_A = function(x) 
+# {
+#   chd_glm_strat |> predict(
+#     type = "link",
+#     newdata = tibble(age = x, dibpat = "Type A"))
+# }
+# curve_type_B = function(x) 
+# {
+#   chd_glm_strat |> predict(
+#     type = "link",
+#     newdata = tibble(age = x, dibpat = "Type B"))
+# }
 
 chd_plot_logit_2 =
   chd_plot_logit +
@@ -2164,7 +2166,7 @@ $$
 $$
 \ba
 \omega(\vx,\vx^*) 
-&= \frac{\odds(Y=1|\vX = \vx)}{\odds(Y=1|\vX = \vx^*)}
+&= \frac {\odds(Y=1|\vX = \vx)} {\odds(Y=1|\vX = \vx^*)}
 \\ &= \frac{\exp{\vx\'\vb}}{\exp{{\vx^*}\'\vb}}
 \\ &= \exp{\vx\'\vb - {\vx^*}\' \vb}
 \\ &= \exp{(\vx\' - {\vx^*}\') \vb}
