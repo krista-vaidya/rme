@@ -22,6 +22,12 @@ See <https://adv-r.hadley.nz/oo.html#oop-systems>
 
 See <https://www.maths.ed.ac.uk/~swood34/RCdebug/RCdebug.html>
 
+## `data.frame`s and `tibble`s
+
+### Displaying `tibble`s
+
+See `vignette("digits", package = "tibble")`
+
 ## The `tidyverse`
 
 > The tidyverse is an opinionated collection of R packages designed for data science. All packages share an underlying design philosophy, grammar, and data structures.

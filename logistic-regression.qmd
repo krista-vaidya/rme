@@ -1507,7 +1507,8 @@ beetles_long = beetles  |>
     .by = everything(),
     outcome = c(
       rep(1, times = died), 
-      rep(0, times = survived)))
+      rep(0, times = survived))) |> 
+  as_tibble()
 
 lm1 = beetles_long |> lm(formula = outcome ~ dose)
 f.linear = function(x) predict(lm1, newdata = data.frame(dose = x))
@@ -1871,10 +1872,13 @@ chd_grouped_data =
   wcgs |> 
   summarize(
     .by = c(age, dibpat),
-    n = n(),
-    `p(chd)` = mean(chd69 == "Yes") |> 
+    n = sum(chd69 %in% c("Yes", "No")),
+    x = sum(chd69 == "Yes")) |> 
+  mutate(
+    `n - x` = n - x,
+    `p(chd)` = (x / n) |> 
       labelled(label = "CHD Event by 1969"),
-    `odds(chd)` = `p(chd)`/(1-`p(chd)`),
+    `odds(chd)` = `p(chd)` / (1 - `p(chd)`), 
     `logit(chd)` = log(`odds(chd)`)
   )
 
@@ -2422,6 +2426,7 @@ HL_table =
     e = sum(pred_probs_glm1)
   )
 
+library(pander)
 HL_table |> pander()
 
 X2 = HL_table |> 
@@ -2898,6 +2903,61 @@ When this happens, you can try to fit Poisson regression models instead
 right, and you won't get warnings about fitted probabilities greater
 than 1. In my opinion, the Poisson model for binary outcomes is
 confusing and not very appealing.
+
+### WCGS: link functions
+
+```{r}
+wcgs_glm_logit_link = 
+  chd_grouped_data |> 
+  mutate(type = dibpat |> relevel(ref = "Type B")) |> 
+  glm(
+    "formula" = cbind(x, `n - x`) ~ dibpat * age, 
+    "data" = _,
+    "family" = binomial(link = "logit")
+  )
+
+wcgs_glm_identity_link = 
+  chd_grouped_data |> 
+  mutate(type = dibpat |> relevel(ref = "Type B")) |> 
+  glm(
+    "formula" = cbind(x, `n - x`) ~ dibpat * age, 
+    "data" = _,
+    "family" = binomial(link = "identity")
+  )
+wcgs_glm_identity_link |> coef() |> pander()
+```
+
+```{r}
+#| label: fig-diagnostics-glm1
+#| fig-cap: "Residuals vs Fitted plot for CHD models (@tbl-chd-model-coef-ests)"
+#| layout-ncol: 2
+#| fig-subcap: 
+#| - "Logistic link"
+#| - "Identity link"
+
+library(ggfortify)
+wcgs_glm_logit_link |> autoplot(which = c(1), ncol = 1) + facet_wrap(~dibpat)
+wcgs_glm_identity_link |> autoplot(which = c(1), ncol = 1) + facet_wrap(~dibpat)
+```
+
+```{r}
+#| label: fig-diagnostics-beetles
+#| fig-cap: "Residuals vs Fitted plot for `BeetleMortality` models"
+#| layout-ncol: 2
+#| fig-subcap: 
+#| - "Logistic link"
+#| - "Identity link"
+
+beetles_lm = 
+  beetles_long |> 
+  lm(formula = died ~ dose)
+
+beetles = 
+  beetles |> mutate(
+    resid_logit = beetles_glm_grouped |> resid(type = "response"))
+beetles_glm_grouped |> autoplot(which = c(1), ncol = 1)
+beetles_lm |> autoplot(which = c(1), ncol = 1)
+```
 
 ## Quasibinomial
 
