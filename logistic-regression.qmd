@@ -2929,7 +2929,7 @@ wcgs_glm_identity_link |> coef() |> pander()
 
 ```{r}
 #| label: fig-diagnostics-glm1
-#| fig-cap: "Residuals vs Fitted plot for CHD models (@tbl-chd-model-coef-ests)"
+#| fig-cap: "Residuals vs Fitted plot for `wcgs` models"
 #| layout-ncol: 2
 #| fig-subcap: 
 #| - "Logistic link"

@@ -1,0 +1,102 @@
+---
+format: 
+  revealjs:
+    scrollable: true
+    df-print: paged
+    code-fold: true
+    echo: true
+---
+
+```{r}
+#| tbl-cap: "Needle-sharing data"
+#| label: tbl-needle-data
+library(tidyverse)
+library(haven)
+needles = read_dta("inst/extdata/needle_sharing.dta") |> 
+  as_tibble() |> 
+  mutate(polydrug = 
+           ifelse(polydrug, "multiple drugs used", "one drug used") |> 
+           factor() |> 
+           relevel(ref = "one drug used"),
+         homeless = ifelse(homeless, "homeless", "not homeless") |> 
+           factor() |> relevel(ref = "not homeless"))
+needles
+```
+
+---
+
+```{r}
+#| fig-cap: "Rates of needle sharing"
+#| label: fig-needles
+library(ggplot2)
+
+needles |> 
+  ggplot(
+    aes(
+      x = age,
+      y = shared_syr,
+      col = sex,
+      shape = ethn
+    )
+  ) + 
+  geom_point(size = 4, alpha = .5) +
+  facet_grid(cols = vars(polydrug), 
+             rows = vars(homeless)) +
+  theme(legend.position = "bottom")
+```
+
+## model {.smaller}
+
+```{r}
+#| include: false
+glm0 = glm(
+  data = needles,
+  family = poisson,
+  shared_syr ~ homeless
+)
+```
+
+```{r}
+#| tbl-cap: "Poisson model for needle-sharing data"
+#| label: tbl-needles-pois
+glm1 = glm(
+  data = needles,
+  family = poisson,
+  shared_syr ~ age + sex + homeless*polydrugf
+)
+
+library(parameters)
+glm1 |> parameters(exponentiate = TRUE) |> 
+  print_md()
+
+coef(glm1)
+vcov(glm1)
+glm1 |> vcov() |> diag() |> sqrt()
+summary(glm1)
+```
+
+
+```{r}
+library(ggfortify)
+autoplot(glm1)
+```
+
+--
+
+
+```{r}
+#| tbl-cap: "Negative binomial model for needle-sharing data"
+#| label: tbl-needles-pois
+library(MASS) #need this for glm.nb()
+glm1.nb = glm.nb(
+  data = needles,
+  shared_syr ~ age + sex + homeless*polydrug
+)
+summary(glm1.nb)
+```
+
+```{r}
+
+tibble(name = names(coef(glm1)), poisson = coef(glm1), nb = coef(glm1.nb))
+```
+
