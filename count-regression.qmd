@@ -21,11 +21,7 @@ This content is adapted from:
 
 ### Examples of count outcomes
 
-* Cyclones per season
-* Seconds of tooth-brushing per session (if rounded)
-* Infections per person-year
-* Visits to ER per person-month
-* Car accidents per 1000 miles driven
+{{< include exm-count-vars.qmd >}}
 
 :::{.callout-note}
 
@@ -33,28 +29,11 @@ In many count outcomes, there is some sense of "exposure magnitude" or "duration
 
 :::
 
-### Poisson distribution
+### Probability distributions for count outcomes
 
-$$P(Y=y) = \frac{\mu^y e^{-\mu}}{y!}$$
+- [Poisson distribution](probability.qmd#sec-poisson-dist)
 
-#### Properties
-
-* $\mathbb{E}[Y] = \mu$
-* $\text{Var}[Y] = \mu$
-
-### Accounting for exposure
-
-If the exposures/observation durations, denoted $T=t$, are not all equal, we model $$\mu = \lambda t$$
-
-$\lambda$ is interpreted as the "expected event rate per unit of exposure"; that is,
-
-$$\lambda = \frac{\mathbb E[Y|T=t]}{t}$$
-
-:::{.callout-important}
-
-The exposure magnitude, $T$, is *similar* to a covariate in linear or logistic regression. However, there is an important difference: in count regression, **there is no intercept corresponding to $\mathbb E[Y|T=0]$**. In other words, this model assumes that if there is no exposure, there can't be any events.
-
-:::
+- Negative binomial distribution
 
 ### Adding covariates
 
@@ -95,14 +74,17 @@ Terms that enter the linear component of a model without a coefficient, such as 
 
 ### Rate ratios {.smaller}
 
-Differences on the log-rate scale become ratios on the rate scale.
-
-:::{.callout-tip}
-
-$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$
+::: notes
+Differences on the log-rate scale become ratios on the rate scale, 
+because
 :::
 
-Therefore, according to this model, **differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.
+$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$
+
+[math-preqs.qmd#cor-exp-sum]
+
+Therefore, according to this model, 
+**differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.
 
 That is, letting $\tilde X_{-j}$ denote vector $\tilde X$ with element $j$ removed: 
 
@@ -278,22 +260,14 @@ The Poisson distribution model **forces** the variance to equal the mean. In pra
 
 When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.
 
-Most notably, the negative binomial model:
+Most notably, the [negative binomial model](probability.qmd#sec-nb).
 
 :::
 
-$$P(Y=y) = \frac{\mu^y}{y!} \cdot \frac{\Gamma(\rho + y)}{\Gamma(\rho) \cdot (\rho + \mu)^y} \cdot \left(1+\frac{\mu}{\rho}\right)^{-\rho}$$
-
-where $\rho$ is an overdispersion parameter and $\Gamma(x) = (x-1)!$ for integers $x$.
-
-You don't need to memorize or understand this expression, but as $\rho \rightarrow \infty$, the second term converges to 1 and the third term converges to $\exp{-\mu}$, which brings us back to the Poisson distribution.
-
-For this distribution, $\mathbb E[Y] = \mu$ and $\text{Var}(Y) = \mu + \frac{\mu^2}{\rho} > \mu$.
-
-We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for $P(Y=y|Z=0,X=x,T=t)$.
+We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for $\P(Y=y|Z=0,X=x,T=t)$.
 
 ### Quasipoisson
 
-An alternative to Negative binomial is the "quasipoisson" distribution. I've never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as $\text{Var}(Y) = \mu\theta$, and estimates $\theta$ accordingly.
+An alternative to Negative binomial is the "quasipoisson" distribution. I've never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as $\Var{Y} = \mu\theta$, and estimates $\theta$ accordingly.
 
 See `?quasipoisson` in R for more.

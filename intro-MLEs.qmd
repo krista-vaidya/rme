@@ -290,14 +290,26 @@ The variance of $\ell'(x,\theta)$,
 ${Cov}\left\{ \ell'(x,\theta) \right\}$, is also very
 important; we call it the "expected information matrix", "Fisher
 information matrix", or just "information matrix", and we represent it
-using the symbol $\mathfrak{I}$ (`\frakturI` in Unicode, `\mathfrak{I}` in LaTeX).
+using the symbol $\einff{I}$ (`\frakturI` in Unicode, `\mathfrak{I}` in LaTeX).
 
-$$\mathfrak{I \eqdef I(}\theta) \eqdef {Cov}\left( \ell'|\theta \right) = E[ \ell'{\ell'}^{\top} ] - E[ \ell' ]\ E[ \ell' ]^{\top}
+$$
+\ba
+\einf 
+\eqdef \einf(\theta) 
+\\ &\eqdef \Covf{\ell'|\theta} 
+\\ &= \Expp[ \ell'{\ell'}\' ] - \Expp[ \ell' ] \ \Expp[ \ell' ]\'
+\ea
 $$
 
 The elements of $\mathfrak{I}$ are:
 
-$$\left\{ \mathfrak{I}_{ij} \eqdef {Cov}\left( {\ell'}_{i},{\ell'}_{j} \right) = E[ \ell_{i}'\ell_{j}' ] - E[ {\ell'}_{i} ] E[ {\ell'}_{j} ] \right\}$$
+$$
+\ba
+\mathfrak{I}_{ij} 
+&\eqdef \Covf{{\ell'}_{i},{\ell'}_{j}}
+\\ &= \Expp[ \ell_{i}'\ell_{j}' ] - \Expp[ {\ell'}_{i} ] \Expp[ {\ell'}_{j} ]
+\ea
+$$
 
 Here, 
 

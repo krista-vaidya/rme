@@ -23,11 +23,16 @@ The type of predictive model one uses depends on several issues; one is the type
 
 * Other forms of response can generate other types of generalized linear models
 
-We need a linear predictor of the same form as in linear regression βx. In theory, such a linear predictor can generate any type of number as a prediction, positive, negative, or zero
+We need a linear predictor of the same form as in linear regression $\beta x$. In theory, such a linear predictor can generate any type of number as a prediction, positive, negative, or zero
 
-We choose a suitable distribution for the type of data we are predicting (normal for any number, gamma for positive numbers, binomial for binary responses, Poisson for counts)
+We choose a suitable distribution for the type of data we are predicting 
+(normal for any number, gamma for positive numbers, binomial for binary responses, Poisson for counts)
 
-We create a link function which maps the mean of the distribution onto the set of all possible linear prediction results, which is the whole real line (-∞, ∞). The inverse of the link function takes the linear predictor to the actual prediction.
+We create a link function 
+which maps the mean of the distribution 
+onto the set of all possible linear prediction results, 
+which is the whole real line ($-\infty, \infty$). 
+The inverse of the link function takes the linear predictor to the actual prediction.
 
 * Ordinary linear regression has identity link (no transformation by the link function) and uses the normal distribution
 
@@ -48,16 +53,16 @@ quasipoisson | **log**, identity, logit, probit, cloglog, inverse, 1/mu^2 and sq
 
 : R glm() Families
 
-Name | Domain | Range | Link Function | Inverse Link Function
-------| ------ | ----- | ----- | ------
-identity | $(-\infty, \infty)$ | $(-\infty, \infty)$ | $\eta = \mu$ | $\mu = \eta$
-log | $(0,\infty)$ | $(-\infty, \infty)$ | $\eta = \log{\mu}$ | $\mu = \exp{\eta}$
-inverse | $(0, \infty)$ | $(0,\infty)$ | $\eta = 1/\mu$ | $\mu = 1/\eta$
-logit | $(0,1)$ | $(-\infty, \infty)$ | $\eta = \log{\mu/(1-\mu)}$ | $\mu = \exp{\eta}/(1+\exp{\eta})$
-probit | $(0,1)$ | $(-\infty, \infty)$ | $\eta = \Phi^{-1}(\mu)$ | $\mu = \Phi(\eta)$
-cloglog | $(0,1)$ | $(-\infty, \infty)$ | $\eta = \log{-\log{1-\mu}}$ | $\mu = {1-\exp{-\exp{\eta}}}$
-1/mu^2 | $(0,\infty)$ | $(0, \infty)$ | $\eta = 1/\mu^2$ | $\mu = 1/\sqrt{\eta}$
-sqrt | $(0,\infty)$ | $(0,\infty)$ | $\eta = \sqrt{\mu}$ | $\mu = \eta^2$
+Name     | Domain              | Range               | Link Function               | Inverse Link Function
+---------| ------------------- | ------------------- | --------------------------- | --------------------------------
+identity | $(-\infty, \infty)$ | $(-\infty, \infty)$ | $\eta = \mu$.               | $\mu = \eta$
+log      | $(0,\infty)$        | $(-\infty, \infty)$ | $\eta = \log{\mu}$          | $\mu = \exp{\eta}$
+inverse  | $(0, \infty)$       | $(0,\infty)$        | $\eta = 1/\mu$              | $\mu = 1/\eta$
+logit    | $(0,1)$             | $(-\infty, \infty)$ | $\eta = \log{\mu/(1-\mu)}$  | $\mu = \exp{\eta}/(1+\exp{\eta})$
+probit   | $(0,1)$             | $(-\infty, \infty)$ | $\eta = \Phi^{-1}(\mu)$     | $\mu = \Phi(\eta)$
+cloglog  | $(0,1)$             | $(-\infty, \infty)$ | $\eta = \log{-\log{1-\mu}}$ | $\mu = {1-\exp{-\exp{\eta}}}$
+1/mu^2   | $(0,\infty)$        | $(0, \infty)$       | $\eta = 1/\mu^2$            | $\mu = 1/\sqrt{\eta}$
+sqrt     | $(0,\infty)$        | $(0,\infty)$        | $\eta = \sqrt{\mu}$         | $\mu = \eta^2$
 
 
 : R `glm()` Link Functions; $\eta = X\beta = g(\mu)$

@@ -18,24 +18,65 @@ A **binary variable** is a random variable which has only two possible values in
 
 
 ::: {#exr-binary-examples}
-
-
 #### Examples of binary variables
 
 What are some examples of binary variables in the health sciences?
 :::
 
-----
+---
 
 :::: {.solution}
 
 {{< include binary-outcome-examples.qmd >}}
 
-
 ::::
 
 ---
 
+:::{#def-count}
+#### Count variable
+
+A **count variable** is a random variable whose possible values are some subset of the non-negative integers; that is, a random variable $X$ such that:
+
+$$\Range{X} \in \Nat$$
+
+:::
+
+::: {#exr-count-examples}
+What are some examples of count variables?
+:::
+
+---
+
+::: solution
+{{< include exm-count-vars.qmd >}}
+:::
+
+---
+
+:::{#def-exposure}
+
+#### Exposure
+
+In many count outcomes, there is some sense of **exposure magnitude** or 
+**duration of observation**: 
+
+- person*year
+- time at risk
+- length of toothbrushing session
+- miles driven
+- hours driven
+- size of pond
+
+This concept is similar to the number of trials in a binomial distribution,
+except that **in non-binomial count outcomes, there can be more than one event per trial**.
+
+We can use $t$ to represent continuous-valued exposures/observation durations, 
+and $n$ to represent discrete-valued exposures.
+
+:::
+
+---
 
 ## Key probability distributions
 
@@ -46,14 +87,46 @@ What are some examples of binary variables in the health sciences?
 {{< include def-bernoulli.qmd >}}
 :::::
 
-### The Poisson distribution
+### The Poisson distribution {#sec-poisson-dist}
 
-:::::{#def-poisson}
-#### Poisson distribution
+{{< include poisson.qmd >}}
 
-$$P(Y=y) = \frac{\lambda^{y} e^{-\lambda}}{y!}$$
-:::::
+### The Negative-Binomial distribution {#sec-nb}
 
+:::{#def-nb}
+#### Negative binomial distribution
+
+$$
+\P(Y=y) 
+= \frac{\mu^y}{y!} 
+\cdot \frac{\Gamma(\rho + y)}{\Gamma(\rho) \cdot (\rho + \mu)^y} 
+\cdot \left(1+\frac{\mu}{\rho}\right)^{-\rho}
+$$
+
+where $\rho$ is an overdispersion parameter 
+and $\Gamma(x) = (x-1)!$ for integers $x$.
+
+:::
+
+::: notes
+You don't need to memorize or understand this expression.
+
+As $\rho \rightarrow \infty$, 
+the second term converges to 1 
+and the third term converges to $\exp{-\mu}$, 
+which brings us back to the Poisson distribution.
+
+:::
+
+---
+
+:::{#thm-nb}
+If $Y \sim \NegBin(\mu, \rho)$, then:
+
+- $\Expp[Y] = \mu$
+- $\Var{Y} = \mu + \frac{\mu^2}{\rho} > \mu$
+
+:::
 
 ## Characteristics of probability distributions
 

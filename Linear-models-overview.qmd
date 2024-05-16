@@ -228,7 +228,7 @@ According to this model, what's the mean birthweight for a female born at 36 wee
 
 ```{r}
 #| tbl-cap: "Estimated coefficients for [model @eq-lm-parallel]"
-#| label: coef-tab-model1
+#| label: tbl-coef-model1
 coef(bw_lm1)
 ```
 
@@ -1760,7 +1760,8 @@ This should be true **for every** value of $x$.
 
 ---
 
-If we didn't correctly guess the functional form of linear component of the mean, $$\text{E}[Y|X=x] = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$$
+If we didn't correctly guess the functional form of the linear component of the mean, 
+$$\text{E}[Y|X=x] = \beta_0 + \beta_1 X_1 + ... + \beta_p X_p$$
 
 Then the the residuals might have nonzero mean.
 

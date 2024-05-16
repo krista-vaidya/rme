@@ -11,7 +11,15 @@
 \def\hp{\hat{\text{p}}}
 \def\ga{\alpha}
 \def\b{\beta}
+\providecommand{\floor}[1]{\left \lfloor{#1}\right \rfloor}
 \def\Ber{\text{Ber}}
+\def\Bernoulli{\text{Bernoulli}}
+\def\Pois{\text{Pois}}
+\def\Poisson{\text{Poisson}}
+\def\Gaus{\text{Gaussian}}
+\def\Normal{\text{N}}
+\def\NB{\text{NegBin}}
+\def\NegBin{\text{NegBin}}
 \def\vbeta{\vec \beta}
 \def\vb{\vec \b}
 \def\gb{\beta}
@@ -77,6 +85,7 @@
 \def\esttmpl{\esttmp{\lambda}}
 \def\cR{\mathcal{R}}
 \def\range{\mathcal{R}}
+\def\Range{\mathcal{R}}
 \providecommand{\rangef}[1]{\cR(#1)}
 \def\~{\approx}
 \def\dapp{\dot\approx}
@@ -104,7 +113,9 @@
 \providecommand{\varf}[1]{\text{Var}\paren{#1}}
 \providecommand{\Var}[1]{\text{Var}\paren{#1}}
 \providecommand{\Varf}[1]{\text{Var}\paren{#1}}
-\providecommand{\Cov}[1]{\text{Cov}\paren{#1}}
+\def\Covt{\text{Cov}}
+\providecommand{\Cov}[1]{\Covt \paren{#1}}
+\providecommand{\Covf}[1]{\Covt \paren{#1}}
 \providecommand{\varh}[1]{\hat{\text{Var}}\paren{#1}}
 \providecommand{\vc}[1]{\boldsymbol{#1}}
 \providecommand{\sd}[1]{\text{sd}\paren{#1}}
@@ -127,6 +138,7 @@
 \providecommand{\inv}[1]{\paren{#1}^{-1}}
 \providecommand{\invf}[1]{\paren{#1}^{-1}}
 \def\oinf{I}
+\def\Nat{\mathbb{N}}
 \providecommand{\oinff}[1]{\oinf\paren{#1}}
 \def\einf{\mathcal{I}}
 \providecommand{\einff}[1]{\einf\paren{#1}}

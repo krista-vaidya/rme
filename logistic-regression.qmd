@@ -2124,7 +2124,7 @@ chd_glm_contrasts |>
 ```
 
 ::: notes
-Compare with @tbl-chd-glm-strat-OR:
+Compare with @tbl-chd-glm-strat-OR.
 :::
 
 ::: {.content-visible when-format="revealjs"}
@@ -2154,12 +2154,12 @@ For the logistic regression model:
 - $Y_i|\vX_i \simind \Ber(\pi(\vX_i))$
 - $\pi(\vx) = \expitf{\vx'\vb}$
 
-Consider two covariate patterns, $\vx$ and $\vx^*$.
+Consider two covariate patterns, $\vx$ and $\vec{x^*}$.
 
 The odds ratio comparing these covariate patterns is:
 
 $$
-\omega(\vx,\vx^*) = \exp{(\vx-\vx^*)\'\vb}
+\omega(\vx,\vec{x^*}) = \exp{(\vx-\vec{x^*})\' \vb}
 $$
 
 :::
@@ -2169,12 +2169,12 @@ $$
 ::: proof
 $$
 \ba
-\omega(\vx,\vx^*) 
-&= \frac {\odds(Y=1|\vX = \vx)} {\odds(Y=1|\vX = \vx^*)}
-\\ &= \frac{\exp{\vx\'\vb}}{\exp{{\vx^*}\'\vb}}
-\\ &= \exp{\vx\'\vb - {\vx^*}\' \vb}
-\\ &= \exp{(\vx\' - {\vx^*}\') \vb}
-\\ &= \exp{{(\vx - \vx^*)}\' \vb}
+\omega(\vx,\vec{x^*}) 
+&= \frac {\odds(Y=1 | \vX = \vx)} {\odds(Y=1 | \vX = \vec{x^*})}
+\\ &= \frac{\exp{\vx\'\vb}}{\exp{{\vec{x^*}}\' \vb}}
+\\ &= \exp{\vx\'\vb - {\vec{x^*}}\' \vb}
+\\ &= \exp{(\vx\' - {\vec{x^*}}\') \vb}
+\\ &= \exp{{(\vx - \vec{x^*})}\' \vb}
 \ea
 $$
 :::
