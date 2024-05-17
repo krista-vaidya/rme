@@ -256,9 +256,10 @@ print(plot4)
 
 ### Three parts to regression models
 
--   What distribution does the outcome have for a specific subpopulation defined by covariates? (outcome model)
+-   What distribution does the outcome have for a specific sub-population defined by covariates? (**outcome model**)
 
--   How does the combination of covariates relate to the mean? (link function)
+-   How does the combination of covariates relate to the mean? (**link function**)
 
--   How do the covariates combine? (linear predictor, interactions)
+-   How do the covariates combine? (**linear predictor/linear component**)
+$$\eta \eqdef \vx \' \vb = \b_0 + \b_1 x_1 + \b_2 x_2 + ...$$
 

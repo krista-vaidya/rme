@@ -20,36 +20,37 @@ This content is adapted from:
 ## Introduction
 
 ::: notes
-This chapter presents models for [count data](probability.qmd#sec-count-vars) outcomes.
-
-
-### Adding covariates
-
-With covariates, $\lambda$ becomes a function of the covariates $\tilde X = (X_1, \dots,X_n)$, with a $\log{}$ link function (and thus an $\exp{}$ inverse-link). That is:
+This chapter presents models for 
+[count data](probability.qmd#sec-count-vars) outcomes.
+With covariates,
+the event rate $\lambda$ 
+becomes a function of the covariates
+$\vX = (X_1, \dots,X_n)$.
+Typically, count data models use
+a $\log{}$ link function,
+and thus an $\exp{}$ inverse-link function. 
+That is:
+:::
 
 $$
 \begin{aligned}
-\mathbb E[Y | \tilde X = \tilde x,T=t] 
-&= \mu(\tilde x,t)\\
-\mu(\tilde x,t) 
-&= \lambda(\tilde x)\cdot t\\
-\lambda(\tilde x) 
-&= \exp{\eta(\tilde x)}\\
-\eta(\tilde x) 
-&= \tilde x'\tilde \beta = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p
+\Expp[Y | \vX = \vx, T = t] &= \mu(\vx,t)
+\\ \mu(\vx,t) &= \lambda(\vx)\cdot t
+\\ \lambda(\vx) &= \exp{\eta(\vx)}
+\\ \eta(\vx) &= \vx'\tilde \beta = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p
 \end{aligned}
 $$
 
 Therefore,
 $$
 \begin{aligned}
-\log{\{\mathbb E[Y | \tilde X = \tilde x,T=t] \}}
-&= \log{\{\mu(\tilde x)\}}\\
-&=\log{\{\lambda(\tilde x) \cdot t \}}\\
-&=\log{\lambda(\tilde x)} + \log{t}\\
-&=\log{\exp{\eta(\tilde x)}} + \log{t}\\
-&=\eta(\tilde x) + \log{t}\\
-&=\tilde x'\tilde\beta + \log{t}\\
+\log{\{\Expp[Y | \vX = \vx,T=t] \}}
+&= \log{\{\mu(\vx)\}}\\
+&=\log{\{\lambda(\vx) \cdot t \}}\\
+&=\log{\lambda(\vx)} + \log{t}\\
+&=\log{\exp{\eta(\vx)}} + \log{t}\\
+&=\eta(\vx) + \log{t}\\
+&=\vx'\tilde\beta + \log{t}\\
 &=(\beta_0 +\beta_1 x_1+\dots + \beta_p x_p) + \log{t}\\
 \end{aligned}
 $$
@@ -74,15 +75,15 @@ $$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$
 Therefore, according to this model, 
 **differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.
 
-That is, letting $\tilde X_{-j}$ denote vector $\tilde X$ with element $j$ removed: 
+That is, letting $\vX_{-j}$ denote vector $\vX$ with element $j$ removed: 
 
 $$
 \begin{aligned}
 &{
 \left\{
-    \log{\mathbb E[Y |{\color{red}{X_j = a}}, \tilde X_{-j}=\tilde x_{-j},T=t]}
+    \log{\Expp[Y |{\color{red}{X_j = a}}, \vX_{-j}=\vx_{-j},T=t]}
     \atop 
-    {-\log{\mathbb E[Y |{\color{red}{X_j = b}}, \tilde X_{-j}=\tilde x_{-j},T=t]}}
+    {-\log{\Expp[Y |{\color{red}{X_j = b}}, \vX_{-j}=\vx_{-j},T=t]}}
     \right\}
 }\\
 &= 
@@ -100,10 +101,10 @@ And accordingly,
 $$
 \begin{aligned}
 \frac
-{\mathbb{E}[Y |{\color{red}{X_j = a}}, \tilde X_{-j} = \tilde x_{-j}, T = t]
+{\mathbb{E}[Y |{\color{red}{X_j = a}}, \vX_{-j} = \vx_{-j}, T = t]
 }
 {
-\mathbb E[Y |{\color{red}{X_j = b}}, \tilde X_{-j}=\tilde x_{-j},T=t]
+\Expp[Y |{\color{red}{X_j = b}}, \vX_{-j}=\vx_{-j},T=t]
 }
 = 
 \exp{{\color{red}{\beta_j(a-b)}}}
@@ -143,11 +144,11 @@ log(likelihood ratio) tests, as usual.
 $$
 \begin{aligned}
 \hat y 
-&\eqdef \hat{\mathbb E}[Y|\tilde X= \tilde x,T=t]\\
-&=\hat\mu(\tilde x, t)\\
-&=\hat\lambda(\tilde x) \cdot t\\
-&=\exp{\hat\eta(\tilde x)} \cdot t\\
-&=\exp{\tilde x'\hat{\boldsymbol{\beta}}} \cdot t
+&\eqdef \hat{\Expp}[Y|\vX= \vx,T=t]\\
+&=\hat\mu(\vx, t)\\
+&=\hat\lambda(\vx) \cdot t\\
+&=\exp{\hat\eta(\vx)} \cdot t\\
+&=\exp{\vx'\hat{\boldsymbol{\beta}}} \cdot t
 \end{aligned}
 $$
 
@@ -200,7 +201,7 @@ plot(sign,xlim = c(-1,1), xlab = "x", ylab = "sign(x)")
 
 We assume a latent (unobserved) binary variable, $Z$, which we model using logistic regression:
 
-$$P(Z=1|X=x) = \pi(x) = \expit(\gamma_0 + \gamma_1x_1 +...)$$
+$$P(Z=1|X=x) = \pi(x) = \expit(\gamma_0 + \gamma_1 x_1 +...)$$
 
 According to this model, if $Z=1$, then $Y$ will always be zero, regardless of $X$ and $T$:
 
@@ -235,7 +236,7 @@ Expand $P(Y=0|X=x,T=t)$, $P(Y=1|X=x,T=t)$ and $P(Y=y|X=x,T=t)$ into expressions 
 
 ::: {#exr-zinf-moments}
 
-Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as functions of $P(Z=1|X=x,T=t)$ and $\mathbb E[Y|Z=0,X=x,T=t]$.
+Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as functions of $P(Z=1|X=x,T=t)$ and $\Expp[Y|Z=0,X=x,T=t]$.
 :::
 
 ## Over-dispersion

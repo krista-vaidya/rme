@@ -2834,18 +2834,13 @@ samples; the residuals should be approximately Gaussian.
 
 Let's look at the beetles model diagnostic plots for comparison:
 
-::: {.content-visible when-format="html"}
-```{r}
-beetles_glm_grouped |> autoplot(which = 1:6) |> print()
-```
-:::
-
-::: {.content-visible when-format="pdf"}
 ```{r}
 #| fig-height: 6
+#| label: fig-beetles-glm-diag
+#| fig-cap: "Diagnostics for logistic model of `BeetleMortality` data"
 beetles_glm_grouped |> autoplot(which = 1:6) |> print()
 ```
-:::
+
 
 Hard to tell much from so little data, but there might be some issues
 here.

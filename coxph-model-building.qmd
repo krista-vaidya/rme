@@ -383,7 +383,7 @@ y_i &\sim N(\eta_i,\sigma^2)
 $$
 
 -   $\hat y_i$ estimates the conditional mean of $y_i$ given the
-    covariate values $\tilde x_i$. This together with the prediction
+    covariate values $\vx_i$. This together with the prediction
     error says that we are predicting the distribution of values of $y$.
 
 ### Review: Residuals in Linear Regression
@@ -586,7 +586,7 @@ $$
 \begin{aligned}
 r^{CS}_i&
 \stackrel{\text{def}}{=}-\ln[\hat S(t_i|x_i)] 
-= \hat H(t_i|\tilde x_i)
+= \hat H(t_i|\vx_i)
 \end{aligned}
 $$
 

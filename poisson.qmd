@@ -168,11 +168,11 @@ $$\mu = \lambda\cdot t$$
 
 $\lambda$ is interpreted as the "expected event rate per unit of exposure"; that is,
 
-$$\lambda = \frac{\mathbb E[Y|T=t]}{t}$$
+$$\lambda = \frac{\Expp[Y|T=t]}{t}$$
 
 :::{.callout-important}
 
-The exposure magnitude, $T$, is *similar* to a covariate in linear or logistic regression. However, there is an important difference: in count regression, **there is no intercept corresponding to $\mathbb E[Y|T=0]$**. In other words, this model assumes that if there is no exposure, there can't be any events.
+The exposure magnitude, $T$, is *similar* to a covariate in linear or logistic regression. However, there is an important difference: in count regression, **there is no intercept corresponding to $\Expp[Y|T=0]$**. In other words, this model assumes that if there is no exposure, there can't be any events.
 
 :::
 

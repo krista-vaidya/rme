@@ -1,4 +1,3 @@
-
 :::{#def-count}
 #### Count variable
 
@@ -20,29 +19,76 @@ What are some examples of count variables?
 
 ---
 
+#### Exposure magnitude
+
 :::{#def-exposure}
 
-#### Exposure
+##### Exposure magnitude
 
-In many count outcomes, there is some sense of **exposure magnitude** or 
-**duration of observation**: 
+:::: notes
+For many count outcomes, 
+there is some sense of 
+**exposure magnitude**,
+**population size**,  or 
+**duration of observation** (@tbl-exposure-units).
+::::
 
-- number of individuals exposed
-- time at risk
-- length of toothbrushing session
-- miles driven
-- hours driven
-- size of pond
+:::
 
-This concept is similar to the number of trials in a binomial distribution,
-except that **in non-binomial count outcomes, there can be more than one event per trial**.
+outcome                      | exposure units
+-----------------------------| -------------
+infectious disease incidence | number of individuals exposed, time at risk
+car accidents                | miles driven
+worksite accidents           | person-hours worked
+population size              | size of habitat
+
+: Examples of exposure units {#tbl-exposure-units}
+
+:::: notes
+Exposure units are similar to 
+the number of trials in a binomial distribution,
+but **in non-binomial count outcomes, there can be more than one event per unit of exposure**.
 
 We can use $t$ to represent continuous-valued exposures/observation durations, 
 and $n$ to represent discrete-valued exposures.
 
+::::
+
+---
+
+::: {#def-event-rate}
+#### Event rate
+
+:::: notes
+When the concept of an exposure magnitude is meaningful, 
+the mean of the outcome $Y$ is typically modeled as an **event rate** 
+(denoted $\lambda$) times the exposure magnitude ($t$). 
+That is:
+::::
+
+$$\Expp[Y|T=t] \defeq \mu = \lambda \cdot t$$
+
+$$\lambda \defeq \frac{\mu}{t}$$ {#eq-def-event-rate}
+
 :::
 
-##### Probability distributions for count outcomes
+---
+
+::: {#thm-non-exposed}
+When the exposure magnitude is 0, there is no opportunity for events to occur:
+
+$$\Expp[Y|T=0] = 0$$
+:::
+
+--- 
+
+::: proof
+$$\Expp[Y|T=0] = \lambda \cdot 0 = 0$$
+:::
+
+---
+
+#### Probability distributions for count outcomes
 
 - [Poisson distribution](#sec-poisson-dist)
 

@@ -147,10 +147,10 @@ Write down the likelihood of the full dataset.
 
 $$
 \ba
-\mathcal{L}(\lambda; \tilde x) 
-&= P(\tilde X = \tilde x) \\
-&= P(X_1 = x_1, X_2 = x_2, ..., X_{13} = x_{13}) \\
-&= \prod_{i=1}^{13} P(X_i = x_i) \\
+\Lik(\lambda; \vx) 
+&= \P(\vX = \vx) \\
+&= \P(X_1 = x_1, X_2 = x_2, ..., X_{13} = x_{13}) \\
+&= \prod_{i=1}^{13} \P(X_i = x_i) \\
 &= \prod_{i=1}^{13} \frac{\lambda^{x_i} e^{-\lambda}}{x_i!}
 \ea
 $$
