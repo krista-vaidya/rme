@@ -260,3 +260,9 @@ We can still model $\mu$ as a function of $X$ and $T$ as before, and we can comb
 An alternative to Negative binomial is the "quasipoisson" distribution. I've never used it, but it seems to be a method-of-moments type approach rather than maximum likelihood. It models the variance as $\Var{Y} = \mu\theta$, and estimates $\theta$ accordingly.
 
 See `?quasipoisson` in R for more.
+
+## Example: needle-sharing
+
+(adapted from @vittinghoff2e, §8)
+
+{{< include exr-needle-sharing.qmd >}}

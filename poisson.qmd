@@ -160,7 +160,7 @@ $$
 
 ---
 
-### Accounting for exposure
+#### Accounting for exposure
 
 If the exposures/observation durations, denoted $T=t$ or $N=n$, vary between observations, we model:
 

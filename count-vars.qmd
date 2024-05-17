@@ -37,7 +37,7 @@ there is some sense of
 
 outcome                      | exposure units
 -----------------------------| -------------
-infectious disease incidence | number of individuals exposed, time at risk
+disease incidence            | number of individuals exposed; time at risk
 car accidents                | miles driven
 worksite accidents           | person-hours worked
 population size              | size of habitat
@@ -66,10 +66,18 @@ the mean of the outcome $Y$ is typically modeled as an **event rate**
 That is:
 ::::
 
-$$\Expp[Y|T=t] \defeq \mu = \lambda \cdot t$$
+$$\mu \eqdef \Expp[Y|T=t]$$
 
 $$\lambda \defeq \frac{\mu}{t}$$ {#eq-def-event-rate}
 
+$$\tf \mu  = \lambda \cdot t$$
+
+:::
+
+::: notes
+Event rate is somewhat analogous to odds in binary outcome models;
+it is an intermediate transformation between the mean and the linear component of the model. 
+However, in contrast with the odds function, the transformation $\lambda = \mu/t$ is *not* considered part of the Poisson model's link function.
 :::
 
 ---

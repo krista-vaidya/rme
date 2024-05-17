@@ -30,9 +30,12 @@ needles |>
       shape = ethn
     )
   ) + 
-  geom_point(size = 4, alpha = .5) +
-  facet_grid(cols = vars(polydrug), 
-             rows = vars(homeless)) +
+  geom_point(
+    size = 4, 
+    alpha = .5) +
+  facet_grid(
+    cols = vars(polydrug), 
+    rows = vars(homeless)) +
   theme(legend.position = "bottom")
 ```
 
@@ -40,10 +43,11 @@ needles |>
 
 ```{r}
 #| include: false
+#| label: needles-pois-model-vittinghoff
 glm0 = glm(
   data = needles,
-  family = poisson,
-  shared_syr ~ homeless
+  family = stats::poisson,
+  formula = shared_syr ~ homeless
 )
 ```
 
@@ -52,22 +56,19 @@ glm0 = glm(
 #| label: tbl-needles-pois
 glm1 = glm(
   data = needles,
-  family = poisson,
-  shared_syr ~ age + sex + homeless*polydrugf
+  family = stats::poisson,
+  shared_syr ~ age + sex + homeless*polydrug
 )
 
 library(parameters)
 glm1 |> parameters(exponentiate = TRUE) |> 
   print_md()
-
-coef(glm1)
-vcov(glm1)
-glm1 |> vcov() |> diag() |> sqrt()
-summary(glm1)
 ```
 
 
 ```{r}
+#| tbl-cap: "Diagnostics for Poisson model"
+#| label: tbl-pois-model-diagnostics
 library(ggfortify)
 autoplot(glm1)
 ```
@@ -76,7 +77,7 @@ autoplot(glm1)
 
 ```{r}
 #| tbl-cap: "Negative binomial model for needle-sharing data"
-#| label: tbl-needles-pois
+#| label: tbl-needles-nb
 library(MASS) #need this for glm.nb()
 glm1.nb = glm.nb(
   data = needles,
@@ -86,7 +87,8 @@ summary(glm1.nb)
 ```
 
 ```{r}
-
+#| tbl-cap: "Poisson versus Negative Binomial Regression coefficient estimates"
+#| label: tbl-compare-poisson-nb
 tibble(name = names(coef(glm1)), poisson = coef(glm1), nb = coef(glm1.nb))
 ```
 
