@@ -1,0 +1,49 @@
+
+:::{#def-count}
+#### Count variable
+
+A **count variable** is a random variable whose possible values are some subset of the non-negative integers; that is, a random variable $X$ such that:
+
+$$\Range{X} \in \Nat$$
+
+:::
+
+::: {#exr-count-examples}
+What are some examples of count variables?
+:::
+
+---
+
+::: solution
+{{< include exm-count-vars.qmd >}}
+:::
+
+---
+
+:::{#def-exposure}
+
+#### Exposure
+
+In many count outcomes, there is some sense of **exposure magnitude** or 
+**duration of observation**: 
+
+- number of individuals exposed
+- time at risk
+- length of toothbrushing session
+- miles driven
+- hours driven
+- size of pond
+
+This concept is similar to the number of trials in a binomial distribution,
+except that **in non-binomial count outcomes, there can be more than one event per trial**.
+
+We can use $t$ to represent continuous-valued exposures/observation durations, 
+and $n$ to represent discrete-valued exposures.
+
+:::
+
+##### Probability distributions for count outcomes
+
+- [Poisson distribution](#sec-poisson-dist)
+
+- [Negative binomial distribution](#sec-nb-dist)

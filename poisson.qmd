@@ -162,7 +162,7 @@ $$
 
 ### Accounting for exposure
 
-If the exposures/observation durations, denoted $T=t$, vary between observations, we model:
+If the exposures/observation durations, denoted $T=t$ or $N=n$, vary between observations, we model:
 
 $$\mu = \lambda\cdot t$$
 

@@ -19,21 +19,9 @@ This content is adapted from:
 
 ## Introduction
 
-### Examples of count outcomes
+::: notes
+This chapter presents models for [count data](probability.qmd#sec-count-vars) outcomes.
 
-{{< include exm-count-vars.qmd >}}
-
-:::{.callout-note}
-
-In many count outcomes, there is some sense of "exposure magnitude" or "duration of observation": person-year, time at risk, session, miles driven, etc.
-
-:::
-
-### Probability distributions for count outcomes
-
-- [Poisson distribution](probability.qmd#sec-poisson-dist)
-
-- Negative binomial distribution
 
 ### Adding covariates
 
@@ -260,7 +248,7 @@ The Poisson distribution model **forces** the variance to equal the mean. In pra
 
 When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.
 
-Most notably, the [negative binomial model](probability.qmd#sec-nb).
+Most notably, the [negative binomial model](probability.qmd#sec-nb-dist).
 
 :::
 
