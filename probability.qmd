@@ -8,13 +8,13 @@
 
 ### Binary variables {#sec-binary-vars}
 
-{{< binary-vars.qmd >}}
+{{< include binary-vars.qmd >}}
 
 ---
 
 ### Count variables {#sec-count-vars}
 
-{{< count-vars.qmd >}}
+{{< include count-vars.qmd >}}
 
 ---
 
