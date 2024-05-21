@@ -36,6 +36,23 @@
 
 {{< include negbinom.qmd >}}
 
+### Weibull Distribution {#sec-weibull}
+
+$$
+\begin{aligned}
+p(t)&= \alpha\lambda x^{\alpha-1}\text{e}^{-\lambda x^\alpha}\\
+h(t)&=\alpha\lambda x^{\alpha-1}\\
+S(t)&=\text{e}^{-\lambda x^\alpha}\\
+E(T)&= \Gamma(1+1/\alpha)\cdot \lambda^{-1/\alpha}
+\end{aligned}
+$$
+
+When $\alpha=1$ this is the exponential. When $\alpha>1$ the hazard is
+increasing and when $\alpha < 1$ the hazard is decreasing. This provides
+more flexibility than the exponential.
+
+We will see more of this distribution later.
+
 ## Characteristics of probability distributions
 
 :::{#def-density}

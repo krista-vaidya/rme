@@ -100,8 +100,8 @@ comments:
 execute:
   warning: false
   message: false
-  cache: true
-  freeze: auto  # re-render only when source changes
+  cache: false
+  freeze: false  # re-render only when source changes
 
 editor: source
 

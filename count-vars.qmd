@@ -1,14 +1,10 @@
 
-!["The Count"](images/Songofthecount.jpg){#fig-count}
-
----
-
 :::{#def-count}
 #### Count variable
 
 A **count variable** is a random variable whose possible values are some subset of the non-negative integers; that is, a random variable $X$ such that:
 
-$$\Range(X) \in \Nat$$
+$$\rangef{X} \in \Nat$$
 
 :::
 
@@ -58,6 +54,7 @@ worksite accidents           | person-hours worked
 population size              | size of habitat
 
 : Examples of exposure units {#tbl-exposure-units}
+
 :::
 
 :::: notes
@@ -76,7 +73,7 @@ and $n$ to represent discrete-valued exposures.
 #### Event rate
 
 :::: notes
-For a count outcome $Y$ with exposure magnitude ($t$),
+For a count outcome $Y$ with exposure magnitude $t$,
 the **event rate** (denoted $\lambda$) 
 is defined as the mean of $Y$ divided by the the exposure magnitude. 
 That is:
@@ -99,7 +96,7 @@ However, in contrast with the odds function, the transformation $\lambda = \mu/t
 :::{#thm-mean-vs-event-rate}
 #### Transformation function from event rate to mean
 
-For a count variable with mean $\mu$, event rate $\lambda$, and exposure magnitude $\t$:
+For a count variable with mean $\mu$, event rate $\lambda$, and exposure magnitude $t$:
 
 $$\tf \mu  = \lambda \cdot t$${#eq-lambda-to-mu}
 
