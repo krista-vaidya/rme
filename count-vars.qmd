@@ -1,11 +1,18 @@
+
+!["The Count"](images/Songofthecount.jpg){#fig-count}
+
+---
+
 :::{#def-count}
 #### Count variable
 
 A **count variable** is a random variable whose possible values are some subset of the non-negative integers; that is, a random variable $X$ such that:
 
-$$\Range{X} \in \Nat$$
+$$\Range(X) \in \Nat$$
 
 :::
+
+---
 
 ::: {#exr-count-examples}
 What are some examples of count variables?
@@ -25,15 +32,23 @@ What are some examples of count variables?
 
 ##### Exposure magnitude
 
-:::: notes
 For many count outcomes, 
 there is some sense of 
 **exposure magnitude**,
 **population size**,  or 
-**duration of observation** (@tbl-exposure-units).
-::::
+**duration of observation**.
 
 :::
+
+---
+
+:::{#exr-exposure-magnitude}
+What are some examples of exposure magnitudes?
+:::
+
+---
+
+::: {.solution .smaller}
 
 outcome                      | exposure units
 -----------------------------| -------------
@@ -43,6 +58,7 @@ worksite accidents           | person-hours worked
 population size              | size of habitat
 
 : Examples of exposure units {#tbl-exposure-units}
+:::
 
 :::: notes
 Exposure units are similar to 
@@ -60,25 +76,44 @@ and $n$ to represent discrete-valued exposures.
 #### Event rate
 
 :::: notes
-When the concept of an exposure magnitude is meaningful, 
-the mean of the outcome $Y$ is typically modeled as an **event rate** 
-(denoted $\lambda$) times the exposure magnitude ($t$). 
+For a count outcome $Y$ with exposure magnitude ($t$),
+the **event rate** (denoted $\lambda$) 
+is defined as the mean of $Y$ divided by the the exposure magnitude. 
 That is:
 ::::
 
 $$\mu \eqdef \Expp[Y|T=t]$$
 
 $$\lambda \defeq \frac{\mu}{t}$$ {#eq-def-event-rate}
-
-$$\tf \mu  = \lambda \cdot t$$
-
 :::
+
 
 ::: notes
 Event rate is somewhat analogous to odds in binary outcome models;
-it is an intermediate transformation between the mean and the linear component of the model. 
-However, in contrast with the odds function, the transformation $\lambda = \mu/t$ is *not* considered part of the Poisson model's link function.
+it typically serves as an intermediate transformation between the mean of the outcome and the linear component of the model. 
+However, in contrast with the odds function, the transformation $\lambda = \mu/t$ is *not* considered part of the Poisson model's link function, and it treats the exposure magnitude covariate differently from the other covariates.
 :::
+
+---
+
+:::{#thm-mean-vs-event-rate}
+#### Transformation function from event rate to mean
+
+For a count variable with mean $\mu$, event rate $\lambda$, and exposure magnitude $\t$:
+
+$$\tf \mu  = \lambda \cdot t$${#eq-lambda-to-mu}
+
+:::
+
+---
+
+::: solution
+Start from definition of event rate and use algebra to solve for $\mu$.
+:::
+
+---
+
+@eq-lambda-to-mu is analogous to the inverse-odds function for binary variables.
 
 ---
 

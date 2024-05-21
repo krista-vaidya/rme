@@ -138,7 +138,8 @@ Prove @thm-poisson-properties.
 
 ---
 
-::: solution
+::: {.solution .smaller}
+
 $$
 \begin{aligned}
 \text{E}[X] 

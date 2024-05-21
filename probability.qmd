@@ -34,7 +34,7 @@
 
 ### The Negative-Binomial distribution {#sec-nb-dist}
 
-{{<< include negbinom.qmd >}}
+{{< include negbinom.qmd >}}
 
 ## Characteristics of probability distributions
 

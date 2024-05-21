@@ -10,7 +10,8 @@ needles = read_dta("inst/extdata/needle_sharing.dta") |>
            factor() |> 
            relevel(ref = "one drug used"),
          homeless = ifelse(homeless, "homeless", "not homeless") |> 
-           factor() |> relevel(ref = "not homeless"))
+           factor() |> relevel(ref = "not homeless")) |> 
+  mutate(sex = factor(sex) |> relevel(ref = "M"))
 needles
 ```
 
@@ -26,18 +27,38 @@ needles |>
     aes(
       x = age,
       y = shared_syr,
-      col = sex,
-      shape = ethn
+      shape = sex,
+      col = ethn
     )
   ) + 
   geom_point(
-    size = 4, 
+    size = 3, 
     alpha = .5) +
   facet_grid(
     cols = vars(polydrug), 
     rows = vars(homeless)) +
   theme(legend.position = "bottom")
 ```
+
+## Covariate counts:
+
+```{r}
+needles |> 
+  dplyr::select(sex, homeless, polydrug) |> 
+  summary()
+```
+
+There's only one individual with `sex = Trans`, 
+which unfortunately isn't enough data to analyze.
+We will remove that individual:
+
+```{r}
+
+needles = needles |> filter(sex != "Trans")
+
+```
+
+
 
 ## model {.smaller}
 
@@ -90,5 +111,43 @@ summary(glm1.nb)
 #| tbl-cap: "Poisson versus Negative Binomial Regression coefficient estimates"
 #| label: tbl-compare-poisson-nb
 tibble(name = names(coef(glm1)), poisson = coef(glm1), nb = coef(glm1.nb))
+```
+
+#### zero-inflation
+
+```{r}
+#| tbl-cap: "Zero-inflated poisson model"
+#| label: tbl-zeroinf-poisson
+library(glmmTMB)
+zinf_fit1 = glmmTMB(
+  family = "poisson",
+  data  = needles,
+  formula = shared_syr ~ age + sex + homeless*polydrug,
+  ziformula = ~ age + sex + homeless + polydrug # fit won't converge with interaction
+)
+
+zinf_fit1 |> 
+  parameters(exponentiate = TRUE) |> 
+  print_md()
+
+```
+
+#### zero-inflated negative binomial model
+
+```{r}
+#| tbl-cap: "Zero-inflated negative binomial model"
+#| label: tbl-zeroinf-nb
+library(glmmTMB)
+zinf_fit1 = glmmTMB(
+  family = nbinom2,
+  data  = needles,
+  formula = shared_syr ~ age + sex + homeless*polydrug,
+  ziformula = ~ age + sex + homeless + polydrug # fit won't converge with interaction
+)
+
+zinf_fit1 |> 
+  parameters(exponentiate = TRUE) |> 
+  print_md()
+
 ```
 
