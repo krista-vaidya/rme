@@ -1298,6 +1298,8 @@ The documentation for `?survfit` isn't too helpful; the
 ```
 :::
 
+---
+
 #### Example: `survfit()` with `drug6mp` data
 
 Here we use `survfit()` to create a `survfit` object, which contains the
@@ -1366,6 +1368,8 @@ autoplot(drug6mp.km_model)
 
 ```
 
+---
+
 #### quantiles of survival curve
 
 We can extract quantiles with `quantile()`:
@@ -1421,6 +1425,8 @@ drug6mp.v4 =
   )
 ```
 
+---
+
 Using this long data format, we can fit a Kaplan-Meier curve for each
 treatment group simultaneously:
 
@@ -1431,11 +1437,15 @@ drug6mp.km_model2 =
   data = drug6mp.v4)
 ```
 
+---
+
 We can plot the curves in the same graph:
 
 ```{r}
 drug6mp.km_model2 |> autoplot()
 ```
+
+---
 
 We can also perform something like a t-test, where the null hypothesis
 is that the curves are the same:
@@ -1462,6 +1472,8 @@ difference.
 ## Example: Bone Marrow Transplant Data
 
 (Copelan et al., 1991)
+
+---
 
 ##### Treatment {.unnumbered}
 
@@ -1550,6 +1562,8 @@ autoplot(
 
 ```
 
+---
+
 #### Understanding Greenwood's formula (optional)
 
 To see where Greenwood's formula comes from, let $x_i=Y_i-d_i$. We
@@ -1617,6 +1631,8 @@ $$
 H(t)=-\text{log}\left\{S\right\}(t)
 $$
 
+---
+
 So we can estimate $H(t)$ as:
 
 $$
@@ -1630,6 +1646,8 @@ $$
 
 This is the **Kaplan-Meier (product-limit) estimate of cumulative
 hazard**.
+
+---
 
 #### Example: Cumulative Hazard Curves for Bone-Marrow Transplant (`bmt`) data
 
@@ -1648,10 +1666,14 @@ autoplot(
 
 ## Nelson-Aalen Estimates of Cumulative Hazard and Survival
 
+---
+
 The point hazard at time $t_i$ can be estimated by $d_i/Y_i$, which
 leads to the **Nelson-Aalen estimator of the cumulative hazard**:
 
 $$\hat H_{NA}(t) \eqdef \sum_{t_i < t}\frac{d_i}{Y_i}$$
+
+---
 
 The variance of this estimator is approximately: 
 
@@ -1662,6 +1684,8 @@ $$
 &\approx \sum_{t_i <t}\frac{d_i}{Y_i^2}
 \end{aligned}
 $$
+
+---
 
 Since $S(t)=\text{exp}\left\{-H(t)\right\}$, the Nelson-Aalen cumulative
 hazard estimate can be converted into an alternate estimate of the
@@ -1676,6 +1700,8 @@ $$
 \end{aligned}
 $$
 
+---
+
 Compare these with the corresponding Kaplan-Meier estimates:
 
 $$
@@ -1685,12 +1711,15 @@ $$
 \end{aligned}
 $$
 
+::: notes
 The product limit estimate and the Nelson-Aalen estimate often do not
 differ by much. The latter is considered more accurate in small samples
-and also directly estimates the cumulative hazard. The
-`"fleming-harrington"` method for `survfit()` reduces to Nelson-Aalen
-when the data are unweighted. We can also estimate the cumulative hazard
+and also directly estimates the cumulative hazard. 
+The `"fleming-harrington"` method for `survfit()` reduces to Nelson-Aalen
+when the data are unweighted. 
+We can also estimate the cumulative hazard
 as the negative log of the KM survival function estimate.
+:::
 
 ### Application to `bmt` dataset
 
