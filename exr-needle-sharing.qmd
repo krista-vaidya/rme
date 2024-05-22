@@ -40,7 +40,7 @@ needles |>
   theme(legend.position = "bottom")
 ```
 
-## Covariate counts:
+#### Covariate counts:
 
 ```{r}
 needles |> 
@@ -60,7 +60,7 @@ needles = needles |> filter(sex != "Trans")
 
 
 
-## model {.smaller}
+### models {.smaller}
 
 ```{r}
 #| include: false

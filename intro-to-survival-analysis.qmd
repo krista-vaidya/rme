@@ -14,9 +14,9 @@
     failure of a device or system.
 -   insurance, particularly life insurance, where the
     event is death.
-    
+
 :::{.callout-note}
-The term *Survival analysis* is a bit misleading. Survival outcomes can sometimes be analyzed using binomial models (logistic regression). *Time-to-event models* might be a better name.
+The term *survival analysis* is a bit misleading. Survival outcomes can sometimes be analyzed using binomial models (logistic regression). *Time-to-event models* or *survival time analysis* might be a better name.
 :::
 
 ## Time-to-event outcome distributions
