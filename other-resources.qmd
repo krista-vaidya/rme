@@ -1,23 +1,56 @@
+- @dobson4e is a classic textbook on GLMs. 
+It was used in UCLA Biostatistics's MS-level GLMs course (Biostat 200C) 
+when I took it, and it helped me a lot. 
+It is fairly mathematically rigorous and concise, bordering on terse.
+It covers GLMs in detail, and survival analysis briefly, and it also has 
+helpful chapters on Bayesian methods.
+I have borrowed examples and explanations from it extensively in these notes.
+
 - @dunn2018generalized is a recent textbook on GLMs. It doesn't cover time-to-event models, and it doesn't use the modern [`tidyverse`](https://tidyverse.org/) packages ([`ggplot2`](https://ggplot2.tidyverse.org/), [`dplyr`](https://dplyr.tidyverse.org/), etc.), but otherwise it seems great.
 
 - @moore2016applied is a recent textbook on survival analysis. It also doesn't use the `tidyverse`, but otherwise seems great.
+
+- @klein2003survival is a classic text for survival analysis.
+I read most of it in grad school, and it was very helpful.
+Examples and explanations from it are borrowed extensively in the second half of these notes
+(partially filtered through David Rocke's course notes.)
+
+- @kalbfleisch2011statistical is another classic survival analysis text;
+I haven't read it yet.
+
+- @kleinbaum2010logistic is a mostly applied-level "self-learning" text for logistic regression;
+I read it cover-to-cover before grad school, and found it very helpful.
+
+- @kleinbaum2012survival is the corresponding "self-learning" text for survival analysis;
+I read it cover-to-cover before grad school, and found it very helpful.
 
 - @rms2e is another popular textbook. It uses [`ggplot2`](https://ggplot2.tidyverse.org/) but not [`dplyr`](https://dplyr.tidyverse.org/), 
 and covers GLMs and survival analysis. 
 An abbreviated but continuously updated version with audio clips is available at <https://hbiostat.org/rmsc/>.
 
 - @fox2015applied is another standard text.
+^[I don't have anything to say about this book, because I haven't opened it yet, but I've heard it's great!]
 
 - @mccullaghnelder is a classic, theoretical textbook on GLMs
+^[haven't opened it either]
 
 - @dalgaardintroductory covers GLMs and survival analysis at an applied level, using base R
 
-- @vittinghoff2e covers GLMs, survival analysis, and causal inference, using Stata
+- @vittinghoff2e covers GLMs, survival analysis, and causal inference, using Stata. 
+The authors are UCSF professors, and it is used for the core Epi PhD courses there.
+I read this book nearly cover-to-cover before grad school, and it was hugely helpful for me,
+both for statistical modeling and for causal inference (I think it provided my first exposure to DAGs).
 
 - @faraway2016extending has GLMs but not survival analysis
 
 - @selvin2001epidemiologic provides worked-out examples of applications for a wide range of 
-statistical analysis techniques.
+statistical analysis techniques. 
+The [Author](https://publichealth.berkeley.edu/people/steve-selvin) 
+is a retired UC Berkeley Biostatistics professor; 
+he used it in a graduate-level biostat/epi course.
+
+- @jewell2003statistics is by another UC Berkeley [professor](https://publichealth.berkeley.edu/people/nicholas-jewell); 
+it mostly covers logistic regression, with one chapter on survival analysis.
 
 - <https://ucla-biostat-200c-2020spring.github.io/schedule/schedule.html> provides course notes for 
 "Biostat 200C - Methods in Biostatistics C" at UCLA, which is at the Biostatistics MS level.
@@ -28,4 +61,4 @@ It includes logistic regression and Poisson regression, as well as 2-way tables 
 
 - @NahhasIRMPHR is currently in-development
 
-
+- @clayton2013statistical covers binary regression, count regression, and survival analysis. Haven't started it yet.

@@ -80,9 +80,15 @@ You can toggle between them using the oval button near the top-left corner:
 
 ## Other resources {.unnumbered}
 
-These notes represent my still-developing perspective on regression models in epidemiology. Many other statisticians and epidemiologists have published their own perspectives, and I encourage you to explore your many options and find ones that resonate with you. I have attempted to cite my sources throughout these notes. 
+These notes represent my still-developing perspective on regression models in epidemiology. 
+Many other statisticians and epidemiologists have published their own perspectives, 
+and I encourage you to explore your many options and find ones that resonate with you. 
+I have attempted to cite my sources throughout these notes. 
 
-Here are some additional resources:
+Here are some additional resources that I've come across; 
+I haven't had time to read most of them
+thoroughly yet, but they're all on my to-do list. 
+I'll add my thoughts on them over time.
 
 {{< include other-resources.qmd >}}
 
