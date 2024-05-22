@@ -1,8 +1,24 @@
 # Probability
 
+{{< include shared-config.qmd >}}
+
 ---
 
-{{< include shared-config.qmd >}}
+Most of the content in this chapter should be review from UC Davis Epi 202.
+
+## Statistical events
+
+---
+
+:::{#thm-prob-subset}
+If $A$ and $B$ are statistical events and $A\subseteq B$, then $p(A, B) = p(A)$.
+:::
+
+---
+
+::: proof
+Left to the reader.
+:::
 
 ## Random variables
 

@@ -168,7 +168,7 @@ $$(\vx+\vy)\' = \vx\' + \vy\'$$
 ---
 
 ::: {#def-vector-derivative}
-#### Vector derivative
+#### Vector derivative of a vector-to-scalar function
 If $f(\vb)$ is a function that takes a vector $\vb$ as input and outputs a scalar, 
 such as $f(\vb) = x'\vb$, 
 then:
@@ -203,33 +203,69 @@ This looks a lot like non-vector calculus, except that you have to transpose the
 
 ::: proof
 
-If $f(\beta) = x\'\beta$, then:
-
 $$ 
-\deriv{ \beta} x\'\beta= 
+\ba
+\deriv{ \beta} (x\'\beta) 
+&= 
 \begin{bmatrix}
 \deriv{\beta_1}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
 \deriv{\beta_2}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p ) \\
 \vdots \\
 \deriv{\beta_p}(x_1\beta_1+x_2\beta_2 +...+x_p \beta_p )
 \end{bmatrix} 
-=
+\\ &=
 \begin{bmatrix}
 x_{1} \\
 x_{2} \\
 \vdots \\
 x_{p}
 \end{bmatrix}
-= \vx
+\\ &= \vx
+\ea
 $$
 
 :::
 
 ---
 
-:::{#thm-deriv-normsq}
+:::{#def-quadratic-form}
+#### Quadratic form
 
-#### Derivative of a vector quadratic
+A **quadratic form** is a mathematical expression with the structure
+
+$$\vx\' \matr{S} \vx$$, where 
+
+$\vx$ is a vector and $\matr{S}$ is a matrix with compatible dimensions. 
+
+:::
+
+::: notes
+Quadratic forms occur frequently in regression models.
+:::
+
+---
+
+:::{#thm-quadratic-form}
+
+#### Derivative of a quadratic form
+
+If $S$ is a $p\times p$ matrix that is constant with respect to $\beta$, then:
+
+$$
+\deriv{\beta} \beta'S\beta = 2S\beta
+$$
+
+:::
+ 
+::: notes
+This is like taking the derivative of $cx^2$ with respect to $x$ in non-vector calculus.
+:::
+
+---
+
+:::{#cor-deriv-normsq}
+
+#### Derivative of a simple quadratic form
 
 $$
 \deriv{\vb} \vb'\vb = 2\vb
@@ -241,21 +277,6 @@ $$
 This is like taking the derivative of $x^2$.
 :::
 
----
-
-:::{#thm-quadratic-form}
-
-If $S$ is a $p\times p$ matrix, then:
-
-$$
-\deriv{\beta} \beta'S\beta = 2S\beta
-$$
-
-:::
- 
-::: notes
-Again, this is like taking the derivative of $cx^2$ with respect to $x$ in non-vector calculus.
-:::
 
 ## Additional resources
 

@@ -4,9 +4,23 @@ when I took it, and it helped me a lot.
 It is fairly mathematically rigorous and concise, bordering on terse.
 It covers GLMs in detail, and survival analysis briefly, and it also has 
 helpful chapters on Bayesian methods.
-I have borrowed examples and explanations from it extensively in these notes.
+I have adapted examples and explanations from it extensively in these notes.
 
-- @dunn2018generalized is a recent textbook on GLMs. It doesn't cover time-to-event models, and it doesn't use the modern [`tidyverse`](https://tidyverse.org/) packages ([`ggplot2`](https://ggplot2.tidyverse.org/), [`dplyr`](https://dplyr.tidyverse.org/), etc.), but otherwise it seems great.
+- @hosmer2013applied is a classic text on logistic regression. 
+I haven't read it yet.
+
+- @agresti2012categorical is another classic text for GLMs. 
+I haven't read it yet.
+
+- @agresti2018introcat appears to be a more applied version of @agresti2012categorical. 
+I haven't read it yet. 
+There are [extra exercises](https://bcs.wiley.com/he-bcs/Books?action=resource&bcsId=11293&itemId=1119405262&resourceId=44770) and other resources available on the [Student Companion Site](https://bcs.wiley.com/he-bcs/Books?action=index&itemId=1119405262&bcsId=11293)
+
+- @dunn2018generalized is a recent textbook on GLMs. 
+It doesn't cover time-to-event models, 
+and it doesn't use the modern [`tidyverse`](https://tidyverse.org/) packages ([`ggplot2`](https://ggplot2.tidyverse.org/), 
+[`dplyr`](https://dplyr.tidyverse.org/), etc.), 
+but otherwise it seems great.
 
 - @moore2016applied is a recent textbook on survival analysis. It also doesn't use the `tidyverse`, but otherwise seems great.
 

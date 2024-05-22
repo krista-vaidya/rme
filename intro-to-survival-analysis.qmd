@@ -280,7 +280,9 @@ which we can use to derive the hazard function for a given probability distribut
 $$p(T=t, T\ge t) = p(T=t)$$
 
 ::::::{.proof}
-Recall from Epi 202: if $A$ and $B$ are statistical events and $A\subseteq B$, then $p(A, B) = p(A)$. In particular, $\{T=t\} \subseteq \{T\geq t\}$, so $p(T=t, T\ge t) = p(T=t)$.
+Recall from Epi 202: 
+if $A$ and $B$ are statistical events and $A\subseteq B$, then $p(A, B) = p(A)$.
+In particular, $\{T=t\} \subseteq \{T\geq t\}$, so $p(T=t, T\ge t) = p(T=t)$.
 ::::::
 :::::
 
