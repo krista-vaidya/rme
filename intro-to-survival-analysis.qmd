@@ -1006,7 +1006,7 @@ censored observations ($k$).
 
 ## Example: clinical trial for pediatric acute leukemia
 
-### Overview of study
+### Overview of study {.smaller}
 
 This is from a clinical trial in 1963 for 6-MP treatment vs. placebo for
 Acute Leukemia in 42 children.
@@ -1031,22 +1031,31 @@ Acute Leukemia in 42 children.
 
 ### Study design {.smaller}
 
-Clinical trial in 1963 for 6-MP treatment vs. placebo for Acute Leukemia
-in 42 children. Pairs of children matched by remission status at the
-time of treatment (1 = partial or 2 = complete) and randomized to 6-MP
-or placebo. Followed until relapse or end of study. All of the placebo
-group relapsed, but some of the 6-MP group were censored.
+- Clinical trial in 1963 for 6-MP treatment vs. placebo for Acute Leukemia
+in 42 children. 
+- Pairs of children:
+  - matched by remission status at the time of treatment (`remstat`)
+     - `remstat` = 1: partial 
+     - `remstat` = 2: complete
+  - randomized to 6-MP (exit time: `t2`) or placebo (`t1`). 
+- Followed until relapse or end of study. 
+  - All of the placebo group relapsed, 
+  - Some of the 6-MP group were censored.
+
+---
 
 ```{r}
+#| tbl-cap: "`drug6mp` pediatric acute leukemia data"
+#| label: tbl-drug6mp
 library(KMsurv)
 data(drug6mp)
-drug6mp |> tibble() |> print()
+drug6mp
 ```
 
 ### Data documentation for `drug6mp`
 
 ```{r, printr.help.sections = c("description", "format")}
-library(printr) # inserts help-file output into markdown output
+# library(printr) # inserts help-file output into markdown output
 library(KMsurv)
 ?drug6mp
 ```
