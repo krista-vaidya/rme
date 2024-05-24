@@ -63,13 +63,13 @@ The term *survival analysis* is a bit misleading. Survival outcomes can sometime
 ### The Probability Density Function (PDF)  {.smaller}
 
 For a time-to-event variable $T$ with a continuous distribution, the
-**probability density function** is defined as usual:
+**probability density function** is defined as usual (see @sec-prob-dens).
 
-$$f(t)\eqdef  p(t) \eqdef  p(T=t)$$
-
-Typically, this density is assumed to be 0 for all $t<0$; that is,
-$f(t) = 0, \forall t<0$. In other words, the range of $T$ is typically
-$[0,\infty)$.
+::: notes
+In most time-to-event models, this density is assumed to be 0 for all $t<0$; 
+that is, $f(t) = 0, \forall t<0$. 
+In other words, the support of $T$ is typically $[0,\infty)$.
+:::
 
 ---
 
@@ -203,7 +203,7 @@ the expected fraction of the original population at time 0 who have survived up 
 
 If $X_t$ represents survival status at time $t$, with $X_t = 1$ denoting alive at time $t$ and $X_t = 0$ denoting deceased at time $t$, then:
 
-$$S(t) = \E{X_t}$$
+$$S(t) = \Pr(X_t=1) = \Expp[X_t]$$
 
 ---
 
@@ -217,13 +217,15 @@ $$
 P(T> t) = \left\{ {{\text{e}^{-\lambda t}, t\ge0} \atop {1, t \le 0}}\right. 
 $$ where $\lambda > 0$.
 
+@fig-exp-survfuns shows some examples of exponential survival functions.
+
 :::
 
 ---
 
-Here are some examples of exponential pdfs:
-
 ```{r, echo = FALSE}
+#| fig-cap: "Exponential Survival Functions"
+#| label: fig-exp-survfuns
 library(ggplot2)
 ggplot() +
   geom_function(
@@ -239,7 +241,7 @@ ggplot() +
     aes(col = "p = 5"),
     fun = \(x) pexp(x, lower = FALSE, rate = 5)) +
   theme_bw() + 
-  ylab("p(T<=t)") +
+  ylab("S(t)") +
   guides(col = guide_legend(title = expr(lambda))) +
   xlab("Time (t)") +
   xlim(0, 2.5) +
@@ -343,7 +345,7 @@ ggplot() +
   geom_hline(
     aes(col = "p = 5", yintercept = 5)) +
   theme_bw() + 
-  ylab("p(T=t | T<=t)") +
+  ylab("h(t)") +
   ylim(0,5) +
   guides(col = guide_legend(title = expr(lambda))) +
   xlab("Time (t)") +
@@ -366,6 +368,8 @@ ggplot() +
 We can also view the hazard function as the derivative of the negative of the logarithm of the survival function:
 
 :::{#thm-h-logS}
+
+#### transform survival to hazard
 
 $$h(t) = \deriv{t}\cb{-\log{S(t)}}$$
 :::
@@ -934,7 +938,17 @@ $$
 
 ---
 
+:::{#thm-mle-exp}
 Let $T=\sum t_i$ and $U=\sum u_j$. Then:
+
+$$
+\ell(\lambda) = \frac{m}{T+U}
+$$ {#eq-mle-exp}
+:::
+
+---
+
+::: proof
 
 $$
 \begin{aligned}
@@ -942,7 +956,15 @@ $$
 &= m \ln \lambda -(T+U)\lambda\\
 \ell'(\lambda) 
 &=m\lambda^{-1} -(T+U)\\
-\hat{\lambda} &= \frac{m}{T+U}\\
+\hat{\lambda} &= \frac{m}{T+U}
+\ea
+$$
+:::
+
+---
+
+$$
+\ba
 \ell''&=-m/\lambda^2\\
 &< 0\\
 \hat E[T] &= \hat\lambda^{-1}\\
@@ -1049,18 +1071,28 @@ in 42 children.
 #| label: tbl-drug6mp
 library(KMsurv)
 data(drug6mp)
-drug6mp
+drug6mp = drug6mp |> as_tibble() |> print()
 ```
 
 ### Data documentation for `drug6mp`
 
 ```{r, printr.help.sections = c("description", "format")}
+#| fig-cap: Data documentation for `drug6mp`
+#| label: fig-drug6mp-helpdoc
 # library(printr) # inserts help-file output into markdown output
 library(KMsurv)
 ?drug6mp
 ```
 
-### Descriptive Statistics
+### Descriptive Statistics {.smaller}
+
+```{r}
+#| tbl-cap: "Summary statistics for `drug6mp` data"
+#| label: tbl-drug6mp-summary
+summary(drug6mp)
+```
+
+::: notes
 
 -   The average time in each group is not useful. Some of the 6-MP
     patients have not relapsed at the time recorded, while all of the
@@ -1069,20 +1101,64 @@ library(KMsurv)
     6-MP patients have not relapsed (12/21).
 -   Both are biased down in the 6-MP group. Remember that lower times
     are worse since they indicate sooner recurrence.
--   We can compute the average hazard rate, which is the estimate of the
-    exponential parameter: number of relapses divided by the sum of the
-    times.
--   For the placebo, that is just the reciprocal of the mean time =
-    1/8.667 = 0.115.
--   For the 6-MP group this is 9/359 = 0.025
--   The estimated average hazard in the placebo group is 4.6 times as
-    large (if the hazard is constant over time).
+:::
+
+### Exponential model
+
+::: notes
+-   We *can* compute the hazard rate, assuming an exponential model:
+number of relapses divided by the sum of the exit times (@eq-mle-exp).
+:::
+
+$$\hat\lambda = \frac{\sumin D_i}{\sumin Y_i}$$
+
+::: notes
+-   For the placebo, that is just the reciprocal of the mean time:
+:::
+$$
+\ba
+\hat \lambda_{\text{placebo}} 
+&= \frac{\sumin D_i}{\sumin Y_i}
+\\ &= \frac{\sumin 1}{\sumin Y_i}
+\\ &= \frac{n}{\sumin Y_i}
+\\ &= \frac{1}{\bar{Y}}
+\\ &= \frac{1}{`r drug6mp |> pull(t1) |> mean()`}
+\\ &= `r 1/(drug6mp |> pull(t1) |> mean())`
+\ea
+$$
+
+---
+
+-   For the 6-MP group, $\hat\lambda = 9/359 = 0.025$
+
+$$
+\ba
+\hat \lambda_{\text{6-MP}} 
+&= \frac{\sumin D_i}{\sumin Y_i}
+\\ &= \frac{9}{359}
+\\ &= `r 9/359`
+\ea
+$$
+
+-   The estimated hazard in the placebo group is 4.6 times as
+    large as in the 6-MP group (assuming the hazard is constant over time).
+
 
 ## The Kaplan-Meier Product Limit Estimator
 
--   The estimated survival function for the placebo patients is easy to
-    compute. For any time $t$ in months, $S(t)$ is the fraction of
-    patients with times greater than $t$.
+### Estimating survival in datasets without censoring
+
+::: notes
+In the `drug6mp` dataset, the estimated survival function for the placebo patients is easy to compute. 
+For any time $t$ in months, $S(t)$ is the fraction of patients with times greater than $t$:
+:::
+
+```{r}
+
+```
+
+
+### Estimating survival in datasets with censoring
 
 -   For the 6-MP patients, we cannot ignore the censored data because we
     know that the time to relapse is greater than the censoring time.
@@ -1139,16 +1215,19 @@ Here is the Kaplan-Meier estimated survival curve for the patients who
 received 6-MP in the `drug6mp` dataset (we will see code to produce
 figures like this one shortly):
 
-```{r, echo = FALSE}
+```{r}
 #| fig-cap: "Kaplan-Meier Survival Curve for 6-MP Patients"
 #| label: fig-KM-mp6
+# | echo: false
+
 require(KMsurv)
 data(drug6mp)
-
+library(dplyr)
 library(survival)
+
 drug6mp_km_model1 = 
   drug6mp |> 
-  mutate(surv = Surv(t2, relapse)) |> 
+  mutate(surv = Surv(t2, relapse))  |> 
   survfit(formula = surv ~ 1, data = _)
 
 library(ggfortify)
@@ -1337,12 +1416,7 @@ print(drug6mp.km_model)
 summary(drug6mp.km_model)
 ```
 
-`summary.survfit()` shows us the underlying Kaplan-Meier table:
-
-```{r}
-#| code-fold: show
-summary(drug6mp.km_model)
-```
+---
 
 We can specify which time points we want using the `times` argument:
 
@@ -1353,6 +1427,8 @@ summary(
   times = c(0, drug6mp.v3$t2))
 
 ```
+
+---
 
 ```{r, printr.help.sections = c("description", "usage", "arguments")}
 #| code-fold: show
@@ -1410,7 +1486,7 @@ workflow:
 
 ```{r}
 library(survival)
-
+library(tidyr)
 drug6mp.v4 = 
   drug6mp.v3 |>
   select(pair, remstat, t1, t2, outcome) |> 
@@ -1467,8 +1543,8 @@ survdiff(
   data = drug6mp.v4)
 ```
 
-By default, `survdiff()` ignores any pairing, but we can use `strata()`
-to perform something similar to a paired t-test:
+By default, `survdiff()` ignores any pairing, 
+but we can use `strata()` to perform something similar to a paired t-test:
 
 ```{r}
 survdiff(

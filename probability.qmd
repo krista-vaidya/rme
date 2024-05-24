@@ -71,12 +71,40 @@ We will see more of this distribution later.
 
 ## Characteristics of probability distributions
 
-:::{#def-density}
-### Density function
+### Probability density function {#sec-prob-dens}
 
-The density function $f(t)$ or $\p(T=t)$ for a random variable $T$ at value $t$ can be defined as the derivative of the cumulative probability function $P(T\le t)$; that is:
+:::{#def-pdf}
+#### probability density
 
-$$f(t) \eqdef \deriv{t} \Pr(T\le t)$$
+If $X$ is a continuous random variable, then the **probability density** of 
+$X$ at value $x$, 
+denoted $f(x)$, $f_X(x)$, $\p(x)$, $\p_X(x)$, or $\p(X=x)$, 
+is defined as the limit of the probability (mass) that $X$ is in an
+interval around $x$,
+divided by the width of that interval, 
+as that width reduces to 0.
+
+$$
+\ba
+f(x) &\eqdef  \lim_{\delta \rightarrow 0} 
+   \frac{\P(X \in [x - \frac{\delta}{2}, x + \frac{\delta}{2}])}{\delta}
+\ea
+$$
+
+:::: callout-note
+Here, $\delta$ represents the "diameter" (width) of the interval around $x$.
+::::
+
+:::
+
+---
+
+:::{#thm-density}
+### Density function is derivative of CDF
+
+The density function $f(t)$ or $\p(T=t)$ for a random variable $T$ at value $t$ is equal to the derivative of the cumulative probability function $F(t) \eqdef P(T\le t)$; that is:
+
+$$f(t) \eqdef \deriv{t} F(t)$$
 
 :::
 
