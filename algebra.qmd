@@ -1,0 +1,138 @@
+## Elementary algebra
+
+::: notes
+Mastery of elementary algebra (a.k.a. "college algebra")  is a prerequisite for calculus, 
+which is a prerequisite for Epi 202 and Epi 203,
+which are prerequisites for this course (Epi 204).
+Nevertheless, each year, 
+some Epi 204 students are still uncomfortable
+with algebraic manipulations of mathematical formulas.
+Therefore, I include this section as a quick reference.
+:::
+
+### Equality
+
+:::{#thm-equal-trans}
+#### Equality is transitive
+
+If $a=b$ and $b=c$, then $a=c$
+
+:::
+
+---
+
+:::{#thm-substitution}
+#### Substituting equivalent expressions
+
+If $a = b$, then for any function $f(x)$, $f(a) = f(b)$
+
+:::
+
+---
+
+### Sums
+
+---
+
+:::{#thm-add-ident}
+#### adding zero changes nothing
+$$a+0=a$$
+:::
+
+---
+
+:::{#thm-sum-symmetric}
+#### Sums are symmetric
+
+$$a+b = b+a$$
+
+:::
+
+---
+
+:::{#thm-sum-assoc}
+#### Sums are associative
+
+::: notes
+When summing three or more terms, the order in which you sum them does not matter:
+:::
+
+$$(a + b) + c = a + (b + c)$$
+
+:::
+
+---
+
+### Products
+
+---
+
+:::{#thm-mult-one}
+#### Multiplying by 1 changes nothing
+
+$$a \times 1 = a$$
+:::
+
+---
+
+:::{#thm-prod-symmetric}
+
+#### Products are symmetric
+
+$$a \times b = b \times a$$
+:::
+
+---
+
+:::{#thm-prod-assoc}
+#### Products are associative
+
+$$(a \times b) \times c = a \times (b \times c)$$
+:::
+
+### Sums and products together
+
+---
+
+:::{#thm-mult-distr}
+#### Multiplication is distributive
+
+$$a(b+c) = ab + ac$$
+:::
+
+### Inequalities
+
+---
+
+:::{#thm-add-ineq}
+
+If $a<b$, then $a+c < b+c$
+
+:::
+
+---
+
+:::{#thm-neg-ineq}
+#### negating both sides of an inequality
+If $a < b$, then: $-a > -b$
+
+:::
+
+---
+
+:::{#thm-mult-ineq}
+If $a < b$ and $c \geq 0$, then $ca < cb$.
+
+:::
+
+---
+
+:::{#thm-negative-one}
+
+$$-a = (-1)*a$$
+
+:::
+
+---
+
+Additional reference: <https://en.wikipedia.org/wiki/Elementary_algebra>

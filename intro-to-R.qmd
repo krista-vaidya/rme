@@ -7,6 +7,9 @@ There are an overwhelming number of great resources for learning R; here are som
 - Examples of graphics: @changRgraphicscookbook
 - Building R packages: @rpkgs
 - Translations from SAS: @kleinman2009sas
+- UC Davis courses:
+    - [BIS 015L](https://jmledford3115.github.io/datascibiol/)
+    - [Ecology dept. course](https://ucd-cepb.github.io/R-DAVIS/)
 
 ## Functions
 

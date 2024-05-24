@@ -12,6 +12,8 @@ These lecture notes use:
 
 Some key results are listed here.
 
+{{< include algebra.qmd >}}
+
 ## Derivatives
 
 :::{#thm-product-rule}
