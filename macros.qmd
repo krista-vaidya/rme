@@ -46,6 +46,12 @@
 \def\yh{\hat y}
 \def\V{{\text{Var}}}
 \def\hs{\hat \sigma}
+\def\hsig{\hat \sigma}
+\def\hS{\hat \Sigma}
+\def\hSig{\hat \Sigma}
+\def\hSigma{\hat \Sigma}
+\def\hSurv{\hat{S}}
+\providecommand{\hSurvf}[1]{\hat{S}\paren{#1}}
 \def\dist{\ \sim \ }
 \def\ddist{\ \dot{\sim} \ }
 \def\dsim{\ \dot{\sim} \ }
@@ -116,7 +122,9 @@
 \def\Covt{\text{Cov}}
 \providecommand{\Cov}[1]{\Covt \paren{#1}}
 \providecommand{\Covf}[1]{\Covt \paren{#1}}
-\providecommand{\varh}[1]{\hat{\text{Var}}\paren{#1}}
+\def\varht{\widehat{\text{Var}}}
+\providecommand{\varh}[1]{\varht\paren{#1}}
+\providecommand{\varhf}[1]{\varht\paren{#1}}
 \providecommand{\vc}[1]{\boldsymbol{#1}}
 \providecommand{\sd}[1]{\text{sd}\paren{#1}}
 \providecommand{\SD}[1]{\text{SD}\paren{#1}}

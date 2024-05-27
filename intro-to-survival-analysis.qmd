@@ -1558,9 +1558,14 @@ difference.
 
 ## Example: Bone Marrow Transplant Data
 
-(Copelan et al., 1991)
+@copelan1991treatment
+---
+
+![Recovery process from a bone marrow transplant (Fig. 1.1 from @klein2003survival)](images/bone marrow multi-stage model.png){#fig-bmt-mst}
 
 ---
+
+### Study design
 
 ##### Treatment {.unnumbered}
 
@@ -1607,15 +1612,26 @@ library(KMsurv)
 $$\hat S(t) = \prod_{t_i < t}\left[1-\frac{d_i}{Y_i}\right]$$ where
 $Y_i$ is the group at risk at time $t_i$.
 
-The estimated variance of $\hat S(t)$ is (Greenwood's formula)
-$$\hat{\text{Var}}\left(\hat S (t)\right) = \hat S(t)^2\sum_{t_i <t}\frac{d_i}{Y_i(Y_i-d_i)}$$
-which we can use for confidence intervals for a survival function or a
+The estimated variance of $\hat S(t)$ is:
+
+:::{#thm-greenwood}
+#### Greenwood's estimator for variance of Kaplan-Meier survival estimator
+
+$$
+\varhf{\hat S(t)} = \hat S(t)^2\sum_{t_i <t}\frac{d_i}{Y_i(Y_i-d_i)}
+$${#eq-var-est-surv}
+:::
+
+
+We can use @eq-var-est-surv for confidence intervals for a survival function or a
 difference of survival functions.
+
+---
 
 ##### Kaplan-Meier survival curves
 
 ```{r}
-#| code-summary: "code to preprocess and model bmt data"
+#| code-summary: "code to preprocess and model `bmt` data"
 library(KMsurv)
 library(survival)
 data(bmt)
@@ -1651,13 +1667,15 @@ autoplot(
 
 ---
 
-#### Understanding Greenwood's formula (optional)
+### Understanding Greenwood's formula (optional)
 
-To see where Greenwood's formula comes from, let $x_i=Y_i-d_i$. We
+::: notes
+To see where Greenwood's formula comes from, let $x_i = Y_i - d_i$. We
 approximate the solution treating each time as independent, with $Y_i$
 fixed and ignore randomness in times of failure and we treat $x_i$ as
 independent binomials $\text{Bin}(Y_i,p_i)$. Letting $S(t)$ be the
 "true" survival function
+:::
 
 $$
 \begin{aligned}
@@ -1669,21 +1687,25 @@ $$
 $$
 \begin{aligned}
 \frac{\hat S(t)}{S(t)} 
-&= \prod_{t_i<t} \frac{x_i}{p_iY_i}=\prod_{t_i<t} \frac{\hat p_i}{p_i}\\
-&=\prod_{t_i<t} \left( 1+\frac{\hat p_i-p_i}{p_i} \right)\\
-&\approx 1+\sum_{t_i<t} \frac{\hat p_i-p_i}{p_i} \\
+   &= \prod_{t_i<t} \frac{x_i}.    {p_iY_i}
+\\ &= \prod_{t_i<t} \frac{\hat p_i}{p_i}
+\\ &= \prod_{t_i<t} \paren{1+\frac{\hat p_i-p_i}{p_i}}
+\\ &\approx 1+\sum_{t_i<t} \frac{\hat p_i-p_i}{p_i}
 \end{aligned}
 $$
+
+---
 
 $$
 \begin{aligned}
 \text{Var}\left(\frac{\hat S(t)}{S(t)}\right) 
-&\approx \text{Var}\left(1+\sum_{t_i<t} \frac{\hat p_i-p_i}{p_i}\right) \\
-&=\sum_{t_i<t} \frac{1}{p_i^2}\frac{p_i(1-p_i)}{Y_i} \\
-&= \sum_{t_i<t} \frac{(1-p_i)}{p_iY_i}
-\approx\sum_{t_i<t} \frac{(1-x_i/Y_i)}{x_i}\\
-&=\sum_{t_i<t} \frac{Y_i-x_i}{x_iY_i}=\sum_{t_i<t} \frac{d_i}{Y_i(Y_i-d_i)}\\
-\text{Var}\left(\hat S(t)\right)
+&\approx \text{Var}\left(1+\sum_{t_i<t} \frac{\hat p_i-p_i}{p_i}\right) 
+\\ &=\sum_{t_i<t} \frac{1}{p_i^2}\frac{p_i(1-p_i)}{Y_i} 
+\\ &= \sum_{t_i<t} \frac{(1-p_i)}{p_iY_i}
+\\ &\approx\sum_{t_i<t} \frac{(1-x_i/Y_i)}{x_i}
+\\ &=\sum_{t_i<t} \frac{Y_i-x_i}{x_iY_i}
+\\ &=\sum_{t_i<t} \frac{d_i}{Y_i(Y_i-d_i)}
+\\ \tf \text{Var}\left(\hat S(t)\right)
 &\approx \hat S(t)^2\sum_{t_i<t} \frac{d_i}{Y_i(Y_i-d_i)}
 \end{aligned}
 $$
@@ -1740,6 +1762,7 @@ hazard**.
 
 ```{r}
 #| fig-cap: "Disease-Free Cumulative Hazard by Disease Group"
+#| label: fig-cuhaz-bmt
 
 autoplot(
   fun = "cumhaz",
@@ -1755,14 +1778,25 @@ autoplot(
 
 ---
 
+:::{#def-na-cuhaz-est}
+#### Nelson-Aalen Cumulative Hazard Estimator
+:::: notes
 The point hazard at time $t_i$ can be estimated by $d_i/Y_i$, which
 leads to the **Nelson-Aalen estimator of the cumulative hazard**:
+::::
+$$\hat H_{NA}(t) \eqdef \sum_{t_i < t}\frac{d_i}{Y_i}$${#eq-NA-cuhaz-est}
 
-$$\hat H_{NA}(t) \eqdef \sum_{t_i < t}\frac{d_i}{Y_i}$$
+:::
 
 ---
 
+:::{#thm-var-NA-est}
+
+#### Variance of Nelson-Aalen estimator
+
+:::: notes
 The variance of this estimator is approximately: 
+::::
 
 $$
 \begin{aligned}
@@ -1770,7 +1804,9 @@ $$
 &= \sum_{t_i <t}\frac{(d_i/Y_i)(1-d_i/Y_i)}{Y_i}\\
 &\approx \sum_{t_i <t}\frac{d_i}{Y_i^2}
 \end{aligned}
-$$
+$${#eq-var-NA-cuhaz-est}
+
+:::
 
 ---
 

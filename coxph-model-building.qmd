@@ -551,8 +551,7 @@ ggcoxzph(hodg.zph, var = "gtype:dtype")
 
 ## Goodness of Fit using the Cox-Snell Residuals
 
-(references: Klein & Moeschberger textbook, §11.2, and Dobson & Barnett
-textbook, §10.6)
+(references: @klein2003survival, §11.2, and @dobson4e, §10.6)
 
 Suppose that an individual has a survival time $T$ which has survival
 function $S(t)$, meaning that $\Pr(T> t) = S(t)$. Then $S(T)$ has a
@@ -967,8 +966,7 @@ We will analyze remission survival times on 42 leukemia patients, half
 on new treatment, half on standard treatment.
 
 This is the same data as the `drug6mp` data from `KMsurv`, but with two
-other variables and without the pairing. This version comes from the
-Kleinbaum and Klein survival textbook (e.g., p281):
+other variables and without the pairing. This version comes from @kleinbaum2012survival (e.g., p281):
 
 
 ```{r,include = FALSE}
@@ -1226,7 +1224,7 @@ data(bmt, package = 'KMsurv')
 bmt |> as_tibble() |> print(n = 5)
 ```
 
-This dataset comes from the Copelan et al. (1991) study of allogenic
+This dataset comes from the @copelan1991treatment study of allogenic
 bone marrow transplant therapy for acute myeloid leukemia (AML) and
 acute lymphoblastic leukemia (ALL).
 
@@ -1536,7 +1534,7 @@ bmt_coxph_TV2 |> summary()
 
 ## Recurrent Events
 
-(Adapted from Kleinbaum and Klein, Ch 8)
+(Adapted from @kleinbaum2012survival, Ch 8)
 
 -   Sometimes an appropriate analysis requires consideration of
     recurrent events.
@@ -1549,7 +1547,7 @@ bmt_coxph_TV2 |> summary()
 
 ### Bladder Cancer Data Set
 
-The bladder cancer dataset from Kleinbaum and Klein contains recurrent
+The bladder cancer dataset from @kleinbaum2012survival contains recurrent
 event outcome information for eighty-six cancer patients followed for
 the recurrence of bladder cancer tumor after transurethral surgical
 excision (Byar and Green 1980). The exposure of interest is the effect
