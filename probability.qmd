@@ -99,7 +99,7 @@ Here, $\delta$ represents the "diameter" (width) of the interval around $x$.
 
 ---
 
-:::{#thm-density}
+:::{#thm-density-vs-CDF}
 ### Density function is derivative of CDF
 
 The density function $f(t)$ or $\p(T=t)$ for a random variable $T$ at value $t$ is equal to the derivative of the cumulative probability function $F(t) \eqdef P(T\le t)$; that is:
@@ -108,11 +108,29 @@ $$f(t) \eqdef \deriv{t} F(t)$$
 
 :::
 
+---
+
+:::{#thm-density-sums-to-one}
+#### Density functions integrate to 1
+
+For any density function $f(x)$,
+
+$$\int_{x \in \rangef{X}} f(x) dx = 1$$
+:::
+
+---
+
+### Hazard function {#sec-prob-haz}
+
 :::{#def-hazard}
 
 {{< include _def-hazard.qmd >}}
 
 :::
+
+---
+
+### Expectation {#sec-expectation}
 
 :::{#def-expectation}
 ### Expectation, expected value, population mean \index{expectation} \index{expected value}

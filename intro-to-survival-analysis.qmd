@@ -195,15 +195,24 @@ $$
 
 ---
 
-::: notes
-The survival function $S(t)$ is the probability that the event time is
-later than $t$. If the event in a clinical trial is death, then $S(t)$ is
-the expected fraction of the original population at time 0 who have survived up to time $t$ and are still alive at time $t$; that is:
+:::{#def-surv-fn}
+
+#### Survival function
+
+:::: notes
+Given a random time-to-event variable $T$, 
+the survival function $S(t)$ is the probability 
+that the event time is later than $t$. 
+If the event in a clinical trial is death, 
+then $S(t)$ is the expected fraction 
+of the original population at time 0 
+who have survived up to time $t$ 
+and are still alive at time $t$; that is:
+::::
+
+$$S(t) \eqdef \Pr(T > t)$${#eq-def-surv}
+
 :::
-
-If $X_t$ represents survival status at time $t$, with $X_t = 1$ denoting alive at time $t$ and $X_t = 0$ denoting deceased at time $t$, then:
-
-$$S(t) = \Pr(X_t=1) = \Expp[X_t]$$
 
 ---
 
@@ -257,6 +266,34 @@ ggplot() +
         vjust = 1, 
         hjust = 1))
 ```
+
+---
+
+:::{#thm-surv-fn-as-mean-status}
+
+If $A_t$ represents survival status at time $t$, with $A_t = 1$ denoting alive at time $t$ and $A_t = 0$ denoting deceased at time $t$, then:
+
+$$S(t) = \Pr(A_t=1) = \Expp[A_t]$$
+
+:::
+
+---
+
+:::{#thm-surv-and-mean}
+
+If $T$ is a nonnegative random variable, then:
+
+$$\Expp[T] = \int_{t=0}^{\infty} S(t)dt$$
+
+:::
+
+---
+
+:::{.proof}
+
+See <https://statproofbook.github.io/P/mean-nnrvar.html> or 
+
+:::
 
 ### The Hazard Function
 
@@ -942,7 +979,7 @@ $$
 Let $T=\sum t_i$ and $U=\sum u_j$. Then:
 
 $$
-\ell(\lambda) = \frac{m}{T+U}
+\hat{\lambda}_{ML} = \frac{m}{T+U}
 $$ {#eq-mle-exp}
 :::
 
@@ -1183,15 +1220,27 @@ For any time $t$ in months, $S(t)$ is the fraction of patients with times greate
     of $t$, then the group of survivors immediately following time $t$
     is reduced by the fraction $$\frac{Y-d}{Y}=1-\frac{d}{Y}$$
 
-If the event times are $t_i$ with events per time of $d_i$
-($1\le i \le k$), then 
+---
 
-$$\hat S(t) = \prod_{t_i < t}[1-d_i/Y_i]$$ 
+:::{#def-KM-estimator}
+
+#### Kaplan-Meier Product-Limit Estimator of Survival Function
+
+If the event times are $t_i$ with events per time of $d_i$ ($1\le i \le k$), 
+then the **Kaplan-Meier Product-Limit Estimator** 
+of the [survival function](@def-surv-fn) is:
+
+$$\hat S(t) = \prod_{t_i < t} \sb{\frac{1-d_i}{Y_i}}$${#eq-km-surv-est}
 
 where $Y_i$ is the set of observations whose time (event or censored) is
 $\ge t_i$, the group at risk at time $t_i$.
 
+:::
+
 ---
+
+:::{#thm-KM-est-no-cens}
+#### Kaplan-Meier Estimate with No Censored Observations
 
 If there are no censored data, and there are $n$ data points, then just
 after (say) the third event time 
@@ -1199,15 +1248,17 @@ after (say) the third event time
 $$
 \begin{aligned}
 \hat S(t) 
-&= \prod_{t_i < t}[1-d_i/Y_i]\\
-&=[\frac{n-d_1}{n}][\frac{n-d_1-d_2}{n-d_1}][\frac{n-d_1-d_2-d_3}{n-d_1-d_2}]\\
-&=\frac{n-d_1-d_2-d_3}{n}\\
-&=1-\frac{d_1+d_2+d_3}{n}\\
-&=1-\hat F(t)\\
+&= \prod_{t_i < t}\sb{1-\frac{d_i}{Y_i}}
+\\ &= \sb{\frac{n-d_1}{n}} \sb{\frac{n-d_1-d_2}{n-d_1}} \sb{\frac{n-d_1-d_2-d_3}{n-d_1-d_2}}
+\\ &= \frac{n-d_1-d_2-d_3}{n}
+\\ &=1-\frac{d_1+d_2+d_3}{n}
+\\ &=1-\hat F(t)
 \end{aligned}
 $$
 
 where $\hat F(t)$ is the usual empirical CDF estimate.
+
+:::
 
 ### Kaplan-Meier curve for `drug6mp` data
 
