@@ -4,9 +4,9 @@
 
 {{< include shared-config.qmd >}}
 
-## The proportional hazards model
+## Introduction
 
-### Background on the Proportional Hazards Model
+---
 
 The exponential distribution has constant hazard:
 
@@ -18,16 +18,24 @@ h(t) &= \lambda
 \end{aligned}
 $$
 
+::: notes
 Let's make two generalizations. First, we let the hazard depend on some
 covariates $x_1,x_2, \dots, x_p$; we will indicate this dependence by extending our notation for hazard:
+:::
 
 $$h(t|\boldsymbol x) \eqdef p(T=t|T\ge t, \boldsymbol X = \boldsymbol x)$$
 
+::: notes
 Second, we let the base hazard depend on $t$, but not on the covariates (for now). We can do this using either parametric or semi-parametric approaches.
+:::
 
-### Cox's Proportional Hazards Model
+## Cox's Proportional Hazards Model
 
-The generalization is that the hazard function is 
+---
+
+::: notes
+The generalization is that the hazard function is:
+:::
 
 $$
 \begin{aligned}
@@ -38,15 +46,28 @@ h(t|x)&= h_0(t)\theta(x)\\
 \end{aligned}
 $$
 
+::: notes
 The relationship between $h(t|x)$ and $\eta(x)$ has a log link (that is, $\log{h(t|x)} = \log{h_0(t)} + \eta(x)$), as in a generalized linear model.
 
-This model is **semi-parametric**, because the linear predictor depends on estimated
+This model is **semi-parametric**, 
+because the linear predictor depends on estimated
 parameters but the base hazard function is unspecified. 
-There is no constant term in $\eta(x)$, because it is absorbed in the base hazard. 
+There is no constant term in $\eta(x)$, 
+because it is absorbed in the base hazard. 
 
-Alternatively, we could define $\beta_0(t) = \log{h_0(t)}$, and then $\eta(x,t) = \beta_0(t) + \beta_1x_1+\cdots+\beta_px_p$.
+:::
 
+---
+
+Alternatively, we could define $\beta_0(t) = \log{h_0(t)}$, and then:
+
+$$\eta(x,t) = \beta_0(t) + \beta_1x_1+\cdots+\beta_px_p$$
+
+---
+
+::: notes
 For two different individuals with covariate patterns $\boldsymbol x_1$ and $\boldsymbol x_2$, the ratio of the hazard functions (a.k.a. **hazard ratio**, a.k.a. **relative hazard**) is:
+:::
 
 $$
 \begin{aligned}
@@ -55,13 +76,20 @@ $$
 &=\frac{\theta(\boldsymbol x_1)}{\theta(\boldsymbol x_2)}\\
 \end{aligned}
 $$ 
+::: notes
+Under the proportional hazards model, 
+this ratio (a.k.a. proportion) does not depend on $t$. 
+This property is a structural limitation of the model; 
+it is called the **proportional hazards assumption**.
+:::
 
-Under the proportional hazards model, this ratio (a.k.a. proportion) does not depend on $t$. This property is a structural limitation of the model; it is called the **proportional hazards assumption**.
+---
 
 ::: {#def-pha}
 ### proportional hazards
 
-A conditional probability distribution $p(T|X)$ has **proportional hazards** if the hazard ratio $h(t|\boldsymbol x_1)/h(t|\boldsymbol x_2)$ does not depend on $t$. Mathematically, it can be written as:
+A conditional probability distribution $p(T|X)$ 
+has **proportional hazards** if the hazard ratio $h(t|\boldsymbol x_1)/h(t|\boldsymbol x_2)$ does not depend on $t$. Mathematically, it can be written as:
 
 $$
 \frac{h(t|\boldsymbol x_1)}{h(t|\boldsymbol x_2)}
@@ -70,7 +98,11 @@ $$
 
 :::
 
+::: notes
 As we saw above, Cox's proportional hazards model has this property, with $\theta(\boldsymbol x_1,\boldsymbol x_2) = \frac{\theta(\boldsymbol x_1)}{\theta(\boldsymbol x_2)}$.
+:::
+
+---
 
 :::{.callout-note}
 
@@ -78,7 +110,9 @@ We are using two similar notations, $\theta(\boldsymbol x_1,\boldsymbol x_2)$ an
 
 :::
 
-It also has additional notable properties:
+---
+
+The proportional hazards model also has additional notable properties:
 
 $$
 \begin{aligned}
@@ -91,6 +125,8 @@ $$
 \end{aligned}
 $$ 
 
+---
+
 Hence on the log scale, we have:
 
 $$
@@ -102,6 +138,8 @@ $$
 \end{aligned}
 $$ 
 
+---
+
 If only one covariate $x_j$ is changing, then:
 
 $$
@@ -112,7 +150,11 @@ $$
 \end{aligned}
 $$
 
+::: notes
 That is, under Cox's model $h(t|\boldsymbol x) = h_0(t)\exp{\boldsymbol x'\beta}$, the log of the hazard ratio is proportional to the difference in $x_j$, with the proportionality coefficient equal to $\beta_j$.
+:::
+
+---
 
 Further,
 
@@ -123,15 +165,20 @@ $$
 \end{aligned}
 $$
 
-That is, the covariate effects are additive on the log-hazard scale.
+::: notes
+That is, the covariate effects are additive on the log-hazard scale; hazard functions for different covariate patterns should be vertical shifts of each other.
 
 See also: 
 
 <https://en.wikipedia.org/wiki/Proportional_hazards_model#Why_it_is_called_%22proportional%22>
 
+:::
+
 ### Additional properties of the proportional hazards model
 
 If $h(t|x)= h_0(t)\theta(x)$, then:
+
+:::{#thm-ph-cuhaz}
 
 #### Cumulative hazards are also proportional to $H_0(t)$
 
@@ -147,6 +194,22 @@ $$
 
 where $H_0(t) \eqdef H(t|0) = \int_{u=0}^t h_0(u)du$.
 
+:::
+
+---
+
+:::{#thm-log-cuhaz-parallel}
+
+#### The logarithms of cumulative hazard should be parallel
+
+$$
+\log{H(t|\vx)} =\log{H_0(t)}  + \vx'\vb
+$$
+:::
+
+---
+
+:::{#thm-ph-surv}
 #### Survival functions are exponential multiples of $S_0(t)$
 
 $$
@@ -155,23 +218,29 @@ S(t|x)
 &= \exp{-H(t|x)}\\
 &= \exp{-\theta(x)\cdot H_0(t)}\\
 &= \left(\exp{- H_0(t)}\right)^{\theta(x)}\\
-&= \left(S_0(t)\right)^{\theta(x)}\\
+&= \sb{S_0(t)}^{\theta(x)}\\
 \end{aligned}
 $$
 
 where $S_0(t) \eqdef P(T\ge t | \boldsymbol X = 0)$ is the survival function for an individual whose covariates are all equal to their default values.
 
+:::
+
+
 ### Testing the proportional hazards assumption
 
+::: notes
 The Nelson-Aalen estimate of the cumulative hazard is usually used for estimates of the hazard and often the cumulative hazard.
 
 If the hazards of the three groups are proportional, that means that the ratio of the hazards is constant over $t$. We can test this using the ratios of the estimated cumulative hazards, which also would be
 proportional, as shown above.
+:::
 
 ```{r}
 
 library(KMsurv)
 library(survival)
+library(dplyr)
 data(bmt)
 
 bmt = 
@@ -202,7 +271,8 @@ bmt_curves =
 ```
 
 ```{r}
-#| fig-cap: "Hazard Ratios by Disease Group"
+#| fig-cap: "Hazard Ratios by Disease Group for `bmt` data"
+#| label: fig-HR-bmt
 library(ggplot2)
 bmt_rel_hazard_plot = 
   bmt_curves |> 
@@ -224,15 +294,48 @@ bmt_rel_hazard_plot =
 print(bmt_rel_hazard_plot)
 ```
 
+---
+
 We can zoom in on 30-300 days to take a closer look:
 
 ```{r}
 #| fig-cap: "Hazard Ratios by Disease Group (30-300 Days)"
+#| label: fig-HR-bmt-inset
 bmt_rel_hazard_plot + xlim(c(30,300))
+```
+
+---
+
+The cumulative hazard curves should also be proportional
+
+```{r}
+#| fig-cap: "Disease-Free Cumulative Hazard by Disease Group"
+#| label: fig-cuhaz-bmt
+library(ggfortify)
+plot_cuhaz_bmt =
+  bmt |>
+  survfit(formula = Surv(t2, d3) ~ group) |>
+  autoplot(fun = "cumhaz",
+           mark.time = TRUE) + 
+  ylab("Cumulative hazard")
+  
+plot_cuhaz_bmt |> print()
+
+```
+
+---
+
+```{r}
+#| fig-cap: "Disease-Free Cumulative Hazard by Disease Group (log-scale)"
+#| label: fig-cuhaz-bmt-loglog
+plot_cuhaz_bmt + 
+  scale_y_log10() +
+  scale_x_log10()
 ```
 
 ### Smoothed hazard functions
 
+::: notes
 The Nelson-Aalen estimate of the cumulative hazard is usually used for
 estimates of the hazard. Since the hazard is the derivative of the
 cumulative hazard, we need a smooth estimate of the cumulative hazard,
@@ -241,18 +344,8 @@ which is provided by smoothing the step-function cumulative hazard.
 The R package `muhaz` handles this for us. What we are looking for is
 whether the hazard function is more or less the same shape, increasing,
 decreasing, constant, etc. Are the hazards "proportional"?
+:::
 
-```{r}
-#| fig-cap: "Disease-Free Cumulative Hazard by Disease Group"
-plot(
-  survfit(Surv(t2,d3)~group,data=bmt),
-  col=1:3,
-  lwd=2,
-  fun="cumhaz",
-  mark.time = TRUE)
-legend("bottomright",c("ALL","Low Risk AML","High Risk AML"),col=1:3,lwd=2)
-
-```
 
 ```{r}
 #| fig-cap: "Smoothed Hazard Rate Estimates by Disease Group"
@@ -264,20 +357,24 @@ muhaz(bmt$t2,bmt$d3,bmt$group=="Low Risk AML") |> lines(lwd=2,col=2)
 legend("topright",c("ALL","Low Risk AML","High Risk AML"),col=1:3,lwd=2)
 ```
 
+::: notes
 Group 3 was plotted first because it has the highest hazard.
 
-We will see that except for an initial blip in the high risk AML group,
-the hazards look roughly proportional . They are all strongly
-decreasing.
+Except for an initial blip in the high risk AML group,
+the hazards look roughly proportional. 
+They are all strongly decreasing.
+:::
 
 ### Fitting the Proportional Hazards Model
 
+::: notes
 How do we fit a proportional hazards regression model? We need to
 estimate the coefficients of the covariates, and we need to estimate the
 base hazard $h_0(t)$. For the covariates, supposing for simplicity that
 there are no tied event times, let the event times for the whole data
 set be $t_1, t_2,\ldots,t_D$. Let the risk set at time $t_i$ be $R(t_i)$
 and 
+:::
 
 $$
 \begin{aligned}
@@ -286,6 +383,8 @@ $$
 h(t|X=x)&= h_0(t)e^{\eta(\boldsymbol{x})}=\theta(\boldsymbol{x}) h_0(t)
 \end{aligned}
 $$
+
+---
 
 Conditional on a single failure at time $t$, the probability that the
 event is due to subject $f\in R(t)$ is approximately

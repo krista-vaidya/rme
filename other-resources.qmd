@@ -16,6 +16,8 @@ I haven't read it yet.
 I haven't read it yet. 
 There are [extra exercises](https://bcs.wiley.com/he-bcs/Books?action=resource&bcsId=11293&itemId=1119405262&resourceId=44770) and other resources available on the [Student Companion Site](https://bcs.wiley.com/he-bcs/Books?action=index&itemId=1119405262&bcsId=11293)
 
+- @agresti2015foundations has "More than 400 exercises for readers to practice and extend the theory, methods, and data analysis"; might be more theoretical?
+
 - @dunn2018generalized is a recent textbook on GLMs. 
 It doesn't cover time-to-event models, 
 and it doesn't use the modern [`tidyverse`](https://tidyverse.org/) packages ([`ggplot2`](https://ggplot2.tidyverse.org/), 
