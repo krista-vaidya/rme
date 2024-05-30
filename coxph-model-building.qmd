@@ -27,6 +27,7 @@
 #### Data
 
 ```{r}
+
 data(hodg, package = "KMsurv")
 hodg2 = hodg |> 
   as_tibble() |> 
@@ -427,10 +428,10 @@ intervals:
     the process can reveal much.
 -   Some diagnostic tests are based on residuals as with other
     regression methods:
--   **Schoenfeld residuals** (via `cox.zph`) for proportionality.
--   **Cox-Snell residuals** for goodness of fit.
--   **martingale residuals** for non-linearity.
--   **dfbeta** for influence.
+    -   **Schoenfeld residuals** (via `cox.zph`) for proportionality
+    -   **Cox-Snell residuals** for goodness of fit (@sec-cox-snell)
+    -   **martingale residuals** for non-linearity
+    -   **dfbeta** for influence.
 
 ::: content-hidden
 ### Martingale and deviance residuals
@@ -545,13 +546,17 @@ ggcoxzph(hodg.zph, var = "gtype:dtype")
     event times, but those from HOD patients become less represented.
 -   Both the statistical tests and the plots are useful.
 
-## Goodness of Fit using the Cox-Snell Residuals
+## Goodness of Fit using the Cox-Snell Residuals {#sec-cox-snell}
 
 (references: @klein2003survival, §11.2, and @dobson4e, §10.6)
 
+---
+
+::: notes
 Suppose that an individual has a survival time $T$ which has survival
 function $S(t)$, meaning that $\Pr(T> t) = S(t)$. Then $S(T)$ has a
-uniform distribution on $(0,1)$.
+uniform distribution on $(0,1)$:
+:::
 
 $$
 \begin{aligned}
@@ -562,8 +567,14 @@ $$
 \end{aligned}
 $$
 
+---
+
+::: notes
 Also, if $U$ has a uniform distribution on $(0,1)$, then what is the
 distribution of $-\ln(U)$?
+:::
+
+---
 
 $$
 \begin{aligned}
@@ -572,24 +583,35 @@ $$
 \end{aligned}
 $$
 
+::: notes
 which is the CDF of an exponential distribution with parameter
 $\lambda=1$.
+:::
 
-So,
+---
+
+:::{#def-CS-resid}
+
+#### Cox-Snell generalized residuals
+
+::: notes
+The **Cox-Snell generalized residuals** are defined as:
+:::
 
 $$
-\begin{aligned}
-r^{CS}_i&
-\stackrel{\text{def}}{=}-\ln[\hat S(t_i|x_i)] 
-= \hat H(t_i|\vx_i)
-\end{aligned}
+r^{CS}_i &\eqdef \hat H(t_i|\vx_i)
 $$
 
-should have an exponential distribution with constant hazard $\lambda=1$
-if the estimate $\hat S_i$ is accurate, which means that these values
+:::
+
+::: notes
+If the estimate $\hat S_i$ is accurate, $r^{CS}_i$
+should have an exponential distribution with constant hazard $\lambda=1$, 
+which means that these values
 should look like a censored sample from this exponential distribution.
-These values are called **generalized residuals** or **Cox-Snell
-residuals**.
+:::
+
+---
 
 ```{r}
 #| fig-cap: "Cumulative Hazard of Cox-Snell Residuals"

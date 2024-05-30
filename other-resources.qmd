@@ -78,3 +78,5 @@ It includes logistic regression and Poisson regression, as well as 2-way tables 
 - @NahhasIRMPHR is currently in-development
 
 - @clayton2013statistical covers binary regression, count regression, and survival analysis. Haven't started it yet.
+
+- <https://thomaselove.github.io/2020-432-book/index.html> is another set of lecture notes.
