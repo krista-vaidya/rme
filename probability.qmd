@@ -73,29 +73,7 @@ We will see more of this distribution later.
 
 ### Probability density function {#sec-prob-dens}
 
-:::{#def-pdf}
-#### probability density
-
-If $X$ is a continuous random variable, then the **probability density** of 
-$X$ at value $x$, 
-denoted $f(x)$, $f_X(x)$, $\p(x)$, $\p_X(x)$, or $\p(X=x)$, 
-is defined as the limit of the probability (mass) that $X$ is in an
-interval around $x$,
-divided by the width of that interval, 
-as that width reduces to 0.
-
-$$
-\ba
-f(x) &\eqdef  \lim_{\delta \rightarrow 0} 
-   \frac{\P(X \in [x - \frac{\delta}{2}, x + \frac{\delta}{2}])}{\delta}
-\ea
-$$
-
-:::: callout-note
-Here, $\delta$ represents the "diameter" (width) of the interval around $x$.
-::::
-
-:::
+{{< include _def-pdf.qmd >}}
 
 ---
 
@@ -122,11 +100,8 @@ $$\int_{x \in \rangef{X}} f(x) dx = 1$$
 
 ### Hazard function {#sec-prob-haz}
 
-:::{#def-hazard}
-
 {{< include _def-hazard.qmd >}}
 
-:::
 
 ---
 

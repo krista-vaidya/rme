@@ -241,19 +241,37 @@ Derive the expected value and variance of $Y$, conditional on $X$ and $T$, as fu
 
 ## Over-dispersion
 
-### Negative binomial models
+---
 
 ::: notes
 
-The Poisson distribution model **forces** the variance to equal the mean. In practice, many count distributions will have a variance substantially larger than the mean (or occasionally smaller).
+The Poisson distribution model **forces** the variance to equal the mean. 
+In practice, many count distributions will have a variance substantially larger than the mean (or occasionally, smaller).
 
-When we encounter this, we can try to reduce the residual variance by adding more covariates. However, there are also alternatives to the Poisson model.
+:::: {#def-overdispersion}
+#### Overdispersion
 
-Most notably, the [negative binomial model](probability.qmd#sec-nb-dist).
+::::: notes
+A random variable $X$ is **overdispersed** 
+if its variance is larger than its mean;
+that is, if:
+:::::
+
+$$\Var{X} > \Expp[X]$$
+
+::::
+
+When we encounter overdispersion, 
+we can try to reduce the residual variance by adding more covariates. 
 
 :::
 
-We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation by using it in place of the Poisson distribution for $\P(Y=y|Z=0,X=x,T=t)$.
+### Negative binomial models
+
+There are also alternatives to the Poisson model.
+Most notably, the [negative binomial model](probability.qmd#sec-nb-dist).
+
+We can still model $\mu$ as a function of $X$ and $T$ as before, and we can combine this model with zero-inflation (as the conditional distribution for the non-zero component).
 
 ### Quasipoisson
 

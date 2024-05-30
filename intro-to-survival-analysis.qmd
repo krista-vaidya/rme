@@ -201,7 +201,9 @@ $$
 
 :::: notes
 Given a random time-to-event variable $T$, 
-the survival function $S(t)$ is the probability 
+the **survival function** or **survivor function**, 
+denoted $S(t)$,
+is the probability 
 that the event time is later than $t$. 
 If the event in a clinical trial is death, 
 then $S(t)$ is the expected fraction 
@@ -299,11 +301,7 @@ See <https://statproofbook.github.io/P/mean-nnrvar.html> or
 
 Another important quantity is the **hazard function**:
 
-:::{#def-hazard}
-
 {{< include _def-hazard.qmd >}}
-
-:::
 
 ---
 
@@ -440,7 +438,7 @@ $$S(t) = \exp{-\int_{u=0}^t h(u)du}$${#eq-surv-int-haz}
 The integral in @eq-surv-int-haz is important enough to have its own name: **cumulative hazard**.
 :::
 
-:::{#def-cumhaz}
+:::{#def-cuhaz}
 
 ##### cumulative hazard
 

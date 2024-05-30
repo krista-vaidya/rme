@@ -1,8 +1,19 @@
-### Hazard function
 
-The hazard function for a random variable $T$ at value $t$ is the conditional density of $T$ at $t$, given $T\ge t$; that is:
+:::{#def-hazard}
+
+##### Hazard function
+
+::: notes
+The **hazard function** for a random variable $T$ at value $t$,
+typically denoted as $h(t)$ or $\lambda(t)$,
+is the conditional [density](probability.qmd#def-pdf) of $T$ at $t$, 
+given $T\ge t$.
+That is:
+::::
 
 $$h(t) \eqdef p(T=t|T\ge t)$$
 
 If $T$ represents the time at which an event occurs, then $h(t)$ is the probability that the event occurs at time $t$, given that it has
 not occurred prior to time $t$.
+
+:::

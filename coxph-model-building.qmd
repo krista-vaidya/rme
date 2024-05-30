@@ -1,7 +1,3 @@
-# Building Cox Proportional Hazards models
-
-{{< include shared-config.qmd >}}
-
 ## Building Cox Proportional Hazards models
 
 ### `hodg` Lymphoma Data Set from `KMsurv`

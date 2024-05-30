@@ -22,6 +22,7 @@
 \def\NegBin{\text{NegBin}}
 \def\vbeta{\vec \beta}
 \def\vb{\vec \b}
+\def\v0{\vec{0}}
 \def\gb{\beta}
 \def\gg{\gamma}
 \def\gd{\delta}
@@ -204,3 +205,5 @@
 \def\invoddsf{\oddsinvf}
 \providecommand{\doddsinvf}[1]{{\oddsinv}'\cb{#1}}
 \def\dinvoddsf{\doddsinvf}
+\def\haz{h}
+\def\cuhaz{H}

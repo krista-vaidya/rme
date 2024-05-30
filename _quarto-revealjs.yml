@@ -10,7 +10,6 @@ project:
     - time-to-event-models.qmd
     - intro-to-survival-analysis.qmd
     - proportional-hazards-models.qmd
-    - coxph-model-building.qmd
     - parametric-survival-models.qmd
     - probability.qmd
     - estimation.qmd

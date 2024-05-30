@@ -30,7 +30,6 @@ book:
       chapters:
        - intro-to-survival-analysis.qmd
        - proportional-hazards-models.qmd
-       - coxph-model-building.qmd
        - parametric-survival-models.qmd
   references: references.qmd
   appendices:
