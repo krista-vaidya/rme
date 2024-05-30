@@ -601,11 +601,11 @@ From `?survfit.coxph`:
 ### Examining `survfit`
 
 ```{r}
-survfit(Surv(t2, d3)~group,data=bmt)
+survfit(Surv(t2, d3) ~ group, data = bmt)
 ```
 
 ```{r}
-survfit(Surv(t2, d3)~group,data=bmt) |> summary()
+survfit(Surv(t2, d3) ~ group, data = bmt) |> summary()
 ```
 
 ```{r}
@@ -621,7 +621,7 @@ bmt.cox |>
 
 ## Adjustment for Ties (optional)
 
-###
+---
 
 At each time $t_i$ at which more than one of the subjects has an event,
 let $d_i$ be the number of events at that time, $D_i$ the set of

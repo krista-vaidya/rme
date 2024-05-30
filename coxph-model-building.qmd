@@ -599,7 +599,7 @@ The **Cox-Snell generalized residuals** are defined as:
 :::
 
 $$
-r^{CS}_i &\eqdef \hat H(t_i|\vx_i)
+r^{CS}_i \eqdef \hat H(t_i|\vx_i)
 $$
 
 :::
