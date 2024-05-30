@@ -541,6 +541,8 @@ non-informative pairs.
 The Rsquare value is Cox and Snell's pseudo R-squared and is not very
 useful.
 
+### Tests for nested models
+
 `summary()` prints three tests for whether the model with the group
 covariate is better than the one without
 

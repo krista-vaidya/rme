@@ -19,10 +19,20 @@ Epi 203/STA 130B/STA 131B is a prerequisite for this course. If you haven't pass
 
 Epi 202: probability models for different data types
 
--   binomial
--   Poisson
--   Gaussian
--   exponential
+- Probability distributions
+    -   binomial
+    -   Poisson
+    -   Gaussian
+    -   exponential
+- Characteristics of probability distributions
+    - Mean, median, mode, quantiles
+    - Variance, standard deviation, overdispersion
+- Characteristics of samples
+    - independence, dependence, covariance, correlation
+    - ranks
+    - identical vs nonidentical distribution (homogeneity vs heterogeneity)
+    - Laws of Large Numbers
+    - Central Limit Theorem for the mean of an iid sample
 
 Epi 203: inference for one or several homogenous populations
 
@@ -40,6 +50,11 @@ Epi 203: inference for one or several homogenous populations
 * Hypothesis tests for one, two, and >2 groups:
     + t-tests/ANOVA for Gaussian models
     + chi-square tests for binomial and Poisson models
+    + nonparametric tests:
+        - Wilcoxon signed-rank test for matched pairs
+        - Mann–Whitney/Kruskal-Wallis rank sum test for ≥2 independent samples
+        - Fisher's exact test for contingency tables
+        - Cochran–Mantel–Haenszel-Cox log-rank test
 * Some linear regression
 
 Stat 108: linear regression models
