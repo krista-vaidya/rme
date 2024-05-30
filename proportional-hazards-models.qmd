@@ -586,13 +586,17 @@ list(KM = km_fit, Cox = cox_fit) |>
 
 When we use `survfit()` with a Cox model, we have to specify the covariate levels we are interested in; the argument `newdata` should include a `data.frame` with the same named columns as the predictors in the Cox model and one or more levels of each.
 
-Otherwise (that is, if the `newdata` argument is missing), a curve is produced for a single "pseudo" subject with covariate values equal to the means component of the fit. 
+---
 
-The resulting curve(s) almost never make sense, but the default remains due to an unwarranted attachment to the
-option shown by some users and by other packages.
+From `?survfit.coxph`:
 
-Two particularly egregious examples are factor variables and
-interactions. Suppose one were studying interspecies transmission of a virus, and the data set has a factor variable with levels ("pig", "chicken") and about equal numbers of observations for each. The "mean" covariate level will be 0.5 -- is this a flying pig?
+> If the `newdata` argument is missing, a curve is produced for a 
+> single "pseudo" subject with covariate values equal to the means component of the fit. 
+> The resulting curve(s) almost never make sense, 
+> but the default remains due to an unwarranted attachment to the option shown by some users and by other packages.
+> Two particularly egregious examples are factor variables and interactions. 
+> Suppose one were studying interspecies transmission of a virus, and the data set has a factor variable with levels ("pig", "chicken") and about equal numbers of observations for each. 
+> The "mean" covariate level will be 0.5 -- is this a flying pig?
 
 ### Examining `survfit`
 
