@@ -409,13 +409,20 @@ $$
 
 odds = function(pi) pi / (1 - pi)
 library(ggplot2)
-ggplot() + 
-  geom_function(fun = odds, 
-                mapping = aes(col = "odds function")) +
-  xlim(0, .5) +
+ggplot() +
+  geom_function(
+    fun = odds,
+    arrow = arrow(ends = "last"),
+    mapping = aes(col = "odds function")
+  ) +
+  xlim(0, .99) +
   xlab("Probability") +
   ylab("Odds") +
-  geom_abline(aes(intercept = 0, slope = 1, col = "y=x")) + 
+  geom_abline(aes(
+    intercept = 0,
+    slope = 1,
+    col = "y=x"
+  )) +
   theme_bw() +
   labs(colour = "") +
   theme(legend.position = "bottom")
@@ -1136,7 +1143,7 @@ This is the same estimate we calculated in @exm-OR.
 
 * But we can usually not validly estimate risks and risk ratios.
 
-## logit and expit
+## The logit and expit functions
 
 ### The logit function
 
@@ -1144,38 +1151,61 @@ This is the same estimate we calculated in @exm-OR.
 
 #### logit function
 
+::: notes
 The **logit function**  of a probability $\pi$ is 
 the natural logarithm of the odds function of $\pi$:
+:::
 
 $$\logit(\pi) \eqdef \log{\odds(\pi)}$$
 
 :::
 
-:::{#thm-logit-function}
+---
 
-$$\logit(\pi) = \log{\frac{\pi}{1-\pi}}$$
-
-:::
-
-::: proof
-Left to the reader; apply the definitions of logit and odds.
+::: notes
+@fig-logit shows the shape of the $\logit()$ function.
 :::
 
 ```{r}
 #| code-fold: true
-#| fig-cap: the logit function
+#| fig-cap: "The logit function"
 #| label: fig-logit
 logit = function(p) log(odds(p))
 
 logit_plot = 
   ggplot() + 
-  geom_function(fun = logit) + 
-  xlim(.01, .99) + 
+  geom_function(
+    fun = logit,
+    arrow = arrow(ends = "both")) + 
+  xlim(.001, .999) + 
   ylab("logit(p)") +
   xlab("p") +
   theme_bw()
 print(logit_plot)
 ```
+
+---
+
+:::{#thm-logit-function}
+
+$$\logit(\pi) = \log{\frac{\pi}{1-\pi}}$${#eq-logit}
+
+:::
+
+---
+
+:::{#exr-prove-eq-logit}
+
+#### Compose the logit function
+
+Prove @thm-logit-function.
+:::
+
+---
+
+::: proof
+Apply @def-logit and then @def-odds (details left to the reader).
+:::
 
 ---
 
@@ -1222,13 +1252,15 @@ $$\expit(\logodds) \eqdef \oddsinvf{\expf{\logodds}}$$
 #| label: fig-expit-plot
 #| fig-cap: The expit function
 #| code-fold: true
-expit = function(eta) exp(eta)/(1+exp(eta))
+expit = function(eta)
+  exp(eta) / (1 + exp(eta))
 library(ggplot2)
-expit_plot = 
-  ggplot() + 
-  geom_function(fun = expit) + 
-  xlim(-5, 5) + 
-  ylim(0,1) +
+expit_plot =
+  ggplot() +
+  geom_function(fun = expit,
+                arrow = arrow(ends = "both")) +
+  xlim(-8, 8) +
+  ylim(0, 1) +
   ylab(expression(expit(eta))) +
   xlab(expression(eta)) +
   theme_bw()
@@ -1268,6 +1300,14 @@ $$
 :::
 
 ---
+
+::: proof
+Apply definitions and @lem-invodds-simplified.
+Details left to the reader.
+:::
+
+---
+
 
 :::{#lem-one-minus-expit}
 $$1-\expitf{\logodds} = \inv{1+\exp{\logodds}}$$

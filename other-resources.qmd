@@ -80,3 +80,5 @@ It includes logistic regression and Poisson regression, as well as 2-way tables 
 - @clayton2013statistical covers binary regression, count regression, and survival analysis. Haven't started it yet.
 
 - <https://thomaselove.github.io/2020-432-book/index.html> is another set of lecture notes.
+
+- @woodward2013epidemiology covers GLMs and survival; haven't read it yet, but it looks comprehensive.

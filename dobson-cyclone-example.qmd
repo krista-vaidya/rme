@@ -650,28 +650,24 @@ new_lambda_est <-
 #| label: fig-cyclone-newton-step1-with-new-est
 #| fig-cap: "score function of Dobson cyclone data and approximate score function"
 
-plot2 = plot1 + 
-geom_point(
-size = point_size,
-aes(
-x = new_lambda_est,
-y = 0,
-col = "new estimate"
-)) +
-geom_segment(
-arrow = grid::arrow(),
-linewidth = 2,
-alpha = .7,
-aes(
-x = cur_lambda_est, 
-y = approx_score(
-lhat = cur_lambda_est, 
-lambda = cur_lambda_est),
-xend = new_lambda_est, 
-yend = 0,
-col = "update"
-)
-)
+plot2 = plot1 +
+  geom_point(size = point_size,
+             aes(x = new_lambda_est,
+                 y = 0,
+                 col = "new estimate")) +
+  geom_segment(
+    arrow = grid::arrow(),
+    linewidth = 2,
+    alpha = .7,
+    aes(
+      x = cur_lambda_est,
+      y = approx_score(lhat = cur_lambda_est,
+                       lambda = cur_lambda_est),
+      xend = new_lambda_est,
+      yend = 0,
+      col = "update"
+    )
+  )
 print(plot2)
 
 ```
@@ -712,10 +708,11 @@ We repeat this process until the likelihood converges:
 #| label: tbl-mle-converge
 #| tbl-cap: "Convergence of Newton-Raphson Algorithm for finding MLE of `cyclone` data"
 
+
 library(tibble)
 cur_lambda_est = 3 # restarting
 diff_loglik = Inf
-tolerance = 10^-4
+tolerance = 10 ^ -4
 max_iter = 100
 NR_info = tibble(
   iteration = 0,
@@ -728,28 +725,28 @@ NR_info = tibble(
 
 for (cur_iter in 1:max_iter)
 {
-
-new_lambda_est <- 
-   cur_lambda_est - score(cur_lambda_est) * hessian(cur_lambda_est)^-1
-
-diff_loglik = loglik(new_lambda_est) - loglik(cur_lambda_est)
-
-new_NR_info = tibble(
-  iteration = cur_iter,
-  lambda = new_lambda_est,
-  likelihood = lik(new_lambda_est),
-  `log(likelihood)` = loglik(new_lambda_est),
-  score = score(new_lambda_est),
-  hessian = hessian(new_lambda_est),
-  `diff(loglik)` = diff_loglik
-)
-
-NR_info = NR_info |> bind_rows(new_NR_info)
-
-cur_lambda_est = new_lambda_est
-
-if(abs(diff_loglik) < tolerance) break
-
+  new_lambda_est <-
+    cur_lambda_est - score(cur_lambda_est) * hessian(cur_lambda_est) ^ -1
+  
+  diff_loglik = loglik(new_lambda_est) - loglik(cur_lambda_est)
+  
+  new_NR_info = tibble(
+    iteration = cur_iter,
+    lambda = new_lambda_est,
+    likelihood = lik(new_lambda_est),
+    `log(likelihood)` = loglik(new_lambda_est),
+    score = score(new_lambda_est),
+    hessian = hessian(new_lambda_est),
+    `diff(loglik)` = diff_loglik
+  )
+  
+  NR_info = NR_info |> bind_rows(new_NR_info)
+  
+  cur_lambda_est = new_lambda_est
+  
+  if (abs(diff_loglik) < tolerance)
+    break
+  
 }
 
 NR_info
@@ -766,20 +763,20 @@ Compare with @exr-find-mle
 #| label: fig-NR-converge
 #| fig-cap: "Newton-Raphson algorithm for finding MLE of [model @eq-iid-model] for `cyclone` data"
 
-ll_plot + 
-geom_segment(
-data = NR_info,
-arrow = grid::arrow(),
-# linewidth = 2,
-alpha = .7,
-aes(
-x = lambda,
-xend = lead(lambda),
-y = `log(likelihood)`,
-yend = lead(`log(likelihood)`),
-col = factor(iteration)
-)
-)
+ll_plot +
+  geom_segment(
+    data = NR_info,
+    arrow = grid::arrow(),
+    # linewidth = 2,
+    alpha = .7,
+    aes(
+      x = lambda,
+      xend = lead(lambda),
+      y = `log(likelihood)`,
+      yend = lead(`log(likelihood)`),
+      col = factor(iteration)
+    )
+  )
 
 ```
 
