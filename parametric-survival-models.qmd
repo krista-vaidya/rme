@@ -17,7 +17,8 @@ f(t) &= \lambda e^{-\lambda t}\\
 \log{f(t)} &= \log{\lambda}-\lambda t\\
 F(t) &= 1-e^{-\lambda t}\\
 S(t)&= e^{-\lambda t}\\
-H(t)&=\log{S(t)} = -\lambda t\\
+H(t) &= \log{S(t)}
+\\   &= -\lambda t\\
 h(t) &= \lambda\\
 \text{E}(T) &= \lambda^{-1}
 \end{aligned}
@@ -34,8 +35,9 @@ F(t)&=1 - e^{-(\lambda t)^p}\\
 S(t)&=e^{-(\lambda t)^p}\\
 h(t)&=\lambda p (\lambda t)^{p-1}\\
 H(t)&=(\lambda t)^p\\
-\log{H(t)} &= p \log{\lambda t} = p \log{\lambda} + p \log{t}\\
-\text{E}(T) &= \lambda^{-1} \cdot \Gamma\left(1 + \frac{1}{p}\right)
+\log{H(t)} &= p \log{\lambda t} 
+\\ &= p \log{\lambda} + p \log{t}
+\\ \text{E}(T) &= \lambda^{-1} \cdot \Gamma\left(1 + \frac{1}{p}\right)
 \end{aligned}
 $$
 
@@ -105,19 +107,37 @@ ggplot() +
 
 #### Properties of Weibull hazard functions
 
+:::{#thm-weibull-props}
+
+If $T$ has a Weibull distribution, then:
+
 -   When $p=1$, the Weibull distribution simplifies to the exponential
     distribution
--   When $p > 1$, the hazard is increasing
--   When $p < 1$, the hazard is decreasing
+-   When $p > 1$, the hazard is increasing: $h'(t) > 0$
+-   When $p < 1$, the hazard is decreasing: $h'(t) < 0$
+-   $\log{H(t)}$ is a straight line relative to $\log{t}$: 
+$\log{H(t)} = p \log{\lambda} + p \log{t}$
 
-**In HW: prove these properties**
+:::
 
-This distribution provides more flexibility than the exponential.
+---
 
-Here are some Weibull hazard functions, with $\lambda = 1$ and $p$
-varying:
+:::{#exr-weibull}
+
+Prove @thm-weibull-props.
+ 
+:::
+
+---
+
+::: notes
+The Weibull distribution provides more flexibility than the exponential.
+@fig-exm-weibull-hazards shows some Weibull hazard functions, 
+with $\lambda = 1$ and $p$ varying:
+:::
 
 ```{r}
+#| label: fig-exm-weibull-hazards
 #| fig-cap: "Hazard functions for Weibull distribution"
 library(ggplot2)
 library(eha)
@@ -153,7 +173,10 @@ ggplot() +
             size = 12)))
 ```
 
+---
+
 ```{r}
+#| label: fig-surv-weibull
 #| fig-cap: "Survival functions for Weibull distribution"
 library(ggplot2)
 lambda = 1
