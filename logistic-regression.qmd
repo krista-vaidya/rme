@@ -15,6 +15,7 @@ This content is adapted from:
 -   @dobson4e, Chapter 7
 -   @vittinghoff2e, Chapter 5
 - [David Rocke](https://dmrocke.ucdavis.edu/)'s materials from the [2021 edition of Epi 204](https://dmrocke.ucdavis.edu/Class/EPI204-Spring-2021/EPI204-Spring-2021.html)
+-   @NahhasIRMPHR [Chapter 6](https://www.bookdown.org/rwnahhas/RMPH/blr.html)
 
 ## Introduction
 
@@ -1597,10 +1598,10 @@ plot3 = plot2 +
 #| label: fig-beetles_5
 #| fig-cap: "Mortality rates of adult flour beetles after five hours' exposure to gaseous carbon disulphide (Bliss 1935)"
 
-beetles_glm_grouped = beetles |> 
+beetles_glm_grouped = beetles |>
   glm(formula = cbind(died, survived) ~ dose, family = "binomial")
-f = function(x) 
-  beetles_glm_grouped |> 
+f = function(x)
+  beetles_glm_grouped |>
   predict(newdata = data.frame(dose = x), type = "response")
 
 plot4 = plot3 + geom_function(fun = f, aes(col = "Logistic regression"))
@@ -1864,7 +1865,7 @@ wcgs = wcgs |>
     dibpat =
       dibpat |> 
       as_factor() |> 
-      relevel(ref = "Type A") |> 
+      relevel(ref = "Type B") |> 
       arsenal::set_labels("Behavioral Pattern"),
     
     typchd69 = typchd69 |> 
@@ -2114,19 +2115,6 @@ print(chd_plot_odds_2)
 
 ```{r}
 #| label: fig-fitted-log-odds
-#| 
-# curve_type_A = function(x) 
-# {
-#   chd_glm_strat |> predict(
-#     type = "link",
-#     newdata = tibble(age = x, dibpat = "Type A"))
-# }
-# curve_type_B = function(x) 
-# {
-#   chd_glm_strat |> predict(
-#     type = "link",
-#     newdata = tibble(age = x, dibpat = "Type B"))
-# }
 
 chd_plot_logit_2 =
   chd_plot_logit +
@@ -2154,7 +2142,7 @@ chd_glm_contrasts =
   wcgs |> 
   glm(
     "data" = _,
-    "formula" = chd69 == "Yes" ~ dibpat*age, 
+    "formula" = chd69 == "Yes" ~ dibpat*I(age - 50), 
     "family" = binomial(link = "logit")
   )
 
