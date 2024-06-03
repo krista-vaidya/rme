@@ -59,15 +59,19 @@ $$
 #### Dot product as matrix multiplication
 
 $$
-\vx\'\vb
-= [x_1, x_2, ..., x_p] 
+\begin{aligned}
+\vx \cdot \vb
+&= \vx \' \vb
+\\ &= [x_1, x_2, ..., x_p] 
 \begin{bmatrix}
 \beta_{1} \\
 \beta_{2} \\
 \vdots \\
 \beta_{p}
-\end{bmatrix} = 
+\end{bmatrix} 
+\\ &= 
 x_1\beta_1+x_2\beta_2 +...+x_p \beta_p 
+\end{aligned}
 $$
 :::
 
