@@ -16,59 +16,7 @@ Some key results are listed here.
 
 ## Derivatives
 
-:::{#thm-deriv-polynomial}
-#### Derivatives of polynomials
-
-$$\deriv{x}x^q = qx^{q-1}$$
-
-:::
-
----
-
-:::{#thm-deriv-log}
-
-#### derivative of natural logarithm
-$$\dlogf{x} = \frac{1}{x} = x^{-1}$$
-:::
-
-:::{#thm-deriv-exp}
-#### derivative of exponential
-$$\dexpf{x} = \expf{x}$$
-:::
-
----
-
-:::{#thm-product-rule}
-#### Product rule
-$$(ab)' = ab' + ba'$$
-:::
-
-:::{#thm-quotient-rule}
-#### Quotient rule
-$$(a/b)' = 1/b - (a/b^2)b'$$ 
-:::
-
-:::{#thm-chain-rule}
-#### Chain rule
-$$\derivf{a}{c} = \derivf{a}{b} \derivf{b}{c}$$
-:::
-
----
-
-:::{#cor-deriv-log-chain}
-
-#### Chain rule for logarithms
-$$
-\deriv{x}\log{f(x)} = \frac{f'(x)}{f(x)}
-$$
-
-:::
-
-::: proof
-Apply @thm-chain-rule and @thm-deriv-log.
-:::
-
----
+{{< include calc-derivatives.qmd >}}
 
 ## Vector Calculus {#sec-vector-calculus}
 
