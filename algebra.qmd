@@ -1,7 +1,7 @@
-## Elementary algebra
+## Elementary Algebra
 
 ::: notes
-Mastery of elementary algebra (a.k.a. "college algebra")  is a prerequisite for calculus, 
+Mastery of [Elementary Algebra](https://en.wikipedia.org/wiki/Elementary_algebra) (a.k.a. "College Algebra")  is a prerequisite for calculus, 
 which is a prerequisite for Epi 202 and Epi 203,
 which are prerequisites for this course (Epi 204).
 Nevertheless, each year, 
@@ -136,3 +136,55 @@ $$-a = (-1)*a$$
 ---
 
 Additional reference: <https://en.wikipedia.org/wiki/Elementary_algebra>
+
+---
+
+## Logarithms and Exponentials
+
+:::{#thm-log-prod}
+#### logarithm of a product is the sum of the logs of the factors
+$$
+\log{a\cd b} = \log{a} + \log{b}
+$$
+
+:::
+
+:::{#cor-log-quot}
+#### logarithm of a quotient
+
+::: notes
+The logarithm of a quotient is equal to the difference of the logs of the factors:
+:::
+
+$$\log{\frac{a}{b}} = \log{a} - \log{b}$$
+:::
+
+:::{#thm-log-exp}
+#### logarithm of an exponential function
+$$
+\log{a^b} = b \cd \log{a}
+$$
+
+:::
+
+:::{#thm-exp-sum}
+#### exponential of a sum
+
+::: notes
+The exponential of a sum is equal to the product of the exponentials of the addends:
+:::
+
+$$\exp{a+b} = \exp{a} \cd \exp{b}$$
+
+:::
+
+:::{#cor-exp-sum}
+#### exponential of a difference
+
+::: notes
+The exponential of a difference is equal to the quotient of the exponentials of the addends:
+:::
+
+$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$
+
+:::

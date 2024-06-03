@@ -16,6 +16,28 @@ Some key results are listed here.
 
 ## Derivatives
 
+:::{#thm-deriv-polynomial}
+#### Derivatives of polynomials
+
+$$\deriv{x}x^q = qx^{q-1}$$
+
+:::
+
+---
+
+:::{#thm-deriv-log}
+
+#### derivative of natural logarithm
+$$\dlogf{x} = \frac{1}{x} = x^{-1}$$
+:::
+
+:::{#thm-deriv-exp}
+#### derivative of exponential
+$$\dexpf{x} = \expf{x}$$
+:::
+
+---
+
 :::{#thm-product-rule}
 #### Product rule
 $$(ab)' = ab' + ba'$$
@@ -29,67 +51,6 @@ $$(a/b)' = 1/b - (a/b^2)b'$$
 :::{#thm-chain-rule}
 #### Chain rule
 $$\derivf{a}{c} = \derivf{a}{b} \derivf{b}{c}$$
-:::
-
-## Logarithms and Exponentials
-
-:::{#thm-log-prod}
-#### logarithm of a product is the sum of the logs of the factors
-$$
-\log{a\cd b} = \log{a} + \log{b}
-$$
-
-:::
-
-:::{#cor-log-quot}
-#### logarithm of a quotient
-
-::: notes
-The logarithm of a quotient is equal to the difference of the logs of the factors:
-:::
-
-$$\log{\frac{a}{b}} = \log{a} - \log{b}$$
-:::
-
-:::{#thm-log-exp}
-#### logarithm of an exponential function
-$$
-\log{a^b} = b \cd \log{a}
-$$
-
-:::
-
-:::{#thm-exp-sum}
-#### exponential of a sum
-
-::: notes
-The exponential of a sum is equal to the product of the exponentials of the addends:
-:::
-
-$$\exp{a+b} = \exp{a} \cd \exp{b}$$
-
-:::
-
-:::{#cor-exp-sum}
-#### exponential of a difference
-
-::: notes
-The exponential of a difference is equal to the quotient of the exponentials of the addends:
-:::
-
-$$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$
-
-:::
-
-:::{#thm-deriv-log}
-
-#### derivative of logarithm
-$$\dlogf{x} = \frac{1}{x} = x^{-1}$$
-:::
-
-:::{#thm-deriv-exp}
-#### derivative of exponential
-$$\dexpf{x} = \expf{x}$$
 :::
 
 ---
@@ -235,14 +196,14 @@ $$
 
 A **quadratic form** is a mathematical expression with the structure
 
-$$\vx\' \matr{S} \vx$$, where 
+$$\vx\' \matr{S} \vx$$
 
-$\vx$ is a vector and $\matr{S}$ is a matrix with compatible dimensions. 
+where $\vx$ is a vector and $\matr{S}$ is a matrix with compatible dimensions for vector-matrix multiplication.
 
 :::
 
 ::: notes
-Quadratic forms occur frequently in regression models.
+Quadratic forms occur frequently in regression models. They are the matrix-vector generalizations of the scalar quadratic form $cx^2 = xcx$.
 :::
 
 ---

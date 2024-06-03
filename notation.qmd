@@ -17,13 +17,21 @@
 | $'$       | transpose or derivative[^1]                    | `'`
 | $\ind$    | [independent](probability.qmd#def-indpt)       | `⫫`
 | $\tf$     | therefore, thus                                | `\therefore`
-| $\eta$    | [linear component of a GLM][eta]               | `eta`
+| $\eta$    | [linear component of a GLM][eta]               | `\eta`
 
 : Notation used in this book {#tbl-notation-collected}
 
 [eta]: https://en.wikipedia.org/wiki/Generalized_linear_model#:~:text=The%20linear%20predictor%20is%20the,data%20through%20the%20link%20function "linear predictor notation"
 
 [^1]: depending on whether it is applied to a matrix or a function
+
+## Information matrices
+
+There is no consistency in the notation for observed and expected information.
+
+| book | observed information | expected information |
+|------| -------------------- | -------------------- |
+
 ## The percent sign
 
 The percent sign "%" is just a shorthand for "$\times \frac{1}{100}$". 

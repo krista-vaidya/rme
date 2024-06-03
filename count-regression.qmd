@@ -44,18 +44,18 @@ $$
 Therefore,
 $$
 \begin{aligned}
-\log{\{\Expp[Y | \vX = \vx,T=t] \}}
-&= \log{\{\mu(\vx)\}}\\
-&=\log{\{\lambda(\vx) \cdot t \}}\\
-&=\log{\lambda(\vx)} + \log{t}\\
-&=\log{\exp{\eta(\vx)}} + \log{t}\\
+\logf{\Expp[Y | \vX = \vx,T=t]}
+&= \logf{\mu(\vx)}\\
+&=\logf{\lambda(\vx) \cdot t}\\
+&=\logf{\lambda(\vx)} + \log{t}\\
+&=\logf{\exp{\eta(\vx)}} + \log{t}\\
 &=\eta(\vx) + \log{t}\\
 &=\vx'\tilde\beta + \log{t}\\
 &=(\beta_0 +\beta_1 x_1+\dots + \beta_p x_p) + \log{t}\\
 \end{aligned}
 $$
 
-In contrast with the $X$s, $T$ enters this expression with a $\log{}$ transformation and without a corresponding $\beta$ coefficient. 
+In contrast with the other covariates (represented by $\vX$), $T$ enters this expression with a $\log{}$ transformation and without a corresponding $\beta$ coefficient. 
 
 :::{.callout-note}
 Terms that enter the linear component of a model without a coefficient, such as $\log{t}$ here, are called **offsets**.
@@ -70,7 +70,7 @@ because
 
 $$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$
 
-[math-preqs.qmd#cor-exp-sum]
+(recall from [Algebra 2](math-prereqs.qmd#cor-exp-sum))
 
 Therefore, according to this model, 
 **differences of $\delta$ in covariate $x_j$ correspond to rate ratios of $\exp{\beta_j \cdot \delta}$**.
