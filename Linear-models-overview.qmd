@@ -1397,7 +1397,7 @@ $$y = \Exp{Y} + \eps{y}$$
 :::{#thm-gaussian-resid-noise}
 #### Residuals in Gaussian models
 
-If $Y$ has a Gaussian distribution, then $\eps{Y}$ also has a Gaussian distribution, and vice versa.
+If $Y$ has a Gaussian distribution, then $\err(Y)$ also has a Gaussian distribution, and vice versa.
 :::
 
 :::{.proof}
