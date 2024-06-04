@@ -3,15 +3,33 @@
 #| label: tbl-needle-data
 library(tidyverse)
 library(haven)
-needles = read_dta("inst/extdata/needle_sharing.dta") |> 
-  as_tibble() |> 
-  mutate(polydrug = 
-           ifelse(polydrug, "multiple drugs used", "one drug used") |> 
-           factor() |> 
-           relevel(ref = "one drug used"),
-         homeless = ifelse(homeless, "homeless", "not homeless") |> 
-           factor() |> relevel(ref = "not homeless")) |> 
-  mutate(sex = factor(sex) |> relevel(ref = "M"))
+needles = 
+  "inst/extdata/needle_sharing.dta" |> 
+  read_dta() |>
+  as_tibble() |>
+  mutate(
+    hivstat =
+      hivstat |>
+      case_match(
+        1 ~ "HIV+",
+        0 ~ "HIV-") |> 
+      factor() |> 
+      relevel(ref = "HIV-"),
+    polydrug =
+      polydrug |>
+      case_match(
+        1 ~ "multiple drugs used",
+        0 ~ "one drug used") |>
+      factor() |>
+      relevel(ref = "one drug used"),
+    homeless = 
+      homeless |> 
+      case_match(
+        1 ~ "homeless", 
+        0 ~ "not homeless") |>
+      factor() |>
+      relevel(ref = "not homeless"),
+    sex = sex |> factor() |> relevel(ref = "M"))
 needles
 ```
 
@@ -35,30 +53,35 @@ needles |>
     size = 3, 
     alpha = .5) +
   facet_grid(
-    cols = vars(polydrug), 
+    cols = vars(sex, polydrug), 
     rows = vars(homeless)) +
   theme(legend.position = "bottom")
 ```
 
-#### Covariate counts:
+#### Covariate counts
 
 ```{r}
+#| tbl-cap: "Counts of observations in `needles` dataset by sex, unhoused status, and multiple drug use"
+#| label: tbl-count-needles
+#| code-fold: show
 needles |> 
   dplyr::select(sex, homeless, polydrug) |> 
   summary()
 ```
+
+---
 
 There's only one individual with `sex = Trans`, 
 which unfortunately isn't enough data to analyze.
 We will remove that individual:
 
 ```{r}
-
+#| code-summary: 'remove singleton observation with `sex == "Trans"`'
 needles = needles |> filter(sex != "Trans")
 
 ```
 
-
+---
 
 ### models {.smaller}
 
@@ -131,6 +154,12 @@ zinf_fit1 |>
   print_md()
 
 ```
+
+::: notes
+
+Another R package for zero-inflated models is [`pscl`](https://cran.r-project.org/web/packages/pscl/index.html) (@pscl08).
+
+:::
 
 #### zero-inflated negative binomial model
 

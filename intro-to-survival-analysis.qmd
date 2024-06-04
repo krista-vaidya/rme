@@ -241,22 +241,27 @@ library(ggplot2)
 ggplot() +
   geom_function(
     aes(col = "0.5"),
-    fun = \(x) pexp(x, lower = FALSE, rate = 0.5)) +
+    fun = pexp,
+    args = list(lower = FALSE, rate = 0.5)) +
   geom_function(
     aes(col = "p = 1"),
-    fun = \(x) pexp(x, lower = FALSE, rate = 1)) +
+    fun = pexp,
+    args = list(lower = FALSE, rate = 1)) +
   geom_function(
     aes(col = "p = 1.5"),
-    fun = \(x) pexp(x, lower = FALSE, rate = 1.5)) +
+    fun = pexp,
+    args = list(lower = FALSE, rate = 1.5)) +
   geom_function(
     aes(col = "p = 5"),
-    fun = \(x) pexp(x, lower = FALSE, rate = 5)) +
+    fun = pexp,
+    args = list(lower = FALSE, rate = 5)) +
   theme_bw() + 
   ylab("S(t)") +
   guides(col = guide_legend(title = expr(lambda))) +
   xlab("Time (t)") +
   xlim(0, 2.5) +
   theme(
+    legend.position = "bottom",
     axis.title.x = 
       element_text(
         angle = 0, 

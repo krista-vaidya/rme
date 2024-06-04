@@ -41,7 +41,7 @@ I read it cover-to-cover before grad school, and found it very helpful.
 I read it cover-to-cover before grad school, and found it very helpful.
 
 - @rms2e is another popular textbook. It uses [`ggplot2`](https://ggplot2.tidyverse.org/) but not [`dplyr`](https://dplyr.tidyverse.org/), 
-and covers GLMs and survival analysis. 
+and covers logistic regression and survival analysis (no Poisson or NB models?).
 An abbreviated but continuously updated version with audio clips is available at <https://hbiostat.org/rmsc/>.
 
 - @fox2015applied is another standard text.
