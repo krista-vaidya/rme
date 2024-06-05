@@ -316,7 +316,7 @@ Another important quantity is the **hazard function**:
 
 ::: notes
 The hazard function has an important relationship to the density and survival functions, 
-which we can use to derive the hazard function for a given probability distribution (@thm-hazard1).
+which we can use to derive the hazard function for a given probability distribution (@thm-hazard-dens-surv).
 :::
 
 :::::{#lem-joint-prob-same-var}
@@ -334,8 +334,8 @@ In particular, $\{T=t\} \subseteq \{T\geq t\}$, so $p(T=t, T\ge t) = p(T=t)$.
 
 ---
 
-:::{#thm-hazard1}
-
+:::{#thm-hazard-dens-surv}
+#### Hazard equals density over survival
 $$h(t)=\frac{f(t)}{S(t)}$$
 :::
 

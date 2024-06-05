@@ -14,8 +14,10 @@ and the available R utility functions for working with pull requests.
 - More structure (headers, labels) is better.
 
 - Make each conceptual chunk as compact as possible:
+  - Decompose large, complicated, difficult concepts into smaller, simpler, and easier pieces.
   - Decompose long derivations into smaller lemmas.
   - When manipulating part of a larger expression, isolate that part in a lemma.
+  
 
 ## Fixing typos
 
