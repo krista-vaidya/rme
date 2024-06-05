@@ -310,6 +310,12 @@ Another important quantity is the **hazard function**:
 
 ---
 
+*New content for 2025:*
+
+{{< include incidence_rate >}}
+
+---
+
 ::: notes
 The hazard function has an important relationship to the density and survival functions, 
 which we can use to derive the hazard function for a given probability distribution (@thm-hazard1).

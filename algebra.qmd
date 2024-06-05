@@ -1,3 +1,5 @@
+{{< include macros.qmd >}}
+
 ## Elementary Algebra
 
 ::: notes
@@ -10,10 +12,10 @@ with algebraic manipulations of mathematical formulas.
 Therefore, I include this section as a quick reference.
 :::
 
-### Equality
+### Equalities
 
 :::{#thm-equal-trans}
-#### Equality is transitive
+#### Equalities are transitive
 
 If $a=b$ and $b=c$, then $a=c$
 
@@ -30,9 +32,40 @@ If $a = b$, then for any function $f(x)$, $f(a) = f(b)$
 
 ---
 
-### Sums
+### Inequalities
+
+:::{#thm-add-ineq}
+
+If $a<b$, then $a+c < b+c$
+
+:::
 
 ---
+
+:::{#thm-neg-ineq}
+#### negating both sides of an inequality
+If $a < b$, then: $-a > -b$
+
+:::
+
+---
+
+:::{#thm-mult-ineq}
+If $a < b$ and $c \geq 0$, then $ca < cb$.
+
+:::
+
+---
+
+:::{#thm-negative-one}
+
+$$-a = (-1)*a$$
+
+:::
+
+---
+
+### Sums
 
 :::{#thm-add-ident}
 #### adding zero changes nothing
@@ -100,36 +133,36 @@ $$(a \times b) \times c = a \times (b \times c)$$
 $$a(b+c) = ab + ac$$
 :::
 
-### Inequalities
-
 ---
 
-:::{#thm-add-ineq}
+### Quotients
 
-If $a<b$, then $a+c < b+c$
+:::{#def-quotient}
+
+#### Quotients, fractions, rates
+
+::: notes
+A **quotient**, **fraction**, or **rate** is a division of one quantity by another:
+:::
+
+$$\frac{a}{b}$$
+
+::: notes
+In epidemiology, rates typically have a quantity involving time or population in the denominator.
+
+c.f. <https://en.wikipedia.org/wiki/Rate_(mathematics)>
+:::
 
 :::
 
----
+:::{#def-ratio}
+#### Ratios
 
-:::{#thm-neg-ineq}
-#### negating both sides of an inequality
-If $a < b$, then: $-a > -b$
+A **ratio** is a quotient in which the numerator and denominator are measured using the same unit scales.
 
+::: notes
+c.f. <https://en.wikipedia.org/wiki/Ratio>
 :::
-
----
-
-:::{#thm-mult-ineq}
-If $a < b$ and $c \geq 0$, then $ca < cb$.
-
-:::
-
----
-
-:::{#thm-negative-one}
-
-$$-a = (-1)*a$$
 
 :::
 
@@ -139,7 +172,7 @@ Additional reference: <https://en.wikipedia.org/wiki/Elementary_algebra>
 
 ---
 
-## Logarithms and Exponentials
+## Exponentials and Logarithms
 
 :::{#thm-log-prod}
 #### logarithm of a product is the sum of the logs of the factors
@@ -186,5 +219,33 @@ The exponential of a difference is equal to the quotient of the exponentials of 
 :::
 
 $$\exp{a-b} = \frac{\exp{a}}{\exp{b}}$$
+
+:::
+
+---
+
+:::{#thm-double-exp}
+
+#### exponential of a product
+
+$$a^{bc} = \paren{a^b}^c = \paren{a^c}^b$$
+:::
+
+---
+
+:::{#cor-exp-ab}
+
+#### natural exponential of a product
+
+$$\exp{ab} = (\exp{a})^b = (\exp{b})^a$$
+
+:::
+---
+
+:::{#thm-log-exp}
+
+#### exp{} and log{} are mutual inverses
+
+$$\exp{\log{a}} = \log{\exp{a}} = a$$
 
 :::

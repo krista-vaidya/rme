@@ -1,0 +1,21 @@
+:::{#def-incidence-rate}
+#### Incidence rate
+
+Given a population of individuals indexed by $i$, 
+each with their own hazard rate $\haz_i(t)$, 
+the **incidence rate** for that population is the mean hazard rate:
+
+$$\incidence(t) \eqdef \frac{1}{n}\sumin \haz_i(t)$$
+
+:::
+
+:::{#thm-homogenous-incidence}
+
+If a population of individuals indexed by $i$ 
+all have identical hazard rates $\haz_i(t) = \haz(t)$, 
+then the **incidence rate** for that population 
+is equal to the hazard rate:
+
+$$\incidence(t) = \haz(t)$$
+
+:::

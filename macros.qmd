@@ -207,3 +207,5 @@
 \def\dinvoddsf{\doddsinvf}
 \def\haz{h}
 \def\cuhaz{H}
+\def\incidence{\bar{\haz}}
+\def\phaz{\Expf{\haz}}
