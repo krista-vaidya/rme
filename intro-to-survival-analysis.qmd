@@ -310,9 +310,7 @@ Another important quantity is the **hazard function**:
 
 ---
 
-*New content for 2025:*
-
-{{< include incidence_rate >}}
+{{< include incidence_rate.qmd >}}
 
 ---
 

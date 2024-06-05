@@ -1,3 +1,5 @@
+*New content for 2025:*
+
 :::{#def-incidence-rate}
 #### Incidence rate
 
@@ -9,6 +11,10 @@ $$\incidence(t) \eqdef \frac{1}{n}\sumin \haz_i(t)$$
 
 :::
 
+---
+
+*New content for 2025:*
+
 :::{#thm-homogenous-incidence}
 
 If a population of individuals indexed by $i$ 
@@ -19,3 +25,5 @@ is equal to the hazard rate:
 $$\incidence(t) = \haz(t)$$
 
 :::
+
+*(End of new content for 2025)*
