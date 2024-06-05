@@ -595,10 +595,12 @@ $$S(t) = \text{exp}\left\{-H(t)\right\}$$
 
 The first day is the most dangerous:
 
-```{r, echo = FALSE}
+```{r}
 #| fig-cap: "Daily Hazard Rates in 2004 for US Females"
 #| fig-pos: "H"
 #| fig-height: 6
+#| label: fig-haz-female-US
+#| echo: true
 
 # download `survexp.rda` from: 
 # paste0(
@@ -637,11 +639,15 @@ text(18,.00015,"Rest of First month",col=4)
 
 ---
 
-Exercise: hypothesize why these curves differ where they do?
+:::{#exr-compare-mf}
+Hypothesize why the male and female hazard functions in @fig-haz-mf differ where they do?
+:::
 
-```{r,echo = FALSE}
+```{r}
 #| fig-cap: "Daily Hazard Rates in 2004 for US Males and Females 1-40"
 #| fig-pos: "H"
+#| label: fig-haz-mf
+#| echo: true
 yrs=1:40
 s1 <- survexp.us[5:113,"male","2004"]
 s2 <- survexp.us[5:113,"female","2004"]
@@ -656,12 +662,17 @@ legend(5,5e-6,c("Males","Females"),col=1:2,lwd=2)
 
 ---
 
-Exercise: compare and contrast this curve with the corresponding hazard
-curve.
+:::{#exr-surv-vs-haz}
+Compare and contrast @fig-surv-US-females with @fig-haz-female-US.
+:::
 
-```{r, echo = FALSE}
+---
+
+```{r}
 #| fig-cap: "Survival Curve in 2004 for US Females"
+#| label: fig-surv-US-females
 #| fig-pos: "H"
+#| echo: true
 
 s1 <- survexp.us[,"female","2004"]
 
@@ -1133,6 +1144,7 @@ library(KMsurv)
 ```{r}
 #| tbl-cap: "Summary statistics for `drug6mp` data"
 #| label: tbl-drug6mp-summary
+#| code-fold: show
 summary(drug6mp)
 ```
 
@@ -1534,7 +1546,7 @@ drug6mp.km_model |>
   relocate(p, .before = everything())
 ```
 
-## Two-sample tests
+## Two-sample "log-rank"/"Mantel-Haenszel" test
 
 ### The `survdiff` function
 

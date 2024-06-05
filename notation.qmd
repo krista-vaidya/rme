@@ -27,12 +27,25 @@
 
 ## Information matrices
 
-There is no consistency in the notation for observed and expected information.
+There is no consistency in the notation for observed and expected information matrices 
+(see @tbl-info-mat-symbols).
 
-| book | observed information | expected information |
-|------| -------------------- | -------------------- |
+| book                  | observed information | expected information |
+|-----------------------| -------------------- | -------------------- |
+|@dobson4e              | $U'$                 | $\mathfrak{I}$       |
+|@dunn2018generalized   | $\mathfrak{I}$       | $\mathcal{I}$        |
+|@mclachlan2007em       | $I$                  | $\mathcal{I}$        |
+|@wood2017generalized   | $\hat{I}$            | $\mathcal{I}$        |
 
-## The percent sign
+: notation for information matrices {#tbl-info-mat-symbols}
+
+These notes currently have a mixture of notations, 
+depending on my whims and what reference I had last looked at.
+Eventually, I will try to standardize my notation to 
+$\oinf$ for observed information
+and $\einf$ for expected information.
+
+## Percent sign ("%")
 
 The percent sign "%" is just a shorthand for "$\times \frac{1}{100}$". 
 The word "percent" comes from the Latin "per centum"; "centum" means 100 in Latin, so "percent" means "per hundred" (c.f., <https://en.wikipedia.org/wiki/Percentage>)
@@ -50,3 +63,31 @@ $$
 $$
 
 :::
+
+## Why is notation in probability and statistics so inconsistent and disorganized?
+
+In grad school, 
+we are asked to learn from increasingly disorganized materials and lectures; 
+not coincidentally, 
+organization goes down, 
+complexity goes up, 
+the number of reliable references goes down, 
+and the level of inconsistency in notation and content goes up 
+(both between multiple references and within single references!). 
+In other words, as you approach the cutting-edge of most fields, 
+you start to encounter into content that hasn’t been fully thought through or standardized. 
+This lack of clarity is unfortunate and not desirable, but it is understandable and inevitable.
+
+It's worth noting that 
+calculus was formalized in the [1600s](https://en.wikipedia.org/wiki/Leibniz%27s_notation), 
+elementary algebra was formalized  around [820](https://en.wikipedia.org/wiki/Al-Jabr), 
+and arithmetic [even earlier](https://en.wikipedia.org/wiki/Arithmetic#History).
+And calculus still has at least two major notation systems:
+[Leibniz's notation](https://en.wikipedia.org/wiki/Leibniz%27s_notation) ($\deriv{y}x$) 
+and [Euler's notation](https://en.wikipedia.org/wiki/Notation_for_differentiation#Lagrange's_notation)
+([more commonly called](https://en.wikipedia.org/wiki/Stigler%27s_law_of_eponymy) [Lagrange notation](https://en.wikipedia.org/wiki/Notation_for_differentiation#Lagrange's_notation)).
+In contrast, the field of statistics only emerged in the 
+[late 1800s and early 1900s](https://en.wikipedia.org/wiki/History_of_statistics#Development_of_modern_statistics), 
+so it’s not surprising that the notation and terminology is still developing.
+Generalized linear models were only formalized in 1972 (@nelder1972generalized),
+which is very recent in terms of the [pace of scientific development](https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions).
