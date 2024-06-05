@@ -310,7 +310,7 @@ Another important quantity is the **hazard function**:
 
 ---
 
-{{< include incidence_rate.qmd >}}
+{{< include def-incidence-rate.qmd >}}
 
 ---
 
