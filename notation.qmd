@@ -74,7 +74,8 @@ we are asked to learn
 from increasingly disorganized materials and lectures. 
 Not coincidentally, 
 as the amount of organization decreases, 
-complexity increases, 
+the amount of complexity increases, 
+the amount of difficulty increases,
 the number of reliable references decreases, 
 and the amount of inconsistency in notation and content increases 
 (both between multiple references and within single references!). 
