@@ -70,8 +70,8 @@ $$
 ## Why is notation in probability and statistics so inconsistent and disorganized?
 
 In grad school, 
-we are asked to learn from 
-increasingly disorganized materials and lectures. 
+we are asked to learn
+from increasingly disorganized materials and lectures. 
 Not coincidentally, 
 as the amount of organization decreases, 
 complexity increases, 
@@ -82,11 +82,12 @@ In other words,
 as you approach the cutting-edge of most fields, 
 you start to encounter into content 
 that hasn’t been fully thought through or standardized. 
-This lack of clarity is unfortunate and undesirable, 
+This lack of clarity 
+is unfortunate and undesirable, 
 but it is understandable and inevitable.
 
-It's worth noting that 
-calculus was formalized in the [1600s](https://en.wikipedia.org/wiki/Leibniz%27s_notation), 
+It's worth noting 
+that calculus was formalized in the [1600s](https://en.wikipedia.org/wiki/Leibniz%27s_notation), 
 elementary algebra was formalized  around [820](https://en.wikipedia.org/wiki/Al-Jabr), 
 and arithmetic [even earlier](https://en.wikipedia.org/wiki/Arithmetic#History).
 And calculus still has at least two major notation systems:
