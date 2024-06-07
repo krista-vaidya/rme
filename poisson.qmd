@@ -134,6 +134,7 @@ If $X \sim \Pois(\mu)$, then:
 * For $x < \mu$, $\P(X=x) > \P(X = x-1)$
 * For $x = \mu$, $\P(X=x) = \P(X = x-1)$
 * For $x > \mu$, $\P(X=x) < \P(X = x-1)$
+* $\arg max_{x} \P(X=x) = \floor{\mu}$
 
 :::
 

@@ -3,21 +3,24 @@
 {{< include macros.qmd >}}
 
 | symbol | meaning | LaTeX
-|-----------|---------|-----------
-| $\neg$    | not                                            | `\neg`
-| $\forall$ | all                                            | `\forall`
-| $\exists$ | some                                           | `\exists`
-| $\cup$    | union, "or"                                    | `\cup`
-| $\cap$    | intersection, "and"                            | `\cap`
-| $\mid$    | given, conditional on                          | `\mid`, `|`
-| $\sum$    | sum                                            | `\sum`
-| $\prod$   | product                                        | `\prod`
-| $\mu$     | mean                                           | `\mu`
-| $\Expp$   | [expectation](probability.qmd#def-expectation) | `\mathbb{E}`
-| $'$       | transpose or derivative[^1]                    | `'`
-| $\ind$    | [independent](probability.qmd#def-indpt)       | `⫫`
-| $\tf$     | therefore, thus                                | `\therefore`
-| $\eta$    | [linear component of a GLM][eta]               | `\eta`
+|-------------|--------------------------------------------------|-----------
+| $\neg$      | not                                              | `\neg`
+| $\forall$   | all                                              | `\forall`
+| $\exists$   | some                                             | `\exists`
+| $\cup$      | union, "or"                                      | `\cup`
+| $\cap$      | intersection, "and"                              | `\cap`
+| $\mid$      | given, conditional on                            | `\mid`, `|`
+| $\sum$      | sum                                              | `\sum`
+| $\prod$     | product                                          | `\prod`
+| $\mu$       | mean                                             | `\mu`
+| $\Expp$     | [expectation](probability.qmd#def-expectation)   | `\mathbb{E}`
+| $x^{\top}$  | transpose of $x$                                 | `x^{\top}`
+| $'$         | transpose or derivative[^1]                      | `'`
+| $\ind$      | [independent](probability.qmd#def-indpt)         | `⫫`
+| $\tf$       | therefore, thus                                  | `\therefore`
+| $\eta$      | [linear component of a GLM][eta]                 | `\eta`
+| $\floor{x}$ | floor of $x$: largest integer smaller than $x$   | `\lfloor x \rfloor`
+| $\ceil{x}$  | ceiling of $x$: smallest integer larger than $x$ | `\lceil x \rceil`
 
 : Notation used in this book {#tbl-notation-collected}
 
@@ -67,16 +70,20 @@ $$
 ## Why is notation in probability and statistics so inconsistent and disorganized?
 
 In grad school, 
-we are asked to learn from increasingly disorganized materials and lectures; 
-not coincidentally, 
-organization goes down, 
-complexity goes up, 
-the number of reliable references goes down, 
-and the level of inconsistency in notation and content goes up 
+we are asked to learn from 
+increasingly disorganized materials and lectures. 
+Not coincidentally, 
+as the amount of organization decreases, 
+complexity increases, 
+the number of reliable references decreases, 
+and the amount of inconsistency in notation and content increases 
 (both between multiple references and within single references!). 
-In other words, as you approach the cutting-edge of most fields, 
-you start to encounter into content that hasn’t been fully thought through or standardized. 
-This lack of clarity is unfortunate and not desirable, but it is understandable and inevitable.
+In other words, 
+as you approach the cutting-edge of most fields, 
+you start to encounter into content 
+that hasn’t been fully thought through or standardized. 
+This lack of clarity is unfortunate and undesirable, 
+but it is understandable and inevitable.
 
 It's worth noting that 
 calculus was formalized in the [1600s](https://en.wikipedia.org/wiki/Leibniz%27s_notation), 

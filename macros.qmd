@@ -12,6 +12,8 @@
 \def\ga{\alpha}
 \def\b{\beta}
 \providecommand{\floor}[1]{\left \lfloor{#1}\right \rfloor}
+\providecommand{\ceiling}[1]{\left \lceil{#1}\right \rceil}
+\providecommand{\ceil}[1]{\left \lceil{#1}\right \rceil}
 \def\Ber{\text{Ber}}
 \def\Bernoulli{\text{Bernoulli}}
 \def\Pois{\text{Pois}}
