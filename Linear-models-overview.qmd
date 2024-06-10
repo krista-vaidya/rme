@@ -21,7 +21,7 @@ There are numerous textbooks specifically for linear regression, including:
 
 - @kutner2005applied: used for UCLA Biostatistics MS level linear models class
 - @chatterjee2015regression: used for Stanford MS-level linear models class
-- @seber2012linear: used for UCLA Biostatistics PhD level linear models class
+- @seber2012linear: used for UCLA Biostatistics PhD level linear models class and UC Davis STA 108.
 - @kleinbaum2014applied: same first author as @kleinbaum2010logistic and @kleinbaum2012survival
 - @weisberg2005applied
 :::
