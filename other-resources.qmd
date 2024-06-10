@@ -82,3 +82,12 @@ It includes logistic regression and Poisson regression, as well as 2-way tables 
 - <https://thomaselove.github.io/2020-432-book/index.html> is another set of lecture notes.
 
 - @woodward2013epidemiology covers GLMs and survival; haven't read it yet, but it looks comprehensive.
+
+- @roback2021beyond is recent and uses the `tidyverse`; doesn't appear to cover survival analysis.
+
+- @wood2017generalized is about generalized *additive* models but includes a detailed
+summary of GLMs.
+
+- @kutoyants2023introduction appears to be a complete book on Poisson models.
+
+- @hardin2007generalized uses Stata.
