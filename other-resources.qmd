@@ -102,4 +102,10 @@ full chapters on
 [Poisson regression](https://www.r4epi.com/poisson-regression).
 There is currently (2024/06) a placeholder chapter for [survival analysis](https://www.r4epi.com/cox-proportional-hazards-regression).
 
-- @gelman2006data covers GLMs as well as hierarchical extensions of GLMs. No survival models?
+- @gelman2006data covers GLMs as well as hierarchical extensions of GLMs. 
+No survival models?
+
+- @statproofbook is a collection of proofs for results in 
+probability, 
+statistics, 
+and related computational sciences.

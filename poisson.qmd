@@ -163,7 +163,12 @@ $$
 &= \lambda\\
 \end{aligned}
 $$
+
+See also <https://statproofbook.github.io/P/poiss-mean>.
+
+For the variance, see <https://statproofbook.github.io/P/poiss-var>.
 :::
+
 
 ---
 

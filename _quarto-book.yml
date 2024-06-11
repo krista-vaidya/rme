@@ -33,6 +33,7 @@ book:
        - parametric-survival-models.qmd
   references: references.qmd
   appendices:
+    - appendices-are-prereqs.qmd
     - math-prereqs.qmd
     - probability.qmd
     - estimation.qmd
