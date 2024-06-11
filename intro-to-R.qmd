@@ -10,6 +10,8 @@ There are an overwhelming number of great resources for learning R; here are som
 - *R Packages* (@rpkgs)
 - *SAS and R* (@kleinman2009sas)
 
+---
+
 There are several dedicated UC Davis courses on R programming:
 
 - [BIS 015L: Introduction to Data Science for Biologists](https://jmledford3115.github.io/datascibiol/)
@@ -20,6 +22,8 @@ There are several dedicated UC Davis courses on R programming:
 - STA 035A-B: Statistical Data Science
 - STA 141A: Fundamentals of Statistical Data Science
 - ABG 250: Mathematical Modeling in Biological Systems
+
+---
 
 [DataLab](https://datalab.ucdavis.edu/) maintains another list of courses:
 <https://datalab.ucdavis.edu/courses/>
