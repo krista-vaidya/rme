@@ -28,13 +28,15 @@ now is the time to make it happen.
 
 ---
 
+## Rote memorization is sometimes necessary
+
 ::: notes
 For much of my K-12 education, 
 I tried to avoid spending time on rote memorization.
 Instead, I memorized concepts passively,
 by repeatedly looking up and applying definitions 
 as I solved problems.
-I still think that's the most pleasant way to learn,
+I still think that is the most pleasant way to learn,
 but when I started taking college-level quantitative courses,
 I found that passive memorization was no longer sufficiently reliable.
 Especially in the 10-week quarter system, 
