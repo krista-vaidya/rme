@@ -200,3 +200,19 @@ When the linear component of a model involves a term without an unknown coeffici
 that term is called an **offset**.
 
 :::
+
+---
+
+:::{#thm-sum-pois}
+
+If $X$ and $Y$ are independent Poisson random variables with means 
+$\mu_X$ and $\mu_Y$, their sum, $Z=X+Y$, is also a Poisson random variable, with mean 
+$\mu_Z = \mu_X + \mu_Y$.
+
+:::
+
+---
+
+::: proof
+See <https://web.stanford.edu/class/archive/cs/cs109/cs109.1206/lectureNotes/LN12_independent_rvs.pdf>, Example 3.
+:::
