@@ -101,3 +101,5 @@ full chapters on
 [logistic regression](https://www.r4epi.com/linear-regression-1), and
 [Poisson regression](https://www.r4epi.com/poisson-regression).
 There is currently (2024/06) a placeholder chapter for [survival analysis](https://www.r4epi.com/cox-proportional-hazards-regression).
+
+- @gelman2006data covers GLMs as well as hierarchical extensions of GLMs. No survival models?
