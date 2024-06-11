@@ -91,3 +91,5 @@ summary of GLMs.
 - @kutoyants2023introduction appears to be a complete book on Poisson models.
 
 - @hardin2007generalized uses Stata.
+
+- @andrews2012data is a classic "learn-by-example" book with many datasets amenable to GLMs
