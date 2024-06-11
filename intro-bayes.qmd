@@ -97,3 +97,8 @@ pr_in_CI = pnorm(
 print(pr_in_CI)
 ```
 
+## Other resources
+
+UC Davis courses
+- STA 145: Bayesian Statistical Inference
+- ECL 298: Bayesian Models - A Statistical Primer

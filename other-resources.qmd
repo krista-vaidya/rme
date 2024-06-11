@@ -93,3 +93,11 @@ summary of GLMs.
 - @hardin2007generalized uses Stata.
 
 - @andrews2012data is a classic "learn-by-example" book with many datasets amenable to GLMs
+
+- @r4epi is another open-source, online textbook like this one;
+it is primarily about statistical programming, but it includes 
+full chapters on 
+[linear regression](https://www.r4epi.com/linear-regression),
+[logistic regression](https://www.r4epi.com/linear-regression-1), and
+[Poisson regression](https://www.r4epi.com/poisson-regression).
+There is currently (2024/06) a placeholder chapter for [survival analysis](https://www.r4epi.com/cox-proportional-hazards-regression).
