@@ -2853,10 +2853,13 @@ our `CHD` model:
 
 chd_glm_strat_grouped |> autoplot(which = 1:6) |> print()
 ```
-:::
+
+::: notes
 
 Things look pretty good here. The QQ plot is still usable; with large
 samples; the residuals should be approximately Gaussian.
+
+:::
 
 #### Beetles
 
@@ -2894,12 +2897,16 @@ anthers_glm_log |> parameters() |> print_md()
 
 ```
 
+---
+
 Now $\exp{\beta}$ gives us risk ratios instead of odds ratios:
 
 ```{r}
 anthers_glm_log |> parameters(exponentiate = TRUE) |> print_md()
 
 ```
+
+---
 
 Let's compare this model with a logistic model:
 
@@ -2916,15 +2923,19 @@ anthers_glm_logit |> parameters(exponentiate = TRUE) |> print_md()
 
 \[to add: fitted plots on each outcome scale\]
 
+---
+
 When I try to use `link ="log"` in practice, I often get errors about
-not finding good starting values for the estimation procedure. This is
-likely because the model is producing fitted probabilities greater than
+not finding good starting values for the estimation procedure. 
+This is likely because the model is producing fitted probabilities greater than
 1.
 
 When this happens, you can try to fit Poisson regression models instead
-(we will see those soon!). But then the outcome distribution isn't quite
+(we will see those soon!). 
+But then the outcome distribution isn't quite
 right, and you won't get warnings about fitted probabilities greater
-than 1. In my opinion, the Poisson model for binary outcomes is
+than 1. 
+In my opinion, the Poisson model for binary outcomes is
 confusing and not very appealing.
 
 ### WCGS: link functions

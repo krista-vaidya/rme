@@ -11,7 +11,7 @@ Epi 202: probability models for different data types
     - Variance, standard deviation, overdispersion
 - Characteristics of samples
     - independence, dependence, covariance, correlation
-    - ranks
+    - ranks, order statistics
     - identical vs nonidentical distribution (homogeneity vs heterogeneity)
     - Laws of Large Numbers
     - Central Limit Theorem for the mean of an iid sample

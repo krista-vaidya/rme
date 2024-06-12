@@ -76,7 +76,8 @@ which unfortunately isn't enough data to analyze.
 We will remove that individual:
 
 ```{r}
-#| code-summary: 'remove singleton observation with `sex == "Trans"`'
+#| label: remove-trans-obs
+#| code-summary: 'remove singleton observation with sex == Trans'
 needles = needles |> filter(sex != "Trans")
 
 ```
