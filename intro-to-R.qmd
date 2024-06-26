@@ -9,6 +9,9 @@ There are an overwhelming number of great resources for learning R; here are som
 - *R Graphics Cookbook* (@changRgraphicscookbook)
 - *R Packages* (@rpkgs)
 - *SAS and R* (@kleinman2009sas)
+   * The [procs](https://cran.r-project.org/web/packages/procs/) package in R provides 
+   versions of common SAS procedures, 
+   such as  'proc freq', 'proc means', 'proc ttest', 'proc reg', 'proc transpose', 'proc sort', and 'proc print'
 
 ---
 

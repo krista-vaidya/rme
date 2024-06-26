@@ -18,6 +18,8 @@ There are [extra exercises](https://bcs.wiley.com/he-bcs/Books?action=resource&b
 
 - @agresti2015foundations has "More than 400 exercises for readers to practice and extend the theory, methods, and data analysis"; might be more theoretical?
 
+- @agresti2010ordinal is specifically about ordinal data.
+
 - @dunn2018generalized is a recent textbook on GLMs. 
 It doesn't cover time-to-event models, 
 and it doesn't use the modern [`tidyverse`](https://tidyverse.org/) packages ([`ggplot2`](https://ggplot2.tidyverse.org/), 
