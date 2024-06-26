@@ -197,6 +197,7 @@ This is like taking the derivative of $x^2$.
 
 ### Calculus 
 
+- @mosaiccalc
 - @khuri2003advanced
 
 ### Linear Algebra and Vector Calculus
