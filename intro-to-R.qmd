@@ -95,14 +95,14 @@ Here's `tidyverse` creator Hadley Wickham's answer (from 2018):
 > - Could ggplot2 support both the pipe and plus? No
 > - Would it be worth it to create a ggplot3 that uses the pipe? No.
 
-https://forum.posit.co/t/why-cant-ggplot2-use/4372/7
+<https://forum.posit.co/t/why-cant-ggplot2-use/4372/7>
 
 ## Quarto
 
 Quarto is a system for writing documents with embedded R code and/or results:
 
-- Read this ASAP: https://r4ds.hadley.nz/communicate
-- Then use this for reference: https://quarto.org/docs/reference/
+- Read this ASAP: <https://r4ds.hadley.nz/communicate>
+- Then use this for reference: <https://quarto.org/docs/reference/>
 
 ## Packages
 
@@ -112,6 +112,11 @@ Quarto is a system for writing documents with embedded R code and/or results:
 
 - Read this ASAP: <https://r-pkgs.org/whole-game.html>
 - Use the rest of @rpkgs as a reference
+
+## Submitting packages to CRAN
+
+- Read this first: <https://r-pkgs.org/release.html>
+- A problems-and-solutions book is under construction: <https://contributor.r-project.org/cran-cookbook/>
 
 ## Git
 
@@ -133,8 +138,8 @@ reported using git for version control.
 
 ## Shiny apps
 
-- Read this first: @masteringshiny
-- Use this as a reference: @golembook
+- Read @masteringshiny first
+- Use @golembook as a reference
 
 ## Other resources for learning R
 
@@ -147,3 +152,4 @@ bug reports and pull requests (suggested edits to source code) through
 the Github interface.
 
 To contribute to "base R" (the core systems), see <https://contributor.r-project.org/>
+
