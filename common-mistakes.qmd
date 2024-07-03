@@ -27,7 +27,7 @@ Really, we should use $\mu$ instead of $\text{E}$.
 
 ## R
 
-### Copy-paste
+### Don't copy-paste code
 
 Successful programmers don't use copy-paste! [Write functions instead.](https://r4ds.hadley.nz/functions#introduction)
 
