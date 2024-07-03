@@ -139,3 +139,11 @@ reported using git for version control.
 ## Other resources for learning R
 
 - @NahhasIntroR (same author as @NahhasIRMPHR)
+
+# Contributing to R
+
+Many modern R packages are developed on Github, and welcome 
+bug reports and pull requests (suggested edits to source code) through 
+the Github interface.
+
+To contribute to "base R" (the core systems), see <https://contributor.r-project.org/>
