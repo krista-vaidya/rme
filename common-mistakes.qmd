@@ -33,7 +33,7 @@ Successful programmers don't use copy-paste! [Write functions instead.](https://
 
 ## Quarto
 
-###
+### Separate divs and slide breaks
 
 Make sure not to put a div `:::` on the next line after a slide break `---`:
 
