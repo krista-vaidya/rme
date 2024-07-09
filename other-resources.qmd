@@ -111,3 +111,5 @@ No survival models?
 probability, 
 statistics, 
 and related computational sciences.
+
+- @suarez2017applications covers GLMs but not survival analysis
