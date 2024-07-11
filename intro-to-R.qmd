@@ -144,6 +144,7 @@ reported using git for version control.
 ## Other resources for learning R
 
 - @NahhasIntroR (same author as @NahhasIRMPHR)
+- @practicalr4epi
 
 # Contributing to R
 
