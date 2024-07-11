@@ -8,6 +8,9 @@ There are an overwhelming number of great resources for learning R; here are som
 - *Advanced R* (@wickham2019advanced)
 - *R Graphics Cookbook* (@changRgraphicscookbook)
 - *R Packages* (@rpkgs)
+- @NahhasIntroR (same author as @NahhasIRMPHR)
+- @practicalr4epi
+- @phdswR (previously @appliedepiusingR): Author is State Public Health Officer and Director, California Department of Public Health, <https://drtomasaragon.github.io/>)
 - *SAS and R* (@kleinman2009sas)
    * The [procs](https://cran.r-project.org/web/packages/procs/) package in R provides 
    versions of common SAS procedures, 
@@ -141,11 +144,6 @@ reported using git for version control.
 
 - Read @masteringshiny first
 - Use @golembook as a reference
-
-## Other resources for learning R
-
-- @NahhasIntroR (same author as @NahhasIRMPHR)
-- @practicalr4epi
 
 # Contributing to R
 
