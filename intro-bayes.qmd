@@ -102,3 +102,6 @@ print(pr_in_CI)
 UC Davis courses
 - STA 145: Bayesian Statistical Inference
 - ECL 298: Bayesian Models - A Statistical Primer
+
+Books
+- @rossbayes is a free online textbook
