@@ -196,6 +196,7 @@
 \def\prodi1n{\prod_{i=1}^n}
 \providecommand{\lp}[2]{#1 \' \beta}
 \def\odds{\omega}
+\def\OR{\text{OR}}
 \def\logodds{\eta}
 \def\oddst{\text{odds}}
 \def\probst{\text{probs}}
