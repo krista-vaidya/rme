@@ -123,6 +123,7 @@
 \providecommand{\Var}[1]{\text{Var}\paren{#1}}
 \providecommand{\Varf}[1]{\text{Var}\paren{#1}}
 \def\Covt{\text{Cov}}
+\newcommand{\covh}[1]{\widehat{\text{Cov}}\paren{#1}}
 \providecommand{\Cov}[1]{\Covt \paren{#1}}
 \providecommand{\Covf}[1]{\Covt \paren{#1}}
 \def\varht{\widehat{\text{Var}}}
